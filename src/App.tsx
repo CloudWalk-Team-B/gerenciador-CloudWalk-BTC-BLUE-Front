@@ -1,12 +1,16 @@
 import { ThemeProvider } from "styled-components";
 import theme from "./assets/styles/theme";
+import { BrowserRouter } from "react-router-dom";
+import Router from "./router";
 import "./App.css";
 
 function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <h1>Hello Wolrd!</h1>
+        <BrowserRouter>
+          <Router />
+        </BrowserRouter>
       </ThemeProvider>
     </>
   );
