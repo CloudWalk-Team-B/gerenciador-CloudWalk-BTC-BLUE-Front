@@ -28,25 +28,7 @@ export const Name = styled.span`
     overflow: hidden;
     color: ${theme.colors.textColor};
     margin-left: 20px;
-  `}/* animation: animate__backInDown;
-  animation-duration: 2s; */
-  /* @keyframes anim-lineUp {
-    0% {
-      opacity: 0;
-      transform: translateY(80%);
-    }
-    20% {
-      opacity: 0;
-    }
-    50% {
-      opacity: 1;
-      transform: translateY(0%);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0%);
-    }
-  } */
+  `}
 `;
 export const Update = styled.span`
   display: flex;
@@ -65,12 +47,15 @@ export const Search = styled.span`
 `;
 export const TextSearch = styled.input`
   ${({ theme }) => css`
+    font-family: ${theme.constants.bodyFontFamily};
     background-color: white;
-    height: 6vh;
+    height: 4vh;
     width: 30vw;
     color: ${theme.colors.primaryColor};
     border: none;
     border-radius: 50px;
     outline: 0;
+    padding: 10px;
+    font-size: 1em;
   `}
 `;

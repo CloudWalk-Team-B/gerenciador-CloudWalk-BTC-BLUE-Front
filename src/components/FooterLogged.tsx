@@ -21,9 +21,8 @@ const FooterLogged = () => {
           <S.TextSearch
             className="animate__animated animate__jackInTheBox"
             type="text"
-            placeholder="      Procurar..."
+            placeholder="Procurar..."
           ></S.TextSearch>
-          {/* <AiOutlineSearch color="purple" fontSize="1.5em" /> */}
         </S.Search>
         <S.Update className="animate__animated animate__slideInRight">
           <S.TextUpdate>
