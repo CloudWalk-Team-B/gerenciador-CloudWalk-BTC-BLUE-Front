@@ -8,20 +8,24 @@ const FooterLogged = () => {
     <>
       <S.Content>
         <S.BoxSoon>
-          <S.Soon src={Logo} />
-          <S.Name>
+          <S.Soon
+            className="animate__animated animate__slideInLeft"
+            src={Logo}
+          />
+          <S.Name className="animate__animated animate__bounceIn animate__delay-1s	">
             Capivara <br />
             Shop
           </S.Name>
         </S.BoxSoon>
         <S.Search>
           <S.TextSearch
+            className="animate__animated animate__jackInTheBox"
             type="text"
             placeholder="      Procurar..."
           ></S.TextSearch>
           {/* <AiOutlineSearch color="purple" fontSize="1.5em" /> */}
         </S.Search>
-        <S.Update>
+        <S.Update className="animate__animated animate__slideInRight">
           <S.TextUpdate>
             Atualização <br />
             em massa

@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import "animate.css";
 
 export const Content = styled.div`
   ${({ theme }) => css`
@@ -24,9 +25,28 @@ export const Soon = styled.img`
 `;
 export const Name = styled.span`
   ${({ theme }) => css`
+    overflow: hidden;
     color: ${theme.colors.textColor};
     margin-left: 20px;
-  `}
+  `}/* animation: animate__backInDown;
+  animation-duration: 2s; */
+  /* @keyframes anim-lineUp {
+    0% {
+      opacity: 0;
+      transform: translateY(80%);
+    }
+    20% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  } */
 `;
 export const Update = styled.span`
   display: flex;
