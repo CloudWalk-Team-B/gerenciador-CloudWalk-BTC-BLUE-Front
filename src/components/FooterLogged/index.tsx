@@ -1,5 +1,5 @@
 import * as S from "./style";
-import Logo from "../assets/images/logoBranca.png";
+import Logo from "../../assets/images/logoBranca.png";
 import { AiOutlineSearch } from "react-icons/ai";
 import { FiPlus } from "react-icons/fi";
 
