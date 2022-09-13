@@ -1,7 +1,12 @@
 import React from "react";
+import FooterLogged from "../components/FooterLogged";
 
 const Products = () => {
-  return <div>Products</div>;
+  return (
+    <>
+      <FooterLogged />
+    </>
+  );
 };
 
 export default Products;
