@@ -1,27 +1,30 @@
 import * as S from "./style";
-import Logo from "../assets/images/logoBranca.png";
+import Logo from "../../assets/images/logoBranca.png";
 import { AiOutlineSearch } from "react-icons/ai";
 import { FiPlus } from "react-icons/fi";
 
 const FooterLogged = () => {
   return (
     <>
-      <S.Content>
+      <S.Content className="animate__animated animate__slideInDown">
         <S.BoxSoon>
-          <S.Soon src={Logo} />
-          <S.Name>
+          <S.Soon
+            className="animate__animated animate__slideInLeft animate__delay-1s"
+            src={Logo}
+          />
+          <S.Name className="animate__animated animate__bounceIn animate__delay-1s	">
             Capivara <br />
             Shop
           </S.Name>
         </S.BoxSoon>
         <S.Search>
           <S.TextSearch
+            className="animate__animated animate__jackInTheBox animate__delay-1s"
             type="text"
-            placeholder="      Procurar..."
+            placeholder="Procurar..."
           ></S.TextSearch>
-          {/* <AiOutlineSearch color="purple" fontSize="1.5em" /> */}
         </S.Search>
-        <S.Update>
+        <S.Update className="animate__animated animate__slideInRight animate__delay-1s">
           <S.TextUpdate>
             Atualização <br />
             em massa

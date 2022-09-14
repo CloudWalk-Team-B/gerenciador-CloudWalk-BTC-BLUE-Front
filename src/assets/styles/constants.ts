@@ -1,6 +1,6 @@
 export const constants = {
-  bodyFontFamily: "Roboto",
+  bodyFontFamily: "Antonio",
   bodyFontSize: "14px",
   bodyLineHeight: "140%",
-  infoFontFamily: "Roboto",
+  infoFontFamily: "Antonio",
 };

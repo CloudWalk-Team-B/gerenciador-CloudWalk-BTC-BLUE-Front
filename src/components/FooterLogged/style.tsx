@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import "animate.css";
 
 export const Content = styled.div`
   ${({ theme }) => css`
@@ -24,6 +25,7 @@ export const Soon = styled.img`
 `;
 export const Name = styled.span`
   ${({ theme }) => css`
+    overflow: hidden;
     color: ${theme.colors.textColor};
     margin-left: 20px;
   `}
@@ -45,12 +47,15 @@ export const Search = styled.span`
 `;
 export const TextSearch = styled.input`
   ${({ theme }) => css`
+    font-family: ${theme.constants.bodyFontFamily};
     background-color: white;
-    height: 6vh;
+    height: 4vh;
     width: 30vw;
     color: ${theme.colors.primaryColor};
     border: none;
     border-radius: 50px;
     outline: 0;
+    padding: 10px;
+    font-size: 1em;
   `}
 `;
