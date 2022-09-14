@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import Login from "./pages/Login";
+import Login from "./pages/Login/index";
 import Products from "./pages/Products/Products";
 import { RoutePath } from "./types/routes";
 
