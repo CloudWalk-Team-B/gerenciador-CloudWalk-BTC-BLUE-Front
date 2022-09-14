@@ -51,7 +51,7 @@ const ListProducts = () => {
                     src={element.img}
                   />
                 </S.ImageContainer>
-                <S.TextContainer>
+                <S.TextContainer className="animate__animated animate__zoomIn animate__delay-1s">
                   <S.TitleProduct>{element.name}</S.TitleProduct>
                   <S.PriceProduct>R$: {element.valor}</S.PriceProduct>
                 </S.TextContainer>

@@ -6,10 +6,10 @@ import { FiPlus } from "react-icons/fi";
 const FooterLogged = () => {
   return (
     <>
-      <S.Content>
+      <S.Content className="animate__animated animate__slideInDown">
         <S.BoxSoon>
           <S.Soon
-            className="animate__animated animate__slideInLeft"
+            className="animate__animated animate__slideInLeft animate__delay-1s"
             src={Logo}
           />
           <S.Name className="animate__animated animate__bounceIn animate__delay-1s	">
@@ -19,12 +19,12 @@ const FooterLogged = () => {
         </S.BoxSoon>
         <S.Search>
           <S.TextSearch
-            className="animate__animated animate__jackInTheBox"
+            className="animate__animated animate__jackInTheBox animate__delay-1s"
             type="text"
             placeholder="Procurar..."
           ></S.TextSearch>
         </S.Search>
-        <S.Update className="animate__animated animate__slideInRight">
+        <S.Update className="animate__animated animate__slideInRight animate__delay-1s">
           <S.TextUpdate>
             Atualização <br />
             em massa
