@@ -3,6 +3,7 @@ import theme from "./assets/styles/theme";
 import { BrowserRouter } from "react-router-dom";
 import Router from "./router";
 import "./App.css";
+import { Navbar } from "./components/Navbar";
 import { Toaster } from "react-hot-toast";
 
 function App() {
