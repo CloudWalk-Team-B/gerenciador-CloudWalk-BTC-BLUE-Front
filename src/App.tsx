@@ -4,17 +4,14 @@ import { BrowserRouter } from "react-router-dom";
 import Router from "./router";
 import "./App.css";
 import { Navbar } from "./components/Navbar";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
-    <>
-      <ThemeProvider theme={theme}>
-        <BrowserRouter>
-           <Navbar/>
-          <Router />
-        </BrowserRouter>
-      </ThemeProvider>
-    </>
+    <div>
+      <Toaster position="bottom-center" reverseOrder={false}/>
+      <Router />
+    </div>
   );
 }
 
