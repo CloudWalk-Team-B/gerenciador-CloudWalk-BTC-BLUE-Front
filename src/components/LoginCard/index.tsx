@@ -1,5 +1,11 @@
 import * as S from "./style"
 import Logo from "../../assets/images/logoBege.png"
+import toast from "react-hot-toast"
+
+interface LoginData{
+    email:string,
+    password:string
+}
 
 const LoginCard = ()=>{
     return(
