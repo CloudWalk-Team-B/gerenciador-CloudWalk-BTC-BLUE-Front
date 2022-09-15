@@ -19,6 +19,7 @@ const Router = () => {
             <>
               <Route path={RoutePath.MANAGEMENT} element={<Products />} />
               <Route path={RoutePath.LOGIN} element={<Login/>} />
+              <Route path={RoutePath.HOMEPAGE} element={<Home/>} />
             </>
           }
           <Route path="*" element={<Navigate to={logged?"/produtos":"/produtos"}/>}/> 
