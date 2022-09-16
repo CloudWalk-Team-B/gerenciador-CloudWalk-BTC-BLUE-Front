@@ -76,4 +76,14 @@ export const LoginCardContainer = styled.div`
                 }
             }
         `}
-`;
+`
+export const ErrorMessage = styled.h3`
+    ${({theme})=> css`
+        color: red;
+        align-self: center;
+        font-size: 1rem;
+        display: flex;
+        justify-content: center;
+        margin-top: 1rem;
+    `}
+`

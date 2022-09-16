@@ -46,17 +46,17 @@ export const AuthProvider = ({ children }:AuthProviderProps) =>{
             })
     }
 
-    // useEffect(()=>{
-    //     const token = localStorage.getItem("token");
-    //     if(token) checkTokenExpiration();
-    // },[])
+    useEffect(()=>{
+        const token = localStorage.getItem("token");
+        if(token) checkTokenExpiration();
+    },[])
 
     const login = ({token, user}:LoginParams)=>{
         localStorage.setItem("token", token)
         localStorage.setItem("user", JSON.stringify(user))
         setLogged(true);
         // navegate("/.........");
-        // toast.success("Login bem sucedido")
+        toast.success("Login bem sucedido")
     }
 
     const logout = ()=>{
