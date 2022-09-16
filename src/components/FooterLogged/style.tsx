@@ -13,6 +13,18 @@ export const Content = styled.div`
   `}
 `;
 
+export const ContentCenter = styled.div`
+  ${({ theme }) => css`
+    background-color: ${theme.colors.primaryColor};
+    width: 100vw;
+    height: 13vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+  `}
+`;
+
 export const BoxSoon = styled.span`
   display: flex;
   align-items: center;

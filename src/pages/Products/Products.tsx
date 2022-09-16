@@ -7,7 +7,7 @@ const Products = () => {
   return (
     <>
       <S.Content>
-        <FooterLogged />
+        <FooterLogged display="admin" />
         <ListProducts />
       </S.Content>
     </>
