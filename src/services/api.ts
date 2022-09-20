@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const Api = axios.create({
-  baseURL: "https://gerenciador-ecommerce.herokuapp.com/api/",
+  baseURL: "http://localhost:3333",
 });
 
 Api.interceptors.request.use((config: any) => {
