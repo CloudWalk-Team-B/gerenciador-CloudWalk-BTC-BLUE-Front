@@ -11,9 +11,8 @@ export const InfoCardContainer = styled.div`
     align-items: center;
     transition: all 0.5s;
     :hover {
-      transform: scale(0.99);
       cursor: pointer;
-      border-radius: 20px;
+      border-radius: 50px;
     }
   `}
 `;
@@ -25,7 +24,6 @@ export const Title = styled.h1`
   color: #fff;
   font-weight: lighter;
   font-size: 7vh;
-
   border-bottom: 1px solid white;
 `;
 export const textInfo = styled.p`

@@ -5,6 +5,5 @@ export const Content = styled.main`
   justify-content: center;
   flex-direction: column;
   align-items: center;
-
   overflow: hidden;
 `;

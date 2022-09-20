@@ -50,9 +50,14 @@ const LoginCard = () => {
 
   return (
     <S.LoginCardContainer>
-      <img src={Logo} />
-      <h2>Bem vindo(a) ao Capivara Pets</h2>
-      <div>
+      <img
+        src={Logo}
+        className="animate__animated animate__flip animate__delay-0.5s"
+      />
+      <h2 className="animate__animated animate__fadeInLeft">
+        Bem vindo(a) ao Capivara Pets
+      </h2>
+      <div className="animate__animated animate__backInUp">
         <p>Login </p>
         <form onSubmit={handleSubmit(handleLogin)}>
           <input type="text" placeholder="Email" {...register("email")} />

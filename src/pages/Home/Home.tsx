@@ -1,5 +1,5 @@
+import * as S from "./style";
 import Products from "../../components/Products";
-import * as S from "./styles";
 import { Navbar } from "../../components/Navbar";
 
 const Home = () => {

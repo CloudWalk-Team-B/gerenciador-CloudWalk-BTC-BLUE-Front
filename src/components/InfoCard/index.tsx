@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const InfoCard = () => {
   return (
-    <S.InfoCardContainer>
+    <S.InfoCardContainer className="animate__animated animate__bounceInRight">
       <S.Title>Sobre nós</S.Title>
       <S.textInfo>
         Clicando aqui você poderá saber um pouco mais sobre o projeto e suas
