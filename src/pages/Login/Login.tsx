@@ -1,5 +1,5 @@
 import React from "react";
-import * as S from "./style.js";
+import * as S from "./style";
 import InfoCard from "../../components/InfoCard";
 import LoginCard from "../../components/LoginCard";
 
