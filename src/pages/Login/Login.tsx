@@ -1,14 +1,14 @@
-import * as S from "./style";
+import { LoginContainer } from "./style";
 import InfoCard from "../../components/InfoCard";
 import LoginCard from "../../components/LoginCard";
 
 const Login = () => {
   return (
     <>
-      <S.LoginContainer>
+      <LoginContainer>
         <LoginCard />
         <InfoCard />
-      </S.LoginContainer>
+      </LoginContainer>
     </>
   );
 };
