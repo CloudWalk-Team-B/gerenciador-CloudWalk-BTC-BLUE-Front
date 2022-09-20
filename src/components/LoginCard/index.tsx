@@ -52,7 +52,7 @@ const LoginCard = () => {
     <S.LoginCardContainer>
       <img
         src={Logo}
-        className="animate__animated animate__flip animate__delay-1s"
+        className="animate__animated animate__flip animate__delay-0.5s"
       />
       <h2 className="animate__animated animate__fadeInLeft">
         Bem vindo(a) ao Capivara Pets
