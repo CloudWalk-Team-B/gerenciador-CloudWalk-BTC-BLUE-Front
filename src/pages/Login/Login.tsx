@@ -5,10 +5,10 @@ import LoginCard from "../../components/LoginCard";
 const Login = () => {
   return (
     <>
-      <S.LoginConstainer>
+      <S.LoginContainer>
         <LoginCard />
         <InfoCard />
-      </S.LoginConstainer>
+      </S.LoginContainer>
     </>
   );
 };
