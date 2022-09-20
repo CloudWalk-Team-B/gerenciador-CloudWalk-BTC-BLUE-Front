@@ -13,6 +13,7 @@ export const InfoCardContainer = styled.div`
     :hover {
       transform: scale(0.99);
       cursor: pointer;
+      border-radius: 20px;
     }
   `}
 `;

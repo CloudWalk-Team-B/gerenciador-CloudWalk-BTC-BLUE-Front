@@ -62,7 +62,7 @@ export const LoginCardContainer = styled.div`
 
         p {
           color: ${theme.colors.primaryColor};
-          font-size: 1rem;
+          font-size: 1.2rem;
           margin-top: -2rem;
           margin-left: -40%;
           transition: all 0.5s;
@@ -82,7 +82,7 @@ export const LoginCardContainer = styled.div`
           width: 50%;
           font-size: 30px;
           border-radius: 3.125rem;
-          margin-top: 10%;
+          margin-top: 7%;
           transition: all 0.5s;
           :hover {
             cursor: pointer;
