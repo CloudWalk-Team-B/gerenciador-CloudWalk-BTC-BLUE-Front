@@ -4,10 +4,12 @@ import LoginCard from "../../components/LoginCard";
 
 const Login = () => {
   return (
-    <S.LoginConstainer>
-      <LoginCard />
-      <InfoCard />
-    </S.LoginConstainer>
+    <>
+      <S.LoginConstainer>
+        <LoginCard />
+        <InfoCard />
+      </S.LoginConstainer>
+    </>
   );
 };
 
