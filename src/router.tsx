@@ -1,7 +1,7 @@
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import { useAuth } from "./contexts/auth";
-import { Home } from "./pages/Home";
-import Login from "./pages/Login/index";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
 import Products from "./pages/Products/Products";
 import { RoutePath } from "./types/routes";
 
