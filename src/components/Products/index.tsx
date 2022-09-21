@@ -1,4 +1,6 @@
 import * as S from "./style";
+import Modal from "react-modal";
+import { useState } from "react";
 
 const ListProducts = () => {
   let list = [
@@ -38,28 +40,53 @@ const ListProducts = () => {
       img: "https://d2r9epyceweg5n.cloudfront.net/stores/001/961/075/products/15100208427-whatsapp-image-2021-12-13-at-12-04-18-1-removebg-preview-17e808445236ea0ef116445408477807-640-0.png",
     },
   ];
+
+  Modal.setAppElement("#root");
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const [product, setProduct] = useState([""]);
+
+  function openModal(element: string[]) {
+    setIsOpen(true);
+    setProduct(element);
+  }
+  function closeModal() {
+    setIsOpen(false);
+  }
+
   return (
     <>
       <S.ProductsContainer>
-        {list.map<React.ReactNode>((element: any) => {
+        {list.map<React.ReactNode>((element: any, index) => {
           return (
-            <>
-              <S.CardProduct className="animate__animated animate__fadeInUp">
-                <S.ImageContainer>
-                  <S.Image
-                    className="animate__animated animate__zoomIn animate__delay-1s"
-                    src={element.img}
-                  />
-                </S.ImageContainer>
-                <S.TextContainer className="animate__animated animate__zoomIn animate__delay-1s">
-                  <S.TitleProduct>{element.name}</S.TitleProduct>
-                  <S.PriceProduct>R$: {element.valor}</S.PriceProduct>
-                </S.TextContainer>
-              </S.CardProduct>
-            </>
+            <S.CardProduct
+              key={index}
+              className="animate__animated animate__fadeInUp"
+              onClick={() => openModal(element)}
+            >
+              <S.ImageContainer>
+                <S.Image
+                  className="animate__animated animate__zoomIn animate__delay-1s"
+                  src={element.img}
+                />
+              </S.ImageContainer>
+              <S.TextContainer className="animate__animated animate__zoomIn animate__delay-1s">
+                <S.TitleProduct>{element.name}</S.TitleProduct>
+                <S.PriceProduct>R$: {element.valor}</S.PriceProduct>
+              </S.TextContainer>
+            </S.CardProduct>
           );
         })}
       </S.ProductsContainer>
+      <Modal
+        isOpen={modalIsOpen}
+        // onAfterOpen={}
+        onRequestClose={closeModal}
+        // style={}
+        contentLabel="Example Modal"
+      >
+        <h2>s </h2>
+        <button onClick={closeModal}>close</button>
+      </Modal>
     </>
   );
 };
