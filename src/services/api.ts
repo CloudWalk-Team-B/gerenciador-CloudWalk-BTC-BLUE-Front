@@ -1,12 +1,12 @@
 import axios from "axios";
 
 const Api = axios.create({
-  baseURL: "http://localhost:3333",
+  baseURL: "http://34.134.206.248",
 });
 
 Api.interceptors.request.use((config: any) => {
   try {
-    const token = localStorage.getItem("jwt");
+    const token = localStorage.getItem("token");
 
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
