@@ -17,16 +17,10 @@ export const ProductsProvider = ({children}:ProductsProviderProps) => {
 
     const token = localStorage.getItem("token")
 
-    const headers = {
-        headers: {
-            Authorization:`Bearer ${token}`
-        }
-    }
-
     const [products, setProducts]= useState<Product[]>([]);
 
     const handleGetProduct = ()=>{
-        Api.get("/product", headers).then(res=> {setProducts(res.data)})
+        Api.get("/product").then(res=> {setProducts(res.data)})
     }
 
     useEffect(()=>handleGetProduct(),[])

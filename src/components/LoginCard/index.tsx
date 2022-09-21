@@ -7,6 +7,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useAuth } from "../../contexts/auth";
 import Api from "../../services/api";
+import { useProducts } from "../../contexts/product";
 
 interface LoginData {
   email: string;
@@ -48,6 +49,7 @@ const LoginCard = () => {
     }
   };
 
+
   return (
     <S.LoginCardContainer>
       <img
@@ -58,7 +60,7 @@ const LoginCard = () => {
         Bem vindo(a) ao Capivara Pets
       </h2>
       <div className="animate__animated animate__backInUp">
-        <p>Login </p>
+        <p  >Login </p>
         <form onSubmit={handleSubmit(handleLogin)}>
           <input type="text" placeholder="Email" {...register("email")} />
           <input
