@@ -11,17 +11,18 @@ const Router = () => {
   return (
     <Routes>
       {logged ? (
-        <>{/* ROTAS APENAS LOGADO AQUI!! */}</>
+        <>{/* ROTAS APENAS LOGADO AQUI!! */}
+          <Route path={RoutePath.MANAGEMENT} element={<Products />} />
+        </>
       ) : (
         <>
-          <Route path={RoutePath.MANAGEMENT} element={<Products />} />
           <Route path={RoutePath.LOGIN} element={<Login />} />
           <Route path={RoutePath.HOMEPAGE} element={<Home />} />
         </>
       )}
       <Route
         path="*"
-        element={<Navigate to={logged ? "/produtos" : "/produtos"} />}
+        element={<Navigate to={logged ? "/produtos" : "/"} />}
       />
       {/* recurso acima para direcionar url fora de padrão */}
     </Routes>
