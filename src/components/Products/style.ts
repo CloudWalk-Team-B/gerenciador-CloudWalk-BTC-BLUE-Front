@@ -25,6 +25,11 @@ export const CardProduct = styled.div`
     color: white;
     display: flex;
     justify-content: space-around;
+    transition: all 0.5s;
+    :hover {
+      box-shadow: 5px 10px 8px ${theme.colors.primaryColorOpacity};
+      cursor: pointer;
+    }
   `}
 `;
 
