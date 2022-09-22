@@ -49,7 +49,7 @@ export const Image = styled.img`
   height: 100%;
 `;
 export const TextContainer = styled.div`
-  width: 45%;
+  width: 50%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -100,3 +100,5 @@ export const InfoProduct = styled.div`
     font-weight: 300;
   `}
 `;
+
+export const InfoListItem = styled.h1``;
