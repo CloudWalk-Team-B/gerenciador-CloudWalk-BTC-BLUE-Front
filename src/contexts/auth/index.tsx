@@ -23,7 +23,7 @@ const AuthContext = createContext<AuthProviderData>({} as AuthProviderData)
 
 export const AuthProvider = ({ children }:AuthProviderProps) =>{
 
-    // const navegate= useNavigate()
+    const navegate= useNavigate()
     const [logged, setLogged]= useState<boolean>(false);
 
     const checkTokenExpiration = () =>{
@@ -39,7 +39,7 @@ export const AuthProvider = ({ children }:AuthProviderProps) =>{
         Api.get(`/user/${user.id}`, headers)
             .then(()=>{
                 setLogged(true);
-                // navegate("/........")
+                navegate("/produtos")
             }).catch(()=>{
                 logout();
                 toast.error("Login necessário")
@@ -55,14 +55,14 @@ export const AuthProvider = ({ children }:AuthProviderProps) =>{
         localStorage.setItem("token", token)
         localStorage.setItem("user", JSON.stringify(user))
         setLogged(true);
-        // navegate("/.........");
+        navegate("/produtos");
         toast.success("Login bem sucedido")
     }
 
     const logout = ()=>{
         localStorage.clear();
         setLogged(false);  
-        // navegate("/......");
+        navegate("/");
     }
 
     return(

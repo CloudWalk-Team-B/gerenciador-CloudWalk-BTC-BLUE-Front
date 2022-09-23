@@ -2,15 +2,18 @@ import * as S from "./style";
 import Logo from "../../assets/images/logoBranca.png";
 import { AiOutlineSearch } from "react-icons/ai";
 import { FiPlus } from "react-icons/fi";
+import { useAuth } from "../../contexts/auth";
 
 const FooterLogged = () => {
+
+  const { logout } = useAuth()
   return (
     <>
       <S.Content className="animate__animated animate__slideInDown">
         <S.BoxSoon>
           <S.Soon
             className="animate__animated animate__slideInLeft animate__delay-1s"
-            src={Logo}
+            src={Logo} onClick={()=>{logout()}}
           />
           <S.Name className="animate__animated animate__bounceIn animate__delay-1s	">
             Capivara <br />
