@@ -8,7 +8,7 @@ const ListProducts = () => {
   const [list, setList] = useState({});
   Modal.setAppElement("#root");
   const [modalIsOpen, setIsOpen] = useState(false);
-  const [idProduct, setIdProduct] = useState(0);
+  const [idProduct, setIdProduct] = useState("");
 
   function openModal(element: any) {
     setIsOpen(true);
@@ -33,6 +33,7 @@ const ListProducts = () => {
   };
 
   const { products, handleGetProduct } = useProducts();
+  console.log(products);
 
   return (
     <S.Container>
@@ -69,29 +70,29 @@ const ListProducts = () => {
       >
         <S.TitleModal>Infomações</S.TitleModal>
         <S.InfoProductCard>
-          {/* {list.map<React.ReactNode>((element, index) => {
+          {products.map<React.ReactNode>((element, index) => {
             if (element.id == idProduct) {
               return (
                 <>
                   <S.CardImageProduct>
-                    <S.ImageProduct src={element.img} />
+                    <S.ImageProduct src={img} />
                   </S.CardImageProduct>
                   <S.InfoProduct>
                     <S.InfoListItem>Nome: {element.name}</S.InfoListItem>
-                    <S.InfoListItem>Valor: R${element.valor}.00</S.InfoListItem>
-                    <S.InfoListItem>Código: {element.cod}</S.InfoListItem>
+                    <S.InfoListItem>Valor: R${element.price}.00</S.InfoListItem>
+                    <S.InfoListItem>Código: {element.code}</S.InfoListItem>
                     <S.InfoListItem>
-                      Categoria: {element.categoria}
+                      Categoria: {element.category}
                     </S.InfoListItem>
                     <S.InfoListItem>
-                      Disponiivel: {element.disponivel ? "Sim" : "Não"}
+                      Disponiivel: {element.inventory ? "Sim" : "Não"}
                     </S.InfoListItem>
                     ;
                   </S.InfoProduct>
                 </>
               );
             }
-          })} */}
+          })}
         </S.InfoProductCard>
       </Modal>
     </S.Container>
