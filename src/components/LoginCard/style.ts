@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 export const LoginCardContainer = styled.div`
   @font-face {
     font-family: minimal;
-    src: url("./assets/styles/minimal.otf");
+    src: url("../../assets/styles/minimal");
   }
 
   ${({ theme }) => css`
