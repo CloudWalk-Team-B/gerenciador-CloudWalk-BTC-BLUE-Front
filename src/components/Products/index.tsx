@@ -48,7 +48,7 @@ const ListProducts = () => {
             </S.CardProduct>
           );
         })}
-        <Moddal idProduct={idProduct} />
+        <Moddal idProduct={idProduct} setOpen={modalIsOpen} />
       </S.ProductsContainer>
     </S.Container>
   );
