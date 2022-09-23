@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const Api = axios.create({
-  baseURL: "http://34.134.206.248",
+  baseURL: "https://g-udrk.onrender.com",
 });
 
 Api.interceptors.request.use((config: any) => {
