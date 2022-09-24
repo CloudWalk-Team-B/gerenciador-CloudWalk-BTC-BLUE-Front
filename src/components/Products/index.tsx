@@ -6,25 +6,26 @@ import img from "../../assets/images/logoRoxa.png";
 import Moddal from "../Modal";
 
 const ListProducts = () => {
-  const [list, setList] = useState({});
+
   Modal.setAppElement("#root");
-  const [modalIsOpen, setIsOpen] = useState(false);
+
   const [idProduct, setIdProduct] = useState<string>("");
+  const[open, setOpen]= useState<boolean>(false)
+  useEffect(()=>{openModal(open)} ,[open])
 
-  function openModal(element: any) {
-    setIsOpen(true);
-    console.log(element.id);
-    setIdProduct(element.id);
-  }
-
-  function closeModal() {
-    setIsOpen(false);
+  function openModal(open:boolean) {
+    if(open===true){
+      return(
+        <Moddal idProduct={idProduct}/>
+      )
+    }
   }
 
   const { products, handleGetProduct } = useProducts();
   console.log(products);
 
   return (
+    <>
     <S.Container>
       <S.ProductsContainer>
         {products.map<React.ReactNode>((element, index) => {
@@ -32,7 +33,7 @@ const ListProducts = () => {
             <S.CardProduct
               key={index}
               className="animate__animated animate__fadeInUp"
-              onClick={() => openModal(element)}
+              onClick={() => {setOpen(!open)}}
             >
               <S.ImageContainer>
                 <S.Image
@@ -48,9 +49,10 @@ const ListProducts = () => {
             </S.CardProduct>
           );
         })}
-        <Moddal idProduct={idProduct} setOpen={modalIsOpen} />
-      </S.ProductsContainer>
+        </S.ProductsContainer>          
     </S.Container>
+  {openModal(open)}
+  </>
   );
 };
 
