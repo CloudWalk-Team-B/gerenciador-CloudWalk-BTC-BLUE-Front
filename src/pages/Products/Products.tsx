@@ -7,7 +7,7 @@ const Products = () => {
   return (
     <>
       <S.Content>
-        <FooterLogged />
+        <FooterLogged header="add" />
         <ListProducts />
       </S.Content>
     </>
