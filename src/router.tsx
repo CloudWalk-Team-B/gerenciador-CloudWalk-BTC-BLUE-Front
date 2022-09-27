@@ -1,5 +1,6 @@
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import { useAuth } from "./contexts/auth";
+import { About } from "./Pages/About/About";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import Products from "./pages/Products/Products";
@@ -18,6 +19,7 @@ const Router = () => {
         <>
           <Route path={RoutePath.LOGIN} element={<Login />} />
           <Route path={RoutePath.HOMEPAGE} element={<Home />} />
+          <Route path={RoutePath.ABOUTME} element={<About/>} />
         </>
       )}
       <Route
