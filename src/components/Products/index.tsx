@@ -15,10 +15,11 @@ const ListProducts = () => {
   const { open, setOpen } = useOpenModal()
   useEffect(()=>{openModal(open)} ,[open])
 
+
   function openModal(open:boolean) {
     if(open===true){
       return(
-        <Moddal idProduct={idProduct}/>
+        <Moddal idProduct={idProduct} setOpen={setOpen}/>
       )
     }
   }
