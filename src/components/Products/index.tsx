@@ -4,13 +4,15 @@ import React, { useState, useEffect } from "react";
 import { useProducts } from "../../contexts/product";
 import img from "../../assets/images/logoRoxa.png";
 import Moddal from "../Modal";
+import { useOpenModal } from "../../contexts/OpenModal";
 
 const ListProducts = () => {
 
   Modal.setAppElement("#root");
 
   const [idProduct, setIdProduct] = useState<string>("");
-  const[open, setOpen]= useState<boolean>(false)
+
+  const { open, setOpen } = useOpenModal()
   useEffect(()=>{openModal(open)} ,[open])
 
   function openModal(open:boolean) {
@@ -33,7 +35,7 @@ const ListProducts = () => {
             <S.CardProduct
               key={index}
               className="animate__animated animate__fadeInUp"
-              onClick={() => {setOpen(!open)}}
+              onClick={() => {setOpen(true)}}
             >
               <S.ImageContainer>
                 <S.Image

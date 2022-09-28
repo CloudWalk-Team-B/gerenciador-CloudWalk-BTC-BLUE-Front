@@ -14,9 +14,7 @@ interface ProductsProviderData{
 const ProductContext = createContext<ProductsProviderData>({} as ProductsProviderData);
 
 export const ProductsProvider = ({children}:ProductsProviderProps) => {
-
-    const token = localStorage.getItem("token")
-
+    
     const [products, setProducts]= useState<Product[]>([]);
 
     const handleGetProduct = ()=>{

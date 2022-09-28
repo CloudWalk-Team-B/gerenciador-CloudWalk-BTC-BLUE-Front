@@ -3,12 +3,14 @@ import * as S from "./style";
 import Modal from "react-modal";
 import { useProducts } from "../../contexts/product";
 import img from "../../assets/images/logoRoxa.png";
+import { useOpenModal } from "../../contexts/OpenModal";
 
-const Moddal = (idProduct: any, setOpen: any) => {
-  const [modalIsOpen, setIsOpen] = useState(setOpen);
+const Moddal = (idProduct: any) => {
+
+  const { open, setOpen } = useOpenModal()
 
   function closeModal() {
-    setIsOpen(false);
+    setOpen(false);
   }
 
   const customStyles = {
@@ -27,7 +29,7 @@ const Moddal = (idProduct: any, setOpen: any) => {
   return (
     <>
       <Modal
-        isOpen={modalIsOpen}
+        isOpen={open}
         // onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         style={customStyles}
