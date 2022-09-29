@@ -1,9 +1,10 @@
 import styled, { css } from "styled-components";
+import minimal from "../../assets/styles/minimal.woff";
 
 export const LoginCardContainer = styled.div`
   @font-face {
     font-family: minimal;
-    src: url(../../assets/styles/minimal) format("otf");
+    src: url(${minimal}) format("woff");
   }
 
   ${({ theme }) => css`
