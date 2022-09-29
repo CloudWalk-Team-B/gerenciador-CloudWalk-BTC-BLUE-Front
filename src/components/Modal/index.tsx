@@ -6,8 +6,7 @@ import img from "../../assets/images/logoRoxa.png";
 import { useOpenModal } from "../../contexts/OpenModal";
 
 const Moddal = (idProduct: any) => {
-
-  const { open, setOpen } = useOpenModal()
+  const { open, setOpen } = useOpenModal();
 
   function closeModal() {
     setOpen(false);
@@ -26,6 +25,7 @@ const Moddal = (idProduct: any) => {
   };
 
   const { products, handleGetProduct } = useProducts();
+
   return (
     <>
       <Modal
@@ -38,7 +38,7 @@ const Moddal = (idProduct: any) => {
         <S.TitleModal>Infomações</S.TitleModal>
         <S.InfoProductCard>
           {products.map<React.ReactNode>((element, index) => {
-            if (element.id == idProduct) {
+            if (element.id == idProduct.idProduct) {
               return (
                 <>
                   <S.CardImageProduct>
