@@ -1,9 +1,9 @@
 export interface User {
-  id: string;
+  id?: string;
   name: string;
   email: string;
   password: string;
-  isAdmin?:boolean;
+  isAdmin:boolean;
   createdAt?: Date;
   updatedAt?: Date
 }
