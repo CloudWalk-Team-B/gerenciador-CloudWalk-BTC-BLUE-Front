@@ -10,10 +10,8 @@ export const  RightNav = (props: Props) => {
   return (
     <>
       <S.Ul open={props.open}>
-        <S.LogoUl src={Logo} alt={'Gustavo Scarpim'} />
-
         <Link to='/'>
-           <S.Li>Home</S.Li>
+          <S.LogoUl src={Logo} alt={'Capivara Pets'} />
         </Link>
         <Link to='/info'>
           <S.Li>Sobre</S.Li>

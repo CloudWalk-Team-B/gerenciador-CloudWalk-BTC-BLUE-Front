@@ -1,10 +1,16 @@
 import * as S from "./style";
 
-import { Link } from "react-router-dom";
-
 const InfoCard = () => {
   return (
     <S.InfoCardContainer className="animate__animated animate__bounceInRight">
+      <S.Nav>
+        <S.Btn to="/">
+            <S.Home/> <S.TextBtn> Home </S.TextBtn>
+        </S.Btn>
+        <S.Btn to="/info">
+           <S.Info/> <S.TextBtn> Sobre </S.TextBtn>
+        </S.Btn>
+      </S.Nav>
       <S.Title>Sobre nós</S.Title>
       <S.textInfo>
         Clicando aqui você poderá saber um pouco mais sobre o projeto e suas
