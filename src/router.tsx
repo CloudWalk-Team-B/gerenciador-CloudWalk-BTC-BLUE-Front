@@ -4,6 +4,7 @@ import { About } from "./Pages/About/About";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import Products from "./pages/Products/Products";
+import CreateAccount from "./Pages/CreateAccount/CreateAccount"
 import { RoutePath } from "./types/routes";
 
 const Router = () => {
@@ -19,6 +20,7 @@ const Router = () => {
         </>
       ) : (
         <>
+          <Route path={RoutePath.CREATEACCOUNT} element={<CreateAccount />} />
           <Route path={RoutePath.LOGIN} element={<Login />} />
           <Route path={RoutePath.HOMEPAGE} element={<Home />} />
           <Route path={RoutePath.ABOUTME} element={<About/>} />
