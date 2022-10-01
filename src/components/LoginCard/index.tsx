@@ -8,6 +8,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useAuth } from "../../contexts/auth";
 import Api from "../../services/api";
 import { useProducts } from "../../contexts/product";
+import { useNavigate } from "react-router-dom";
 
 interface LoginData {
   email: string;
@@ -49,6 +50,8 @@ const LoginCard = () => {
     }
   };
 
+  const navegate = useNavigate() 
+
 
   return (
     <S.LoginCardContainer>
@@ -68,7 +71,10 @@ const LoginCard = () => {
             placeholder="Senha"
             {...register("password")}
           />
-          <p>Esqueceu a senha?</p>
+          <div>
+            <p onClick={()=>toast.error("Recurso em desenvolvimento")}>Esqueceu a senha?</p>
+            <p onClick={()=>navegate("/cadastro")}>Cadastre-se</p> 
+          </div>
           <button type="submit">Entrar</button>
         </form>
         {

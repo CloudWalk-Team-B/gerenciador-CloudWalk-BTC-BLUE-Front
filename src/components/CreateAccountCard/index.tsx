@@ -7,6 +7,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as S from "./style"
 import { User } from "../../types/interface";
+import { useNavigate } from "react-router-dom";
 
 interface CreateAccountData {
     name: string;
@@ -75,6 +76,8 @@ const CreateAccountCard = ()=>{
       }
     }
 
+    const navegate= useNavigate()
+
     return (
         <S.CreateAccountContainer>
           <img
@@ -85,16 +88,19 @@ const CreateAccountCard = ()=>{
             Cadastre-se
           </h2>
           <p>É rápido e fácil </p>
-
           <div className="animate__animated animate__backInUp">
-            <form onSubmit={()=>toast.success("Boa garoto!")}>
+            <form onSubmit={()=>toast.error("Recurso em desenvolvimento")}>
               <input type="text" placeholder="Nome" {...register("name")} />
               <input type="text" placeholder="Email" {...register("email")} />                   
               <input type="password" placeholder="Senha" {...register("password")}/>            
               <input type="password" placeholder="Confirmar Senha" {...register("confirmPassword")}/>      
               <input type="number" placeholder="CPF" {...register("cpf")}/>
-  
-              <button type="submit">Cadastrar</button>
+              <div>
+                <p className="backButton" onClick={()=>navegate("/login")}> Voltar</p>
+                <button type="submit">Cadastrar</button>
+                <p className="collaborator" onClick={()=>toast.error("Modal em desenvolvimento")}>Cadastrar Colaborador</p>
+              </div>
+
             </form>
             {
           <S.ErrorMessage>

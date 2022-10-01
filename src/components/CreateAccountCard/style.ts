@@ -23,15 +23,23 @@ export const CreateAccountContainer = styled.div`
 
     h2 {
       color: ${theme.colors.primaryColor};
-      font-size: 6vh;
+      font-size: 8vh;
       margin-top: 0;
       font-weight: 300;
+      margin-bottom: 0;
+      padding: 0;
+    }
+    p{
+      font-size: 2rem;
+      margin-top: .5rem;
+      margin-bottom: 1rem;
+      padding:0;
     }
     div {
       display: flex;
       flex-direction: column;
       border: 2px solid ${theme.colors.primaryColor};
-      width: 25vw;
+      width: 40vw;
       height: 60%;
       border-radius: 15px;
 
@@ -61,37 +69,44 @@ export const CreateAccountContainer = styled.div`
           font-size: 4vh;
         }
 
-        p {
-          color: ${theme.colors.primaryColor};
-          font-size: 1.2rem;
-          margin-top: -2rem;
-          margin-left: -40%;
-          transition: all 0.5s;
+          div{
+              display: flex;
+              flex-direction: row;
+              justify-content: center;
+              border:none;
+              padding: 0;
+              width: 80%;
+
+
+            button, p{
+              background-color: ${theme.colors.primaryColor};
+              color: ${theme.colors.textColor};
+              font-family: "minimal";
+              display: flex;
+              flex-wrap: wrap;
+              align-items: center;
+              justify-content: center;
+              text-decoration: none;
+              text-align:center;
+              border: none;
+              height: 4rem;
+              width: 14rem;
+              font-size: 30px;
+              margin:0.5rem;
+              border-radius: 3.125rem;
+              transition: all 0.5s;
           :hover {
             cursor: pointer;
-            transform: scale(1.1);
+            transform: scale(1.05);
           }
         }
-
-        button {
-          background-color: ${theme.colors.primaryColor};
-          color: ${theme.colors.textColor};
-          font-family: "minimal";
-          text-decoration: none;
-          border: none;
-          height: 15%;
-          width: 50%;
-          font-size: 30px;
-          border-radius: 3.125rem;
-          margin-top: 7%;
-          transition: all 0.5s;
-          :hover {
-            cursor: pointer;
-            transform: scale(1.1);
+            
           }
+
+
+
         }
       }
-    }
   `}
 `;
 export const ErrorMessage = styled.h3`
