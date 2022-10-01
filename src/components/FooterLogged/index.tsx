@@ -31,13 +31,22 @@ const FooterLogged = (props: any) => {
               placeholder="Procurar..."
             ></S.TextSearch>
           </S.Search>
-          <S.Update className="animate__animated animate__slideInRight animate__delay-1s">
-            <S.TextUpdate>
-              Atualização <br />
-              em massa
-            </S.TextUpdate>
-            <FiPlus color="white" fontSize="1.5em" />
-          </S.Update>
+          <S.Nav>
+            <S.Update className="animate__animated animate__slideInRight animate__delay-1s">
+              <S.TextUpdate>
+                Atualização <br />
+                em massa
+              </S.TextUpdate>
+              <FiPlus color="white" fontSize="1.5em" />
+            </S.Update>
+             <S.Btn to="/">
+              <S.Home/> <S.TextUpdate>Home</S.TextUpdate>
+             </S.Btn>
+             <S.Btn to="/info">
+               <S.Info/> <S.TextUpdate>Sobre</S.TextUpdate>
+              </S.Btn>
+               
+          </S.Nav>
         </S.Content>
       </>
     );
@@ -72,6 +81,8 @@ const FooterLogged = (props: any) => {
           </S.TextUpdate>
           <FiPlus color="white" fontSize="1.5em" />
         </S.Update>
+        <S.Info/>
+        <S.Home/>
       </S.Content>
     </>
   );

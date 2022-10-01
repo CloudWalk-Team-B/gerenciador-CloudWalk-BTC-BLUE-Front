@@ -14,6 +14,8 @@ const Router = () => {
       {logged ? (
         <>{/* ROTAS APENAS LOGADO AQUI!! */}
           <Route path={RoutePath.MANAGEMENT} element={<Products />} />
+          <Route path={RoutePath.HOMEPAGE} element={<Home />} />
+          <Route path={RoutePath.ABOUTME} element={<About/>} />
         </>
       ) : (
         <>

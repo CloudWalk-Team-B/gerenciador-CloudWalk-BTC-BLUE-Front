@@ -61,8 +61,9 @@ export const Ul = styled.ul<INav>`
   display: flex;
   flex-flow: row nowrap;
   position: absolute;
-  width: 90%;
+  width: 80%;
   top: 0;
+  margin-left: 5rem;
   justify-content: flex-end;
   margin-top: 0px;
   align-items: center;
@@ -78,7 +79,7 @@ export const Ul = styled.ul<INav>`
     }
   }
   @media (max-width: 768px) {
-
+    margin-left:0;
     flex-flow: column nowrap;
     background-color: #601A4A;
     transform: ${(props) => props.open ? 'translateY(0)' : 'translateY(-23.1rem)'};
@@ -86,7 +87,6 @@ export const Ul = styled.ul<INav>`
     bottom: 0;
     height: 22rem;
     width: 100%;
-    transition: transform 0.3s ease-in-out;
     z-index: 9;
     justify-content: space-around;
   }
@@ -106,13 +106,18 @@ export const Li = styled.li`
 `
 
 export const Logo = styled.img`
-  margin: 20px 50px 20px 7%;
-  width: 160px;
-  height: 70px;
+  margin: 1rem;
+  width: 3.5rem;
+  height: 3.5rem;
   object-fit: contain;
   @media (max-width: 1250px) {
     margin: 20px 50px 20px 5%;
   }
+`
+export const Name = styled.span`
+overflow: hidden;
+color:rgba(255, 255, 255, 0.8) ;
+margin-left: 20px;
 `
 
 export const LogoUl = styled.img`
