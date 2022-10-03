@@ -9,7 +9,6 @@ import { useAuth } from "../../contexts/auth";
 import Api from "../../services/api";
 import { useProducts } from "../../contexts/product";
 import { useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
 
 interface LoginData {
   email: string;
