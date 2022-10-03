@@ -1,96 +1,115 @@
 import styled, { css } from "styled-components";
-import { AiOutlineHome } from "react-icons/ai";
-import { FcAbout } from "react-icons/fc";
-import { Link } from "react-router-dom";
-import "animate.css";
+import minimal from "../../assets/styles/minimal.woff";
 
-export const Content = styled.div`
+export const LoginCardContainer = styled.div`
+  @font-face {
+    font-family: minimal;
+    src: url(${minimal}) format("woff");
+  }
+
   ${({ theme }) => css`
-    background-color: ${theme.colors.primaryColor};
-    width: 100vw;
-    height: 13vh;
+    font-family: "minimal";
+    font-weight: 100;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    color: white;
+    height: 100%;
+    width: 100%;
+
+    img {
+      height: 15%;
+      margin-top: 20px;
+    }
+
+    h2 {
+      color: ${theme.colors.primaryColor};
+      font-size: 6vh;
+      margin-top: 0;
+      font-weight: 300;
+    }
+    div {
+      display: flex;
+      flex-direction: column;
+      border: 2px solid ${theme.colors.primaryColor};
+      width: 25vw;
+      height: 60%;
+      border-radius: 15px;
+
+      p {
+        font-weight: 300;
+        font-size: 5.5vh;
+        margin-left: 5%;
+        margin-top: 2%;
+        color: ${theme.colors.primaryColor};
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 5%;
+
+        input {
+          all: unset;
+          border: 1px solid ${theme.colors.primaryColor};
+          width: 80%;
+          height: 7vh;
+          border-radius: 15px;
+          margin-bottom: 2.5rem;
+          padding: 0 7%;
+          box-sizing: border-box;
+          font-size: 4vh;
+        }
+
+        div {
+          display: flex;
+          flex-direction: colun;
+          border: none;
+          justify-content: space-around;
+          width: 45%;
+          margin: 0.5rem;
+
+          p {
+            color: ${theme.colors.primaryColor};
+            font-size: 1.2rem;
+            margin-top: -2rem;
+            margin-left: -30%;
+            transition: all 0.5s;
+            :hover {
+              cursor: pointer;
+              transform: scale(1.05);
+            }
+          }
+        }
+
+        button {
+          background-color: ${theme.colors.primaryColor};
+          color: ${theme.colors.textColor};
+          font-family: "minimal";
+          text-decoration: none;
+          border: none;
+          height: 15%;
+          width: 50%;
+          font-size: 30px;
+          border-radius: 3.125rem;
+          margin-top: 7%;
+          transition: all 0.5s;
+          :hover {
+            cursor: pointer;
+            transform: scale(1.1);
+          }
+        }
+      }
+    }
   `}
 `;
-
-export const BoxSoon = styled.span`
-  display: flex;
-  align-items: center;
-  text-align: center;
-  font-size: 3.5vh;
-  margin-left: 30px;
-`;
-export const Soon = styled.img`
-  height: 12vh;
-`;
-export const Name = styled.span`
+export const ErrorMessage = styled.h3`
   ${({ theme }) => css`
-    overflow: hidden;
-    color: ${theme.colors.textColor};
-    margin-left: 20px;
+    color: red;
+    align-self: center;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
   `}
-`;
-export const Update = styled.span`
-  width: 10rem;  
-  display: flex;
-  align-items: center;
-  text-align: center;
-  margin-right: 30px;
-`;
-export const TextUpdate = styled.span`
-font-size: 1em;
-margin: 10px;
-`;
-
-export const Search = styled.span`
-  border-radius: 50px;
-  display: flex;
-  align-items: center;
-`;
-export const TextSearch = styled.input`
-  ${({ theme }) => css`
-    font-family: ${theme.constants.bodyFontFamily};
-    background-color: white;
-    height: 4vh;
-    width: 30vw;
-    color: ${theme.colors.primaryColor};
-    border: none;
-    border-radius: 50px;
-    outline: 0;
-    padding: 10px;
-    font-size: 1em;
-  `}
-`;
-export const Home = styled(AiOutlineHome)`
- color: rgba(255, 255, 255, 0.8);
- width: 1.2rem;
- height: 1.2rem;
- margin: 0;
-
-`;
-export const Info= styled(FcAbout)`
-  color: rgba(255, 255, 255, 0.8);
-  width: 1.2rem;
-  height: 1.2rem;
-  margin: 0;
-
-`;
-export const Btn = styled(Link)`
-text-decoration: none;
-color: #601A4A;
-margin:0;
-:hover{
-  color: rgba(255, 255, 255, 0.8);
-}
-`;
-
-export const Nav = styled.nav`
-  width:17rem;;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 1rem;
 `;

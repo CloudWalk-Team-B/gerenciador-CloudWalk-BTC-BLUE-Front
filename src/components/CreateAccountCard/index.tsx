@@ -5,114 +5,205 @@ import Api from "../../services/api";
 import Logo from "../../assets/images/logoRoxa.png";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as S from "./style"
-import { User } from "../../types/interface";
+import * as S from "./style";
+import { RegisterUser, User } from "../../types/interface";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import { useState } from "react";
+import { RegisterService } from "../../services/authService";
+import swal from "sweetalert";
 
 interface CreateAccountData {
-    name: string;
-    email: string;
-    password: string;
-    confirmPassword: string;
-    cpf: number;
-
-  }
-  
-  const CreateAccountSchema = yup.object().shape({
-    name: yup
-      .string()
-      .required("Campo de nome obrigatório"),
-    email: yup
-      .string()
-      .email("Formato de email inválido")
-      .required("Email obrigatório"),
-    password: yup
-      .string()
-      .min(8, "Sua senha tem no mínimo 8 caracteres")
-      .matches(
-        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#!:;/\|.()])[0-9a-zA-Z$*&@#!:;/\|.()]{8,}$/,
-        "A senha deve conter um caracter especial, um número e ao menos uma letra maiúscula"
-      ),
-    confirmPassword: yup
-      .string()
-      .min(8, "Sua confirmação deve ter no mínimo 8 caracteres")
-      .matches(
-        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#!:;/\|.()])[0-9a-zA-Z$*&@#!:;/\|.()]{8,}$/,
-        "A senha deve conter um caracter especial, um número e ao menos uma letra maiúscula"
-      ),
-    cpf: yup
-      .number()
-      .min(11, "Formato de CPF inválido")
-      .positive("Formato de CPF inválido")
-      .integer("Formato de CPF inválido"),
-  });
- 
-
-const CreateAccountCard = ()=>{
-
-    const { login } = useAuth();
-  
-    const {
-      register,
-      handleSubmit,
-      formState: { errors },
-      clearErrors,
-    } = useForm<CreateAccountData>({ resolver: yupResolver(CreateAccountSchema) });
-  
-    const handleCreateAccount = (data: CreateAccountData) => {
-      if(data.password === data.confirmPassword){
-        const object :User = {...data, isAdmin:false}
-          if (data.name !== "" && data.email !== "" && data.password !== "" && data.confirmPassword !== "" && data.cpf !== undefined) {
-            return Api.post("/user", data)
-              .then((res) => {
-                login({ token: res.data.token, user: res.data.user });
-              })
-              .catch(() => toast.error("Senha ou email inválidos"));
-          } else {
-            toast.error("Insira usuário e senha");
-          }
-      }else{
-        return toast.error("As senhas não conicidem")
-      }
-    }
-
-    const navegate= useNavigate()
-
-    return (
-        <S.CreateAccountContainer>
-          <img
-            src={Logo}
-            className="animate__animated animate__flip animate__delay-0.5s"
-          />
-          <h2 className="animate__animated animate__fadeInLeft">
-            Cadastre-se
-          </h2>
-          <p>É rápido e fácil </p>
-          <div className="animate__animated animate__backInUp">
-            <form onSubmit={()=>toast.error("Recurso em desenvolvimento")}>
-              <input type="text" placeholder="Nome" {...register("name")} />
-              <input type="text" placeholder="Email" {...register("email")} />                   
-              <input type="password" placeholder="Senha" {...register("password")}/>            
-              <input type="password" placeholder="Confirmar Senha" {...register("confirmPassword")}/>      
-              <input type="number" placeholder="CPF" {...register("cpf")}/>
-              <div>
-                <p className="backButton" onClick={()=>navegate("/login")}> Voltar</p>
-                <button type="submit">Cadastrar</button>
-                <p className="collaborator" onClick={()=>toast.error("Modal em desenvolvimento")}>Cadastrar Colaborador</p>
-              </div>
-
-            </form>
-            {
-          <S.ErrorMessage>
-            {errors.name?.message || errors.email?.message || errors.password?.message
-             || errors.confirmPassword?.message || errors.cpf?.message}
-          </S.ErrorMessage>
-        }
-          </div>
-        </S.CreateAccountContainer>
-      );
+  name: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+  cpf: number;
 }
 
-// handleSubmit(handleCreateAccount)
+const CreateAccountSchema = yup.object().shape({
+  name: yup.string().required("Campo de nome obrigatório"),
+  email: yup
+    .string()
+    .email("Formato de email inválido")
+    .required("Email obrigatório"),
+  password: yup
+    .string()
+    .min(8, "Sua senha tem no mínimo 8 caracteres")
+    .matches(
+      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#!:;/\|.()])[0-9a-zA-Z$*&@#!:;/\|.()]{8,}$/,
+      "A senha deve conter um caracter especial, um número e ao menos uma letra maiúscula"
+    ),
+  confirmPassword: yup
+    .string()
+    .min(8, "Sua confirmação deve ter no mínimo 8 caracteres")
+    .matches(
+      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#!:;/\|.()])[0-9a-zA-Z$*&@#!:;/\|.()]{8,}$/,
+      "A senha deve conter um caracter especial, um número e ao menos uma letra maiúscula"
+    ),
+  cpf: yup
+    .number()
+    .min(11, "Formato de CPF inválido")
+    .positive("Formato de CPF inválido")
+    .integer("Formato de CPF inválido"),
+});
+
+const CreateAccountCard = () => {
+  const { login } = useAuth();
+  const navigate = useNavigate();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    clearErrors,
+  } = useForm<CreateAccountData>({
+    resolver: yupResolver(CreateAccountSchema),
+  });
+
+  const navegate = useNavigate();
+
+  let registerColab = () => {
+    Swal.fire({
+      title: "Cadastro de Colaborador",
+      html: `<input type="password" id="login" class="swal2-input" placeholder="Senha">
+      
+      
+      
+  <select id="options" name="cars" id="login" class="swal2-input" >
+    <option value="colaber">Colaborador</option>
+    <option value="adm">Administrador</option>
+      
+      `,
+      confirmButtonText: "Cadastrar",
+      focusConfirm: false,
+      preConfirm: () => {
+        const login = Swal.getPopup().querySelector("#login").value;
+        const options = Swal.getPopup().querySelector("#options").value;
+        if (!login) {
+          Swal.showValidationMessage(`Por favor, Prencha todos campos!`);
+        }
+        return { login: login, options: options };
+      },
+    }).then((result) => {
+      Swal.fire(
+        `
+        Senha: ${result.value.login}
+        Role: ${result.value.options}
+      `.trim()
+      );
+    });
+  };
+
+  const [values, setValues] = useState<RegisterUser>({
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    cpf: "",
+    isAdmin: false,
+  });
+
+  const handleChangesValues = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValues((values: RegisterUser) => ({
+      ...values,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handleRegisterUser = async (e: React.SyntheticEvent) => {
+    e.preventDefault();
+
+    const response: any = await RegisterService.Register(values);
+
+    if (!response) {
+      swal({
+        title: "Erro de Cadastro",
+        text: "Informações incorretas!",
+        icon: "error",
+        timer: 6000,
+      });
+    }
+
+    if (response) {
+      navigate("/login");
+    }
+
+    // const jwt = response.data.token;
+
+    // if (!jwt) {
+    //   swal({
+    //     title: "Error!",
+    //     text: `${response.data.message}`,
+    //     icon: "error",
+    //     timer: 6000,
+    //   });
+    // }
+
+    // localStorage.setItem("jwt", jwt);
+    // swal({
+    //   title: "Usuário cadastrado com sucesso!",
+    //   icon: "success",
+    //   timer: 6000,
+    // });
+  };
+
+  return (
+    <S.CreateAccountContainer>
+      <img
+        src={Logo}
+        className="animate__animated animate__flip animate__delay-0.5s"
+      />
+      <h2 className="animate__animated animate__fadeInLeft">
+        Registre-se Agora!
+      </h2>
+      <div className="animate__animated animate__backInUp">
+        <p>Casdatro </p>
+        <form onSubmit={handleRegisterUser}>
+          <input
+            type="text"
+            placeholder="Nome"
+            name="name"
+            onChange={handleChangesValues}
+          />
+          <input
+            type="text"
+            placeholder="Email"
+            name="email"
+            onChange={handleChangesValues}
+          />
+          <input
+            type="password"
+            placeholder="Senha"
+            name="password"
+            onChange={handleChangesValues}
+          />
+          <input
+            type="password"
+            placeholder="Confirmar Senha"
+            name="confirmPassword"
+            onChange={handleChangesValues}
+          />
+          <input
+            type="number"
+            placeholder="CPF"
+            name="cpf"
+            onChange={handleChangesValues}
+          />
+          <div>
+            <button type="submit">Registre</button>
+            <a onClick={() => navegate("/login")}>Voltar</a>
+            <a onClick={registerColab}>Colaborador</a>
+          </div>
+        </form>
+        {
+          <S.ErrorMessage>
+            {errors.email?.message || errors.password?.message}
+          </S.ErrorMessage>
+        }
+      </div>
+    </S.CreateAccountContainer>
+  );
+};
 
 export default CreateAccountCard;
