@@ -28,6 +28,7 @@ export const CreateAccountContainer = styled.div`
       font-weight: 300;
       margin-bottom: 0;
       padding: 0;
+      margin-bottom: 5vh;
     }
     p {
       font-size: 2rem;
@@ -38,7 +39,7 @@ export const CreateAccountContainer = styled.div`
     div {
       display: flex;
       flex-direction: column;
-      border: 2px solid ${theme.colors.primaryColor};
+      border: 1px solid ${theme.colors.primaryColor};
       width: 30vw;
       height: 65%;
       border-radius: 15px;
@@ -86,7 +87,8 @@ export const CreateAccountContainer = styled.div`
           padding: 0;
           width: 100%;
 
-          a {
+          a,
+          button {
             background-color: ${theme.colors.primaryColor};
             color: ${theme.colors.textColor};
             font-family: "minimal";

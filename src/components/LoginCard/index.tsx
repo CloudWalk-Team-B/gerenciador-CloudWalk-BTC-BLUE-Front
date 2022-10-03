@@ -9,6 +9,7 @@ import { useAuth } from "../../contexts/auth";
 import Api from "../../services/api";
 import { useProducts } from "../../contexts/product";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 interface LoginData {
   email: string;
@@ -50,8 +51,7 @@ const LoginCard = () => {
     }
   };
 
-  const navegate = useNavigate() 
-
+  const navegate = useNavigate();
 
   return (
     <S.LoginCardContainer>
@@ -63,7 +63,7 @@ const LoginCard = () => {
         Bem vindo(a) ao Capivara Pets
       </h2>
       <div className="animate__animated animate__backInUp">
-        <p  >Login </p>
+        <p>Login </p>
         <form onSubmit={handleSubmit(handleLogin)}>
           <input type="text" placeholder="Email" {...register("email")} />
           <input
@@ -72,8 +72,10 @@ const LoginCard = () => {
             {...register("password")}
           />
           <div>
-            <p onClick={()=>toast.error("Recurso em desenvolvimento")}>Esqueceu a senha?</p>
-            <p onClick={()=>navegate("/cadastro")}>Cadastre-se</p> 
+            <p onClick={() => toast.error("Recurso em desenvolvimento")}>
+              Esqueceu a senha?
+            </p>
+            <p onClick={() => navegate("/cadastro")}>Cadastre-se</p>
           </div>
           <button type="submit">Entrar</button>
         </form>

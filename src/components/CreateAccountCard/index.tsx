@@ -66,14 +66,16 @@ const CreateAccountCard = () => {
   let registerColab = () => {
     Swal.fire({
       title: "Cadastro de Colaborador",
+      showClass: {
+        popup: "animate__animated animate__fadeInDown",
+      },
+      hideClass: {
+        popup: "animate__animated animate__fadeOutUp",
+      },
       html: `<input type="password" id="login" class="swal2-input" placeholder="Senha">
-      
-      
-      
-  <select id="options" name="cars" id="login" class="swal2-input" >
+    <select id="options" name="cars" id="login" class="swal2-input" >
     <option value="colaber">Colaborador</option>
     <option value="adm">Administrador</option>
-      
       `,
       confirmButtonText: "Cadastrar",
       focusConfirm: false,
@@ -126,26 +128,15 @@ const CreateAccountCard = () => {
     }
 
     if (response) {
+      Swal.fire({
+        icon: "success",
+        title: "Usuario cadastrado com sucesso!!",
+        width: "300px",
+        showConfirmButton: false,
+        timer: 1500,
+      });
       navigate("/login");
     }
-
-    // const jwt = response.data.token;
-
-    // if (!jwt) {
-    //   swal({
-    //     title: "Error!",
-    //     text: `${response.data.message}`,
-    //     icon: "error",
-    //     timer: 6000,
-    //   });
-    // }
-
-    // localStorage.setItem("jwt", jwt);
-    // swal({
-    //   title: "Usuário cadastrado com sucesso!",
-    //   icon: "success",
-    //   timer: 6000,
-    // });
   };
 
   return (
@@ -158,7 +149,7 @@ const CreateAccountCard = () => {
         Registre-se Agora!
       </h2>
       <div className="animate__animated animate__backInUp">
-        <p>Casdatro </p>
+        <p>Cadastro: </p>
         <form onSubmit={handleRegisterUser}>
           <input
             type="text"

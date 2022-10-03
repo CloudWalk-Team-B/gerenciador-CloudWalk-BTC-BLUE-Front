@@ -51,39 +51,36 @@ export const LoginCardContainer = styled.div`
 
         input {
           all: unset;
-          border: 1px solid ${theme.colors.primaryColor};
+          border-bottom: 1px solid ${theme.colors.primaryColor};
           width: 80%;
           height: 7vh;
-          border-radius: 15px;
+          /* border-radius: 15px; */
           margin-bottom: 2.5rem;
           padding: 0 7%;
           box-sizing: border-box;
           font-size: 4vh;
         }
 
-        div{
+        div {
           display: flex;
           flex-direction: colun;
-          border:none;
+          border: none;
           justify-content: space-around;
           width: 45%;
           margin: 0.5rem;
-          
-          
+
           p {
-          color: ${theme.colors.primaryColor};
-          font-size: 1.2rem;
-          margin-top: -2rem;
-          margin-left: -30%;
-          transition: all 0.5s;
-          :hover {
-            cursor: pointer;
-            transform: scale(1.05);
+            color: ${theme.colors.primaryColor};
+            font-size: 1.2rem;
+            margin-top: -2rem;
+            margin-left: -30%;
+            transition: all 0.5s;
+            :hover {
+              cursor: pointer;
+              transform: scale(1.05);
+            }
           }
         }
-        }
-
-        
 
         button {
           background-color: ${theme.colors.primaryColor};
