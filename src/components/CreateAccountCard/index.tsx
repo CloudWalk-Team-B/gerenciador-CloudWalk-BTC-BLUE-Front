@@ -8,10 +8,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as S from "./style";
 import { RegisterUser, User } from "../../types/interface";
 import { useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
 import { useState } from "react";
 import { RegisterService } from "../../services/authService";
 import swal from "sweetalert";
+import Swal from "sweetalert2";
 
 interface CreateAccountData {
   name: string;
@@ -80,14 +80,14 @@ const CreateAccountCard = () => {
       confirmButtonText: "Cadastrar",
       focusConfirm: false,
       preConfirm: () => {
-        const login = Swal.getPopup().querySelector("#login").value;
-        const options = Swal.getPopup().querySelector("#options").value;
+        const login = document.querySelector<any>("#login").value;
+        const options = document.querySelector<any>("#options").value;
         if (!login) {
           Swal.showValidationMessage(`Por favor, Prencha todos campos!`);
         }
         return { login: login, options: options };
       },
-    }).then((result) => {
+    }).then((result: any) => {
       Swal.fire(
         `
         Senha: ${result.value.login}
