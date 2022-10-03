@@ -29,18 +29,18 @@ export const CreateAccountContainer = styled.div`
       margin-bottom: 0;
       padding: 0;
     }
-    p{
+    p {
       font-size: 2rem;
-      margin-top: .5rem;
+      margin-top: 0.5rem;
       margin-bottom: 1rem;
-      padding:0;
+      padding: 0;
     }
     div {
       display: flex;
       flex-direction: column;
       border: 2px solid ${theme.colors.primaryColor};
-      width: 40vw;
-      height: 60%;
+      width: 30vw;
+      height: 65%;
       border-radius: 15px;
 
       p {
@@ -59,54 +59,59 @@ export const CreateAccountContainer = styled.div`
 
         input {
           all: unset;
-          border: 1px solid ${theme.colors.primaryColor};
+          border-bottom: 1px solid ${theme.colors.primaryColor};
           width: 80%;
           height: 7vh;
-          border-radius: 15px;
-          margin-bottom: 2.5rem;
+          /* border-radius: 15px; */
+          margin-bottom: 5%;
           padding: 0 7%;
           box-sizing: border-box;
           font-size: 4vh;
+          -webkit-appearance: none;
+        }
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+        input[type="number"] {
+          -moz-appearance: textfield;
         }
 
-          div{
-              display: flex;
-              flex-direction: row;
-              justify-content: center;
-              border:none;
-              padding: 0;
-              width: 80%;
+        div {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          border: none;
+          padding: 0;
+          width: 100%;
 
-
-            button, p{
-              background-color: ${theme.colors.primaryColor};
-              color: ${theme.colors.textColor};
-              font-family: "minimal";
-              display: flex;
-              flex-wrap: wrap;
-              align-items: center;
-              justify-content: center;
-              text-decoration: none;
-              text-align:center;
-              border: none;
-              height: 4rem;
-              width: 14rem;
-              font-size: 30px;
-              margin:0.5rem;
-              border-radius: 3.125rem;
-              transition: all 0.5s;
-          :hover {
-            cursor: pointer;
-            transform: scale(1.05);
+          a {
+            background-color: ${theme.colors.primaryColor};
+            color: ${theme.colors.textColor};
+            font-family: "minimal";
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            text-align: center;
+            border: none;
+            height: 30%;
+            width: 100%;
+            font-size: 4vh;
+            margin: 0.5rem;
+            border-radius: 3.125rem;
+            transition: all 0.5s;
+            margin-top: 5vh;
+            :hover {
+              cursor: pointer;
+              transform: scale(1.05);
+            }
           }
-        }
-            
-          }
-
-
-
         }
       }
+    }
   `}
 `;
 export const ErrorMessage = styled.h3`

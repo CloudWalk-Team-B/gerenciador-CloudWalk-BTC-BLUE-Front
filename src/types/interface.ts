@@ -3,9 +3,9 @@ export interface User {
   name: string;
   email: string;
   password: string;
-  isAdmin:boolean;
+  isAdmin: boolean;
   createdAt?: Date;
-  updatedAt?: Date
+  updatedAt?: Date;
 }
 
 export interface Product {
@@ -25,5 +25,11 @@ export interface UserLogin {
   password: string;
 }
 
-
-
+export interface RegisterUser {
+  name: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+  cpf: string;
+  isAdmin: boolean;
+}
