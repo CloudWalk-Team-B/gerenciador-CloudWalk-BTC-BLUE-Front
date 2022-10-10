@@ -31,8 +31,8 @@ export const LoginCardContainer = styled.div`
       display: flex;
       flex-direction: column;
       border: 2px solid ${theme.colors.primaryColor};
-      width: 25vw;
-      height: 60%;
+      width: 37vw;
+      height: 62%;
       border-radius: 15px;
 
       p {
@@ -54,7 +54,6 @@ export const LoginCardContainer = styled.div`
           border-bottom: 1px solid ${theme.colors.primaryColor};
           width: 80%;
           height: 7vh;
-          /* border-radius: 15px; */
           margin-bottom: 2.5rem;
           padding: 0 7%;
           box-sizing: border-box;
@@ -67,11 +66,11 @@ export const LoginCardContainer = styled.div`
           border: none;
           justify-content: space-around;
           width: 45%;
-          margin: 0.5rem;
+          height: 30%;
 
           p {
             color: ${theme.colors.primaryColor};
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             margin-top: -2rem;
             margin-left: -30%;
             transition: all 0.5s;
@@ -88,15 +87,17 @@ export const LoginCardContainer = styled.div`
           font-family: "minimal";
           text-decoration: none;
           border: none;
-          height: 15%;
+          height: 10vh;
           width: 50%;
+          box-sizing: border-box;
+          padding: 0 1rem;
+          margin-top: 3%;
           font-size: 30px;
           border-radius: 3.125rem;
-          margin-top: 7%;
           transition: all 0.5s;
           :hover {
             cursor: pointer;
-            transform: scale(1.1);
+            transform: scale(1.05);
           }
         }
       }

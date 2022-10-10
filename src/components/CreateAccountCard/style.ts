@@ -15,6 +15,7 @@ export const CreateAccountContainer = styled.div`
     align-items: center;
     height: 100%;
     width: 100%;
+    
 
     img {
       height: 15%;
@@ -31,24 +32,30 @@ export const CreateAccountContainer = styled.div`
       margin-bottom: 5vh;
     }
     p {
-      font-size: 2rem;
+      font-size: 5rem;
       margin-top: 0.5rem;
       margin-bottom: 1rem;
       padding: 0;
     }
     div {
+      padding: 0 2.5rem;
       display: flex;
+      justify-content: center;
+      align-items: center;
       flex-direction: column;
       border: 1px solid ${theme.colors.primaryColor};
       width: 30vw;
       height: 65%;
       border-radius: 15px;
+      
 
       p {
+        box-sizing: border-box;
+        width: 100%;
+        height: 1.5rem;
         font-weight: 300;
         font-size: 5.5vh;
-        margin-left: 5%;
-        margin-top: 2%;
+        margin-left: 10%;
         color: ${theme.colors.primaryColor};
       }
 
@@ -57,15 +64,15 @@ export const CreateAccountContainer = styled.div`
         flex-direction: column;
         align-items: center;
         margin-top: 5%;
+        width: 95%;
 
         input {
           all: unset;
           border-bottom: 1px solid ${theme.colors.primaryColor};
-          width: 80%;
+          width: 95%;
           height: 7vh;
-          /* border-radius: 15px; */
-          margin-bottom: 5%;
           padding: 0 7%;
+          margin-bottom: 1rem;
           box-sizing: border-box;
           font-size: 4vh;
           -webkit-appearance: none;
@@ -86,6 +93,7 @@ export const CreateAccountContainer = styled.div`
           border: none;
           padding: 0;
           width: 100%;
+          margin-top: -2rem;
 
           a,
           button {
@@ -99,13 +107,14 @@ export const CreateAccountContainer = styled.div`
             text-decoration: none;
             text-align: center;
             border: none;
-            height: 30%;
+            padding: 0 1rem;
+            height: 3.8rem;
             width: 100%;
-            font-size: 4vh;
+            font-size: 3vh;
             margin: 0.5rem;
             border-radius: 3.125rem;
             transition: all 0.5s;
-            margin-top: 5vh;
+            margin-top: 2vh;
             :hover {
               cursor: pointer;
               transform: scale(1.05);
@@ -118,11 +127,12 @@ export const CreateAccountContainer = styled.div`
 `;
 export const ErrorMessage = styled.h3`
   ${({ theme }) => css`
+    position: fixed; 
     color: red;
-    align-self: center;
-    font-size: 1rem;
+    text-align: center;
+    font-size: 1.2rem;
     display: flex;
     justify-content: center;
-    margin-top: 1rem;
+    bottom: 2vh;
   `}
 `;

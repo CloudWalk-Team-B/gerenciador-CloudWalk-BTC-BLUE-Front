@@ -7,7 +7,6 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useAuth } from "../../contexts/auth";
 import Api from "../../services/api";
-import { useProducts } from "../../contexts/product";
 import { useNavigate } from "react-router-dom";
 
 interface LoginData {
@@ -64,12 +63,8 @@ const LoginCard = () => {
       <div className="animate__animated animate__backInUp">
         <p>Login </p>
         <form onSubmit={handleSubmit(handleLogin)}>
-          <input type="text" placeholder="Email" {...register("email")} />
-          <input
-            type="password"
-            placeholder="Senha"
-            {...register("password")}
-          />
+          <input type="text" placeholder="Email" {...register("email")} onBlur={()=>clearErrors()}/>
+          <input type="password" placeholder="Senha" {...register("password")} onBlur={()=>clearErrors()}/>
           <div>
             <p onClick={() => toast.error("Recurso em desenvolvimento")}>
               Esqueceu a senha?

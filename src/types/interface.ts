@@ -3,7 +3,10 @@ export interface User {
   name: string;
   email: string;
   password: string;
+  confirmPassword: string;
+  cpf: number;
   isAdmin: boolean;
+  isManager: boolean;
   createdAt?: Date;
   updatedAt?: Date;
 }

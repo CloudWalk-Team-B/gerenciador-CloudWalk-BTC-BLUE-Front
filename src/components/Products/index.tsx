@@ -3,7 +3,7 @@ import Modal from "react-modal";
 import React, { useState, useEffect } from "react";
 import { useProducts } from "../../contexts/product";
 import img from "../../assets/images/logoRoxa.png";
-import Moddal from "../Modal";
+import Moddal from "../ModalProduct";
 import { useOpenModal } from "../../contexts/OpenModal";
 
 const ListProducts = () => {
@@ -12,10 +12,7 @@ const ListProducts = () => {
   const [idProduct, setIdProduct] = useState<string>("");
 
   const { open, setOpen } = useOpenModal();
-  useEffect(() => {
-    openModal(open);
-  }, [open]);
-
+  
   function openModal(open: boolean) {
     if (open === true) {
       return <Moddal idProduct={idProduct} setOpen={setOpen} />;
