@@ -4,18 +4,18 @@ import React, { useState, useEffect } from "react";
 import { useProducts } from "../../contexts/product";
 import img from "../../assets/images/logoRoxa.png";
 import Moddal from "../ModalProduct";
-import { useOpenModal } from "../../contexts/OpenModal";
+import { useHandleModals } from "../../contexts/HandleModals";
 
 const ListProducts = () => {
   Modal.setAppElement("#root");
 
   const [idProduct, setIdProduct] = useState<string>("");
 
-  const { open, setOpen } = useOpenModal();
+  const { openProduct, setOpenProduct } = useHandleModals();
   
   function openModal(open: boolean) {
     if (open === true) {
-      return <Moddal idProduct={idProduct} setOpen={setOpen} />;
+      return <Moddal idProduct={idProduct}/>;
     }
   }
 
@@ -33,7 +33,7 @@ const ListProducts = () => {
                 className="animate__animated animate__fadeInUp"
                 onClick={() => {
                   setIdProduct(element.id);
-                  setOpen(true);
+                  setOpenProduct(true);
                 }}
               >
                 <S.ImageContainer>
@@ -52,7 +52,7 @@ const ListProducts = () => {
           })}
         </S.ProductsContainer>
       </S.Container>
-      {openModal(open)}
+      {openModal(openProduct)}
     </>
   );
 };
