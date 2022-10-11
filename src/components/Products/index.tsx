@@ -13,14 +13,13 @@ const ListProducts = () => {
 
   const { openProduct, setOpenProduct } = useHandleModals();
   
-  function openModal(open: boolean) {
+  const openModal = (open: boolean) => {
     if (open === true) {
       return <Moddal idProduct={idProduct}/>;
     }
   }
 
   const { products, handleGetProduct } = useProducts();
-  console.log(products);
 
   return (
     <>

@@ -8,6 +8,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as S from "./style";
 import { User } from "../../types/interface";
 import { useNavigate } from "react-router-dom";
+import Moddal from "../ModalNewUser";;
+import { useHandleModals } from "../../contexts/HandleModals";
 
 interface CreateAccountData {
   name: string;
@@ -49,6 +51,15 @@ const CreateAccountSchema = yup.object().shape({
 
 const CreateAccountCard = ()=>{
 
+  const { openNewUser, setOpenNewUser } = useHandleModals();
+
+  const openModal = (open: boolean) => {
+    if (open === true) {
+      return <Moddal/>;
+    }
+  }
+
+
   const { login } = useAuth();
 
   const {
@@ -86,6 +97,7 @@ const CreateAccountCard = ()=>{
   const navegate= useNavigate()
 
   return (
+    <>
     <S.CreateAccountContainer>
       <img
         src={Logo}
@@ -130,7 +142,7 @@ const CreateAccountCard = ()=>{
           <div>
             <a onClick={() => navegate("/login")}>Voltar</a>
             <button type="submit">Cadastrar</button>
-            <a onClick={()=>{}}>Cadastrar Colaborador</a>
+            <a onClick={()=>{setOpenNewUser(true)}}>Cadastrar Colaborador</a>
           </div>
         {
           <S.ErrorMessage>
@@ -144,6 +156,8 @@ const CreateAccountCard = ()=>{
         </form>
       </div>
     </S.CreateAccountContainer>
+    {openModal(openNewUser)}
+    </>
   );
 };
 
