@@ -3,13 +3,13 @@ import * as S from "./style";
 import Modal from "react-modal";
 import { useProducts } from "../../contexts/product";
 import img from "../../assets/images/logoRoxa.png";
-import { useOpenModal } from "../../contexts/OpenModal";
+import { useHandleModals } from "../../contexts/HandleModals";
 
 const Moddal = (idProduct: any) => {
-  const { open, setOpen } = useOpenModal();
+  const { openProduct, setOpenProduct } = useHandleModals();
 
   function closeModal() {
-    setOpen(false);
+    setOpenProduct(false);
   }
 
   const customStyles = {
@@ -29,7 +29,7 @@ const Moddal = (idProduct: any) => {
   return (
     <>
       <Modal
-        isOpen={open}
+        isOpen={openProduct}
         // onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         style={customStyles}
@@ -52,7 +52,7 @@ const Moddal = (idProduct: any) => {
                       Categoria: {element.category}
                     </S.InfoListItem>
                     <S.InfoListItem>
-                      Disponiivel: {element.inventory ? "Sim" : "Não"}
+                      Disponível: {element.inventory ? "Sim" : "Não"}
                     </S.InfoListItem>
                     ;
                   </S.InfoProduct>

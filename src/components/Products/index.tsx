@@ -3,27 +3,23 @@ import Modal from "react-modal";
 import React, { useState, useEffect } from "react";
 import { useProducts } from "../../contexts/product";
 import img from "../../assets/images/logoRoxa.png";
-import Moddal from "../Modal";
-import { useOpenModal } from "../../contexts/OpenModal";
+import Moddal from "../ModalProduct";
+import { useHandleModals } from "../../contexts/HandleModals";
 
 const ListProducts = () => {
   Modal.setAppElement("#root");
 
   const [idProduct, setIdProduct] = useState<string>("");
 
-  const { open, setOpen } = useOpenModal();
-  useEffect(() => {
-    openModal(open);
-  }, [open]);
-
-  function openModal(open: boolean) {
+  const { openProduct, setOpenProduct } = useHandleModals();
+  
+  const openModal = (open: boolean) => {
     if (open === true) {
-      return <Moddal idProduct={idProduct} setOpen={setOpen} />;
+      return <Moddal idProduct={idProduct}/>;
     }
   }
 
   const { products, handleGetProduct } = useProducts();
-  console.log(products);
 
   return (
     <>
@@ -36,7 +32,7 @@ const ListProducts = () => {
                 className="animate__animated animate__fadeInUp"
                 onClick={() => {
                   setIdProduct(element.id);
-                  setOpen(true);
+                  setOpenProduct(true);
                 }}
               >
                 <S.ImageContainer>
@@ -55,7 +51,7 @@ const ListProducts = () => {
           })}
         </S.ProductsContainer>
       </S.Container>
-      {openModal(open)}
+      {openModal(openProduct)}
     </>
   );
 };
