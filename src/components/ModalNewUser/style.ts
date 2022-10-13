@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-export const TitleModal = styled.h2`
+export const TitleComponent = styled.h2`
   ${({ theme }) => css`
     background-color: ${theme.colors.primaryColor};
     color: white;
@@ -8,42 +8,79 @@ export const TitleModal = styled.h2`
     justify-content: center;
     align-items: center;
     border-radius: 50px;
-    height: 8vh;
+    height: 10%;
     font-weight: 300;
     width: 40vw;
-    margin: 10px 10vw;
-    font-size: 7vh;
+    margin: 18px 10vw;
+    font-size: 3.5vh;
   `}
 `;
 
-export const InfoProductCard = styled.div`
-  margin: 8vh 3vh;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-`;
-
-export const CardImageProduct = styled.span`
+export const MainComponent = styled.div`
   ${({ theme }) => css`
-    border-bottom: 1px solid ${theme.colors.primaryColor};
-    height: 30vh;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    /* border-radius: 10px; */
+    height: 80%;
+    padding: 5% 0;
+    box-sizing: border-box;
+
+      div{
+        margin-top: 4vh;
+        display: flex;
+        flex-direction: row;
+        width: 60%;
+        justify-content: space-between;
+
+        input{
+          font-size: 1.5rem;
+          width: 70%;
+          height: 1.5rem;
+        }
+
+        select{
+          width: 25%;
+          font-size: 1rem;
+          
+          option{
+            text-align: center;
+          }
+        }
+      }
+
+      button {
+            background-color: ${theme.colors.primaryColor};
+            color: ${theme.colors.textColor};
+            font-family: "minimal";
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            text-align: center;
+            border: none;
+            padding: 0 1rem;
+            box-sizing: border-box;
+            height: 3.8rem;
+            width: 15%;
+            font-size: 4vh;
+            border-radius: 3.125rem;
+            transition: all 0.5s;
+            
+            :hover {
+              cursor: pointer;
+              transform: scale(1.05);
+            }
+          }
   `}
 `;
 
-export const ImageProduct = styled.img`
-  height: 90%;
-  width: 90%;
-`;
 
-export const InfoProduct = styled.div`
-  ${({ theme }) => css`
-    color: ${theme.colors.primaryColor};
-    font-weight: 300;
-  `}
-`;
 
-export const InfoListItem = styled.h1``;
+
+
+
+
+
+
