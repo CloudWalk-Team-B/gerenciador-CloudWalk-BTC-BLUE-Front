@@ -4,9 +4,20 @@ import Modal from "react-modal";
 import { useProducts } from "../../contexts/product";
 import img from "../../assets/images/logoRoxa.png";
 import { useHandleModals } from "../../contexts/HandleModals";
+import swal from "sweetalert";
+import Api from "../../services/api";
+import { EditProduct } from "../../types/interface";
 
 const Moddal = (idProduct: any) => {
   const { openProduct, setOpenProduct } = useHandleModals();
+  const [values, setValues] = useState<EditProduct>({
+    name: "",
+    image: "",
+    description: "",
+    category: "",
+    price: 0,
+    inventory: false,
+  });
 
   function closeModal() {
     setOpenProduct(false);
@@ -25,6 +36,37 @@ const Moddal = (idProduct: any) => {
   };
 
   const { products, handleGetProduct } = useProducts();
+  // console.log(products);
+
+  const handleChangesValues = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.value.length <= 1) {
+      console.log(e.target.name, e.target.placeholder);
+      setValues((values: EditProduct) => ({
+        ...values,
+        [e.target.name]: e.target.placeholder,
+      }));
+    } else
+      setValues((values: EditProduct) => ({
+        ...values,
+        [e.target.name]: e.target.value,
+      }));
+  };
+
+  let HandleEdit = async (productId: any) => {
+    try {
+      const res = await Api.patch(`/product/${productId}`, values);
+      console.log("FFFFFOOOOOIIIII");
+      return res.data;
+    } catch (error: any) {
+      swal({
+        title: "Error",
+        text: `${error.message}`,
+        icon: "error",
+        timer: 6000,
+      });
+      return error;
+    }
+  };
 
   return (
     <>
@@ -45,16 +87,45 @@ const Moddal = (idProduct: any) => {
                     <S.ImageProduct src={img} />
                   </S.CardImageProduct>
                   <S.InfoProduct>
-                    <S.InfoListItem>Nome: {element.name}</S.InfoListItem>
-                    <S.InfoListItem>Valor: R${element.price}.00</S.InfoListItem>
-                    <S.InfoListItem>Código: {element.code}</S.InfoListItem>
-                    <S.InfoListItem>
-                      Categoria: {element.category}
-                    </S.InfoListItem>
-                    <S.InfoListItem>
-                      Disponível: {element.inventory ? "Sim" : "Não"}
-                    </S.InfoListItem>
-                    ;
+                    <S.FormEdit>
+                      <input
+                        name="name"
+                        placeholder={element.name}
+                        onChange={handleChangesValues}
+                      />
+                      <input
+                        name="image"
+                        placeholder={element.image}
+                        onChange={handleChangesValues}
+                      />
+                      <input
+                        id="description"
+                        name="description"
+                        placeholder={element.description}
+                        onChange={handleChangesValues}
+                      />
+                      <input
+                        name="category"
+                        placeholder={element.category}
+                        onChange={handleChangesValues}
+                      />
+                      <input
+                        name="price"
+                        placeholder={`R$ ${element.price}`}
+                        onChange={handleChangesValues}
+                      />
+                      <input
+                        name="inventory"
+                        placeholder={element.inventory === true ? "Sim" : "Não"}
+                        onChange={handleChangesValues}
+                      />
+                      <button
+                        type="button"
+                        onClick={() => HandleEdit(element.id)}
+                      >
+                        Alterar
+                      </button>
+                    </S.FormEdit>
                   </S.InfoProduct>
                 </>
               );
