@@ -43,7 +43,7 @@ const Home = () => {
       <S.Main>
         <S.Bars>
           <S.Card>
-            <S.Frete/> <S.Text>Frete Gratis<br/>
+            <S.Frete/> <S.Text>Frete Grátis<br/>
             para todo Brasil</S.Text>
           </S.Card>
           <S.Card>
