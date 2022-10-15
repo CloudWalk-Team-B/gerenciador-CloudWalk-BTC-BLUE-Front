@@ -34,9 +34,11 @@ export const MainComponent = styled.div`
         justify-content: space-between;
 
         input{
-          font-size: 1.5rem;
+          font-size: 1.3rem;
           width: 70%;
           height: 1.5rem;
+          text-align: center;
+          border: 1px solid black;
         }
 
         select{
@@ -64,7 +66,7 @@ export const MainComponent = styled.div`
             box-sizing: border-box;
             height: 3.8rem;
             width: 15%;
-            font-size: 4vh;
+            font-size: 3vh;
             border-radius: 3.125rem;
             transition: all 0.5s;
             
