@@ -9,7 +9,6 @@ export const Main = styled.main`
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
-
   @media (max-width: 678px) {
     width: 100vw;
   }

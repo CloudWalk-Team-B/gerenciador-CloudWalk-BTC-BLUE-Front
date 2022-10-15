@@ -11,12 +11,18 @@ height: 15rem;
     &:hover{
       transform: scale(1.5);
     }
+    @media (max-width: 678px) {
+      display: none;
+    }
   }
   .swiper-button-next {
     color: #601A4A;
     margin-left: 1.5rem;
     &:hover{
       transform: scale(1.5);
+    }
+    @media (max-width: 678px) {
+      display: none;
     }
   }
 `;

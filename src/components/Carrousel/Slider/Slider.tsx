@@ -15,27 +15,12 @@ export const Slider = ({children,title}:ICard) => {
     
     const settings= {
         spaceBetween: 50,
-        slidesPerView:4,
-        navigation: children.length >= 4,
+        slidesPerView:5,
+        navigation: children.length >= 5,
         draggable:  true,
         loop: true,
-        breakpoints: {
-            300: {
-              slidesPerView: 1,
-              navigation: false,
-              slidesPerGroup: 1,
-            },
-            800: {
-              slidesPerView: children.length < 2 ? children.length : 2,
-              slidesPerGroup: children.length < 2 ? children.length : 2,
-            },
-            1200: {
-              slidesPerView: children.length < 4 ? children.length : 4,
-              
-            },
-          },
     }
-    
+   
     return(
         <>
             <S.Title>{title}</S.Title>
@@ -51,4 +36,4 @@ export const Slider = ({children,title}:ICard) => {
         </S.Slider>
         </>
     )
-}
+};
