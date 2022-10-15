@@ -3,7 +3,7 @@ import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import theme from "../assets/styles/theme";
 import { AuthProvider } from "./auth";
-import { OpenModalProvider } from "./OpenModal";
+import { HandleModalsProvider } from "./HandleModals";
 import { ProductsProvider } from "./product";
 
 interface ProviderProps {
@@ -14,13 +14,13 @@ const Providers = ({ children }: ProviderProps) => {
     return(
     <BrowserRouter>
       <ThemeProvider theme={theme}>
-        <OpenModalProvider>
+        <HandleModalsProvider>
         <AuthProvider>
         <ProductsProvider>
               {children}
         </ProductsProvider>
         </AuthProvider>
-        </OpenModalProvider>
+        </HandleModalsProvider>
       </ThemeProvider>
     </BrowserRouter>
     )
