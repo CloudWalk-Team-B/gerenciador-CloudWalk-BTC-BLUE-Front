@@ -88,37 +88,58 @@ const Moddal = (idProduct: any) => {
                   </S.CardImageProduct>
                   <S.InfoProduct>
                     <S.FormEdit>
-                      <input
-                        name="name"
-                        placeholder={element.name}
-                        onChange={handleChangesValues}
-                      />
-                      <input
-                        name="image"
-                        placeholder={element.image}
-                        onChange={handleChangesValues}
-                      />
-                      <input
-                        id="description"
-                        name="description"
-                        placeholder={element.description}
-                        onChange={handleChangesValues}
-                      />
-                      <input
-                        name="category"
-                        placeholder={element.category}
-                        onChange={handleChangesValues}
-                      />
-                      <input
-                        name="price"
-                        placeholder={`R$ ${element.price}`}
-                        onChange={handleChangesValues}
-                      />
-                      <input
-                        name="inventory"
-                        placeholder={element.inventory === true ? "Sim" : "Não"}
-                        onChange={handleChangesValues}
-                      />
+                      <S.InputForm>
+                        <label>Nome:</label>
+                        <input
+                          name="name"
+                          placeholder={element.name}
+                          onChange={handleChangesValues}
+                        />
+                      </S.InputForm>
+                      <S.InputForm>
+                        <label>Imagem:</label>
+                        <input
+                          name="image"
+                          placeholder={element.image}
+                          onChange={handleChangesValues}
+                        />
+                      </S.InputForm>
+                      <S.InputForm>
+                        <label>Descrição:</label>
+                        <input
+                          id="description"
+                          name="description"
+                          placeholder={element.description}
+                          onChange={handleChangesValues}
+                        />
+                      </S.InputForm>
+                      <S.InputForm>
+                        <label>Categoria:</label>
+                        <input
+                          name="category"
+                          placeholder={element.category}
+                          onChange={handleChangesValues}
+                        />
+                      </S.InputForm>
+                      <S.InputForm>
+                        <label>Preço:</label>
+                        <input
+                          name="price"
+                          // type="number"
+                          placeholder={`R$ ${element.price}`}
+                          onChange={handleChangesValues}
+                        />
+                      </S.InputForm>
+                      <S.InputForm>
+                        <label>Disponivel:</label>
+                        <input
+                          name="inventory"
+                          placeholder={
+                            element.inventory === true ? "Sim" : "Não"
+                          }
+                          onChange={handleChangesValues}
+                        />
+                      </S.InputForm>
                       <button
                         type="button"
                         onClick={() => HandleEdit(element.id)}

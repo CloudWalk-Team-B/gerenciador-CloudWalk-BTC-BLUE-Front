@@ -69,7 +69,7 @@ export const FormEdit = styled.form`
       background-color: white;
       border-bottom: 1px solid ${theme.colors.primaryColor};
       margin: 10px;
-      font-size: 140%;
+      font-size: 120%;
       width: 70%;
       color: ${theme.colors.primaryColor};
     }
@@ -94,4 +94,19 @@ export const FormEdit = styled.form`
       }
     }
   `}
+`;
+
+export const InputForm = styled.div`
+  display: flex;
+  /* justify-content: left; */
+  /* align-items: left;
+  ali */
+  align-items: center;
+  justify-content: space-around;
+  label {
+    /* text-align: left; */
+    font-size: 5vh;
+    /* align-items: baseline; */
+    /* border: 1px solid black; */
+  }
 `;
