@@ -36,3 +36,12 @@ export interface RegisterUser {
   cpf: string;
   isAdmin: boolean;
 }
+
+export interface EditProduct {
+  name: string;
+  image: string;
+  description: string;
+  category: string;
+  price: number;
+  inventory: boolean;
+}
