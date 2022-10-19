@@ -1,149 +1,140 @@
-import styled from 'styled-components';
-import { FaRegUser, FaHome } from "react-icons/fa";
-interface INav {
-  open: boolean;
-}
+import styled, { css } from "styled-components";
+import { BsBagPlusFill } from "react-icons/bs";
+import { FcAbout } from "react-icons/fc";
+import { FaUserPlus,FaUser,FaUserCircle } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import "animate.css";
 
-export const StyledBurger = styled.div<INav>`
-  width: 2rem;
-  height: 2rem;
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  z-index: 20;
-  display: none;
-  cursor: pointer;
-  font-family: 'Zilla Slab', sans-serif;
-  @media (max-width: 768px) {
+export const Content = styled.div`
+  ${({ theme }) => css`
+    background-color: ${theme.colors.primaryColor};
+    width: 100vw;
+    height: 13vh;
     display: flex;
-    justify-content: space-around;
-    flex-flow: column nowrap;
-  }
-`
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+  `}
+`;
 
-export const Menus = styled.div<INav>`
-    width: 2rem;
-    height: 0.25rem;
-    top:0;
-    background-color: #FFF;
-    border-radius: 10px;
-    transform-origin: 1px;
-    transition: all 0.3s linear;
-    cursor: pointer;
-    &:nth-child(1) {
-      transform: ${(props) => props.open ? 'rotate(45deg)' : 'rotate(0)'};
-    }
-    &:nth-child(2) {
-      transform: ${(props) => props.open ? 'translateX(100%)' : 'translateX(0)'};
-      opacity: ${(props) => props.open ? 0 : 1};
-    }
-    &:nth-child(3) {
-      transform: ${(props) => props.open ? 'rotate(-45deg)' : 'rotate(0)'};
-    }
-`
+export const BoxSoon = styled.span`
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-size: 3.5vh;
+  margin-left: 30px;
+`;
+export const Soon = styled.img`
+  height: 12vh;
+`;
+export const Name = styled.span`
+  ${({ theme }) => css`
+    overflow: hidden;
+    color: ${theme.colors.textColor};
+    margin-left: 20px;
+  `}
+`;
+
+export const TextUpdate = styled.span`
+width: 100%;
+margin-right: 5px;
+font-size: 0.9em;
+
+`;
+export const TextModal = styled.span`
+width: 100%;
+margin-right: 5px;
+font-size: 0.9em;
+color: #601A4A;
+`;
+
+export const Search = styled.span`
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+`;
+export const TextSearch = styled.input`
+  ${({ theme }) => css`
+    font-family: ${theme.constants.bodyFontFamily};
+    background-color: white;
+    height: 4vh;
+    width: 30vw;
+    color: ${theme.colors.primaryColor};
+    border: none;
+    border-radius: 50px;
+    outline: 0;
+    padding: 10px;
+    font-size: 1em;
+  `}
+`;
+export const BtnUser = styled(FaUserCircle)`
+color: rgba(255, 255, 255, 0.8);
+ width: 1.6rem;
+ height: 1.6rem;
+ margin: 0;
+`;
+export const User = styled(FaUser)`
+ color: #601A4A;
+ margin: 0.5rem;
+`;
+export const Register = styled(FaUserPlus)`
+ color: #601A4A;
+ width: 1.6rem;
+ height: 1.6rem;
+ margin: 0.5rem;
+
+`;
+export const Info= styled(FcAbout)`
+  color: rgba(255, 255, 255, 0.8);
+  width: 1.6rem;
+  height: 1.6rem;
+  margin: 0;
+
+`;
+export const Bag = styled(BsBagPlusFill)`
+  color: rgba(255, 255, 255, 0.8);
+  width: 1.6rem;
+  height: 1.6rem;
+  margin: 0;
+`;
+export const Btn = styled(Link)`
+width: 2.5rem;
+height: 2.3rem;
+text-decoration: none;
+color: rgba(255, 255, 255, 0.8);
+margin: 1rem;
+display: flex;
+flex-direction: column;
+justify-content: center;
+aling-items: center;
+:hover{
+  color: rgba(255, 255, 255, 0.8);
+}
+`;
+export const BtnModal = styled(Link)`
+width: 100%;
+height: 1.8rem;
+text-decoration: none;
+color: rgba(255, 255, 255, 0.8);
+margin-bottom: 2rem;
+display: flex;
+justify-content: center;
+aling-items: center;
+margin: 0 auto;
+`;
 
 export const Nav = styled.nav`
-  font-family: 'Zilla Slab', sans-serif;
-  height: 100%;
-  display: flex;
-  justify-content: space-between;
-  background-color: #601A4A;
-  align-items: center;
-  position: relative;
-  @media (max-width: 678px) {
-    width: 100%;
-  }
-`
-
-export const Ul = styled.ul<INav>`
-  font-family: 'Zilla Slab', sans-serif;
-  list-style: none;
-  display: flex;
-  flex-flow: row nowrap;
-  position: absolute;
-  width: 80%;
-  top: 0;
-  margin-left: 5rem;
-  justify-content: flex-end;
-  margin-top: 0px;
-  align-items: center;
-  font-size: 18px;
-  height: 110px;
-  a {
-    text-decoration: none;
-    text-transform: none;
-    color: #FFF;
-    cursor: pointer;
-    &:hover {
-      color: 	#D3D3D3;
-    }
-  }
-  @media (max-width: 768px) {
-    margin-left:0;
-    flex-flow: column nowrap;
-    background-color: #601A4A;
-    transform: ${(props) => props.open ? 'translateY(0)' : 'translateY(-23.1rem)'};
-    top: -17px;
-    bottom: 0;
-    height: 22rem;
-    width: 100%;
-    z-index: 9;
-    justify-content: space-around;
-  }
-`
-
-export const Li = styled.li`
-  padding: 18px 10px;
-  outline: none;
-  @media (max-width: 768px) {
-    color: #FFF;
-    margin-right: 34px;
-    &:hover {
-      border-bottom :solid 1px   #D3D3D3 ; 
-      color: #D3D3D3;
-    }
-}
-`
-
-export const Logo = styled.img`
-  margin: 1rem;
-  width: 3.5rem;
-  height: 3.5rem;
-  object-fit: contain;
-  @media (max-width: 1250px) {
-    margin: 20px 50px 20px 5%;
-  }
-`
-export const Name = styled.span`
-overflow: hidden;
-color:rgba(255, 255, 255, 0.8) ;
-margin-left: 20px;
-`
-
-export const LogoUl = styled.img`
-  margin: 20px 50px 20px 5%;
-  display: none;
-  @media (max-width: 768px) {
-    display: flex;
-    width: 160px;
-    height: 70px;
-    object-fit: contain;
-  }
-`
-
-export const IconLogin = styled(FaRegUser)`
-  width: 1.3rem;
-  height: 1.3rem;
-  border: solid 1px #FFF;
-  border-radius: 50%;
+  width:17rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-right: 1rem;
+`;
+export const Button = styled.button`
+width: 1.6rem;
+height: 1.6rem;
+background-color: #601A4A;
+border: none;
 `
-export const Image = styled.img`
-  width: 150px;
-  height: 150px;
-  pointer-events: none;
-  object-fit: contain;
-  animation: Spin infinite 20s linear;
-`
+
+
