@@ -12,12 +12,12 @@ const ListProducts = () => {
   const [idProduct, setIdProduct] = useState<string>("");
 
   const { openProduct, setOpenProduct } = useHandleModals();
-  
+
   const openModal = (open: boolean) => {
     if (open === true) {
-      return <Moddal idProduct={idProduct}/>;
+      return <Moddal idProduct={idProduct} />;
     }
-  }
+  };
 
   const { products, handleGetProduct } = useProducts();
 
@@ -38,7 +38,7 @@ const ListProducts = () => {
                 <S.ImageContainer>
                   <S.Image
                     className="animate__animated animate__zoomIn animate__delay-1s"
-                    src={img}
+                    src={element.image ? element.image : img}
                   />
                 </S.ImageContainer>
                 <S.TextContainer className="animate__animated animate__zoomIn animate__delay-1s">
