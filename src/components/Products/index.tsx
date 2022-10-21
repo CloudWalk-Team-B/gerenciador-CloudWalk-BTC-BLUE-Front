@@ -5,6 +5,7 @@ import { useProducts } from "../../contexts/product";
 import img from "../../assets/images/logoRoxa.png";
 import Moddal from "../ModalProduct";
 import { useHandleModals } from "../../contexts/HandleModals";
+import { Product } from "../../types/interface";
 
 const ListProducts = () => {
   Modal.setAppElement("#root");
@@ -15,7 +16,7 @@ const ListProducts = () => {
   
   const openModal = (open: boolean) => {
     if (open === true) {
-      return <Moddal idProduct={idProduct}/>;
+      return <Moddal/>;
     }
   }
 
@@ -25,7 +26,7 @@ const ListProducts = () => {
     <>
       <S.Container>
         <S.ProductsContainer>
-          {products.map<React.ReactNode>((element: any, index) => {
+          {products.map<React.ReactNode>((element: Product, index) => {
             return (
               <S.CardProduct
                 key={index}
@@ -33,6 +34,7 @@ const ListProducts = () => {
                 onClick={() => {
                   setIdProduct(element.id);
                   setOpenProduct(true);
+                  localStorage.setItem("currentProduct", JSON.stringify(element))
                 }}
               >
                 <S.ImageContainer>
