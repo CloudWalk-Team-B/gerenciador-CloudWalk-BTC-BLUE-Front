@@ -59,12 +59,30 @@ export const CreateAccountContainer = styled.div`
         color: ${theme.colors.primaryColor};
       }
 
+      
+
       form {
         display: flex;
         flex-direction: column;
         align-items: center;
         margin-top: 5%;
         width: 95%;
+
+        .isAdmManager{
+        color: #ee442f;
+        font-size: 1.3rem;
+        margin: 0;
+        text-align: center;
+        margin-top: -2rem;
+        font-weight: 600;
+      }
+
+      .newAdmManager{
+        font-size: 1.3rem;
+        font-weight: 600;
+        cursor: pointer;
+        z-index: 1;
+      }
 
         input {
           all: unset;

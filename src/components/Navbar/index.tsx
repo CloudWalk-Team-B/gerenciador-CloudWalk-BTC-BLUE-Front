@@ -1,23 +1,72 @@
 import * as S from './styles';
-import Logo from '../../assets/images/logoBranca.png';
-import {Burger} from './Burger';
-import { Link, useNavigate } from 'react-router-dom';
+import Logo from "../../assets/images/logoBranca.png";
+import Modal from "react-modal";
+import { useState } from 'react';
 
-type Props = {
-  children?: ChildNode;
-};
+export const Navbar = () => {
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const closeModal = () => {
+    setIsOpen(false);
+  }
 
-export const Navbar = (props: Props) => {
+  const openModal = () => {
+    setIsOpen(true);
+  }
+  const customStyles: any = {
+    content: {
+      left: "85%",
+      width: "150px",
+      height: "100px",
+      position: "absolute",
+      display: "block",
+      overflow: "hidden",
+    },
+  };
   
   return (
     <>
-      <S.Nav>
-        <Link to='/'>
-           <S.Logo src={Logo} alt='Capivara Pets' />
-        </Link>
-      </S.Nav>
-      <Burger />
-      {props.children}
+      <S.Content className="animate__animated animate__slideInDown">
+          <S.BoxSoon>
+            <S.Soon
+              className="animate__animated animate__slideInLeft animate__delay-1s"
+              src={Logo}
+            />
+            <S.Name className="animate__animated animate__bounceIn animate__delay-1s	">
+              Capivara <br />
+              Shop
+            </S.Name>
+          </S.BoxSoon>
+          <S.Search>
+            <S.TextSearch
+              className="animate__animated animate__jackInTheBox animate__delay-1s"
+              type="text"
+              placeholder="Procurar..."
+            ></S.TextSearch>
+          </S.Search>
+          <S.Nav>
+             <S.Btn to="/info">
+               <S.Info/> 
+              </S.Btn>
+               <S.Btn to="/">
+                <S.Bag/> 
+              </S.Btn>
+           <S.Button onClick={openModal}><S.BtnUser/> </S.Button>
+
+            <Modal
+                isOpen={modalIsOpen}
+                onRequestClose={closeModal}
+                style={customStyles}
+                contentLabel="Example Modal"
+                >            
+              <S.BtnModal to="/login">
+                <S.User/> <S.TextModal>Entrar</S.TextModal>
+              </S.BtnModal>
+              <S.BtnModal to="/cadastro">
+                <S.Register/> <S.TextModal>Cadastrar</S.TextModal>
+              </S.BtnModal>
+            </Modal>
+          </S.Nav>
+        </S.Content>
     </>
   );
 }

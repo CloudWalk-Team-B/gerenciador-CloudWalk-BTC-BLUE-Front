@@ -51,11 +51,19 @@ const CreateAccountSchema = yup.object().shape({
 
 const CreateAccountCard = ()=>{
 
-  const { openNewUser, setOpenNewUser } = useHandleModals();
+  const { openNewUser, setOpenNewUser, isAdmManager, setIsAdmManager } = useHandleModals();
 
   const openModal = (open: boolean) => {
     if (open === true) {
       return <Moddal/>;
+    }
+  }
+
+  const openAdmManager = (isAdmManager: string) => {
+    if(isAdmManager === "adm"){
+      return <p className="isAdmManager">Cadastro de Novo Administrador</p>
+    }else if(isAdmManager === "manager"){
+      return <p className="isAdmManager">Cadastro de Novo Gerente</p>
     }
   }
 
@@ -69,9 +77,19 @@ const CreateAccountCard = ()=>{
     clearErrors,
   } = useForm<CreateAccountData>({ resolver: yupResolver(CreateAccountSchema) });
 
+  const newUser = (data:CreateAccountData) =>{
+    if(isAdmManager === ""){
+      return {...data, isAdmin:false, isManager:false}
+    }else if(isAdmManager === "adm"){
+      return {...data, isAdmin:true, isManager:false}
+    }else if(isAdmManager === "manager"){
+      return {...data, isAdmin:true, isManager:true}
+    }
+  }
+
   const handleCreateAccount = (data: CreateAccountData) => {
     if(data.password === data.confirmPassword){
-      const newData:User = {...data, isAdmin:false, isManager:false}
+      const newData = newUser(data)
         if (data.name !== "" && data.email !== "" && data.password !== "" && data.confirmPassword !== "" && data.cpf !== undefined) {
           return Api.post("/user", newData)
             .then(() => {
@@ -83,6 +101,7 @@ const CreateAccountCard = ()=>{
                     .catch(()=>{
                       toast.error("Erro ao efetuar login")
                     })
+                    setIsAdmManager("")
             })
             .catch(() => toast.error("Dados inválidos ou usuário já cadastrado"));
         } else {
@@ -139,10 +158,14 @@ const CreateAccountCard = ()=>{
             {...register("cpf")}
             onBlur={()=>clearErrors()}
           />
+          <p className="newAdmManager" onClick={()=>{setOpenNewUser(true)}}>Novo Colaborador? Clique aqui!</p>
           <div>
-            <a onClick={() => navegate("/login")}>Voltar</a>
+            <a onClick={() => {
+              setIsAdmManager("")
+              navegate("/login")
+              }}>Voltar</a>
             <button type="submit">Cadastrar</button>
-            <a onClick={()=>{setOpenNewUser(true)}}>Cadastrar Colaborador</a>
+            {/* <a onClick={()=>{setOpenNewUser(true)}}>Cadastrar Colaborador</a> */}
           </div>
         {
           <S.ErrorMessage>
@@ -153,6 +176,7 @@ const CreateAccountCard = ()=>{
             }
           </S.ErrorMessage>
         }
+        {openAdmManager(isAdmManager)}
         </form>
       </div>
     </S.CreateAccountContainer>

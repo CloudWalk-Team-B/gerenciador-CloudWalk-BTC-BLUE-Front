@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import * as S from "./style";
 import Modal from "react-modal";
-import { useProducts } from "../../contexts/product";
-import img from "../../assets/images/logoRoxa.png";
 import { useHandleModals } from "../../contexts/HandleModals";
 import Api from "../../services/api";
+import { toast } from "react-hot-toast";
 
 const Moddal = () => {
-  const { openNewUser, setOpenNewUser } = useHandleModals();
+  const { openNewUser, setOpenNewUser, setIsAdmManager } = useHandleModals();
   const closeModal = () => {
     setOpenNewUser(false);
   }
@@ -24,19 +23,25 @@ const Moddal = () => {
   }
 
   const handleRegister = (value:boolean, password:string) =>{
+    const data = {
+      code: password
+    }
     if(value===false){
-      Api.post("confirmAdm", password)
+      Api.post("/auth/adminCheck", data)
         .then(()=>{
-            
-          })
-        .catch()
+          setIsAdmManager("adm")
+          setOpenNewUser(false)
+          toast.success("Validação Concluída!")
+        })
+        .catch(()=> toast.error("Chave Incorreta"))
     }else{
-      Api.post("confirmManager", password)
-        .then(
-          ()=>{
-            Api.post("user")
-          })
-        .catch()
+      Api.post("/auth/managerCheck", data)
+        .then(()=>{
+          setIsAdmManager("manager")
+          setOpenNewUser(false)
+          toast.success("Validação Concluda!")
+        })
+        .catch(()=> toast.error("Chave Incorreta"))
     }
   }
 
@@ -69,7 +74,7 @@ const Moddal = () => {
         </S.TitleComponent>
         <S.MainComponent>
             <div>
-              <input type="text" placeholder="Chave de segurança" onChange={e => setPassword(e.target.value)}/>
+              <input type="password" placeholder="Chave de segurança" onChange={e => setPassword(e.target.value)}/>
               <select onChange={e => handleIsManager(e.target.value)}>
                 <option value="adm">Administrador</option>
                 <option value="manager">Gerente</option>
