@@ -4,13 +4,26 @@ import Modal from "react-modal";
 import { useHandleModals } from "../../contexts/HandleModals";
 import Api from "../../services/api";
 import { toast } from "react-hot-toast";
+import { saveAs } from "file-saver"
+// import updateMany from "../../assets/files/updateMany.xlsx"
 
 const ModalUpdate = () => {
+
+  const [file, setFile] = useState()
+
+  const uploadFile = async () =>{
+
+  }
+
   const { openUpdate, setOpenUpdate } = useHandleModals();
 
   const closeModal = () => {
     setOpenUpdate(false);
   }
+
+  // const downloadFile = () => {
+  //   saveAs(updateMany, 'exemplo.xlsx')
+  // }
 
   const customStyles = {
     content: {
@@ -39,10 +52,13 @@ const ModalUpdate = () => {
         </S.TitleComponent>
         <S.MainComponent>
             <div>
-              <input type="file"/>
+                <input type="file" onChange={e => setFile(e.target.files[0])}/>             
             </div>
-            <button >
+            <button onClick={()=>uploadFile()}>
               Atualizar
+            </button>
+            <button >
+              Download
             </button>
         </S.MainComponent>
 

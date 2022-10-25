@@ -22,6 +22,18 @@ export const BoxSoon = styled.span`
   text-align: center;
   font-size: 3.5vh;
   margin-left: 30px;
+  div{
+    display: flex;
+    flex-direction: row;
+    margin-left: 2rem;
+    font-size: 1.3rem;
+    
+    
+
+    .getOut{
+      cursor:pointer
+    }
+  }
 `;
 export const Soon = styled.img`
   height: 12vh;
@@ -42,7 +54,7 @@ export const Update = styled.span`
   cursor: pointer;
 `;
 export const TextUpdate = styled.span`
-font-size: 1em;
+font-size: 1.2em;
 margin: 10px;
 `;
 

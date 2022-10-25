@@ -8,6 +8,7 @@ import ModalUpdate from "../ModalUpdate";
 const HeaderLogged = (props: any) => {
 
   const { openUpdate, setOpenUpdate } = useHandleModals();
+  const user = JSON.parse(localStorage.getItem("user") || "")
 
   const openModal = (open: boolean) => {
     if (open === true) {
@@ -16,6 +17,7 @@ const HeaderLogged = (props: any) => {
   };
 
   const { logout } = useAuth();
+
   if (props.header === "add") {
     return (
       <>
@@ -24,14 +26,15 @@ const HeaderLogged = (props: any) => {
             <S.Soon
               className="animate__animated animate__slideInLeft animate__delay-1s"
               src={Logo}
-              onClick={() => {
-                logout();
-              }}
             />
             <S.Name className="animate__animated animate__bounceIn animate__delay-1s	">
               Capivara <br />
               Shop
             </S.Name>
+            <div>
+              <p> {user.name.split(' ').slice(0, 1) } |</p>
+              <p className="getOut" onClick={() => {logout()}}>| Sair</p>
+            </div>
           </S.BoxSoon>
           <S.Search>
             <S.TextSearch
