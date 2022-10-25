@@ -4,21 +4,48 @@ import Modal from "react-modal";
 import { useProducts } from "../../contexts/product";
 import img from "../../assets/images/logoRoxa.png";
 import { useHandleModals } from "../../contexts/HandleModals";
-import swal from "sweetalert";
 import Api from "../../services/api";
-import { EditProduct } from "../../types/interface";
+import { EditProduct, Product } from "../../types/interface";
+import { toast } from "react-hot-toast";
 
-const Moddal = (idProduct: any) => {
+const Moddal = () => {
+
   const { openProduct, setOpenProduct } = useHandleModals();
-  const [values, setValues] = useState<EditProduct>({
-    name: "",
-    image: "",
-    description: "",
-    category: "",
-    price: 0,
-    inventory: false,
-  });
+  const { handleGetProduct } = useProducts();
 
+  const currentProduct:Product = (JSON.parse(localStorage.getItem("currentProduct") || ""))
+
+  const [ name, setName] = useState<string>(currentProduct.name)
+  const [ image, setImage ] = useState<string>(currentProduct.image)
+  const [ description, setDescription] = useState<string>(currentProduct.description)
+  const [ category, setCategory] = useState<string>(currentProduct.category)
+  const [ price, setPrice] = useState<number>(currentProduct.price)
+  const [ inventory, setInventory] = useState<boolean>(currentProduct.inventory)
+  if(image==="")setImage(currentProduct.image)
+
+  const updatedProduct:EditProduct = {
+    name: name,
+    image: image,
+    description: description,
+    category: category,
+    price: price,
+    inventory: inventory
+  }
+
+  const handleEdit = (id:string) =>{
+    if(name !=="" && image !=="" && description !=="" && category !=="" && price > 0){
+      Api.patch(`/product/${id}`, updatedProduct)
+      .then((res)=>{
+        handleGetProduct();
+        toast.success("Produto atualizado com sucesso!");
+        closeModal()
+      })
+      .catch(err=>toast.error("Falha ao atualizar o Produto"))
+  }else{
+      toast.error("Entradas Inválidas")
+  }
+  }
+  
   function closeModal() {
     setOpenProduct(false);
   }
@@ -35,39 +62,6 @@ const Moddal = (idProduct: any) => {
     },
   };
 
-  const { products, handleGetProduct } = useProducts();
-  // console.log(products);
-
-  const handleChangesValues = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.value.length <= 1) {
-      console.log(e.target.name, e.target.placeholder);
-      setValues((values: EditProduct) => ({
-        ...values,
-        [e.target.name]: e.target.placeholder,
-      }));
-    } else
-      setValues((values: EditProduct) => ({
-        ...values,
-        [e.target.name]: e.target.value,
-      }));
-  };
-
-  let HandleEdit = async (productId: any) => {
-    try {
-      const res = await Api.patch(`/product/${productId}`, values);
-      console.log("FFFFFOOOOOIIIII");
-      return res.data;
-    } catch (error: any) {
-      swal({
-        title: "Error",
-        text: `${error.message}`,
-        icon: "error",
-        timer: 6000,
-      });
-      return error;
-    }
-  };
-
   return (
     <>
       <Modal
@@ -79,79 +73,73 @@ const Moddal = (idProduct: any) => {
       >
         <S.TitleModal>Infomações</S.TitleModal>
         <S.InfoProductCard>
-          {products.map<React.ReactNode>((element, index) => {
-            if (element.id == idProduct.idProduct) {
-              return (
+          {
                 <>
                   <S.CardImageProduct>
-                    <S.ImageProduct src={img} />
+                    <S.ImageProduct src={currentProduct.image} />
                   </S.CardImageProduct>
                   <S.InfoProduct>
                     <S.FormEdit>
                       <S.InputForm>
                         <label>Nome:</label>
                         <input
-                          name="name"
-                          placeholder={element.name}
-                          onChange={handleChangesValues}
+                          type="string"
+                          value={name}
+                          onChange={e => setName(e.target.value)}
                         />
                       </S.InputForm>
                       <S.InputForm>
                         <label>Imagem:</label>
                         <input
-                          name="image"
-                          placeholder={element.image}
-                          onChange={handleChangesValues}
+                          type="string"
+                          value={image}
+                          onChange={e => setImage(e.target.value)}
                         />
                       </S.InputForm>
                       <S.InputForm>
                         <label>Descrição:</label>
                         <input
-                          id="description"
-                          name="description"
-                          placeholder={element.description}
-                          onChange={handleChangesValues}
+                          type="string"
+                          value={description}
+                          onChange={e => setDescription(e.target.value)}
                         />
                       </S.InputForm>
                       <S.InputForm>
                         <label>Categoria:</label>
                         <input
-                          name="category"
-                          placeholder={element.category}
-                          onChange={handleChangesValues}
+                          type="string"
+                          value={category}
+                          onChange={e => setCategory(e.target.value)}
                         />
                       </S.InputForm>
                       <S.InputForm>
                         <label>Preço:</label>
                         <input
-                          name="price"
-                          // type="number"
-                          placeholder={`R$ ${element.price}`}
-                          onChange={handleChangesValues}
+                          type="number"
+                          value={price}
+                          onChange={e => setPrice(e.target.valueAsNumber)}
                         />
                       </S.InputForm>
                       <S.InputForm>
                         <label>Disponivel:</label>
                         <input
-                          name="inventory"
-                          placeholder={
-                            element.inventory === true ? "Sim" : "Não"
-                          }
-                          onChange={handleChangesValues}
+                          type="boolean"
+                          value={inventory === true ? "Sim" : "Não"}
+                          onChange={e => setInventory(!inventory)}
                         />
                       </S.InputForm>
-                      <button
-                        type="button"
-                        onClick={() => HandleEdit(element.id)}
-                      >
-                        Alterar
-                      </button>
+                      <div>
+                        <button
+                          type="button"
+                          onClick={() => handleEdit(currentProduct.id)}
+                        >
+                          Alterar
+                        </button>
+                      </div>
                     </S.FormEdit>
                   </S.InfoProduct>
                 </>
-              );
-            }
-          })}
+          }
         </S.InfoProductCard>
       </Modal>
     </>

@@ -12,7 +12,7 @@ export interface User {
 }
 
 export interface Product {
-  id?: string;
+  id: string;
   code: number;
   name: string;
   image: string;
