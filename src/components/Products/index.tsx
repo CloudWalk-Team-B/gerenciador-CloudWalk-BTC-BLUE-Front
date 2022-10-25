@@ -40,13 +40,13 @@ const ListProducts = () => {
                 <S.ImageContainer>
                   <S.Image
                     className="animate__animated animate__zoomIn animate__delay-1s"
-                    src={img}
+                    src={element.image}
                   />
                 </S.ImageContainer>
                 <S.TextContainer className="animate__animated animate__zoomIn animate__delay-1s">
                   <S.TitleProduct>{element.name}</S.TitleProduct>
                   <br />
-                  <S.PriceProduct>R$: {element.price}</S.PriceProduct>
+                  <S.PriceProduct>R$: {element.price.toFixed(2)}</S.PriceProduct>
                 </S.TextContainer>
               </S.CardProduct>
             );

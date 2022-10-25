@@ -20,23 +20,22 @@ export const InfoProductCard = styled.div`
   margin: 8vh 3vh;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
 `;
 
 export const CardImageProduct = styled.span`
   ${({ theme }) => css`
-    /* border-bottom: 1px solid ${theme.colors.primaryColor}; */
     height: 30vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* border-radius: 10px; */
   `}
 `;
 
 export const ImageProduct = styled.img`
-  height: 90%;
-  width: 90%;
+
+  height: 100%;
+  width: 100%;
 `;
 
 export const InfoProduct = styled.div`
@@ -49,10 +48,10 @@ export const InfoProduct = styled.div`
 
 export const FormEdit = styled.form`
   ${({ theme }) => css`
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     color: ${theme.colors.primaryColor};
 
     textarea:focus,
@@ -70,14 +69,20 @@ export const FormEdit = styled.form`
       border-bottom: 1px solid ${theme.colors.primaryColor};
       margin: 10px;
       font-size: 120%;
-      width: 70%;
+      width: 90%;
       color: ${theme.colors.primaryColor};
     }
 
-    button {
+    div{
+      display: flex;
+      justify-content: center;
+      button {
       background-color: white;
       border: 2px solid ${theme.colors.primaryColor};
       border-radius: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       height: 5vh;
       width: 50%;
       margin-top: 10%;
@@ -87,26 +92,22 @@ export const FormEdit = styled.form`
 
       :hover {
         cursor: pointer;
-        transform: scale(1.1);
+        transform: scale(1.05);
 
         background-color: ${theme.colors.primaryColor};
         color: white;
       }
     }
+    }
+    
   `}
 `;
 
 export const InputForm = styled.div`
   display: flex;
-  /* justify-content: left; */
-  /* align-items: left;
-  ali */
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   label {
-    /* text-align: left; */
-    font-size: 5vh;
-    /* align-items: baseline; */
-    /* border: 1px solid black; */
+    font-size: 3vh;
   }
 `;

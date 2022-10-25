@@ -21,20 +21,34 @@ const Moddal = () => {
   const [ category, setCategory] = useState<string>(currentProduct.category)
   const [ price, setPrice] = useState<number>(currentProduct.price)
   const [ inventory, setInventory] = useState<boolean>(currentProduct.inventory)
+  if(image==="")setImage(currentProduct.image)
+
+  const updatedProduct:EditProduct = {
+    name: name,
+    image: image,
+    description: description,
+    category: category,
+    price: price,
+    inventory: inventory
+  }
+
+  const handleEdit = (id:string) =>{
+    if(name !=="" && image !=="" && description !=="" && category !=="" && price > 0){
+      Api.patch(`/product/${id}`, updatedProduct)
+      .then((res)=>{
+        handleGetProduct();
+        toast.success("Produto atualizado com sucesso!");
+        closeModal()
+      })
+      .catch(err=>toast.error("Falha ao atualizar o Produto"))
+  }else{
+      toast.error("Entradas Inválidas")
+  }
+  }
   
   function closeModal() {
     setOpenProduct(false);
   }
-
-  // const [values, setValues] = useState<EditProduct>({
-  //   name: "",
-  //   image: "",
-  //   description: "",
-  //   category: "",
-  //   price: 0,
-  //   inventory: false,
-  // });
-
 
   const customStyles = {
     content: {
@@ -47,48 +61,6 @@ const Moddal = () => {
       border: "1px solid purple",
     },
   };
-
-
-  // const handleChangesValues = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   if (e.target.value.length <= 1) {
-  //     console.log(e.target.name, e.target.placeholder);
-  //     setValues((values: EditProduct) => ({
-  //       ...values,
-  //       [e.target.name]: e.target.placeholder,
-  //     }));
-  //   } else
-  //     setValues((values: EditProduct) => ({
-  //       ...values,
-  //       [e.target.name]: e.target.value,
-  //     }));
-  // };
-
-  // let HandleEdit = async (productId: any) => {
-  //   try {
-  //     const res = await Api.patch(`/product/${productId}`, values);
-  //     console.log("FFFFFOOOOOIIIII");
-  //     return res.data;
-  //   } catch (error: any) {
-  //     swal({
-  //       title: "Error",
-  //       text: `${error.message}`,
-  //       icon: "error",
-  //       timer: 6000,
-  //     });
-  //     return error;
-  //   }
-  // };
-
-  const handleEdit = (id:string) =>{
-    const data:Product =  currentProduct
-    Api.patch(`product:${id}`, data)
-      .then(()=>{
-        handleGetProduct();
-        setOpenProduct(false);
-        toast.success("Produto Atualizado")
-      })
-      .catch(()=>{})
-  }
 
   return (
     <>
@@ -104,14 +76,14 @@ const Moddal = () => {
           {
                 <>
                   <S.CardImageProduct>
-                    <S.ImageProduct src={img} />
+                    <S.ImageProduct src={currentProduct.image} />
                   </S.CardImageProduct>
                   <S.InfoProduct>
                     <S.FormEdit>
                       <S.InputForm>
                         <label>Nome:</label>
                         <input
-                          name="name"
+                          type="string"
                           value={name}
                           onChange={e => setName(e.target.value)}
                         />
@@ -119,7 +91,7 @@ const Moddal = () => {
                       <S.InputForm>
                         <label>Imagem:</label>
                         <input
-                          name="image"
+                          type="string"
                           value={image}
                           onChange={e => setImage(e.target.value)}
                         />
@@ -127,8 +99,7 @@ const Moddal = () => {
                       <S.InputForm>
                         <label>Descrição:</label>
                         <input
-                          id="description"
-                          name="description"
+                          type="string"
                           value={description}
                           onChange={e => setDescription(e.target.value)}
                         />
@@ -136,7 +107,7 @@ const Moddal = () => {
                       <S.InputForm>
                         <label>Categoria:</label>
                         <input
-                          name="category"
+                          type="string"
                           value={category}
                           onChange={e => setCategory(e.target.value)}
                         />
@@ -144,26 +115,27 @@ const Moddal = () => {
                       <S.InputForm>
                         <label>Preço:</label>
                         <input
-                          name="price"
-                          // type="number"
-                          value={`R$ ${price}`}
+                          type="number"
+                          value={price}
                           onChange={e => setPrice(e.target.valueAsNumber)}
                         />
                       </S.InputForm>
                       <S.InputForm>
                         <label>Disponivel:</label>
                         <input
-                          name="inventory"
+                          type="boolean"
                           value={inventory === true ? "Sim" : "Não"}
-                          onChange={e => setPrice(e.target.valueAsNumber)}
+                          onChange={e => setInventory(!inventory)}
                         />
                       </S.InputForm>
-                      <button
-                        type="button"
-                        onClick={() => handleEdit(currentProduct.id)}
-                      >
-                        Alterar
-                      </button>
+                      <div>
+                        <button
+                          type="button"
+                          onClick={() => handleEdit(currentProduct.id)}
+                        >
+                          Alterar
+                        </button>
+                      </div>
                     </S.FormEdit>
                   </S.InfoProduct>
                 </>
