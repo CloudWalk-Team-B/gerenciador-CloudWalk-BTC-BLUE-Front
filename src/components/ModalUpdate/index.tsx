@@ -35,18 +35,14 @@ const ModalUpdate = () => {
         contentLabel="Example Modal"
       >
         <S.TitleComponent>
-          Verificação da chave de segurança
+          Atualização em Massa
         </S.TitleComponent>
         <S.MainComponent>
             <div>
-              <input type="password" placeholder="Chave de segurança"/>
-              <select >
-                <option value="adm">Administrador</option>
-                <option value="manager">Gerente</option>
-              </select>
+              <input type="file"/>
             </div>
             <button >
-              Verificar
+              Atualizar
             </button>
         </S.MainComponent>
 

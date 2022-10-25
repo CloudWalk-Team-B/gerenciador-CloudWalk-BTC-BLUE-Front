@@ -109,5 +109,6 @@ export const InputForm = styled.div`
   justify-content: space-between;
   label {
     font-size: 3vh;
+    width: 6.5rem;
   }
 `;

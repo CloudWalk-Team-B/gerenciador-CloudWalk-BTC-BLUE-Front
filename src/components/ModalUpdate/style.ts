@@ -31,7 +31,7 @@ export const MainComponent = styled.div`
         display: flex;
         flex-direction: row;
         width: 60%;
-        justify-content: space-between;
+        justify-content: center;
 
         input{
           font-size: 1.3rem;
