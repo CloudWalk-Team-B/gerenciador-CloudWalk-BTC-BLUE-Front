@@ -39,6 +39,7 @@ export const Update = styled.span`
   align-items: center;
   text-align: center;
   margin-right: 30px;
+  cursor: pointer;
 `;
 export const TextUpdate = styled.span`
 font-size: 1em;

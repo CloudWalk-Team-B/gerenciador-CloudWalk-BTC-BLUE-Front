@@ -1,6 +1,6 @@
 import React from "react";
 import * as S from "./style";
-import FooterLogged from "../../components/FooterLogged";
+import FooterLogged from "../../components/HeaderLogged";
 import ListProducts from "../../components/Products/index";
 
 const Products = () => {

@@ -11,17 +11,25 @@ interface HandleModalsProviderData{
     setOpenNewUser: (props:boolean)=>void;
     isAdmManager: string;
     setIsAdmManager: (props:string)=> void;
+    openUpdate: boolean;
+    setOpenUpdate: (props:boolean)=>void;
 }
 
 const HandleModalsContext = createContext<HandleModalsProviderData>({} as HandleModalsProviderData);
 
 export const HandleModalsProvider = ({children}:HandleModalsProviderProps) => {
     
+    //modal produto
     const [openProduct, setOpenProduct] = useState<boolean>(false);
-    const [openNewUser, setOpenNewUser] = useState<boolean>(false);
-    const [isAdmManager, setIsAdmManager] = useState<string>("") 
 
-    return <HandleModalsContext.Provider value={{ openProduct, setOpenProduct, openNewUser, setOpenNewUser, isAdmManager, setIsAdmManager }}>{children}</HandleModalsContext.Provider>
+    //modal cadastrar novo usuário
+    const [openNewUser, setOpenNewUser] = useState<boolean>(false);
+    const [isAdmManager, setIsAdmManager] = useState<string>("")
+    
+    //modal atualização em massa
+    const [openUpdate, setOpenUpdate] = useState<boolean>(false);
+
+    return <HandleModalsContext.Provider value={{ openProduct, setOpenProduct, openNewUser, setOpenNewUser, isAdmManager, setIsAdmManager, openUpdate, setOpenUpdate }}>{children}</HandleModalsContext.Provider>
 }
 
 export const useHandleModals = () => useContext(HandleModalsContext)
