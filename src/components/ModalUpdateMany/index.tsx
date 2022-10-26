@@ -8,11 +8,24 @@ import { saveAs } from "file-saver"
 // import updateMany from "../../assets/files/updateMany.xlsx"
 
 const ModalUpdate = () => {
+  // const downloadFile = () => {
+  //   saveAs(updateMany, 'exemplo.xlsx')
+  // }
 
-  const [file, setFile] = useState()
+  const [file, setFile] = useState<any>()
 
   const uploadFile = async () =>{
+    const formData = new FormData()
+    formData.append("file", file)
 
+    const headers ={
+      "headers":{
+        "Content-Type": "application/json"
+      }
+    }
+    await Api.post("/upload-file", formData, headers)
+    .then(()=>console.log("Recebeu"))
+    .catch(()=>console.log("Não recebeu"))
   }
 
   const { openUpdate, setOpenUpdate } = useHandleModals();
@@ -21,9 +34,6 @@ const ModalUpdate = () => {
     setOpenUpdate(false);
   }
 
-  // const downloadFile = () => {
-  //   saveAs(updateMany, 'exemplo.xlsx')
-  // }
 
   const customStyles = {
     content: {

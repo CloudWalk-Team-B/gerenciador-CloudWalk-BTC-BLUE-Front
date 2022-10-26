@@ -3,7 +3,7 @@ import Logo from "../../assets/images/logoBranca.png";
 import { FiPlus } from "react-icons/fi";
 import { useAuth } from "../../contexts/auth";
 import { useHandleModals } from "../../contexts/HandleModals";
-import ModalUpdate from "../ModalUpdate";
+import ModalUpdate from "../ModalUpdateMany";
 
 const HeaderLogged = (props: any) => {
 
