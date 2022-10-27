@@ -62,6 +62,11 @@ export const FormEdit = styled.form`
       outline: 0;
       border-bottom: 1px solid ${theme.colors.primaryColor};
     }
+
+    label{
+      margin-right: 2rem;
+    }
+  
     input {
       border: 0;
       text-decoration: none;
@@ -69,7 +74,7 @@ export const FormEdit = styled.form`
       border-bottom: 1px solid ${theme.colors.primaryColor};
       margin: 10px;
       font-size: 120%;
-      width: 90%;
+      width: 65%;
       color: ${theme.colors.primaryColor};
     }
 
@@ -109,5 +114,6 @@ export const InputForm = styled.div`
   justify-content: space-between;
   label {
     font-size: 3vh;
+    width: 6.5rem;
   }
 `;

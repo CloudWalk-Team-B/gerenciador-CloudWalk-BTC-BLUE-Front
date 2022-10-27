@@ -1,12 +1,23 @@
 import * as S from "./style";
 import Logo from "../../assets/images/logoBranca.png";
-import { AiOutlineSearch } from "react-icons/ai";
 import { FiPlus } from "react-icons/fi";
 import { useAuth } from "../../contexts/auth";
-import Modal from "styled-react-modal";
+import { useHandleModals } from "../../contexts/HandleModals";
+import ModalUpdate from "../ModalUpdateMany";
 
-const FooterLogged = (props: any) => {
+const HeaderLogged = (props: any) => {
+
+  const { openUpdate, setOpenUpdate } = useHandleModals();
+  const user = JSON.parse(localStorage.getItem("user") || "")
+
+  const openModal = (open: boolean) => {
+    if (open === true) {
+      return <ModalUpdate/>;
+    }
+  };
+
   const { logout } = useAuth();
+
   if (props.header === "add") {
     return (
       <>
@@ -15,14 +26,15 @@ const FooterLogged = (props: any) => {
             <S.Soon
               className="animate__animated animate__slideInLeft animate__delay-1s"
               src={Logo}
-              onClick={() => {
-                logout();
-              }}
             />
             <S.Name className="animate__animated animate__bounceIn animate__delay-1s	">
               Capivara <br />
               Shop
             </S.Name>
+            <div>
+              <p> {user.name.split(' ').slice(0, 1) } |</p>
+              <p className="getOut" onClick={() => {logout()}}>| Sair</p>
+            </div>
           </S.BoxSoon>
           <S.Search>
             <S.TextSearch
@@ -32,7 +44,7 @@ const FooterLogged = (props: any) => {
             ></S.TextSearch>
           </S.Search>
           <S.Nav>
-            <S.Update className="animate__animated animate__slideInRight animate__delay-1s">
+            <S.Update className="animate__animated animate__slideInRight animate__delay-1s" onClick={()=>setOpenUpdate(!openUpdate)}>
               <S.TextUpdate>
                 Atualização <br />
                 em massa
@@ -48,6 +60,7 @@ const FooterLogged = (props: any) => {
                
           </S.Nav>
         </S.Content>
+        {openModal(openUpdate)}
       </>
     );
   }
@@ -84,8 +97,9 @@ const FooterLogged = (props: any) => {
         <S.Info/>
         <S.Home/>
       </S.Content>
+      {openModal(openUpdate)}
     </>
   );
 };
 
-export default FooterLogged;
+export default HeaderLogged;

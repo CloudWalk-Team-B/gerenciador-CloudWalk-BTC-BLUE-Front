@@ -68,7 +68,7 @@ export const CreateAccountContainer = styled.div`
         margin-top: 5%;
         width: 95%;
 
-        .isAdmManager{
+        .{
         color: #ee442f;
         font-size: 1.3rem;
         margin: 0;
@@ -82,6 +82,11 @@ export const CreateAccountContainer = styled.div`
         font-weight: 600;
         cursor: pointer;
         z-index: 1;
+      }
+
+      .isAdmManager{
+        color: #ee442f;
+        cursor: default;
       }
 
         input {

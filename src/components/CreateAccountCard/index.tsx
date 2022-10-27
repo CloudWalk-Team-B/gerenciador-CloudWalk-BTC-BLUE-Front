@@ -61,9 +61,9 @@ const CreateAccountCard = ()=>{
 
   const openAdmManager = (isAdmManager: string) => {
     if(isAdmManager === "adm"){
-      return <p className="isAdmManager">Cadastro de Novo Administrador</p>
+      return <p className="newAdmManager isAdmManager">Cadastro de Novo Administrador</p>
     }else if(isAdmManager === "manager"){
-      return <p className="isAdmManager">Cadastro de Novo Gerente</p>
+      return <p className="newAdmManager isAdmManager">Cadastro de Novo Gerente</p>
     }
   }
 
@@ -158,7 +158,8 @@ const CreateAccountCard = ()=>{
             {...register("cpf")}
             onBlur={()=>clearErrors()}
           />
-          <p className="newAdmManager" onClick={()=>{setOpenNewUser(true)}}>Novo Colaborador? Clique aqui!</p>
+          {isAdmManager === "" && <p className="newAdmManager" onClick={()=>{setOpenNewUser(true)}}>Novo Colaborador? Clique aqui!</p>}
+          {openAdmManager(isAdmManager)}
           <div>
             <a onClick={() => {
               setIsAdmManager("")
@@ -176,7 +177,6 @@ const CreateAccountCard = ()=>{
             }
           </S.ErrorMessage>
         }
-        {openAdmManager(isAdmManager)}
         </form>
       </div>
     </S.CreateAccountContainer>

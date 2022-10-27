@@ -84,8 +84,6 @@ const Moddal = () => {
               Verificar
             </button>
         </S.MainComponent>
-
-
       </Modal>
     </>
   );

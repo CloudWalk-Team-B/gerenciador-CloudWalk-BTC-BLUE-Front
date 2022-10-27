@@ -81,7 +81,7 @@ const Moddal = () => {
                   <S.InfoProduct>
                     <S.FormEdit>
                       <S.InputForm>
-                        <label>Nome:</label>
+                        <label>Nome</label>
                         <input
                           type="string"
                           value={name}
@@ -89,7 +89,7 @@ const Moddal = () => {
                         />
                       </S.InputForm>
                       <S.InputForm>
-                        <label>Imagem:</label>
+                        <label>Imagem</label>
                         <input
                           type="string"
                           value={image}
@@ -97,7 +97,7 @@ const Moddal = () => {
                         />
                       </S.InputForm>
                       <S.InputForm>
-                        <label>Descrição:</label>
+                        <label>Descrição</label>
                         <input
                           type="string"
                           value={description}
@@ -105,7 +105,7 @@ const Moddal = () => {
                         />
                       </S.InputForm>
                       <S.InputForm>
-                        <label>Categoria:</label>
+                        <label>Categoria</label>
                         <input
                           type="string"
                           value={category}
@@ -113,7 +113,7 @@ const Moddal = () => {
                         />
                       </S.InputForm>
                       <S.InputForm>
-                        <label>Preço:</label>
+                        <label>Preço</label>
                         <input
                           type="number"
                           value={price}
@@ -121,7 +121,7 @@ const Moddal = () => {
                         />
                       </S.InputForm>
                       <S.InputForm>
-                        <label>Disponivel:</label>
+                        <label>Disponivel</label>
                         <input
                           type="boolean"
                           value={inventory === true ? "Sim" : "Não"}
