@@ -28,6 +28,18 @@ const ListProducts = () => {
     <>
       <S.Container>
         <S.ProductsContainer>
+          <S.CardProduct className="animate__animated animate__fadeInUp">
+          <S.ImageContainer>
+                  <S.Image
+                    className="animate__animated animate__zoomIn animate__delay-1s"
+
+                    src="https://static.vecteezy.com/ti/vetor-gratis/t2/363962-sinal-de-mais-linha-preta-icone-gr%C3%A1tis-vetor.jpg"
+
+                  />
+                </S.ImageContainer>
+          <S.TitleProduct>Adicionar Produto</S.TitleProduct>
+
+          </S.CardProduct>
           {products.map<React.ReactNode>((element: Product, index) => {
             return (
               <S.CardProduct

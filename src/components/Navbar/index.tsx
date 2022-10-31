@@ -6,26 +6,26 @@ import { useNavigate } from 'react-router-dom';
 
 
 export const Navbar = () => {
-  const [modalIsOpen, setIsOpen] = useState(false);
-  const closeModal = () => {
-    setIsOpen(false);
-  }
-
+  
   const navegate = useNavigate()
 
-  const openModal = () => {
-    setIsOpen(true);
-  }
-  const customStyles: any = {
-    content: {
-      left: "85%",
-      width: "150px",
-      height: "100px",
-      position: "absolute",
-      display: "block",
-      overflow: "hidden",
-    },
-  };
+  // const [modalIsOpen, setIsOpen] = useState(false);
+  // const closeModal = () => {
+  //   setIsOpen(false);
+  // }
+  // const openModal = () => {
+  //   setIsOpen(true);
+  // }
+  // const customStyles: any = {
+  //   content: {
+  //     left: "85%",
+  //     width: "150px",
+  //     height: "100px",
+  //     position: "absolute",
+  //     display: "block",
+  //     overflow: "hidden",
+  //   },
+  // };
   
   return (
     <>
@@ -55,7 +55,6 @@ export const Navbar = () => {
                 <S.Bag/>
               </S.Btn>
            <S.Button onClick={()=>navegate("/Login")}><S.BtnUser/>Entrar</S.Button>
-
             {/* <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
