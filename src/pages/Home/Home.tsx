@@ -4,25 +4,20 @@ import { Slider } from "../../components/Carrousel/Slider/Slider";
 import { useEffect, useState } from "react";
 import { Product } from "../../types/interface";
 import Api from "../../services/api";
+import { useAuth } from "../../contexts/auth";
+import { useProducts } from "../../contexts/product";
 
 const Home = () => {
-  const [products, setProducts] = useState<Product[]>([]);
 
-  const GetData = () => {
-    Api.get("/product").then((result) => {
-      setProducts(result.data);
-    });
-  };
-  useEffect(() => {
-    GetData();
-  }, []);
+  const { products } = useProducts()
+
   const Acessory = products.filter((value) => {
     if (value.category === "Recomendado") {
       return value;
     }
   });
   const Racao = products.filter((value) => {
-    if (value.category === "Racao") {
+    if (value.category === "Ração") {
       return value;
     }
   });
@@ -35,6 +30,16 @@ const Home = () => {
     if (value.category === "Higienie e Limpeza") {
       return value;
     }
+  });
+  const Pijamas = products.filter((value) => {
+    if (value.category === "Pijama para Pet") {
+      return value;
+    }
+  });
+    const Others = products.filter((value) => {
+      if (value.category === "Outros") {
+        return value;
+      }
   });
   return (
     <>
@@ -59,7 +64,7 @@ const Home = () => {
           </S.Card>
           <S.Card>
             <S.Coupon />{" "}
-            <S.Text>
+            <S.Text >
               Cupom de até <br /> 30% de desconto
             </S.Text>
           </S.Card>
@@ -68,6 +73,8 @@ const Home = () => {
         <Slider title="Rações " children={Racao} />
         <Slider title="Medicina e Saúde" children={Banho} />
         <Slider title="Higiene & Limpeza" children={Higiene}></Slider>
+        <Slider title="Pijama para Pet" children={Pijamas}></Slider>
+        <Slider title="Outros" children={Others}></Slider>
       </S.Main>
     </>
   );

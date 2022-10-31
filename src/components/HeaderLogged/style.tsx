@@ -27,9 +27,6 @@ export const BoxSoon = styled.span`
     flex-direction: row;
     margin-left: 2rem;
     font-size: 1.3rem;
-    
-    
-
     .getOut{
       cursor:pointer
     }
