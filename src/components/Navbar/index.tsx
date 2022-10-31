@@ -2,12 +2,16 @@ import * as S from './styles';
 import Logo from "../../assets/images/logoBranca.png";
 import Modal from "react-modal";
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 
 export const Navbar = () => {
   const [modalIsOpen, setIsOpen] = useState(false);
   const closeModal = () => {
     setIsOpen(false);
   }
+
+  const navegate = useNavigate()
 
   const openModal = () => {
     setIsOpen(true);
@@ -44,15 +48,15 @@ export const Navbar = () => {
             ></S.TextSearch>
           </S.Search>
           <S.Nav>
-             <S.Btn to="/info">
+             <S.Btn to="/info">Sobre nós
                <S.Info/> 
               </S.Btn>
-               <S.Btn to="/">
-                <S.Bag/> 
+               <S.Btn to="/">Sacola
+                <S.Bag/>
               </S.Btn>
-           <S.Button onClick={openModal}><S.BtnUser/> </S.Button>
+           <S.Button onClick={()=>navegate("/Login")}><S.BtnUser/>Entrar</S.Button>
 
-            <Modal
+            {/* <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
                 style={customStyles}
@@ -64,7 +68,7 @@ export const Navbar = () => {
               <S.BtnModal to="/cadastro">
                 <S.Register/> <S.TextModal>Cadastrar</S.TextModal>
               </S.BtnModal>
-            </Modal>
+            </Modal> */}
           </S.Nav>
         </S.Content>
     </>

@@ -68,7 +68,8 @@ export const TextSearch = styled.input`
   `}
 `;
 export const BtnUser = styled(FaUserCircle)`
-color: rgba(255, 255, 255, 0.8);
+color: rgba(255, 255, 255, 0.8); 
+  color:white;
  width: 1.6rem;
  height: 1.6rem;
  margin: 0;
@@ -131,10 +132,12 @@ export const Nav = styled.nav`
   margin-right: 1rem;
 `;
 export const Button = styled.button`
+cursor: pointer;
 width: 1.6rem;
 height: 1.6rem;
 background-color: #601A4A;
 border: none;
+color: white;
 `
 
 
