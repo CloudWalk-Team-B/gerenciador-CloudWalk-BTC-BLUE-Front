@@ -2,19 +2,46 @@ import * as S from "./style";
 import Modal from "react-modal";
 import React, { useState, useEffect } from "react";
 import { useProducts } from "../../contexts/product";
-import img from "../../assets/images/logoRoxa.png";
 import Moddal from "../ModalProduct";
 import { useHandleModals } from "../../contexts/HandleModals";
-import { Product } from "../../types/interface";
+import { Product, User } from "../../types/interface";
+import ModdalNewProduct from "../ModalAddProduct";
 
 const ListProducts = () => {
   Modal.setAppElement("#root");
+  
+  const user:User = (JSON.parse(localStorage.getItem("user") || ""))
+  const handleUser = () =>{
+    if(user.isAdmin===true && user.isManager === true){
+      return(
+        <S.CardProduct className="animate__animated animate__fadeInUp" onClick={()=>setOpenNewProduct(!openNewProduct)}>
+          <S.ImageContainer>
+                  <S.Image
+                    className="animate__animated animate__zoomIn animate__delay-1s"
+                    src="https://static.vecteezy.com/ti/vetor-gratis/t2/363962-sinal-de-mais-linha-preta-icone-gr%C3%A1tis-vetor.jpg"
+                  />
+          </S.ImageContainer>
+          <S.TitleProduct>Adicionar Produto</S.TitleProduct>
+
+          </S.CardProduct>
+      )
+      
+    }
+  }
 
   const [idProduct, setIdProduct] = useState<string>("");
 
-  const { openProduct, setOpenProduct } = useHandleModals();
+  const { openProduct, setOpenProduct, openNewProduct, setOpenNewProduct } = useHandleModals();
 
-  const openModal = (open: boolean) => {
+  const openNewProductModal = (open: boolean) => {
+    if (open === true) {
+
+      return <ModdalNewProduct/>;
+
+    }
+  };
+
+  const openProductModal = (open: boolean) => {
     if (open === true) {
 
       return <Moddal/>;
@@ -26,20 +53,11 @@ const ListProducts = () => {
 
   return (
     <>
+      <button onClick={()=>console.log(user.isManager)}>botão</button>
       <S.Container>
         <S.ProductsContainer>
-          <S.CardProduct className="animate__animated animate__fadeInUp">
-          <S.ImageContainer>
-                  <S.Image
-                    className="animate__animated animate__zoomIn animate__delay-1s"
-
-                    src="https://static.vecteezy.com/ti/vetor-gratis/t2/363962-sinal-de-mais-linha-preta-icone-gr%C3%A1tis-vetor.jpg"
-
-                  />
-                </S.ImageContainer>
-          <S.TitleProduct>Adicionar Produto</S.TitleProduct>
-
-          </S.CardProduct>
+        <>
+        {handleUser()}
           {products.map<React.ReactNode>((element: Product, index) => {
             return (
               <S.CardProduct
@@ -67,9 +85,11 @@ const ListProducts = () => {
               </S.CardProduct>
             );
           })}
+          </>
         </S.ProductsContainer>
       </S.Container>
-      {openModal(openProduct)}
+      {openProductModal(openProduct)}
+      {openNewProductModal(openNewProduct)}
     </>
   );
 };
