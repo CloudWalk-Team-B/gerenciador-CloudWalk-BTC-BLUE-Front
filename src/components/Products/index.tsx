@@ -30,25 +30,25 @@ const ListProducts = () => {
   }
 
   const [idProduct, setIdProduct] = useState<string>("");
-  const { openProduct, setOpenProduct, openNewProduct, setOpenNewProduct } = useHandleModals();
+  const { openProduct, setOpenProduct, openNewProduct, setOpenNewProduct, search, setSearch } = useHandleModals();
 
   const openNewProductModal = (open: boolean) => {
     if (open === true) {
-
       return <ModdalNewProduct/>;
-
     }
   };
 
   const openProductModal = (open: boolean) => {
     if (open === true) {
-
       return <Moddal/>;
-
     }
   };
 
   const { products, handleGetProduct } = useProducts();
+
+  const filteredProducts: Product[] = search.length>0?
+    products.filter(element=>element.name.toUpperCase().includes(search.toLocaleUpperCase())):
+    products
 
   return (
     <>
@@ -56,7 +56,7 @@ const ListProducts = () => {
         <S.ProductsContainer>
         <>
         {handleUser()}
-          {products.map<React.ReactNode>((element: Product, index) => {
+          {filteredProducts.map<React.ReactNode>((element: Product, index) => {
             return (
               <S.CardProduct
                 key={index}

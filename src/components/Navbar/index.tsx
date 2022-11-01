@@ -3,30 +3,14 @@ import Logo from "../../assets/images/logoBranca.png";
 import Modal from "react-modal";
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useHandleModals } from '../../contexts/HandleModals';
 
 
 export const Navbar = () => {
   
+  const { search, setSearch} = useHandleModals()
   const navegate = useNavigate()
 
-  // const [modalIsOpen, setIsOpen] = useState(false);
-  // const closeModal = () => {
-  //   setIsOpen(false);
-  // }
-  // const openModal = () => {
-  //   setIsOpen(true);
-  // }
-  // const customStyles: any = {
-  //   content: {
-  //     left: "85%",
-  //     width: "150px",
-  //     height: "100px",
-  //     position: "absolute",
-  //     display: "block",
-  //     overflow: "hidden",
-  //   },
-  // };
-  
   return (
     <>
       <S.Content className="animate__animated animate__slideInDown">
@@ -44,6 +28,7 @@ export const Navbar = () => {
             <S.TextSearch
               className="animate__animated animate__jackInTheBox animate__delay-1s"
               type="text"
+              onChange={(e)=> setSearch(e.target.value)}
               placeholder="Procurar..."
             ></S.TextSearch>
           </S.Search>
@@ -54,20 +39,7 @@ export const Navbar = () => {
                <S.Btn to="/">
                 <S.Bag/>
               </S.Btn>
-           <S.Button onClick={()=>navegate("/Login")}><S.BtnUser/>Entrar</S.Button>
-            {/* <Modal
-                isOpen={modalIsOpen}
-                onRequestClose={closeModal}
-                style={customStyles}
-                contentLabel="Example Modal"
-                >            
-              <S.BtnModal to="/login">
-                <S.User/> <S.TextModal>Entrar</S.TextModal>
-              </S.BtnModal>
-              <S.BtnModal to="/cadastro">
-                <S.Register/> <S.TextModal>Cadastrar</S.TextModal>
-              </S.BtnModal>
-            </Modal> */}
+           <S.Button onClick={()=>{navegate("/Login");setSearch("")}}><S.BtnUser/>Entrar</S.Button>
           </S.Nav>
         </S.Content>
     </>
