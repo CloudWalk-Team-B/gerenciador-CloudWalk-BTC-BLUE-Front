@@ -10,9 +10,8 @@ import { useHandleModals } from "../../contexts/HandleModals";
 
 const Home = () => {
 
-  const { products } = useProducts()
+  const { products, categories } = useProducts()
   const { search, setSearch} = useHandleModals()
-  const categorias=["Brinquedos","Petiscos e Ração","Medicina e Saúde","Roupas para Pet","Higiene & Limpeza","Outros"]
 
   const filteresProducts:Product[] = search.length>0?
      products.filter(element => element.name.toUpperCase().includes(search.toUpperCase())):

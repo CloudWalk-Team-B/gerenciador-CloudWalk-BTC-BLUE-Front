@@ -11,7 +11,7 @@ import { toast } from "react-hot-toast";
 const Moddal = () => {
 
   const { openProduct, setOpenProduct } = useHandleModals();
-  const { handleGetProduct } = useProducts();
+  const { handleGetProduct, categories } = useProducts();
 
   const currentProduct:Product = (JSON.parse(localStorage.getItem("currentProduct") || ""))
 
@@ -80,6 +80,7 @@ const Moddal = () => {
                   </S.CardImageProduct>
                   <S.InfoProduct>
                     <S.FormEdit>
+                      <p>{`CÓDIGO ${currentProduct.code}`}</p>
                       <S.InputForm>
                         <label>Nome</label>
                         <input
@@ -104,14 +105,7 @@ const Moddal = () => {
                           onChange={e => setDescription(e.target.value)}
                         />
                       </S.InputForm>
-                      <S.InputForm>
-                        <label>Categoria</label>
-                        <input
-                          type="string"
-                          value={category}
-                          onChange={e => setCategory(e.target.value)}
-                        />
-                      </S.InputForm>
+                      {/* it was right here */}
                       <S.InputForm>
                         <label>Preço</label>
                         <input
@@ -127,6 +121,16 @@ const Moddal = () => {
                           value={inventory === true ? "Sim" : "Não"}
                           onChange={e => setInventory(!inventory)}
                         />
+                      </S.InputForm>
+                      <S.InputForm>
+                        <label>Categoria</label>
+                        <select onChange={e => setCategory(e.target.value)}>
+                          {categories.map(element=>{
+                          return(
+                            <option value={element}>{element}</option>
+                                )
+                          })}
+                        </select>
                       </S.InputForm>
                       <div>
                         <button

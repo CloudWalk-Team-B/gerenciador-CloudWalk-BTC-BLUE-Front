@@ -5,7 +5,7 @@ import { useProducts } from "../../contexts/product";
 import Moddal from "../ModalProduct";
 import { useHandleModals } from "../../contexts/HandleModals";
 import { Product, User } from "../../types/interface";
-import ModdalNewProduct from "../ModalAddProduct";
+import ModdalNewProduct from "../ModalNewProduct";
 
 const ListProducts = () => {
   Modal.setAppElement("#root");

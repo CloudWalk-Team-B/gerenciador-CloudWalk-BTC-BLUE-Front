@@ -6,9 +6,10 @@ import Api from "../../services/api";
 import { toast } from "react-hot-toast";
 import { EditProduct} from "../../types/interface";
 import Logo from "../../assets/images/logoRoxa.png";
+import { useProducts } from "../../contexts/product";
 
 const ModdalNewProduct = () => {
-  const categorias=["Brinquedos","Petiscos e Ração","Medicina e Saúde","Roupas para Pet","Higiene & Limpeza","Outros"];
+  const { categories }= useProducts()
   const { openNewProduct, setOpenNewProduct} = useHandleModals();
   const closeModal = () => {
     setOpenNewProduct(false);
@@ -38,7 +39,7 @@ const ModdalNewProduct = () => {
   if(image==="")setImage(Logo)
 
   const data:EditProduct = {
-    code: code,
+    // code: code,
     name: name,
     image: image,
     description: description,
@@ -86,7 +87,7 @@ const ModdalNewProduct = () => {
                 <input type="number" placeholder="Preço" onChange={e => setPrice(e.target.valueAsNumber)}/>
                 <input type="text" value={inventory === true ? "Produto Disponível" : "Fora de Estoque"} onChange={e=> setInventory(!inventory)}/>
                 <select onChange={e => handleCategory(e.target.value)}>
-                  {categorias.map(element=>{
+                  {categories.map(element=>{
                     return(
                       <option value={element}>{element}</option>
                     )
