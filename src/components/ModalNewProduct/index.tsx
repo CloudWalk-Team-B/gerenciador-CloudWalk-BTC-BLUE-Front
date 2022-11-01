@@ -4,6 +4,8 @@ import Modal from "react-modal";
 import { useHandleModals } from "../../contexts/HandleModals";
 import Api from "../../services/api";
 import { toast } from "react-hot-toast";
+import { Product } from "../../types/interface";
+import Logo from "../../assets/images/logoRoxa.png";
 
 const ModdalNewProduct = () => {
   const { openNewProduct, setOpenNewProduct} = useHandleModals();
@@ -25,13 +27,40 @@ const ModdalNewProduct = () => {
     },
   };
 
-  // "code": 154,
-  // "name": "Peitoral Zee Dog",
-  // "image": "Link Image",
-  // "description": "Peitoral para cachorros e gatos.",
-  // "category": "Peitoral",
-  // "price": 8000,
-  // "inventory": true
+  const[code, setCode]=useState<number>(0)
+  const[name, setName]=useState<string>("")
+  const[image, setImage]=useState<string>(Logo)
+  const[description, setDescription]=useState<string>("")
+  const[price, setPrice]=useState<number>(0)
+  const[inventory, setInventory]=useState<boolean>(true)
+  const[category, setCategory]=useState<string>("")
+  if(image==="")setImage(Logo)
+
+  const data:Product = {
+    code: code,
+    name: name,
+    image: image,
+    description: description,
+    category: category,
+    price: price,
+    inventory: inventory
+  }
+
+  const handleRegister = () =>{
+    if(code>=0 && name!=="" && image!=="" && description!=="" && price>0 && category!==""){
+    Api.post("/product", data).then(()=>{
+      toast.success("Produco cadastrado com sucesso")
+    }).catch(()=>{
+      toast.error("Erro ao cadastrar produto")
+    })
+    }else{
+    toast.error("Preencha todos os campos")
+    }
+  }
+
+  const handleCategory = (prop:string) =>{
+    setCategory(prop)
+  }
 
   return (
     <>
@@ -43,24 +72,27 @@ const ModdalNewProduct = () => {
         contentLabel="Example Modal"
       >
         <S.TitleComponent>
-          Adicionar novo produto
+          Adicionar novo Produto
         </S.TitleComponent>
         <S.MainComponent>
-            <div>
-              <input type="text" placeholder="Código"/>
-              <input type="text" placeholder="Nome do Produto"/>
-              <input type="text" placeholder="Imagem"/>
-              <input type="text" placeholder="Descrição"/>
-              <input type="text" placeholder="Preço"/>
-              <input type="text" placeholder="sim"/>
-              <select onChange={e => handleIsManager(e.target.value)}>
-                <option value="adm">Administrador</option>
-                <option value="manager">Gerente</option>
-              </select>
-            </div>
-            <button>
-              Cadastrar
-            </button>
+          <section>
+            <img src={image} alt="" />
+              <div>
+                <input type="number" placeholder="Código" onChange={e => setCode(e.target.valueAsNumber)}/>
+                <input type="text" placeholder="Nome do Produto" onChange={e => setName(e.target.value)}/>
+                <input type="text" placeholder="Imagem" onChange={e => setImage(e.target.value)}/>
+                <input type="text" placeholder="Descrição" onChange={e => setDescription(e.target.value)}/>
+                <input type="number" placeholder="Preço" onChange={e => setPrice(e.target.valueAsNumber)}/>
+                <input type="text" value={inventory === true ? "Produto Disponível" : "Fora de Estoque"} onChange={event=> setInventory(!inventory)}/>
+                <select onChange={e => handleCategory(e.target.value)}>
+                  <option value={category}>Administrador</option>
+                  <option value={category}>Gerente</option>
+                </select>
+              </div>
+          </section>
+              <button onClick={()=>console.log(image)}>
+                Cadastrar
+              </button>
         </S.MainComponent>
       </Modal>
     </>

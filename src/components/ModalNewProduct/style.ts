@@ -24,9 +24,23 @@ export const MainComponent = styled.div`
     justify-content: space-between;
     align-items: center;
     height: 80%;
-    
     box-sizing: border-box;
 
+    section{
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      align-items: top;
+      justify-content: center;
+
+      img{
+        width: 12rem;
+        height: 12rem;
+        border: 1px solid ${theme.colors.primaryColor};
+        border-radius: 5px;
+        margin: 1rem;
+      }
+    
       div{
         display: flex;
         flex-direction: column;
@@ -51,7 +65,7 @@ export const MainComponent = styled.div`
         }
 
         select{
-          width: 40%;
+          width: 70%;
           font-size: 1.2rem;
           margin: 2rem;
           
@@ -61,6 +75,7 @@ export const MainComponent = styled.div`
           }
         }
       }
+    }
 
       button {
             background-color: ${theme.colors.primaryColor};
@@ -87,6 +102,7 @@ export const MainComponent = styled.div`
               transform: scale(1.05);
             }
           }
+        
   `}
 `;
 
