@@ -15,6 +15,7 @@ const Moddal = () => {
 
   const currentProduct:Product = (JSON.parse(localStorage.getItem("currentProduct") || ""))
 
+  const [ code, setCode] = useState<number>(currentProduct.code)
   const [ name, setName] = useState<string>(currentProduct.name)
   const [ image, setImage ] = useState<string>(currentProduct.image)
   const [ description, setDescription] = useState<string>(currentProduct.description)
@@ -24,6 +25,7 @@ const Moddal = () => {
   if(image==="")setImage(currentProduct.image)
 
   const updatedProduct:EditProduct = {
+    code: code,
     name: name,
     image: image,
     description: description,
@@ -33,7 +35,7 @@ const Moddal = () => {
   }
 
   const handleEdit = (id:string) =>{
-    if(name !=="" && image !=="" && description !=="" && category !=="" && price > 0){
+    if(code>=0 && name !=="" && image !=="" && description !=="" && category !=="" && price > 0){
       Api.patch(`/product/${id}`, updatedProduct)
       .then((res)=>{
         handleGetProduct();
@@ -80,7 +82,14 @@ const Moddal = () => {
                   </S.CardImageProduct>
                   <S.InfoProduct>
                     <S.FormEdit>
-                      <p>{`CÓDIGO ${currentProduct.code}`}</p>
+                      <S.InputForm>
+                        <label>Código</label>
+                        <input
+                          type="number"
+                          value={code}
+                          onChange={e => setCode(e.target.valueAsNumber)}
+                        />
+                      </S.InputForm>
                       <S.InputForm>
                         <label>Nome</label>
                         <input
@@ -124,7 +133,7 @@ const Moddal = () => {
                       </S.InputForm>
                       <S.InputForm>
                         <label>Categoria</label>
-                        <select onChange={e => setCategory(e.target.value)}>
+                        <select value={category} onChange={e => setCategory(e.target.value)}>
                           {categories.map(element=>{
                           return(
                             <option value={element}>{element}</option>

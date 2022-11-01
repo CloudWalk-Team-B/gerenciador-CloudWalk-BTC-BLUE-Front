@@ -9,7 +9,7 @@ import Logo from "../../assets/images/logoRoxa.png";
 import { useProducts } from "../../contexts/product";
 
 const ModdalNewProduct = () => {
-  const { categories }= useProducts()
+  const { handleGetProduct, categories }= useProducts()
   const { openNewProduct, setOpenNewProduct} = useHandleModals();
   const closeModal = () => {
     setOpenNewProduct(false);
@@ -35,11 +35,11 @@ const ModdalNewProduct = () => {
   const[description, setDescription]=useState<string>("")
   const[price, setPrice]=useState<number>(0)
   const[inventory, setInventory]=useState<boolean>(true)
-  const[category, setCategory]=useState<string>("")
+  const[category, setCategory]=useState<string>(categories[0])
   if(image==="")setImage(Logo)
 
   const data:EditProduct = {
-    // code: code,
+    code: code,
     name: name,
     image: image,
     description: description,
@@ -51,7 +51,8 @@ const ModdalNewProduct = () => {
   const handleRegister = () =>{
     if(code>=0 && name!=="" && image!=="" && description!=="" && price>0 && category!==""){
     Api.post("/product", data).then(()=>{
-      toast.success("Produco cadastrado com sucesso")
+      toast.success("Produco cadastrado com sucesso");
+      handleGetProduct()
     }).catch(()=>{
       toast.error("Erro ao cadastrar produto")
     })
@@ -95,7 +96,7 @@ const ModdalNewProduct = () => {
                 </select>
               </div>
           </section>
-              <button onClick={()=>console.log()}>
+              <button onClick={()=>handleRegister()}>
                 Cadastrar
               </button>
         </S.MainComponent>

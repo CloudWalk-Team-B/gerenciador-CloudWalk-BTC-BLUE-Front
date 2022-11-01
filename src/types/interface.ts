@@ -47,6 +47,7 @@ export interface RegisterUser {
 }
 
 export interface EditProduct {
+  code: number
   name: string;
   image: string;
   description: string;
