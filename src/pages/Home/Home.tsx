@@ -16,31 +16,11 @@ const Home = () => {
       return value;
     }
   });
-  const Racao = products.filter((value) => {
-    if (value.category === "Ração") {
-      return value;
-    }
-  });
-  const Banho = products.filter((value) => {
-    if (value.category === "Medicina e Saúde") {
-      return value;
-    }
-  });
-  const Higiene = products.filter((value) => {
-    if (value.category === "Higienie e Limpeza") {
-      return value;
-    }
-  });
-  const Pijamas = products.filter((value) => {
-    if (value.category === "Pijama para Pet") {
-      return value;
-    }
-  });
-    const Others = products.filter((value) => {
-      if (value.category === "Outros") {
-        return value;
-      }
-  });
+  const Racao = products.filter((value) => value.category==="Ração");
+  const Banho = products.filter((value) => value.category==="Medicina e Saúde");
+  const Pijamas = products.filter((value) => value.category==="Pijama para Pet");
+  const Higiene = products.filter((value) => value.category==="Higienie e Limpeza");
+  const Others = products.filter((value) => value.category==="Outros");
   return (
     <>
       <Navbar />
@@ -72,8 +52,8 @@ const Home = () => {
         <Slider title="Produtos Recomendados" children={Acessory} />
         <Slider title="Rações " children={Racao} />
         <Slider title="Medicina e Saúde" children={Banho} />
-        <Slider title="Higiene & Limpeza" children={Higiene}></Slider>
         <Slider title="Pijama para Pet" children={Pijamas}></Slider>
+        <Slider title="Higiene & Limpeza" children={Higiene}></Slider>
         <Slider title="Outros" children={Others}></Slider>
       </S.Main>
     </>

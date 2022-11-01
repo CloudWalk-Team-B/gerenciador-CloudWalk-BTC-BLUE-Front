@@ -11,20 +11,6 @@ const ModdalNewProduct = () => {
     setOpenNewProduct(false);
   }
 
-  const[password, setPassword] = useState<string>("")
-  const [isManager, setIsManager] = useState<boolean>(false)
-  
-  const handleIsManager = (value:string) =>{
-    if(value === "adm"){
-      setIsManager(false)
-    }else if(value === "manager"){
-      setIsManager(true)
-    }
-  }
-
-  
-
-
   const customStyles = {
     content: {
       top: "50%",
@@ -34,10 +20,18 @@ const ModdalNewProduct = () => {
       marginRight: "-50%",
       transform: "translate(-50%, -50%)",
       border: "1px solid purple",
-      height: "45vh",     
+      height: "60vh",     
       
     },
   };
+
+  // "code": 154,
+  // "name": "Peitoral Zee Dog",
+  // "image": "Link Image",
+  // "description": "Peitoral para cachorros e gatos.",
+  // "category": "Peitoral",
+  // "price": 8000,
+  // "inventory": true
 
   return (
     <>
@@ -53,14 +47,19 @@ const ModdalNewProduct = () => {
         </S.TitleComponent>
         <S.MainComponent>
             <div>
-              <input type="password" placeholder="Chave de segurança" onChange={e => setPassword(e.target.value)}/>
+              <input type="text" placeholder="Código"/>
+              <input type="text" placeholder="Nome do Produto"/>
+              <input type="text" placeholder="Imagem"/>
+              <input type="text" placeholder="Descrição"/>
+              <input type="text" placeholder="Preço"/>
+              <input type="text" placeholder="sim"/>
               <select onChange={e => handleIsManager(e.target.value)}>
                 <option value="adm">Administrador</option>
                 <option value="manager">Gerente</option>
               </select>
             </div>
             <button>
-              Verificar
+              Cadastrar
             </button>
         </S.MainComponent>
       </Modal>

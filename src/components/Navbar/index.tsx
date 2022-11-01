@@ -48,10 +48,10 @@ export const Navbar = () => {
             ></S.TextSearch>
           </S.Search>
           <S.Nav>
-             <S.Btn to="/info">Sobre nós
+             <S.Btn to="/info">
                <S.Info/> 
               </S.Btn>
-               <S.Btn to="/">Sacola
+               <S.Btn to="/">
                 <S.Bag/>
               </S.Btn>
            <S.Button onClick={()=>navegate("/Login")}><S.BtnUser/>Entrar</S.Button>

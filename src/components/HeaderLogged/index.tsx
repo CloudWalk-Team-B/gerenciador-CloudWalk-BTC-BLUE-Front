@@ -50,14 +50,7 @@ const HeaderLogged = (props: any) => {
                 em massa
               </S.TextUpdate>
               <FiPlus color="white" fontSize="1.5em" />
-            </S.Update>
-             <S.Btn to="/">
-              <S.Home/> <S.TextUpdate>Home</S.TextUpdate>
-             </S.Btn>
-             <S.Btn to="/info">
-               <S.Info/> <S.TextUpdate>Sobre</S.TextUpdate>
-              </S.Btn>
-               
+            </S.Update>               
           </S.Nav>
         </S.Content>
         {openModal(openUpdate)}

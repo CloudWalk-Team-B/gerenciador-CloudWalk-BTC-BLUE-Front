@@ -13,6 +13,7 @@ export const TitleComponent = styled.h2`
     width: 40vw;
     margin: 18px 10vw;
     font-size: 3.5vh;
+    margin-bottom: 2rem;
   `}
 `;
 
@@ -23,30 +24,40 @@ export const MainComponent = styled.div`
     justify-content: space-between;
     align-items: center;
     height: 80%;
-    padding: 5% 0;
+    
     box-sizing: border-box;
 
       div{
-        margin-top: 4vh;
         display: flex;
-        flex-direction: row;
-        width: 60%;
-        justify-content: space-between;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        
+        
 
         input{
-          font-size: 1.3rem;
-          width: 70%;
+          all: unset;
+          font-size: 1.4rem;
+          border-bottom: 1px solid ${theme.colors.primaryColor};
+          width: 100%;
           height: 1.5rem;
-          text-align: center;
-          border: 1px solid black;
+          padding: 1rem;
+          box-sizing: border-box;
+          border:none;
+          border-bottom: 1px solid black;
+          margin-bottom: 0.8rem;
+          
         }
 
         select{
-          width: 25%;
-          font-size: 1rem;
+          width: 40%;
+          font-size: 1.2rem;
+          margin: 2rem;
           
           option{
             text-align: center;
+            
           }
         }
       }
@@ -69,6 +80,7 @@ export const MainComponent = styled.div`
             font-size: 3vh;
             border-radius: 3.125rem;
             transition: all 0.5s;
+            margin-bottom: 1rem;
             
             :hover {
               cursor: pointer;
