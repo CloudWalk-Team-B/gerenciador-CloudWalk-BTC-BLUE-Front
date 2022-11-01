@@ -5,7 +5,7 @@ import { useProducts } from "../../contexts/product";
 import Moddal from "../ModalProduct";
 import { useHandleModals } from "../../contexts/HandleModals";
 import { Product, User } from "../../types/interface";
-import ModdalNewProduct from "../ModalNewProduct";
+import ModdalNewProduct from "../ModalAddProduct";
 
 const ListProducts = () => {
   Modal.setAppElement("#root");
@@ -30,7 +30,6 @@ const ListProducts = () => {
   }
 
   const [idProduct, setIdProduct] = useState<string>("");
-
   const { openProduct, setOpenProduct, openNewProduct, setOpenNewProduct } = useHandleModals();
 
   const openNewProductModal = (open: boolean) => {
@@ -53,7 +52,6 @@ const ListProducts = () => {
 
   return (
     <>
-      <button onClick={()=>console.log(user.isManager)}>botão</button>
       <S.Container>
         <S.ProductsContainer>
         <>

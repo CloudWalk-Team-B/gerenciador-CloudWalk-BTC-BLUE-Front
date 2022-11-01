@@ -4,10 +4,11 @@ import Modal from "react-modal";
 import { useHandleModals } from "../../contexts/HandleModals";
 import Api from "../../services/api";
 import { toast } from "react-hot-toast";
-import { Product } from "../../types/interface";
+import { EditProduct} from "../../types/interface";
 import Logo from "../../assets/images/logoRoxa.png";
 
 const ModdalNewProduct = () => {
+  const categorias=["Brinquedos","Petiscos e Ração","Medicina e Saúde","Roupas para Pet","Higiene & Limpeza","Outros"];
   const { openNewProduct, setOpenNewProduct} = useHandleModals();
   const closeModal = () => {
     setOpenNewProduct(false);
@@ -36,7 +37,7 @@ const ModdalNewProduct = () => {
   const[category, setCategory]=useState<string>("")
   if(image==="")setImage(Logo)
 
-  const data:Product = {
+  const data:EditProduct = {
     code: code,
     name: name,
     image: image,
@@ -83,14 +84,17 @@ const ModdalNewProduct = () => {
                 <input type="text" placeholder="Imagem" onChange={e => setImage(e.target.value)}/>
                 <input type="text" placeholder="Descrição" onChange={e => setDescription(e.target.value)}/>
                 <input type="number" placeholder="Preço" onChange={e => setPrice(e.target.valueAsNumber)}/>
-                <input type="text" value={inventory === true ? "Produto Disponível" : "Fora de Estoque"} onChange={event=> setInventory(!inventory)}/>
+                <input type="text" value={inventory === true ? "Produto Disponível" : "Fora de Estoque"} onChange={e=> setInventory(!inventory)}/>
                 <select onChange={e => handleCategory(e.target.value)}>
-                  <option value={category}>Administrador</option>
-                  <option value={category}>Gerente</option>
+                  {categorias.map(element=>{
+                    return(
+                      <option value={element}>{element}</option>
+                    )
+                  })}
                 </select>
               </div>
           </section>
-              <button onClick={()=>console.log(image)}>
+              <button onClick={()=>console.log()}>
                 Cadastrar
               </button>
         </S.MainComponent>
