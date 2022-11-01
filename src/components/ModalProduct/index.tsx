@@ -11,10 +11,11 @@ import { toast } from "react-hot-toast";
 const Moddal = () => {
 
   const { openProduct, setOpenProduct } = useHandleModals();
-  const { handleGetProduct } = useProducts();
+  const { handleGetProduct, categories } = useProducts();
 
   const currentProduct:Product = (JSON.parse(localStorage.getItem("currentProduct") || ""))
 
+  const [ code, setCode] = useState<number>(currentProduct.code)
   const [ name, setName] = useState<string>(currentProduct.name)
   const [ image, setImage ] = useState<string>(currentProduct.image)
   const [ description, setDescription] = useState<string>(currentProduct.description)
@@ -24,6 +25,7 @@ const Moddal = () => {
   if(image==="")setImage(currentProduct.image)
 
   const updatedProduct:EditProduct = {
+    code: code,
     name: name,
     image: image,
     description: description,
@@ -33,7 +35,7 @@ const Moddal = () => {
   }
 
   const handleEdit = (id:string) =>{
-    if(name !=="" && image !=="" && description !=="" && category !=="" && price > 0){
+    if(code>=0 && name !=="" && image !=="" && description !=="" && category !=="" && price > 0){
       Api.patch(`/product/${id}`, updatedProduct)
       .then((res)=>{
         handleGetProduct();
@@ -81,6 +83,14 @@ const Moddal = () => {
                   <S.InfoProduct>
                     <S.FormEdit>
                       <S.InputForm>
+                        <label>Código</label>
+                        <input
+                          type="number"
+                          value={code}
+                          onChange={e => setCode(e.target.valueAsNumber)}
+                        />
+                      </S.InputForm>
+                      <S.InputForm>
                         <label>Nome</label>
                         <input
                           type="string"
@@ -104,14 +114,7 @@ const Moddal = () => {
                           onChange={e => setDescription(e.target.value)}
                         />
                       </S.InputForm>
-                      <S.InputForm>
-                        <label>Categoria</label>
-                        <input
-                          type="string"
-                          value={category}
-                          onChange={e => setCategory(e.target.value)}
-                        />
-                      </S.InputForm>
+                      {/* it was right here */}
                       <S.InputForm>
                         <label>Preço</label>
                         <input
@@ -127,6 +130,16 @@ const Moddal = () => {
                           value={inventory === true ? "Sim" : "Não"}
                           onChange={e => setInventory(!inventory)}
                         />
+                      </S.InputForm>
+                      <S.InputForm>
+                        <label>Categoria</label>
+                        <select value={category} onChange={e => setCategory(e.target.value)}>
+                          {categories.map(element=>{
+                          return(
+                            <option value={element}>{element}</option>
+                                )
+                          })}
+                        </select>
                       </S.InputForm>
                       <div>
                         <button

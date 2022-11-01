@@ -13,6 +13,10 @@ interface HandleModalsProviderData{
     setIsAdmManager: (props:string)=> void;
     openUpdate: boolean;
     setOpenUpdate: (props:boolean)=>void;
+    openNewProduct: boolean;
+    setOpenNewProduct: (props:boolean)=>void;
+    search: string;
+    setSearch: (props:string)=> void
 }
 
 const HandleModalsContext = createContext<HandleModalsProviderData>({} as HandleModalsProviderData);
@@ -29,7 +33,19 @@ export const HandleModalsProvider = ({children}:HandleModalsProviderProps) => {
     //modal atualização em massa
     const [openUpdate, setOpenUpdate] = useState<boolean>(false);
 
-    return <HandleModalsContext.Provider value={{ openProduct, setOpenProduct, openNewUser, setOpenNewUser, isAdmManager, setIsAdmManager, openUpdate, setOpenUpdate }}>{children}</HandleModalsContext.Provider>
+    //modal para adicionar novo produto
+    const [openNewProduct, setOpenNewProduct] = useState<boolean>(false)
+
+    //controle de State direcionado a pesquisa da navbar para as paginas home e product
+    const [search, setSearch] = useState<string>("")
+
+    return <HandleModalsContext.Provider value={{
+        openProduct, setOpenProduct,
+        openNewUser, setOpenNewUser, isAdmManager, setIsAdmManager,
+        openUpdate, setOpenUpdate,
+        openNewProduct, setOpenNewProduct,
+        search, setSearch,
+    }}>{children}</HandleModalsContext.Provider>
 }
 
 export const useHandleModals = () => useContext(HandleModalsContext)

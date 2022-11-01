@@ -116,4 +116,13 @@ export const InputForm = styled.div`
     font-size: 3vh;
     width: 6.5rem;
   }
+  select{
+    width: 22rem;
+    margin: 0.9rem;
+    font-size: 1.1rem;
+    
+    option{
+      text-align: center;
+    }
+  }
 `;

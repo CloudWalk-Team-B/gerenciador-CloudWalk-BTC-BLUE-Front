@@ -1,3 +1,5 @@
+import { string } from "yup";
+
 export interface User {
   id?: string;
   name: string;
@@ -7,6 +9,13 @@ export interface User {
   cpf: number;
   isAdmin: boolean;
   isManager: boolean;
+  createdAt?: Date;
+  updatedAt?: Date;
+}
+
+export interface Category{
+  id?: string;
+  name:string
   createdAt?: Date;
   updatedAt?: Date;
 }
@@ -38,6 +47,7 @@ export interface RegisterUser {
 }
 
 export interface EditProduct {
+  code: number
   name: string;
   image: string;
   description: string;

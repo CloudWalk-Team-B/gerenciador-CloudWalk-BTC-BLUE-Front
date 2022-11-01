@@ -7,7 +7,7 @@ import ModalUpdate from "../ModalUpdateMany";
 
 const HeaderLogged = (props: any) => {
 
-  const { openUpdate, setOpenUpdate } = useHandleModals();
+  const { openUpdate, setOpenUpdate, search, setSearch } = useHandleModals();
   const user = JSON.parse(localStorage.getItem("user") || "")
 
   const openModal = (open: boolean) => {
@@ -33,13 +33,14 @@ const HeaderLogged = (props: any) => {
             </S.Name>
             <div>
               <p> {user.name.split(' ').slice(0, 1) } |</p>
-              <p className="getOut" onClick={() => {logout()}}>| Sair</p>
+              <p className="getOut" onClick={() => {logout(); setSearch("")}}>| Sair</p>
             </div>
           </S.BoxSoon>
           <S.Search>
             <S.TextSearch
               className="animate__animated animate__jackInTheBox animate__delay-1s"
               type="text"
+              onChange={(e)=> setSearch(e.target.value)}
               placeholder="Procurar..."
             ></S.TextSearch>
           </S.Search>
@@ -50,14 +51,7 @@ const HeaderLogged = (props: any) => {
                 em massa
               </S.TextUpdate>
               <FiPlus color="white" fontSize="1.5em" />
-            </S.Update>
-             <S.Btn to="/">
-              <S.Home/> <S.TextUpdate>Home</S.TextUpdate>
-             </S.Btn>
-             <S.Btn to="/info">
-               <S.Info/> <S.TextUpdate>Sobre</S.TextUpdate>
-              </S.Btn>
-               
+            </S.Update>               
           </S.Nav>
         </S.Content>
         {openModal(openUpdate)}

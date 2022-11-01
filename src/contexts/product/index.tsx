@@ -9,11 +9,14 @@ interface ProductsProviderProps {
 interface ProductsProviderData{
     products: Product[]
     handleGetProduct: ()=> void
+    categories: string[]
 }
 
 const ProductContext = createContext<ProductsProviderData>({} as ProductsProviderData);
 
 export const ProductsProvider = ({children}:ProductsProviderProps) => {
+
+    const categories=["Brinquedos","Petiscos e Ração","Medicina e Saúde","Roupas para Pet","Higiene & Limpeza","Outros"];
     
     const [products, setProducts]= useState<Product[]>([]);
 
@@ -23,7 +26,7 @@ export const ProductsProvider = ({children}:ProductsProviderProps) => {
 
     useEffect(()=>handleGetProduct(),[])
 
-    return <ProductContext.Provider value={{ products, handleGetProduct }}>{children}</ProductContext.Provider>
+    return <ProductContext.Provider value={{ products, handleGetProduct, categories }}>{children}</ProductContext.Provider>
 }
 
 export const useProducts = () => useContext(ProductContext)
