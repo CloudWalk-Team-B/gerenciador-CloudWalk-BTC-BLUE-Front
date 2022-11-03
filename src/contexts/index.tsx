@@ -6,6 +6,7 @@ import { AuthProvider } from "./auth";
 import { HandleModalsProvider } from "./HandleModals";
 import { ProductsProvider } from "./product";
 
+
 interface ProviderProps {
     children: ReactNode;
 }

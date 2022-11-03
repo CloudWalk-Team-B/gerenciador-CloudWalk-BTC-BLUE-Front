@@ -29,8 +29,10 @@ export const Slider = ({children,title}:ICard) => {
                 return(
                 <S.CardSlider key={item.id}> 
                     <S.Img src={item.image}/>
+                    <S.CardPrice>R$ {item.price.toFixed(2)}</S.CardPrice>
+                    <S.CardPromo>{`12x R$${(item.price/12).toFixed(2)} sem juros`}</S.CardPromo>
+                    <S.Delivery>{item.price>20 && "Frete Grátis"}</S.Delivery>
                     <S.CardTitle>{item.name}</S.CardTitle>
-                    <S.CardPrice>R$ {item.price},00</S.CardPrice>
                     </S.CardSlider>
             )})}
         </S.Slider>

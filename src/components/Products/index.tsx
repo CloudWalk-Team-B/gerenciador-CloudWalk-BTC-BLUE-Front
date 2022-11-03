@@ -6,6 +6,7 @@ import Moddal from "../ModalProduct";
 import { useHandleModals } from "../../contexts/HandleModals";
 import { Product, User } from "../../types/interface";
 import ModdalNewProduct from "../ModalNewProduct";
+import { useAuth } from "../../contexts/auth";
 
 const ListProducts = () => {
   Modal.setAppElement("#root");
@@ -31,6 +32,7 @@ const ListProducts = () => {
 
   const [idProduct, setIdProduct] = useState<string>("");
   const { openProduct, setOpenProduct, openNewProduct, setOpenNewProduct, search, setSearch } = useHandleModals();
+  const { isAdm } = useAuth()
 
   const openNewProductModal = (open: boolean) => {
     if (open === true) {
@@ -52,6 +54,7 @@ const ListProducts = () => {
 
   return (
     <>
+      <button onClick={()=>console.log(isAdm)}>botão</button>
       <S.Container>
         <S.ProductsContainer>
         <>

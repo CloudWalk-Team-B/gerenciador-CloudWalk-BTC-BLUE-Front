@@ -33,7 +33,7 @@ const Home = () => {
             <S.Text>
               Frete Grátis
               <br />
-              para todo Brasil
+              acima de R$20,00
             </S.Text>
           </S.Card>
           <S.Card>

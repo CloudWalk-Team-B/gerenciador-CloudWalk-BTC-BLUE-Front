@@ -8,27 +8,31 @@ import CreateAccount from "./Pages/CreateAccount/CreateAccount"
 import { RoutePath } from "./types/routes";
 
 const Router = () => {
-  const { logged } = useAuth();
+  const { logged, isAdm } = useAuth();
 
   return (
     <Routes>
-      {logged ? (
+      {logged===true && isAdm===true? (
         <>{/* ROTAS APENAS LOGADO AQUI!! */}
           <Route path={RoutePath.MANAGEMENT} element={<Products />} />
+          <Route path={RoutePath.ABOUTME} element={<About/>} />
+        </>
+      ) : logged===true && isAdm===false ? (
+        <>
           <Route path={RoutePath.HOMEPAGE} element={<Home />} />
           <Route path={RoutePath.ABOUTME} element={<About/>} />
         </>
-      ) : (
+      ): (
         <>
-          <Route path={RoutePath.CREATEACCOUNT} element={<CreateAccount />} />
-          <Route path={RoutePath.LOGIN} element={<Login />} />
           <Route path={RoutePath.HOMEPAGE} element={<Home />} />
+          <Route path={RoutePath.LOGIN} element={<Login />} />
+          <Route path={RoutePath.CREATEACCOUNT} element={<CreateAccount />} />
           <Route path={RoutePath.ABOUTME} element={<About/>} />
         </>
       )}
       <Route
         path="*"
-        element={<Navigate to={logged ? "/produtos" : "/"} />}
+        element={<Navigate to={ logged===true && isAdm===true? "/produtos" : "/"} />}
       />
       {/* recurso acima para direcionar url fora de padrão */}
     </Routes>
