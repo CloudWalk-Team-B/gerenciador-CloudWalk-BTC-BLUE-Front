@@ -145,6 +145,8 @@ export const Nav = styled.nav`
 export const Button = styled.button`
 cursor: pointer;
 width: 1.6rem;
+margin: 0 1rem;
+margin-right: 2rem;
 height: 100%;
 background-color: #601A4A;
 border: none;

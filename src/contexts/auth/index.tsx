@@ -31,13 +31,12 @@ export const AuthProvider = ({ children }:AuthProviderProps) =>{
 
     const checkTokenExpiration = () =>{
         const user = JSON.parse(localStorage.getItem("user") || "")
-        const token = localStorage.getItem("token")
 
         Api.get(`/user/${user.id}`)
             .then((res)=>{
                 setLogged(true);
                 setIsAdm(res.data.isAdmin)
-                res.data.isAdmin===true?navegate("/produtos"):navegate("/home")
+                res.data.isAdmin&& navegate("/produtos")
             }).catch(()=>{
                 logout();
                 toast.error("Login necessário")
@@ -54,8 +53,7 @@ export const AuthProvider = ({ children }:AuthProviderProps) =>{
         localStorage.setItem("user", JSON.stringify(user))
         setLogged(true);
         user.isAdmin && setIsAdm(true)
-        user.isAdmin===true?navegate("/produtos"):navegate("/home")
-        navegate("/produtos");
+        user.isAdmin===true?navegate("/produtos"):navegate("/");
         toast.success("Login bem sucedido")
     }
 

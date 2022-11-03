@@ -17,6 +17,11 @@ export const UserProvider = ({children}:UserProviderProps) => {
 
     const [ user, setUser ] = useState<any>()
 
+    useEffect(()=>{
+        const token = localStorage.getItem("token");
+        if(token) setUser(JSON.parse(localStorage.getItem("user") || ""));
+    },[])
+
     return <UserContext.Provider value={{ user, setUser }}>{children}</UserContext.Provider>
 }
 

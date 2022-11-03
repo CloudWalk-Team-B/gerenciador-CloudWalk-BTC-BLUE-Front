@@ -54,7 +54,6 @@ const ListProducts = () => {
 
   return (
     <>
-      <button onClick={()=>console.log(isAdm)}>botão</button>
       <S.Container>
         <S.ProductsContainer>
         <>
