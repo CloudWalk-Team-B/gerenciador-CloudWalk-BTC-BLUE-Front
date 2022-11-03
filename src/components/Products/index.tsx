@@ -6,6 +6,7 @@ import Moddal from "../ModalProduct";
 import { useHandleModals } from "../../contexts/HandleModals";
 import { Product, User } from "../../types/interface";
 import ModdalNewProduct from "../ModalNewProduct";
+import { useAuth } from "../../contexts/auth";
 
 const ListProducts = () => {
   Modal.setAppElement("#root");
@@ -22,7 +23,6 @@ const ListProducts = () => {
                   />
           </S.ImageContainer>
           <S.TitleProduct>Adicionar Produto</S.TitleProduct>
-
           </S.CardProduct>
       )
       
@@ -31,6 +31,7 @@ const ListProducts = () => {
 
   const [idProduct, setIdProduct] = useState<string>("");
   const { openProduct, setOpenProduct, openNewProduct, setOpenNewProduct, search, setSearch } = useHandleModals();
+  const { isAdm } = useAuth()
 
   const openNewProductModal = (open: boolean) => {
     if (open === true) {
@@ -70,12 +71,13 @@ const ListProducts = () => {
                 <S.ImageContainer>
                   <S.Image
                     className="animate__animated animate__zoomIn animate__delay-1s"
-
                     src={element.image}
 
                   />
                 </S.ImageContainer>
                 <S.TextContainer className="animate__animated animate__zoomIn animate__delay-1s">
+                <S.PriceProduct>CODE - {element.code}</S.PriceProduct>
+                  <br/>
                   <S.TitleProduct>{element.name}</S.TitleProduct>
                   <br />
                   <S.PriceProduct>R$: {element.price.toFixed(2)}</S.PriceProduct>

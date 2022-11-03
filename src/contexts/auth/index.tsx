@@ -1,5 +1,6 @@
 import { createContext, useContext, ReactNode, useState, useEffect } from "react";
 import toast from "react-hot-toast";
+import { AiOutlineConsoleSql } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import Api from "../../services/api";
 import { User } from "../../types/interface";
@@ -15,6 +16,7 @@ interface LoginParams {
 
 interface AuthProviderData{
     logged: boolean;
+    isAdm: boolean;
     login: (params:LoginParams)=> void;
     logout: ()=> void;
 }
@@ -24,22 +26,17 @@ const AuthContext = createContext<AuthProviderData>({} as AuthProviderData)
 export const AuthProvider = ({ children }:AuthProviderProps) =>{
 
     const navegate= useNavigate()
-    const [logged, setLogged]= useState<boolean>(false);
+    const [logged, setLogged] = useState<boolean>(false);
+    const [ isAdm, setIsAdm ] = useState<boolean>(false)
 
     const checkTokenExpiration = () =>{
         const user = JSON.parse(localStorage.getItem("user") || "")
-        const token = localStorage.getItem("token")
 
-        const headers = {
-            headers: {
-                Authorization:`Bearer ${token}`
-            }
-        }
-
-        Api.get(`/user/${user.id}`, headers)
-            .then(()=>{
+        Api.get(`/user/${user.id}`)
+            .then((res)=>{
                 setLogged(true);
-                navegate("/produtos")
+                setIsAdm(res.data.isAdmin)
+                res.data.isAdmin&& navegate("/produtos")
             }).catch(()=>{
                 logout();
                 toast.error("Login necessário")
@@ -55,18 +52,20 @@ export const AuthProvider = ({ children }:AuthProviderProps) =>{
         localStorage.setItem("token", token)
         localStorage.setItem("user", JSON.stringify(user))
         setLogged(true);
-        navegate("/produtos");
+        user.isAdmin && setIsAdm(true)
+        user.isAdmin===true?navegate("/produtos"):navegate("/");
         toast.success("Login bem sucedido")
     }
 
     const logout = ()=>{
         localStorage.clear();
-        setLogged(false);  
+        setLogged(false);
+        setIsAdm(false) 
         navegate("/");
     }
 
     return(
-        <AuthContext.Provider value = {{logged, login, logout}}>
+        <AuthContext.Provider value = {{ logged, isAdm, login, logout}}>
             {children}
         </AuthContext.Provider>
     )

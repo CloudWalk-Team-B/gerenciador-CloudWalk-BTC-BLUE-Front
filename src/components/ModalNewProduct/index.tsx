@@ -52,6 +52,7 @@ const ModdalNewProduct = () => {
     if(code>=0 && name!=="" && image!=="" && description!=="" && price>0 && category!==""){
     Api.post("/product", data).then(()=>{
       toast.success("Produco cadastrado com sucesso");
+      closeModal()
       handleGetProduct()
     }).catch(()=>{
       toast.error("Erro ao cadastrar produto")
