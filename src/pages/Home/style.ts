@@ -3,7 +3,7 @@ import { FaShippingFast,FaRegCreditCard } from "react-icons/fa";
 import { RiCoupon3Line } from "react-icons/ri";
 
 export const Main = styled.main`
-  width: 100vw;
+  max-width: 100vw;
   height: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -14,7 +14,7 @@ export const Main = styled.main`
   }
 `;
 export const Bars = styled.section`
- width: 100%;
+ max-width: 100vw;
  height: 4rem;
  border-bottom: solid 1.3px  #601c4A; 
  display: flex;

@@ -52,6 +52,7 @@ export const PriceProduct = styled.span`
 
 export const Image = styled.img`
   height: 100%;
+  border-radius: 2rem;
 `;
 export const TextContainer = styled.div`
   width: 50%;

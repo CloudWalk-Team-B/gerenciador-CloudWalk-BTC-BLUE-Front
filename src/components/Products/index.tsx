@@ -72,7 +72,6 @@ const ListProducts = () => {
                 <S.ImageContainer>
                   <S.Image
                     className="animate__animated animate__zoomIn animate__delay-1s"
-
                     src={element.image}
 
                   />

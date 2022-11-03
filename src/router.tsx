@@ -6,6 +6,7 @@ import Login from "./pages/Login/Login";
 import Products from "./pages/Products/Products";
 import CreateAccount from "./Pages/CreateAccount/CreateAccount"
 import { RoutePath } from "./types/routes";
+import ProductDetail from "./Pages/ProductDetail/ProductDetail";
 
 const Router = () => {
   const { logged, isAdm } = useAuth();
@@ -21,6 +22,7 @@ const Router = () => {
         <>
           <Route path={RoutePath.HOMEPAGE} element={<Home />} />
           <Route path={RoutePath.ABOUTME} element={<About/>} />
+          <Route path={RoutePath.PRODUCTDETAIL} element={<ProductDetail/>} />
         </>
       ): (
         <>
@@ -28,6 +30,7 @@ const Router = () => {
           <Route path={RoutePath.LOGIN} element={<Login />} />
           <Route path={RoutePath.CREATEACCOUNT} element={<CreateAccount />} />
           <Route path={RoutePath.ABOUTME} element={<About/>} />
+          <Route path={RoutePath.PRODUCTDETAIL} element={<ProductDetail/>} />
         </>
       )}
       <Route
