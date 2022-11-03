@@ -8,7 +8,7 @@ import "animate.css";
 export const Content = styled.div`
   ${({ theme }) => css`
     background-color: ${theme.colors.primaryColor};
-    width: 100vw;
+    max-width: 100vw;
     height: 13vh;
     display: flex;
     justify-content: space-between;
@@ -68,13 +68,13 @@ export const TextSearch = styled.input`
   ${({ theme }) => css`
     font-family: ${theme.constants.bodyFontFamily};
     background-color: white;
-    height: 4vh;
+    height: 2.5vh;
     width: 30vw;
     color: ${theme.colors.primaryColor};
     border: none;
     border-radius: 50px;
     outline: 0;
-    padding: 10px;
+    padding: 10px 30px;
     font-size: 1em;
   `}
 `;

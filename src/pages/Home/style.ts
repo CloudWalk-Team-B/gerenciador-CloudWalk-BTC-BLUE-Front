@@ -14,13 +14,12 @@ export const Main = styled.main`
   }
 `;
 export const Bars = styled.section`
- max-width: 100vw;
- height: 4rem;
+ width: 100vw;
+ height: 5rem;
  border-bottom: solid 1.3px  #601c4A; 
  display: flex;
  justify-content: space-around;
  align-items: center;
- 
 `;
 export const Card = styled.div`
 display: flex;
