@@ -12,39 +12,8 @@ export const Main = styled.main`
   @media (max-width: 678px) {
     width: 100vw;
   }
-`;
-export const Bars = styled.section`
- width: 100vw;
- height: 5rem;
- border-bottom: solid 1.3px  #601c4A; 
- display: flex;
- justify-content: space-around;
- align-items: center;
-`;
-export const Card = styled.div`
-display: flex;
-justify-content: center;
-align-items: center;
-`;
-export const Frete = styled(FaShippingFast)`
-width: 3rem;
-height: 3rem;
-color: #601c4A;
-margin: 0.2rem;
-`
-export const CreditCard = styled(FaRegCreditCard)`
-width: 3rem;
-height: 3rem;
-color: #601c4A;
-margin: 0.2rem;
-`;
-export const Coupon = styled(RiCoupon3Line)`
-width: 3rem;
-height: 3rem;
-color: #601c4A;
-margin: 0.2rem;
-`;
-export const Text = styled.p`
-color:#601c4A;
-margin: 0.2rem;
+
+  p{
+    margin-top: 1rem;
+  }
 `;

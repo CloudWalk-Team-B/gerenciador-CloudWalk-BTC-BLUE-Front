@@ -11,27 +11,28 @@ const Home = () => {
   const { products, categories } = useProducts()
   const { search, setSearch} = useHandleModals()
 
-  const filteresProducts:Product[] = search.length>0?
+  const filteredProducts:Product[] = search.length>0?
      products.filter(element => element.name.toUpperCase().includes(search.toUpperCase())):
      products;
 
-  const Toys = filteresProducts.filter((value) => value.category==="Brinquedos");
-  const Racao = filteresProducts.filter((value) => value.category==="Petiscos e Ração");
-  const Medicina = filteresProducts.filter((value) => value.category==="Medicina e Saúde");
-  const Clothes = filteresProducts.filter((value) => value.category==="Roupas para Pet");
-  const Higiene = filteresProducts.filter((value) => value.category==="Higiene & Limpeza");
-  const Others = filteresProducts.filter((value) => value.category==="Outros");
+  const Toys = filteredProducts.filter((value) => value.category==="Brinquedos");
+  const Racao = filteredProducts.filter((value) => value.category==="Petiscos e Ração");
+  const Medicina = filteredProducts.filter((value) => value.category==="Medicina e Saúde");
+  const Clothes = filteredProducts.filter((value) => value.category==="Roupas para Pet");
+  const Higiene = filteredProducts.filter((value) => value.category==="Higiene & Limpeza");
+  const Others = filteredProducts.filter((value) => value.category==="Outros");
   return (
     <>
       <Navbar />
       <S.Main>
         <SubNavbar/>
-        <Slider title="Brinquedos" children={Toys} />
-        <Slider title="Petiscos e Ração" children={Racao} />
-        <Slider title="Medicina e Saúde" children={Medicina} />
-        <Slider title="Roupas para Pet" children={Clothes}></Slider>
-        <Slider title="Higiene & Limpeza" children={Higiene}></Slider>
-        <Slider title="Outros" children={Others}></Slider>
+        {filteredProducts.length===0 && <p>Buscando...</p>}
+        {Toys.length!==0? <Slider title="Brinquedos" children={Toys} />:<></>}
+        {Racao.length!==0? <Slider title="Petiscos e Ração" children={Racao} />:<></>}
+        {Medicina.length!==0? <Slider title="Medicina e Saúde" children={Medicina} />:<></>}
+        {Clothes.length!==0? <Slider title="Roupas para Pet" children={Clothes}></Slider>:<></>}
+        {Higiene.length!==0? <Slider title="Higiene & Limpeza" children={Higiene}></Slider>:<></>}
+        {Others.length!==0? <Slider title="Outros" children={Others}></Slider>:<></>}
       </S.Main>
     </>
   );
