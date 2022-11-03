@@ -5,7 +5,6 @@ export const Container = styled.div`
 `;
 
 export const ProductsContainer = styled.div`
-  /* border: 1px solid black; */
   height: 87vh;
   width: 95%;
   margin-top: 20px;
@@ -19,12 +18,11 @@ export const CardProduct = styled.div`
     margin: 10px;
     background-color: ${theme.colors.primaryColor};
     border-radius: 20px;
-    height: 20%;
-    width: 25%;
+    height: 23vh;
+    width: 27rem;
     padding: 10px;
     color: white;
     display: flex;
-    justify-content: space-around;
     transition: all 0.5s;
     :hover {
       box-shadow: 5px 10px 8px ${theme.colors.primaryColorOpacity};
@@ -42,7 +40,11 @@ export const ImageContainer = styled.div`
   justify-content: center;
 `;
 export const TitleProduct = styled.span`
-  font-size: 1.5em;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3em;
   text-align: center;
 `;
 export const PriceProduct = styled.span`
@@ -53,10 +55,15 @@ export const PriceProduct = styled.span`
 export const Image = styled.img`
   height: 100%;
   border-radius: 2rem;
+  padding: 0.2rem;
+  box-sizing: border-box;
 `;
 export const TextContainer = styled.div`
+  padding: 0 0.2rem;
+  box-sizing: border-box;
   width: 50%;
   height: 100%;
   display: flex;
+  justify-content: center;
   flex-direction: column;
 `;

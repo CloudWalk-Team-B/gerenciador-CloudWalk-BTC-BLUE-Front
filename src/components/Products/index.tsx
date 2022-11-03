@@ -23,7 +23,6 @@ const ListProducts = () => {
                   />
           </S.ImageContainer>
           <S.TitleProduct>Adicionar Produto</S.TitleProduct>
-
           </S.CardProduct>
       )
       
@@ -77,6 +76,8 @@ const ListProducts = () => {
                   />
                 </S.ImageContainer>
                 <S.TextContainer className="animate__animated animate__zoomIn animate__delay-1s">
+                <S.PriceProduct>CODE - {element.code}</S.PriceProduct>
+                  <br/>
                   <S.TitleProduct>{element.name}</S.TitleProduct>
                   <br />
                   <S.PriceProduct>R$: {element.price.toFixed(2)}</S.PriceProduct>

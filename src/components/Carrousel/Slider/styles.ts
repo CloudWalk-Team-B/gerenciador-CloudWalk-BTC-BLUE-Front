@@ -36,7 +36,7 @@ min-height: 11rem;
 `;
 
 export const CardSlider = styled(SwiperSlide)`
-min-width:13rem;
+max-width:16.5vw;
 height: 23rem;
 background-color: tranparent;
 display: flex;
