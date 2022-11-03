@@ -12,9 +12,16 @@ import { useUser } from '../../contexts/User';
 export const Navbar = () => {
   
   const { isAdm, logged, logout } = useAuth()
-  const { setSearch} = useHandleModals()
+  const { search, setSearch} = useHandleModals()
+  const [ currentSearch, setCurrentSearch ] = useState<string>("")
   const navegate = useNavigate()
   const { user } = useUser()
+
+
+  const handleSearch = () => {
+    navegate("/")
+    setSearch(currentSearch)
+  }
 
   return (
     <>
@@ -41,9 +48,10 @@ export const Navbar = () => {
             <S.TextSearch
               className="animate__animated animate__jackInTheBox animate__delay-1s"
               type="text"
-              onChange={(e)=> setSearch(e.target.value)}
-              placeholder="Procurar..."
+              onChange={(e)=> setCurrentSearch(e.target.value)}
+              placeholder={search===""?"Procurar...":search}
             ></S.TextSearch>
+            <S.SearchIcon onClick={()=>handleSearch()}/>{" "}
           </S.Search>
           <S.Nav>
              <S.Btn to="/info">

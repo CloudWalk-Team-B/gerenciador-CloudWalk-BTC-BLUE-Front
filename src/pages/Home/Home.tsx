@@ -1,12 +1,10 @@
 import * as S from "../Home/style";
 import { Navbar } from "../../components/Navbar";
 import { Slider } from "../../components/Carrousel/Slider/Slider";
-import { useEffect, useState } from "react";
 import { Product } from "../../types/interface";
-import Api from "../../services/api";
-import { useAuth } from "../../contexts/auth";
 import { useProducts } from "../../contexts/product";
 import { useHandleModals } from "../../contexts/HandleModals";
+import { SubNavbar } from "../../components/ModalSubNavBar";
 
 const Home = () => {
 
@@ -27,30 +25,7 @@ const Home = () => {
     <>
       <Navbar />
       <S.Main>
-        <S.Bars>
-          <S.Card>
-            <S.Frete />{" "}
-            <S.Text>
-              Frete Grátis
-              <br />
-              acima de R$20,00
-            </S.Text>
-          </S.Card>
-          <S.Card>
-            <S.CreditCard />{" "}
-            <S.Text>
-              Até 12x
-              <br />
-              sem juros
-            </S.Text>
-          </S.Card>
-          <S.Card>
-            <S.Coupon />{" "}
-            <S.Text >
-              Cupom de até <br /> 30% de desconto
-            </S.Text>
-          </S.Card>
-        </S.Bars>
+        <SubNavbar/>
         <Slider title="Brinquedos" children={Toys} />
         <Slider title="Petiscos e Ração" children={Racao} />
         <Slider title="Medicina e Saúde" children={Medicina} />

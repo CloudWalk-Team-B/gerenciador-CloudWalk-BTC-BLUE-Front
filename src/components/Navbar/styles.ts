@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 import { BsBagPlusFill } from "react-icons/bs";
 import { FcAbout } from "react-icons/fc";
 import { FaUserPlus,FaUser,FaUserCircle } from "react-icons/fa";
+import { BiSearch } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import "animate.css";
 
@@ -151,6 +152,15 @@ height: 100%;
 background-color: #601A4A;
 border: none;
 color: white;
+`
+
+export const SearchIcon = styled(BiSearch)`
+width: 2rem;
+height: 2rem;
+color: #601c4A;
+margin-left: -2.5rem;
+z-index: 1;
+cursor:pointer;
 `
 
 
