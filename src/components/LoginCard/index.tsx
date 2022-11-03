@@ -8,6 +8,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useAuth } from "../../contexts/auth";
 import Api from "../../services/api";
 import { useNavigate } from "react-router-dom";
+import { useUser } from "../../contexts/User";
 
 interface LoginData {
   email: string;
@@ -29,6 +30,7 @@ const loginSchema = yup.object().shape({
 });
 
 const LoginCard = () => {
+  const { setUser } = useUser()
   const {
     register,
     handleSubmit,
@@ -42,6 +44,7 @@ const LoginCard = () => {
       return Api.post("/auth", data)
         .then((res) => {
           login({ token: res.data.token, user: res.data.user });
+          setUser(res.data.user)
         })
         .catch(() => toast.error("Senha ou email inválidos"));
     } else {

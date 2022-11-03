@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useHandleModals } from '../../contexts/HandleModals';
 import { useAuth } from '../../contexts/auth';
 import { User } from '../../types/interface';
+import { useUser } from '../../contexts/User';
 
 
 export const Navbar = () => {
@@ -13,6 +14,7 @@ export const Navbar = () => {
   const { isAdm, logged, logout } = useAuth()
   const { setSearch} = useHandleModals()
   const navegate = useNavigate()
+  const { user } = useUser()
 
   return (
     <>
@@ -29,7 +31,7 @@ export const Navbar = () => {
             {
               logged && 
               <div>
-                {/* <p>{user.name.split(' ').slice(0, 1)} |</p> */}
+                <p>{user.name.split(' ').slice(0, 1)} |</p>
                 <p className="getOut" onClick={() => {logout(); setSearch("")}}>| Sair</p>
               </div>
             }
@@ -45,11 +47,11 @@ export const Navbar = () => {
           </S.Search>
           <S.Nav>
              <S.Btn to="/info">
-               <S.Info/> 
+               <S.Info/>Sobre nós 
               </S.Btn>
-               <S.Btn to="/">
-                <S.Bag/>
-              </S.Btn>
+               {logged&& <S.Btn to="/">
+                <S.Bag/>Sacola
+              </S.Btn>}
            {!logged && <S.Button onClick={()=>{navegate("/Login");setSearch("")}}><S.BtnUser/>Entrar</S.Button>}
           </S.Nav>
         </S.Content>

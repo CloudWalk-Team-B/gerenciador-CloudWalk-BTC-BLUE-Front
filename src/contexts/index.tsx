@@ -5,6 +5,7 @@ import theme from "../assets/styles/theme";
 import { AuthProvider } from "./auth";
 import { HandleModalsProvider } from "./HandleModals";
 import { ProductsProvider } from "./product";
+import { UserProvider } from "./User";
 
 
 interface ProviderProps {
@@ -18,7 +19,9 @@ const Providers = ({ children }: ProviderProps) => {
         <HandleModalsProvider>
         <AuthProvider>
         <ProductsProvider>
+        <UserProvider>
               {children}
+        </UserProvider>
         </ProductsProvider>
         </AuthProvider>
         </HandleModalsProvider>
