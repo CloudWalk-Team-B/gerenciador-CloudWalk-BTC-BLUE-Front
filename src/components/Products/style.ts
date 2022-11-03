@@ -39,6 +39,7 @@ export const ImageContainer = styled.div`
   display: flex;
   justify-content: center;
 `;
+
 export const TitleProduct = styled.span`
   width: 100%;
   display: flex;
@@ -50,7 +51,7 @@ export const TitleProduct = styled.span`
 export const PriceProduct = styled.span`
   font-size: 1.2em;
   text-align: center;
-`;
+  `;
 
 export const Image = styled.img`
   height: 100%;
