@@ -43,7 +43,7 @@ display: flex;
 flex-direction: column;
 justify-content: center ;
 align-items: center;
-/* background-color: #f9f4ec; */
+border-radius: 5px;
 border: 2px solid #f9f4ec;
 cursor: pointer;
 `;

@@ -15,14 +15,16 @@ section{
     min-height: 65vh;
     display: flex;
     flex-direction: column;
+    padding: 2rem;
+    box-sizing: border-box;
+    min-width: 55vw;
     max-width: 55vw;
-    justify-content: center;
     align-items: center;
     border: 2px solid #f9f4ec;
+    border-radius: 5px;
     margin-top: 3rem;
 
     .details{
-      margin-top: 0;
       width: 100%;
       display: flex;
       flex-direction: row;
@@ -31,15 +33,15 @@ section{
 
       img{
         height: 40vh;
-        margin-left: 15%;
+        margin-left: 6.5vw;
       }
 
       div{
-        margin-right: 2%;
         top: 2%;
-        border: 1px solid #f9f4ec;
+        border: 2px solid #f9f4ec;
+        border-radius: 5px;
         width: 30%;
-        height: 40vh;
+        height: 45vh;
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
@@ -47,9 +49,49 @@ section{
         box-sizing: border-box;
 
         h1{
-          color: blue;
+          margin: 0;
+          margin-bottom: 1rem;
+        }
+
+        p{
+          margin: 0.5rem;
+        }
+
+        .price{
+          font-size: 2rem;
+        }
+
+        .offer{
+          color: #14ad5d;
+        }
+
+        .inventory{
+          background-color: #63acbe50;
+          font-size: .9rem;
+          text-align: center;
+          margin-top: 1rem;
+        }
+
+        .buy{
+          background-color: #63acbe;
+          height: 1.5rem;
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          text-align: center;
+          border-radius: 3px;
+          color: white;
+          cursor: pointer;
         }
       }
+    }
+    .description{
+      margin-top: .5rem;
+      border-top: 2px solid #f9f4ec;
+      width: 100%;
+      background-color: #f9f4ec93;
+      padding: 0 0.5rem;
+
     }
 }
 

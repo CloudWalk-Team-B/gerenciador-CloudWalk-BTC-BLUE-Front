@@ -30,8 +30,9 @@ export const Navbar = () => {
             <S.Soon
               className="animate__animated animate__slideInLeft animate__delay-1s"
               src={Logo}
+              onClick={()=>navegate("/")}
             />
-            <S.Name className="animate__animated animate__bounceIn animate__delay-1s	">
+            <S.Name className="animate__animated animate__bounceIn animate__delay-1s	" onClick={()=>navegate("/")}>
               Capivara <br />
               Shop
             </S.Name>
