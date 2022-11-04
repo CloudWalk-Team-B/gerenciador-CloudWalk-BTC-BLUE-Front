@@ -22,13 +22,11 @@ const loginSchema = yup.object().shape({
     .string()
     .email("Formato de email inválido")
     .required("Email obrigatório"),
-  password: yup
-    .string()
-    .min(8, "Sua senha tem no mínimo 8 caracteres")
-    .matches(
-      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#!:;/\|.()])[0-9a-zA-Z$*&@#!:;/\|.()]{8,}$/,
-      "A senha deve conter um caracter especial, um número e ao menos uma letra maiúscula"
-    ),
+  password: yup.string().min(8, "Sua senha tem no mínimo 8 caracteres"),
+  // .matches(
+  //   /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#!:;/\|.()])[0-9a-zA-Z$*&@#!:;/\|.()]{8,}$/,
+  //   "A senha deve conter um caracter especial, um número e ao menos uma letra maiúscula"
+  // ),
 });
 
 const LoginCard = () => {
