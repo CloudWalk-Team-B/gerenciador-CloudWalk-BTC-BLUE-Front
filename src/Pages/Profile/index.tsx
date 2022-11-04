@@ -90,7 +90,7 @@ const Profilee = () => {
       </S.InfoProfile>
       <S.ButtonEditProfiles>
         <button onClick={editPassword}>Alterar senha</button>
-        <button>Alterar Perfil</button>
+        {/* <button>Alterar Perfil</button> */}
       </S.ButtonEditProfiles>
     </S.Container>
   );
