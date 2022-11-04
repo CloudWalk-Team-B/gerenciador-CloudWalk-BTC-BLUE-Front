@@ -25,7 +25,6 @@ const Router = () => {
           <Route path={RoutePath.HOMEPAGE} element={<Home />} />
           <Route path={RoutePath.ABOUTME} element={<About />} />
           <Route path={RoutePath.PRODUCTDETAIL} element={<ProductDetail />} />
-
           <Route path={RoutePath.PROFILE} element={<Profilee />} />
         </>
       ) : (
@@ -35,11 +34,10 @@ const Router = () => {
           <Route path={RoutePath.CREATEACCOUNT} element={<CreateAccount />} />
           <Route path={RoutePath.ABOUTME} element={<About />} />
           <Route path={RoutePath.PRODUCTDETAIL} element={<ProductDetail />} />
-
           <Route path={RoutePath.PROFILE} element={<Profilee />} />
         </>
       )}
-      {/* <Route path="*" element={<Navigate to={isAdm ? "/produtos" : "/"} />} /> */}
+      <Route path="*" element={<Navigate to={isAdm ? "/produtos" : "/"} />} />
       {/* recurso acima para direcionar url fora de padrão */}
     </Routes>
   );
