@@ -23,7 +23,7 @@ export const CardProduct = styled.div`
     padding: 10px;
     color: white;
     display: flex;
-    transition: all 0.5s;
+    transition: all 0.3s;
     :hover {
       box-shadow: 5px 10px 8px ${theme.colors.primaryColorOpacity};
       cursor: pointer;
@@ -51,7 +51,7 @@ export const TitleProduct = styled.span`
 export const PriceProduct = styled.span`
   font-size: 1.2em;
   text-align: center;
-  `;
+`;
 
 export const Image = styled.img`
   height: 100%;

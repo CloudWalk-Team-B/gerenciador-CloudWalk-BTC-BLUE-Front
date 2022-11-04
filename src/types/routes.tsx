@@ -4,5 +4,6 @@ export enum RoutePath {
   MANAGEMENT = "/produtos",
   LOGIN = "/login",
   CREATEACCOUNT = "/cadastro",
-  PRODUCTDETAIL = "/product"
+  PRODUCTDETAIL = "/product",
+  PROFILE = "/usuario",
 }
