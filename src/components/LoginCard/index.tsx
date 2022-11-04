@@ -73,6 +73,7 @@ const LoginCard = () => {
       },
       showCancelButton: true,
       confirmButtonText: "Enviar",
+      color: "#601A4A",
       showLoaderOnConfirm: true,
       preConfirm: (email) => {
         return (
