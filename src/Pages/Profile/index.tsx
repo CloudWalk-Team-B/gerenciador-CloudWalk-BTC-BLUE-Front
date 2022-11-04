@@ -37,10 +37,11 @@ const Profilee = () => {
 
     Swal.fire({
       title: "Insira sua nova senha:",
-      input: "text",
+      input: "password",
       inputAttributes: {
         autocapitalize: "off",
       },
+      color: "#601A4A",
       showCancelButton: true,
       confirmButtonText: "Alterar",
       showLoaderOnConfirm: true,
