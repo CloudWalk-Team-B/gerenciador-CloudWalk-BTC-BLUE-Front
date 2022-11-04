@@ -13,9 +13,9 @@ export interface User {
   updatedAt?: Date;
 }
 
-export interface Category{
+export interface Category {
   id?: string;
-  name:string
+  name: string;
   createdAt?: Date;
   updatedAt?: Date;
 }
@@ -47,11 +47,15 @@ export interface RegisterUser {
 }
 
 export interface EditProduct {
-  code: number
+  code: number;
   name: string;
   image: string;
   description: string;
   category: string;
   price: number;
   inventory: boolean;
+}
+
+export interface EditPassword {
+  email: string;
 }
