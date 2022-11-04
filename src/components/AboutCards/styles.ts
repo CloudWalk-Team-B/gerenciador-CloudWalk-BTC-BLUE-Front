@@ -6,23 +6,24 @@ import { SiNestjs, SiTypescript, SiStyledcomponents, SiPostgresql, SiVercel } fr
 
 
 export const Content = styled.section`
-width: 90%;
-height: 15rem
+width: 75%;
+height: 15vh;
 display: flex;
+padding: 0;
+box-sizing: border-box;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-margin-top: 5rem;
+margin-top: 0.2rem;
 `;
 export const Container = styled.div`
 width: 90%;
 display: flex;
 justify-content: center;
-align-items: center
-margin: 4rem;
+align-items: center;
 `;
 export const Title = styled.h2`
-font-size: 1em;
+font-size: 1.1em;
 margin: 0.3rem;
 color: #CCCCCC;
 @media(max-width: 768px) {
@@ -42,11 +43,11 @@ padding-top: 2rem;
 `;
 export const Img = styled.img`
 width: 5rem;
-heigth: 5rem;
+height: 5rem;
 `;
 export const SubTitle = styled.h3`
 font-size: 0.8em;
-margin: 0;
+margin-top: -0.5rem;
 color: #CCCCCC;
 @media(max-width: 768px) {
     font-size: 0.6em;  
@@ -54,31 +55,50 @@ color: #CCCCCC;
 }
 `;
 export const CardText = styled.details`
+padding: 0 .5rem;
 margin:0;
+margin-top: -1rem;
 text-align: center;
-font-size: 0.7em;
+font-size: .8em;
 position: relative;
 color: #FFF;
+cursor: pointer;
 @media(max-width: 768px) {
     display: none;
 }
 
 `;
 export const Desc = styled.p`
-margin: 2rem;
 text-align: center;
-font-size: 0.9em;
+font-size: 1em;
 position: relative;
 color: #601A4A;
+margin: 0;
 `;
 export const CardContainer = styled.section`
-width: 90%;
-height: 100vh;
+width: 75%;
+height: 45vh;
 display: flex;
 flex-wrap: wrap;
+flex-direction: column;
 justify-content: space-evenly;
 align-items: center;
-margin-bottom:2rem;
+border-radius: 0.5rem;
+box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+@media(max-width: 768px) {
+    width: 100%;
+    box-shadow:none;
+}
+`;
+export const SecondCardContainer = styled.section`
+width: 75%;
+height: 15vh;
+margin-top: 1rem;
+display: flex;
+flex-wrap: wrap;
+flex-direction: column;
+justify-content: space-evenly;
+align-items: center;
 border-radius: 0.5rem;
 box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
 @media(max-width: 768px) {
@@ -87,13 +107,17 @@ box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0
 }
 `;
 export const Card = styled.section`
-max-width:19rem;
-max-height:11rem;
+width:45%;
+height: 19.5vh;
 display: flex;
 align-items: center;
 background-color: #601A4A;
 border-radius: 0.5rem;
-margin: 0;
+margin: 0 1rem;
+transition: all .5s;
+&:hover{
+    box-shadow: 0px 0px 32px 0px rgba(245,231,81,1);
+}
 @media(max-width: 768px) {
     max-width:11rem;
     max-height:10.5rem;
@@ -106,23 +130,23 @@ margin: 0;
   }
 `;
 export const CardImg = styled.img`
-width: 7rem;
-height:7rem;
-padding-left: 0.7rem;
+height:17vh;
+margin-left: 4%;
 @media(max-width: 768px) {
     width: 100%;
     height:6rem; 
     padding: 0;
     border-radius: 0.2rem;
 }
+border-radius: 3px;
 `;
 export const CardDetails = styled.section`
-width: 9rem;
+width: 70%;
+border-right: 1px solid white;
 height: 100%;
 display: flex;
-padding: 1rem;
 flex-direction: column;
-justify-content: center;
+justify-content: space-evenly;
 align-items: center;
 @media(max-width: 768px) {
     width: 100%;
@@ -130,26 +154,26 @@ align-items: center;
 }
 `;
 export const BtnGit = styled(AiOutlineGithub)`
-width: 1.5rem;
-height:1.5rem;
+width: 2rem;
+height: 2rem;
 color: #FFF;
 margin-left: 0.2rem;
 padding: 0.5rem;
 & :hover{
-    color: black;
-    transform: scale(1);
+    color: gold;
+    transform: scale(1.05);
 } 
 `;
 export const BtnIn = styled(AiFillLinkedin)`
-width: 1.5rem;
-height:1.5rem;
+width: 2rem;
+height: 2rem;
 color: #FFF;
 margin-right: 0.2rem;
 padding: 0.5rem;
 
 & :hover{
-    color: black;
-    transform: scale(1);
+    color: gold;
+    transform: scale(1.05);
 } 
 @media(max-width: 768px) {
     margin: 0;
@@ -163,8 +187,8 @@ display: flex;
 export const Btn = styled.a`
 `;
 export const CardSkill = styled.section`
-width: 10rem;
-height: 10rem;
+width: 5rem;
+height: 5rem;
 border: solid 1px  #601A4A;
 border-radius: 0.8rem;
 display: flex;
@@ -178,69 +202,43 @@ margin: 2rem;
 export const Freact = styled(FaReact)`
 width: 2.5rem;
 height:2.5rem;
-color: #601A4A;
+color: #5ed3f3;
 margin: 1rem;
-& :hover{
-    color: blue;
-} 
 `;
 export const Fnode = styled(FaNodeJs)`
 width: 2.5rem;
 height:2.5rem;
-color: #601A4A;
+color: #4d973b;
 margin: 1rem;
-& :hover{
-    color: blue;
-    transform: scale(1);
-    
-} 
+
 `;
 export const Stypescript = styled(SiTypescript)`
 width: 2.5rem;
 height:2.5rem;
-color: #601A4A;
-margin: 1rem;
-& :hover{
-    color: blue;
-    transform: scale(1);
-} 
+color: gold;
+margin: 1rem; 
 `;
 export const Snest = styled(SiNestjs)`
 width: 2.5rem;
 height:2.5rem;
-color: #601A4A;
+color: red;
 margin: 1rem;
-& :hover{
-    color: blue;
-    transform: scale(1);
-} `;
+`;
 export const Sstyled = styled(SiStyledcomponents)`
 width: 2.5rem;
 height:2.5rem;
-color: #601A4A;
-margin: 1rem;
-& :hover{
-    color: blue;
-    transform: scale(1);
-} 
+color: #c162b0;
+margin: 1rem; 
 `;
 export const Spostgres = styled(SiPostgresql)`
 width: 2.5rem;
 height:2.5rem;
-color: #601A4A;
-margin: 1rem;
-& :hover{
-    color: blue;
-    transform: scale(1);
-} 
+color: #31648c;
+margin: 1rem; 
 `;
 export const Svercel = styled(SiVercel)`
 width: 2.5rem;
 height:2.5rem;
-color: #601A4A;
-margin: 1rem;
-& :hover{
-    color: blue;
-    transform: scale(1);
-} 
+color: #292e3c;
+margin: 1rem; 
 `;

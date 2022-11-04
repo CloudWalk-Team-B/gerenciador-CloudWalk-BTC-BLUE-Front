@@ -1,7 +1,7 @@
 import * as S from "./styles";
 export const Skills = () => {
     return(
-        <S.CardContainer>
+        <S.SecondCardContainer>
             <S.CardSkill>
                <S.Freact/>
             </S.CardSkill>
@@ -23,6 +23,6 @@ export const Skills = () => {
             <S.CardSkill>
                <S.Svercel/>
             </S.CardSkill>
-        </S.CardContainer>
+        </S.SecondCardContainer>
     )
 };
