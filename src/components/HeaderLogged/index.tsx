@@ -65,7 +65,7 @@ const HeaderLogged = (props: any) => {
               </S.TextUpdate>
               <FiPlus color="white" fontSize="1.5em" />
             </S.Update>
-            <span onClick={() => navigate("/usuario")}>Teste</span>
+            <span onClick={() => navigate("/usuario")}>Perfil</span>
           </S.Nav>
         </S.Content>
         {openModal(openUpdate)}
