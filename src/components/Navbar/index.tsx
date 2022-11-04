@@ -7,17 +7,21 @@ import { useHandleModals } from '../../contexts/HandleModals';
 import { useAuth } from '../../contexts/auth';
 import { User } from '../../types/interface';
 import { useUser } from '../../contexts/User';
+import { Badge, Drawer } from '@mui/material';
+import Cart from '../Cart';
+import { useCart } from '../../contexts/Cart/useCart';
 
 
 export const Navbar = () => {
-  
+  const [cartOpen, setCartOpen] = useState(false);
   const { isAdm, logged, logout } = useAuth()
   const { search, setSearch} = useHandleModals()
   const [ currentSearch, setCurrentSearch ] = useState<string>("")
   const navegate = useNavigate()
   const { user } = useUser()
+ const {itemCount } = useCart()
 
-
+ 
   const handleSearch = () => {
     navegate("/")
     setSearch(currentSearch)
@@ -58,9 +62,16 @@ export const Navbar = () => {
              <S.Btn to="/info">
                <S.Info/>Sobre nós 
               </S.Btn>
-               {logged&& <S.Btn to="/">
-                <S.Bag/>Sacola
-              </S.Btn>}
+              <Drawer anchor='right' open={cartOpen} onClose={() => setCartOpen(false)}>
+                <Cart />
+              </Drawer>
+              
+               {logged&& <S.ButtonBag onClick={() => setCartOpen(true)} >
+               <Badge badgeContent={itemCount} color="primary">
+                <S.Bag >{""}</S.Bag>
+               </Badge>
+               Sacola
+              </S.ButtonBag>}
            {!logged && <S.Button onClick={()=>{navegate("/Login");setSearch("")}}><S.BtnUser/>Entrar</S.Button>}
           </S.Nav>
         </S.Content>

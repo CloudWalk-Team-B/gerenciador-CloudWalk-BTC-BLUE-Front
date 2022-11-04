@@ -112,6 +112,20 @@ export const Bag = styled(BsBagPlusFill)`
   height: 2.5rem;
   margin: 0;
 `;
+export const ButtonBag = styled.div`
+width: 4.5rem;
+height: 100%;
+text-decoration: none;
+color: rgba(255, 255, 255, 0.8);
+margin: 1rem;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+:hover{
+  color: rgba(255, 255, 255, 0.8);
+}
+`;
 export const Btn = styled(Link)`
 width: 4.5rem;
 height: 100%;
