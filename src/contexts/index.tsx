@@ -3,6 +3,7 @@ import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import theme from "../assets/styles/theme";
 import { AuthProvider } from "./auth";
+import { CartProvider } from "./Cart/useCart";
 import { HandleModalsProvider } from "./HandleModals";
 import { ProductsProvider } from "./product";
 import { UserProvider } from "./User";
@@ -18,11 +19,13 @@ const Providers = ({ children }: ProviderProps) => {
       <ThemeProvider theme={theme}>
         <HandleModalsProvider>
         <AuthProvider>
+          <CartProvider>
         <ProductsProvider>
         <UserProvider>
               {children}
         </UserProvider>
         </ProductsProvider>
+        </CartProvider>
         </AuthProvider>
         </HandleModalsProvider>
       </ThemeProvider>

@@ -3,17 +3,18 @@ import { useNavigate } from "react-router-dom"
 import { SubNavbar } from "../../components/ModalSubNavBar"
 import { Navbar } from "../../components/Navbar"
 import { useAuth } from "../../contexts/auth"
+import { useCart } from "../../contexts/Cart/useCart"
 import { Product } from "../../types/interface"
 import * as S from "./style"
 
 const ProductDetail = () =>{
-
+    const {addProduct} =useCart()
     const product:Product = (JSON.parse(localStorage.getItem("currentProduct") || ""));
     const { logged } = useAuth()
     const navegate = useNavigate()
 
-    const handleClick = () =>{
-        logged? toast.success("Recurso em desenvolvimento"):toast.error("Login necessário")
+    const handleClick = (id:string) =>{
+        logged? addProduct(id):toast.error("Login necessário")
     }
 
     return(
@@ -31,7 +32,7 @@ const ProductDetail = () =>{
                             <p className="offer">{product.price>20&& "Frete grátis"}</p>
                             <p className="inventory">{product.inventory? "Estoque disponível":"Produto em falta"}</p>
                             <p className="buy" onClick={()=>toast.success("Recurso em desenvolvimento")}>Comprar Agora</p>
-                            <p className="buy" onClick={()=>handleClick()}>Adicionar ao carrinho</p>
+                            <p className="buy" onClick={()=>handleClick(product.id)}>Adicionar ao carrinho</p>
                         </div>
                     </div>
                     <div className="description">
