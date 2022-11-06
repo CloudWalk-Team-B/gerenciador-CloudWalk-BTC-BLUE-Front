@@ -13,6 +13,9 @@ export const Content = styled.div`
     justify-content: space-between;
     align-items: center;
     color: white;
+
+    @media (max-width: 576px) {
+    }
   `}
 `;
 
@@ -22,13 +25,13 @@ export const BoxSoon = styled.span`
   text-align: center;
   font-size: 3.5vh;
   margin-left: 30px;
-  div{
+  div {
     display: flex;
     flex-direction: row;
     margin-left: 2rem;
     font-size: 1.3rem;
-    .getOut{
-      cursor:pointer
+    .getOut {
+      cursor: pointer;
     }
   }
 `;
@@ -43,7 +46,7 @@ export const Name = styled.span`
   `}
 `;
 export const Update = styled.span`
-  width: 10rem;  
+  width: 10rem;
   display: flex;
   align-items: center;
   text-align: center;
@@ -51,8 +54,8 @@ export const Update = styled.span`
   cursor: pointer;
 `;
 export const TextUpdate = styled.span`
-font-size: 1.2em;
-margin: 10px;
+  font-size: 1.2em;
+  margin: 10px;
 `;
 
 export const Search = styled.span`
@@ -75,30 +78,28 @@ export const TextSearch = styled.input`
   `}
 `;
 export const Home = styled(AiOutlineHome)`
- color: rgba(255, 255, 255, 0.8);
- width: 1.2rem;
- height: 1.2rem;
- margin: 0;
-
-`;
-export const Info= styled(FcAbout)`
   color: rgba(255, 255, 255, 0.8);
   width: 1.2rem;
   height: 1.2rem;
   margin: 0;
-
+`;
+export const Info = styled(FcAbout)`
+  color: rgba(255, 255, 255, 0.8);
+  width: 1.2rem;
+  height: 1.2rem;
+  margin: 0;
 `;
 export const Btn = styled(Link)`
-text-decoration: none;
-color: #601A4A;
-margin:0;
-:hover{
-  color: rgba(255, 255, 255, 0.8);
-}
+  text-decoration: none;
+  color: #601a4a;
+  margin: 0;
+  :hover {
+    color: rgba(255, 255, 255, 0.8);
+  }
 `;
 
 export const Nav = styled.nav`
-  width:17rem;;
+  width: 17rem;
   display: flex;
   justify-content: center;
   align-items: center;
