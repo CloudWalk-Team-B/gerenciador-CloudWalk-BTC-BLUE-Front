@@ -35,6 +35,13 @@ export const LoginCardContainer = styled.div`
       height: 62%;
       border-radius: 15px;
 
+      @media (max-width: 599px) {
+        width: 60vw;
+        border-top: 0;
+        border-bottom: 0;
+        border-radius: 0;
+      }
+
       p {
         font-weight: 300;
         font-size: 5.5vh;
