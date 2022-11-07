@@ -13,7 +13,6 @@ import Swal from "sweetalert2";
 
 import Moddal from "../ModalRecoverPassword";
 import { useHandleModals } from "../../contexts/HandleModals";
-import { EditPassword } from "../../types/interface";
 
 interface LoginData {
   email: string;
@@ -33,7 +32,6 @@ const loginSchema = yup.object().shape({
 });
 
 const LoginCard = () => {
-  const [email, setEmail] = useState("");
   const { setUser } = useUser();
   const { openRecoveryPassword, setOpenRecoveryPassword } = useHandleModals();
   const {
@@ -59,22 +57,9 @@ const LoginCard = () => {
 
   const navegate = useNavigate();
 
-  const updatePassword: EditPassword = {
-    email: email,
-  };
   // let convertEmail = (email: string) => {
   //   setEmail(email);
   // };
-
-  let handleEmailEmit = () => {
-    Api.post("/user/password-recovery", updatePassword)
-      .then((res) => console.log("🚗🚗🚗🚗", res))
-      .catch((res) => console.log("🚕🚕🚕🚕", res));
-  };
-
-  console.log(email);
-
-  let passwordRecovery = () => {};
 
   const openPasswordModal = (open: boolean) => {
     if (open === true) {

@@ -5,7 +5,7 @@
   bottom: auto;
   margin-right: -50%;
   transform: translate(-50%, -50%); */
-  border: 1px solid purple;
+  /* border: 1px solid purple; */
   width: 70vw;
   height: 60vh;
   position: absolute;
@@ -13,4 +13,8 @@
   left: 15%;
   background-color: white;
   border-radius: 50px;
+
+  box-shadow: 21px 44px 399px 200px rgba(96, 26, 74, 0.51);
+  -webkit-box-shadow: 21px 44px 399px 200px rgba(96, 26, 74, 0.51);
+  -moz-box-shadow: 21px 44px 399px 200px rgba(96, 26, 74, 0.51);
 }

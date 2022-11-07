@@ -31,10 +31,11 @@ export const InfoProductCard = styled.div`
       /* padding-left: 15px; */
       font-size: 20px;
       text-align: center;
+      margin-bottom: 50px;
     }
 
     button {
-      margin-top: 50px;
+      /* margin-top: 30px; */
       width: 70%;
       height: 50px;
       border-radius: 50px;
@@ -60,4 +61,12 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  #spin {
+    display: none;
+
+    /* &active {
+      background-color: red;
+    } */
+  }
 `;

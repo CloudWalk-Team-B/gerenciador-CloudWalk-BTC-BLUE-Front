@@ -8,8 +8,11 @@ import Api from "../../services/api";
 import { EditProduct, Product } from "../../types/interface";
 import { toast } from "react-hot-toast";
 import { EditPassword } from "../../types/interface";
+import CircularProgress from "@mui/material/CircularProgress";
 import "animate.css";
 import "./styles.css";
+import Swal from "sweetalert2";
+import swal from "sweetalert";
 
 const Moddal = () => {
   const { openRecoveryPassword, setOpenRecoveryPassword } = useHandleModals();
@@ -32,10 +35,37 @@ const Moddal = () => {
     },
   };
 
+  // let spinComponent = (document.querySelector("#spin")!.style.display =
+  //   "block");
+
+  let setPassword = () => {
+    closeModal();
+    Swal.fire(
+      "Email enviado!",
+      `Um email com sua nova senha foi enviado para seu email.`,
+      "success"
+    );
+  };
+
+  let errorPassword = (res: any) => {
+    document.querySelector("#spin")!.style.display = "none";
+    document.querySelector("#button")!.style.display = "block";
+
+    swal({
+      title: "Error",
+      text: `${res.message}`,
+      icon: "error",
+      timer: 6000,
+    });
+  };
+
   let handlePasswordEdit = () => {
+    document.querySelector("#spin")!.style.display = "block";
+    document.querySelector("#button")!.style.display = "none";
+
     Api.post("/user/password-recovery", updatePassword)
-      .then((res) => closeModal())
-      .catch((res) => console.log("🚕🚕🚕🚕", res));
+      .then((res) => setPassword())
+      .catch((res) => errorPassword(res));
   };
 
   const updatePassword: EditPassword = {
@@ -57,7 +87,10 @@ const Moddal = () => {
           <S.InfoProductCard>
             <h1>Por favor, informe seu email:</h1>
             <input type="text" onChange={(e) => setEmail(e.target.value)} />
-            <button onClick={handlePasswordEdit}>Alterar</button>
+            <button id="button" onClick={handlePasswordEdit}>
+              Alterar
+            </button>
+            <CircularProgress id="spin" color="secondary" />
           </S.InfoProductCard>
         </S.Container>
       </Modal>
