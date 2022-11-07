@@ -2,7 +2,7 @@ import { dev } from "./dataDev";
 import * as S from "./styles";
 
 export const Devs = () => {
-    return(
+    return( 
         <S.CardContainer>
             {
                 dev.map((index ) => (
@@ -13,8 +13,8 @@ export const Devs = () => {
                             <S.SubTitle>{index.info}</S.SubTitle>
                             <S.CardText>{index.bio}</S.CardText>
                             <S.Btns>
-                                <S.Btn href={index.linkedin}><S.BtnIn/></S.Btn>
-                                <S.Btn href={index.githug}><S.BtnGit/></S.Btn>
+                                <S.Btn href={index.linkedin} target="_blank"><S.BtnIn/></S.Btn>
+                                <S.Btn href={index.githug} target="_blank"><S.BtnGit/></S.Btn>
                             </S.Btns>
                         </S.CardDetails>
                     </S.Card>
