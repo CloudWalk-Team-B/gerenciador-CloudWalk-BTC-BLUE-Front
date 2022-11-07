@@ -55,7 +55,7 @@ const Moddal = () => {
     return(
       <S.ConfimDelete>
         <section>
-            <h2>Produto-{currentProduct.code} será excluido permanentemente.</h2>
+            <h2>Produto - {currentProduct.code} será excluído permanentemente</h2>
             <div>
                 <button type="button" onClick={()=>handelDeleteProduct(currentProduct.id)}>Confirmar</button>
                 <button type="button" onClick={()=>setDeleteModal(false)}>Cancelar</button>
