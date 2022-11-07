@@ -16,13 +16,17 @@ const ListProducts = () => {
     if(user.isAdmin===true && user.isManager === true){
       return(
         <S.CardProduct className="animate__animated animate__fadeInUp" onClick={()=>setOpenNewProduct(!openNewProduct)}>
+          <S.PriceProduct>+</S.PriceProduct>
+          <section>
           <S.ImageContainer>
                   <S.Image
                     className="animate__animated animate__zoomIn animate__delay-1s"
-                    src="https://static.vecteezy.com/ti/vetor-gratis/t2/363962-sinal-de-mais-linha-preta-icone-gr%C3%A1tis-vetor.jpg"
+                    src="https://cdn-icons-png.flaticon.com/512/1004/1004733.png"
                   />
           </S.ImageContainer>
-          <S.TitleProduct>Adicionar Produto</S.TitleProduct>
+          <S.TitleProduct>Adicionar<br/>Produto</S.TitleProduct>
+          <span></span>
+          </section>
           </S.CardProduct>
       )
       
@@ -47,9 +51,15 @@ const ListProducts = () => {
 
   const { products, handleGetProduct } = useProducts();
 
-  const filteredProducts: Product[] = search.length>0?
-    products.filter(element=>element.name.toUpperCase().includes(search.toLocaleUpperCase())):
-    products
+
+  const newProductByName:Product[] = products.filter(element=>element.name.toUpperCase().includes(search.toLocaleUpperCase()))
+  const newProductByCode:Product[] = products.filter(element=>element.code.toString().includes(search))
+
+  const filteredProducts: Product[] = search.length>0 ? newProductByName.length>0? //buscar pelo nome e codigo ao mesmo tempo
+    newProductByName:newProductByCode.length>0 ? 
+    newProductByCode:newProductByCode:products 
+
+  const orderedList = filteredProducts.sort((a, b)=> a.code - b.code) //odernar em ordem crescente pelo código do produto
 
   return (
     <>
@@ -57,17 +67,19 @@ const ListProducts = () => {
         <S.ProductsContainer>
         <>
         {handleUser()}
-          {filteredProducts.map<React.ReactNode>((element: Product, index) => {
+          {orderedList.map<React.ReactNode>((element: Product, index) => {
             return (
               <S.CardProduct
-                key={index}
-                className="animate__animated animate__fadeInUp"
+              key={index}
+              className="animate__animated animate__fadeInUp"
                 onClick={() => {
                   setIdProduct(element.id);
                   setOpenProduct(true);
                   localStorage.setItem("currentProduct", JSON.stringify(element))
                 }}
-              >
+                >
+                <S.PriceProduct>CODE - {element.code}</S.PriceProduct>
+                <section>
                 <S.ImageContainer>
                   <S.Image
                     className="animate__animated animate__zoomIn animate__delay-1s"
@@ -76,12 +88,14 @@ const ListProducts = () => {
                   />
                 </S.ImageContainer>
                 <S.TextContainer className="animate__animated animate__zoomIn animate__delay-1s">
-                <S.PriceProduct>CODE - {element.code}</S.PriceProduct>
                   <br/>
                   <S.TitleProduct>{element.name}</S.TitleProduct>
                   <br />
                   <S.PriceProduct>R$: {element.price.toFixed(2)}</S.PriceProduct>
+                  <S.TitleProduct>{element.inventory?"Disponível":"Sem Estoque"}</S.TitleProduct>
+                  <br />
                 </S.TextContainer>
+                </section>
               </S.CardProduct>
             );
           })}
