@@ -51,12 +51,15 @@ const ListProducts = () => {
 
   const { products, handleGetProduct } = useProducts();
 
-  const filteredProducts: Product[] = search.length>0?
-    products.filter(element=>element.name.toUpperCase().includes(search.toLocaleUpperCase())).length>0?
-    products.filter(element=>element.name.toUpperCase().includes(search.toLocaleUpperCase())):
-    products.filter(element=>element.code.toString().includes(search)).length>0?
-    products.filter(element=>element.code.toString().includes(search)):products:
-    products
+
+  const newProductByName:Product[] = products.filter(element=>element.name.toUpperCase().includes(search.toLocaleUpperCase()))
+  const newProductByCode:Product[] = products.filter(element=>element.code.toString().includes(search))
+
+  const filteredProducts: Product[] = search.length>0 ? newProductByName.length>0? //buscar pelo nome e codigo ao mesmo tempo
+    newProductByName:newProductByCode.length>0 ? 
+    newProductByCode:newProductByCode:products 
+
+  const orderedList = filteredProducts.sort((a, b)=> a.code - b.code) //odernar em ordem crescente pelo código do produto
 
   return (
     <>
@@ -64,7 +67,7 @@ const ListProducts = () => {
         <S.ProductsContainer>
         <>
         {handleUser()}
-          {filteredProducts.map<React.ReactNode>((element: Product, index) => {
+          {orderedList.map<React.ReactNode>((element: Product, index) => {
             return (
               <S.CardProduct
               key={index}
