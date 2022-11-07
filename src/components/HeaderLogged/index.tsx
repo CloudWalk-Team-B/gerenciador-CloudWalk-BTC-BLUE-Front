@@ -58,14 +58,20 @@ const HeaderLogged = (props: any) => {
             <S.Update
               className="animate__animated animate__slideInRight animate__delay-1s"
               onClick={() => setOpenUpdate(!openUpdate)}
-            >
-              <S.TextUpdate>
-                Atualização <br />
-                em massa
-              </S.TextUpdate>
-              <FiPlus color="white" fontSize="1.5em" />
+            > 
+              
+              <div>
+                <S.TextUpdate>
+                  Atualização <br />
+                  em massa
+                </S.TextUpdate>
+                <FiPlus color="white" fontSize="1.5em" />
+              </div>              
             </S.Update>
-            <span onClick={() => navigate("/usuario")}>Perfil</span>
+            <div className="animate__animated animate__slideInRight animate__delay-1s" onClick={() => navigate("/usuario")}>
+              <S.Profile/>{" "}
+              <span >Perfil</span>
+            </div>
           </S.Nav>
         </S.Content>
         {openModal(openUpdate)}

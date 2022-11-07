@@ -82,6 +82,7 @@ export const FormEdit = styled.form`
       display: flex;
       justify-content: center;
       button {
+
       background-color: white;
       border: 2px solid ${theme.colors.primaryColor};
       border-radius: 50px;
@@ -89,7 +90,7 @@ export const FormEdit = styled.form`
       justify-content: center;
       align-items: center;
       height: 5vh;
-      width: 50%;
+      width: 40%;
       margin-top: 10%;
       transition: all 0.5s;
       font-family: "minimal";
@@ -104,6 +105,12 @@ export const FormEdit = styled.form`
       }
     }
     }
+
+    div{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+  }
     
   `}
 `;
@@ -112,17 +119,57 @@ export const InputForm = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   label {
     font-size: 3vh;
     width: 6.5rem;
   }
+
   select{
     width: 22rem;
     margin: 0.9rem;
     font-size: 1.1rem;
-    
+
     option{
       text-align: center;
+    }
+  }
+
+`;
+
+export const ConfimDelete = styled.div`
+  z-index: 9999;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #00000099;
+  display: flex;
+  align-items: center;
+
+  section{
+    width: 60%;
+    height: 12rem;
+    background-color: white;
+    border: 2px solid #601a4a;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 2rem;
+    box-sizing: border-box;
+
+    div{
+      width: 60%;
+      display: flex;
+      justify-content: space-between;
+      
+      button{
+        width: 45%;
+        margin: 0;
+      }
     }
   }
 `;

@@ -2,12 +2,13 @@ import styled, { css } from "styled-components";
 import { AiOutlineHome } from "react-icons/ai";
 import { FcAbout } from "react-icons/fc";
 import { Link } from "react-router-dom";
+import { CgProfile } from "react-icons/cg";
 import "animate.css";
 
 export const Content = styled.div`
   ${({ theme }) => css`
     background-color: ${theme.colors.primaryColor};
-    width: 100vw;
+    width: 100%;
     height: 13vh;
     display: flex;
     justify-content: space-between;
@@ -21,7 +22,7 @@ export const BoxSoon = styled.span`
   align-items: center;
   text-align: center;
   font-size: 3.5vh;
-  margin-left: 30px;
+  
   div{
     display: flex;
     flex-direction: row;
@@ -34,6 +35,7 @@ export const BoxSoon = styled.span`
 `;
 export const Soon = styled.img`
   height: 12vh;
+  margin-top: .8rem;
 `;
 export const Name = styled.span`
   ${({ theme }) => css`
@@ -43,12 +45,21 @@ export const Name = styled.span`
   `}
 `;
 export const Update = styled.span`
-  width: 10rem;  
   display: flex;
+  flex-direction: row;
   align-items: center;
-  text-align: center;
-  margin-right: 30px;
-  cursor: pointer;
+  width: 55%;
+  div{
+    width: 10rem;  
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-right: 30px;
+    cursor: pointer;
+    border-right: 1px solid white;
+    padding-right: 1rem;
+    box-sizing: border-box;
+  }
 `;
 export const TextUpdate = styled.span`
 font-size: 1.2em;
@@ -103,4 +114,18 @@ export const Nav = styled.nav`
   justify-content: center;
   align-items: center;
   margin-right: 1rem;
+
+  div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+  }
 `;
+
+export const Profile = styled(CgProfile)`
+width: 3rem;
+height: 3rem;
+color: white;
+margin: 0.2rem;
+`

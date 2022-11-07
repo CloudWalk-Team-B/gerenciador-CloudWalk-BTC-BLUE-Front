@@ -5,13 +5,15 @@ import { useProducts } from "../../contexts/product";
 import img from "../../assets/images/logoRoxa.png";
 import { useHandleModals } from "../../contexts/HandleModals";
 import Api from "../../services/api";
-import { EditProduct, Product } from "../../types/interface";
+import { EditProduct, Product, User } from "../../types/interface";
 import { toast } from "react-hot-toast";
 
 const Moddal = () => {
 
   const { openProduct, setOpenProduct } = useHandleModals();
   const { handleGetProduct, categories } = useProducts();
+  const user:User = (JSON.parse(localStorage.getItem("user") || ""))
+  const [deleteModal, setDeleteModal] = useState<boolean>(false)
 
   const currentProduct:Product = (JSON.parse(localStorage.getItem("currentProduct") || ""))
 
@@ -37,15 +39,42 @@ const Moddal = () => {
   const handleEdit = (id:string) =>{
     if(code>=0 && name !=="" && image !=="" && description !=="" && category !=="" && price > 0){
       Api.patch(`/product/${id}`, updatedProduct)
-      .then((res)=>{
+      .then(()=>{
         handleGetProduct();
         toast.success("Produto atualizado com sucesso!");
         closeModal()
       })
-      .catch(err=>toast.error("Falha ao atualizar o Produto"))
+      .catch(()=>toast.error("Falha ao atualizar o Produto"))
   }else{
       toast.error("Entradas Inválidas")
   }
+  }
+
+  const ModalDelete = (prop:boolean) =>{
+    if(deleteModal){
+    return(
+      <S.ConfimDelete>
+        <section>
+            <h2>Produto-{currentProduct.code} será excluido permanentemente.</h2>
+            <div>
+                <button type="button" onClick={()=>handelDeleteProduct(currentProduct.id)}>Confirmar</button>
+                <button type="button" onClick={()=>setDeleteModal(false)}>Cancelar</button>
+            </div>
+        </section>
+      </S.ConfimDelete>
+    )
+  }
+  }
+
+  const handelDeleteProduct = (id:string) =>{
+    Api.delete(`/product/${id}`)
+    .then(()=>{
+      handleGetProduct();
+      setDeleteModal(false);
+      closeModal();
+      toast.success("Produto excluido com sucesso.")
+    }
+      )
   }
   
   function closeModal() {
@@ -148,7 +177,15 @@ const Moddal = () => {
                         >
                           Alterar
                         </button>
+                        {(user.isAdmin===true && user.isManager === true)&&
+                        <button
+                        type="button"
+                        onClick={() => setDeleteModal(!deleteModal)}
+                      >
+                        Excluir
+                      </button>}
                       </div>
+                    {ModalDelete(deleteModal)}
                     </S.FormEdit>
                   </S.InfoProduct>
                 </>
