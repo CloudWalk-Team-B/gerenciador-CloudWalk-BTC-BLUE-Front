@@ -52,7 +52,10 @@ const ListProducts = () => {
   const { products, handleGetProduct } = useProducts();
 
   const filteredProducts: Product[] = search.length>0?
+    products.filter(element=>element.name.toUpperCase().includes(search.toLocaleUpperCase())).length>0?
     products.filter(element=>element.name.toUpperCase().includes(search.toLocaleUpperCase())):
+    products.filter(element=>element.code.toString().includes(search)).length>0?
+    products.filter(element=>element.code.toString().includes(search)):products:
     products
 
   return (
@@ -86,6 +89,8 @@ const ListProducts = () => {
                   <S.TitleProduct>{element.name}</S.TitleProduct>
                   <br />
                   <S.PriceProduct>R$: {element.price.toFixed(2)}</S.PriceProduct>
+                  <S.TitleProduct>{element.inventory?"Disponível":"Sem Estoque"}</S.TitleProduct>
+                  <br />
                 </S.TextContainer>
                 </section>
               </S.CardProduct>

@@ -1,18 +1,23 @@
 import styled, { css } from "styled-components";
 
 export const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 90%;
   ${({ theme }) => css``}
 `;
 
 export const ProductsContainer = styled.div`
   height: 87vh;
-  width: 95%;
+  width: 100%;
   margin-top: 20px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-`;
+  align-items: flex-start;
+  
+  `;
 
 export const CardProduct = styled.div`
   ${({ theme }) => css`
