@@ -48,8 +48,8 @@ const Moddal = () => {
   };
 
   let errorPassword = (res: any) => {
-    document.querySelector("#spin")!.style.display = "none";
-    document.querySelector("#button")!.style.display = "block";
+    document.querySelector<HTMLElement>("#spin")!.style.display = "none";
+    document.querySelector<HTMLElement>("#button")!.style.display = "block";
 
     swal({
       title: "Error",
@@ -60,8 +60,9 @@ const Moddal = () => {
   };
 
   let handlePasswordEdit = () => {
-    document.querySelector("#spin")!.style.display = "block";
-    document.querySelector("#button")!.style.display = "none";
+    document.querySelector<HTMLElement>("#spin")!.style.display = "none";
+
+    document.querySelector<HTMLElement>("#button")!.style.display = "none";
 
     Api.post("/user/password-recovery", updatePassword)
       .then((res) => setPassword())
