@@ -39,8 +39,8 @@ const Moddal = () => {
   let confirmPassword = () => {
     closeModal();
     Swal.fire(
-      "Senha redefinida!",
-      `Sua senha foi redefinida com sucesso !!.`,
+      "Perfil Atualizado!",
+      `Seu perfil foi Atualizado com sucesso !!.`,
       "success"
     );
   };
