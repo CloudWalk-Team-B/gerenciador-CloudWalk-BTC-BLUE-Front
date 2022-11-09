@@ -29,6 +29,10 @@ interface HandleModalsProviderData {
   setOpenEditPassword: (props: boolean) => void;
   openEditProfile: boolean;
   setOpenEditProfile: (props: boolean) => void;
+  modalConfirm:boolean;
+    setModalConfirm:(props:boolean)=>void;
+    loadModal:boolean;
+    setLoadModal:(props:boolean)=>void;
 }
 
 const HandleModalsContext = createContext<HandleModalsProviderData>(
@@ -63,6 +67,12 @@ export const HandleModalsProvider = ({
 
   // modal para alterar perfil
   const [openEditProfile, setOpenEditProfile] = useState<boolean>(false);
+  
+    //controle do modal para forçar confirmação se conta por email
+    const [ modalConfirm, setModalConfirm ] = useState<boolean>(false)
+
+    //controle modal de loading
+    const [ loadModal, setLoadModal ] = useState<boolean>(false)
 
   return (
     <HandleModalsContext.Provider
@@ -85,6 +95,8 @@ export const HandleModalsProvider = ({
         setOpenEditPassword,
         openEditProfile,
         setOpenEditProfile,
+        modalConfirm, setModalConfirm,
+        loadModal, setLoadModal,
       }}
     >
       {children}

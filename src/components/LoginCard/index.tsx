@@ -1,7 +1,6 @@
 import * as S from "./style";
 import Logo from "../../assets/images/logoRoxa.png";
 import { useForm } from "react-hook-form";
-import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -9,10 +8,10 @@ import { useAuth } from "../../contexts/auth";
 import Api from "../../services/api";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../../contexts/User";
-import Swal from "sweetalert2";
-
 import Moddal from "../ModalRecoverPassword";
 import { useHandleModals } from "../../contexts/HandleModals";
+import { useEffect, useState } from "react";
+import { EmailConfirmation } from "../ModalEmailConfirmation";
 
 interface LoginData {
   email: string;
@@ -24,16 +23,20 @@ const loginSchema = yup.object().shape({
     .string()
     .email("Formato de email inválido")
     .required("Email obrigatório"),
-  password: yup.string().min(8, "Sua senha tem no mínimo 8 caracteres"),
-  // .matches(
-  //   /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#!:;/\|.()])[0-9a-zA-Z$*&@#!:;/\|.()]{8,}$/,
-  //   "A senha deve conter um caracter especial, um número e ao menos uma letra maiúscula"
-  // ),
+  password: yup
+  .string()
+  .min(1, "Senha obrigatória"),
+
 });
 
 const LoginCard = () => {
+  const { modalConfirm, setModalConfirm  } = useHandleModals();
+  // const [email, setEmail] = useState("");
   const { setUser } = useUser();
   const { openRecoveryPassword, setOpenRecoveryPassword } = useHandleModals();
+
+  useEffect(()=>setModalConfirm(false),[])
+
   const {
     register,
     handleSubmit,
@@ -44,16 +47,30 @@ const LoginCard = () => {
 
   const handleLogin = (data: LoginData) => {
     if (data.email !== "" && data.password !== "") {
+      
       return Api.post("/auth", data)
         .then((res) => {
-          login({ token: res.data.token, user: res.data.user });
           setUser(res.data.user);
+          localStorage.setItem("token", res.data.token)
+          localStorage.setItem("user", JSON.stringify(res.data.user))
+          if(res.data.user.isAuth){
+            login({ token: res.data.token, user: res.data.user });
+          }else{
+            toast.error("Ativação de conta pendente");
+            setModalConfirm(true)
+          }
         })
         .catch(() => toast.error("Senha ou email inválidos"));
     } else {
       toast.error("Insira usuário e senha");
     }
   };
+
+  const confirmModal = (open: boolean) =>{
+    if (open) {
+      return <EmailConfirmation/>;
+    }
+  }
 
   const navegate = useNavigate();
 
@@ -112,6 +129,7 @@ const LoginCard = () => {
         </div>
       </S.LoginCardContainer>
       {openPasswordModal(openRecoveryPassword)}
+      {confirmModal(modalConfirm)}
     </>
   );
 };

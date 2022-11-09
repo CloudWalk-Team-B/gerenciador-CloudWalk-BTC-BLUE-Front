@@ -6,10 +6,13 @@ import Logo from "../../assets/images/logoRoxa.png";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as S from "./style";
-import { User } from "../../types/interface";
 import { useNavigate } from "react-router-dom";
 import Moddal from "../ModalNewUser";;
 import { useHandleModals } from "../../contexts/HandleModals";
+import { useEffect } from "react";
+import ModalLoading from "../ModalLoading";
+import { EmailConfirmation } from "../ModalEmailConfirmation";
+import { useUser } from "../../contexts/User";
 
 interface CreateAccountData {
   name: string;
@@ -51,7 +54,22 @@ const CreateAccountSchema = yup.object().shape({
 
 const CreateAccountCard = ()=>{
 
-  const { openNewUser, setOpenNewUser, isAdmManager, setIsAdmManager } = useHandleModals();
+  const { openNewUser, setOpenNewUser, isAdmManager, setIsAdmManager, loadModal, setLoadModal, modalConfirm, setModalConfirm } = useHandleModals();
+
+  useEffect(()=>setModalConfirm(false),[])
+
+  const LoadingModal = (open: boolean) =>{
+    const phrase:string = "Enviando email de confirmação..."
+    if (open) {
+      return <ModalLoading prop={phrase}/>
+    }
+  }
+
+  const confirmModal = (open: boolean) =>{
+    if (open) {
+      return <EmailConfirmation/>;
+    }
+  }
 
   const openModal = (open: boolean) => {
     if (open === true) {
@@ -67,7 +85,7 @@ const CreateAccountCard = ()=>{
     }
   }
 
-
+  const { setUser } = useUser()
   const { login } = useAuth();
 
   const {
@@ -91,22 +109,27 @@ const CreateAccountCard = ()=>{
     if(data.password === data.confirmPassword){
       const newData = newUser(data)
         if (data.name !== "" && data.email !== "" && data.password !== "" && data.confirmPassword !== "" && data.cpf !== undefined) {
+          setLoadModal(true)
           return Api.post("/user", newData)
-            .then(() => {
+          .then((res) => {
+                  setLoadModal(false)
+                  setModalConfirm(true)
+                  setIsAdmManager("")
                   const loginUser = {email: data.email, password: data.password}
                   Api.post('auth', loginUser)
                     .then((res) => {
-                      login({ token: res.data.token, user: res.data.user });
+                      setUser(res.data.user)
+                      localStorage.setItem("token", res.data.token)
+                      localStorage.setItem("user", JSON.stringify(res.data.user))
                     })
                     .catch(()=>{
                       toast.error("Erro ao efetuar login")
                     })
-                    setIsAdmManager("")
             })
             .catch(() => toast.error("Dados inválidos ou usuário já cadastrado"));
         } else {
 
-          toast.error("Insira usuário e senha");
+          toast.error("Todos os campos são obrigatórios");
         }
     }else{
       return toast.error("As senhas não conicidem")
@@ -181,6 +204,8 @@ const CreateAccountCard = ()=>{
       </div>
     </S.CreateAccountContainer>
     {openModal(openNewUser)}
+    {confirmModal(modalConfirm)}
+    {LoadingModal(loadModal)}
     </>
   );
 };

@@ -6,4 +6,5 @@ export enum RoutePath {
   CREATEACCOUNT = "/cadastro",
   PRODUCTDETAIL = "/product",
   PROFILE = "/usuario",
+  AUTHROUTE = "/validate-user/:param",
 }
