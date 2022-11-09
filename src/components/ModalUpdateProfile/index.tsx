@@ -20,14 +20,14 @@ const Moddal = () => {
   const user = JSON.parse(localStorage.getItem("user") || "");
 
   const { openEditProfile, setOpenEditProfile } = useHandleModals();
-  const [cpf, setCpf] = useState(user.cpf);
+  const [cpf, setCpf] = useState(`${user.cpf}`);
   const [email, setEmail] = useState(user.email);
   const [isAdmin, setIsAdmin] = useState(user.isAdmin);
   const [isManager, setIsManager] = useState(user.isManager);
   const [name, setName] = useState(user.name);
   const [isAuth, setIsAuth] = useState(true);
 
-  console.log(user);
+  // console.log(user);
 
   function closeModal() {
     setOpenEditProfile(false);
@@ -62,6 +62,8 @@ const Moddal = () => {
 
     document.querySelector<HTMLElement>("#button")!.style.display = "none";
 
+    console.log(updatedUser);
+
     Api.patch("/user/my-account/update", updatedUser)
       .then((res) => confirmPassword())
       .catch((res) => errorPassword(res));
@@ -74,14 +76,6 @@ const Moddal = () => {
     isAdmin: isAdmin,
     isManager: isManager,
     isAuth: isAuth,
-  };
-
-  let handleTypeInput = () => {
-    let input = document.querySelector("#inputPassword") as HTMLInputElement;
-
-    if (input.type === "password") {
-      input.type = "string";
-    } else input.type = "password";
   };
 
   return (
@@ -107,7 +101,7 @@ const Moddal = () => {
                 <label>Cpf: </label>
                 <input
                   type="number"
-                  onChange={(e) => setCpf(e.target.valueAsNumber)}
+                  onChange={(e) => setCpf(e.target.value.toString())}
                 />
               </div>
             </S.InputContent>

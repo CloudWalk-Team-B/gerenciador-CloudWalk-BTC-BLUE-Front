@@ -5,7 +5,7 @@ import { useProducts } from "../../contexts/product";
 import img from "../../assets/images/logoRoxa.png";
 import { useHandleModals } from "../../contexts/HandleModals";
 import Api from "../../services/api";
-import { EditProduct, User } from "../../types/interface";
+// import { EditProduct, EditPassword } from "../../types/interface";
 import { toast } from "react-hot-toast";
 import { EditPassword } from "../../types/interface";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -20,14 +20,9 @@ const Moddal = () => {
   const user = JSON.parse(localStorage.getItem("user") || "");
 
   const { openEditPassword, setOpenEditPassword } = useHandleModals();
-  const [cpf, setCpf] = useState(user.cpf);
-  const [email, setEmail] = useState(user.email);
-  const [isAdmin, setIsAdmin] = useState(user.isAdmin);
-  const [isManager, setIsManager] = useState(user.isManager);
-  const [name, setName] = useState(user.name);
   const [newPassword, setNewPassword] = useState("");
   const [newPasswordConfirm, setNewPasswordConfirm] = useState("");
-  const [isAuth, setIsAuth] = useState(true);
+  const [id, setId] = useState(user.id);
 
   function closeModal() {
     setOpenEditPassword(false);
@@ -62,20 +57,15 @@ const Moddal = () => {
 
     document.querySelector<HTMLElement>("#button")!.style.display = "none";
 
-    Api.patch("/user/my-account/update", updatedUser)
+    Api.patch("/user/updatePassword", updatedUser)
       .then((res) => confirmPassword())
       .catch((res) => errorPassword(res));
   };
 
-  const updatedUser: User = {
-    name: name,
-    email: email,
+  const updatedUser: EditPassword = {
+    id: id,
     password: newPassword,
     confirmPassword: newPasswordConfirm,
-    cpf: cpf,
-    isAdmin: isAdmin,
-    isManager: isManager,
-    isAuth: isAuth,
   };
 
   let handleTypeInput = () => {
