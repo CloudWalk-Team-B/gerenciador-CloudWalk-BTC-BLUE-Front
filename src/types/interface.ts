@@ -9,6 +9,7 @@ export interface User {
   cpf: number;
   isAdmin: boolean;
   isManager: boolean;
+  isAuth: boolean;
   createdAt?: Date;
   updatedAt?: Date;
 }
@@ -38,12 +39,14 @@ export interface UserLogin {
 }
 
 export interface RegisterUser {
+  id?:string;
   name: string;
   email: string;
   password: string;
   confirmPassword: string;
   cpf: string;
   isAdmin: boolean;
+  isManager: boolean;
 }
 
 export interface EditProduct {

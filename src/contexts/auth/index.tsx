@@ -17,6 +17,7 @@ interface LoginParams {
 interface AuthProviderData{
     logged: boolean;
     isAdm: boolean;
+    isAuth: boolean;
     login: (params:LoginParams)=> void;
     logout: ()=> void;
 }
@@ -28,45 +29,55 @@ export const AuthProvider = ({ children }:AuthProviderProps) =>{
     const navegate= useNavigate()
     const [logged, setLogged] = useState<boolean>(false);
     const [ isAdm, setIsAdm ] = useState<boolean>(false)
+    const [ isAuth, setIsAuth ] = useState<boolean>(false)
 
     const checkTokenExpiration = () =>{
         const user = JSON.parse(localStorage.getItem("user") || "")
         Api.get(`/user/${user.id}`)
             .then((res:any)=>{
-                setLogged(true);
-                const Admin:boolean = res.data.isAdmin
-                setIsAdm(Admin)
-                Admin? navegate("/produtos"):navegate("/")
+                if(res.data.isAuth){
+                    setLogged(true);
+                    const Admin:boolean = res.data.isAdmin
+                    setIsAdm(Admin)
+                    setIsAuth(true)
+                    Admin? navegate("/produtos"):navegate("/")
+                }else{toast.error("Validação de conta por email necessária")}
             }).catch(()=>{
                 logout();
                 toast.error("Login necessário")
             })
     }
 
-    useEffect(()=>{
-        const token = localStorage.getItem("token");
-        if(token) checkTokenExpiration();
-    },[])
+    // useEffect(()=>{
+    //     const token = localStorage.getItem("token");
+    //     if(token) checkTokenExpiration();
+    // },[])
 
     const login = ({token, user}:LoginParams)=>{
         localStorage.setItem("token", token)
         localStorage.setItem("user", JSON.stringify(user))
-        setLogged(true);
-        const Admin:boolean = user.isAdmin
-        Admin&& setIsAdm(true)
-        Admin?navegate("/produtos"):navegate("/");
-        toast.success("Login bem sucedido")
+        if(user.isAuth){
+            setLogged(true);
+            setIsAuth(true)
+            const Admin:boolean = user.isAdmin
+            Admin&& setIsAdm(true)
+            Admin?navegate("/produtos"):navegate("/");
+            toast.success("Login bem sucedido")
+        }else{
+            toast.error("Validação de conta por email necessária")
+        }
     }
 
     const logout = ()=>{
         localStorage.clear();
         setLogged(false);
-        setIsAdm(false) 
+        setIsAdm(false)
+        setIsAuth(false) 
         navegate("/");
     }
 
     return(
-        <AuthContext.Provider value = {{ logged, isAdm, login, logout}}>
+        <AuthContext.Provider value = {{ logged, isAdm, login, logout, isAuth}}>
             {children}
         </AuthContext.Provider>
     )

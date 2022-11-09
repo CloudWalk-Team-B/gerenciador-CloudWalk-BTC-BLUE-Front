@@ -8,7 +8,7 @@ import CreateAccount from "./Pages/CreateAccount/CreateAccount";
 import { RoutePath } from "./types/routes";
 import ProductDetail from "./Pages/ProductDetail/ProductDetail";
 import Profilee from "./Pages/Profile";
-import Auth from "./Pages/Auth";
+import AuthPage from "./Pages/AuthPage";
 
 const Router = () => {
   const { logged, isAdm } = useAuth();
@@ -36,7 +36,7 @@ const Router = () => {
           <Route path={RoutePath.ABOUTME} element={<About />} />
           <Route path={RoutePath.PRODUCTDETAIL} element={<ProductDetail />} />
           <Route path={RoutePath.PROFILE} element={<Profilee />} />
-          <Route path={RoutePath.AUTHROUTE} element={<Auth />} />
+          <Route path={RoutePath.AUTHROUTE} element={<AuthPage />} />
         </>
       )}
       <Route path="*" element={<Navigate to={isAdm ? "/produtos" : "/"} />} />

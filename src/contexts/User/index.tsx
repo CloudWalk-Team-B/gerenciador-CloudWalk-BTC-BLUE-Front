@@ -15,7 +15,7 @@ const UserContext = createContext<UserProviderData>({} as UserProviderData);
 
 export const UserProvider = ({children}:UserProviderProps) => {
 
-    const [ user, setUser ] = useState<any>()
+    const [ user, setUser ] = useState<any>({})
 
     useEffect(()=>{
         const token = localStorage.getItem("token");

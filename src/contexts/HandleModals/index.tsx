@@ -16,7 +16,9 @@ interface HandleModalsProviderData{
     openNewProduct: boolean;
     setOpenNewProduct: (props:boolean)=>void;
     search: string;
-    setSearch: (props:string)=> void
+    setSearch: (props:string)=> void;
+    modalConfirm:boolean;
+    setModalConfirm:(props:boolean)=>void
 }
 
 const HandleModalsContext = createContext<HandleModalsProviderData>({} as HandleModalsProviderData);
@@ -39,12 +41,16 @@ export const HandleModalsProvider = ({children}:HandleModalsProviderProps) => {
     //controle de State direcionado a pesquisa da navbar para as paginas home e product
     const [search, setSearch] = useState<string>("")
 
+    //controle do modal para forçar confirmação se conta por email
+    const [ modalConfirm, setModalConfirm ] = useState<boolean>(false)
+
     return <HandleModalsContext.Provider value={{
         openProduct, setOpenProduct,
         openNewUser, setOpenNewUser, isAdmManager, setIsAdmManager,
         openUpdate, setOpenUpdate,
         openNewProduct, setOpenNewProduct,
         search, setSearch,
+        modalConfirm, setModalConfirm
     }}>{children}</HandleModalsContext.Provider>
 }
 
