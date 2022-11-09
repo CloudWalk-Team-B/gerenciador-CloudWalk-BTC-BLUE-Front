@@ -14,11 +14,17 @@ export interface User {
   updatedAt?: Date;
 }
 
+export interface EditPassword {
+  id?: string;
+  password: string;
+  confirmPassword: string;
+}
+
 export interface UpdateUser {
   id?: string;
   name: string;
   email: string;
-  cpf: number;
+  cpf: string;
   isAdmin: boolean;
   isManager: boolean;
   isAuth: boolean;
@@ -69,6 +75,6 @@ export interface EditProduct {
   inventory: boolean;
 }
 
-export interface EditPassword {
+export interface RecoveryPassword {
   email: string;
 }

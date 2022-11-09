@@ -5,7 +5,7 @@ import { useProducts } from "../../contexts/product";
 import img from "../../assets/images/logoRoxa.png";
 import { useHandleModals } from "../../contexts/HandleModals";
 import Api from "../../services/api";
-import { EditProduct, Product } from "../../types/interface";
+import { EditProduct, RecoveryPassword } from "../../types/interface";
 import { toast } from "react-hot-toast";
 import { EditPassword } from "../../types/interface";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -56,7 +56,7 @@ const Moddal = () => {
       .catch((res) => errorPassword(res));
   };
 
-  const updatePassword: EditPassword = {
+  const updatePassword: RecoveryPassword = {
     email: email,
   };
 

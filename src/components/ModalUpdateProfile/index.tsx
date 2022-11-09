@@ -13,6 +13,8 @@ import "animate.css";
 import "./styles.css";
 import Swal from "sweetalert2";
 import swal from "sweetalert";
+
+import { useAuth } from "../../contexts/auth";
 import { AiOutlineEye } from "react-icons/ai";
 import { AiOutlineEyeInvisible } from "react-icons/ai";
 
@@ -20,29 +22,27 @@ const Moddal = () => {
   const user = JSON.parse(localStorage.getItem("user") || "");
 
   const { openEditProfile, setOpenEditProfile } = useHandleModals();
-  const [cpf, setCpf] = useState(user.cpf);
+  const [cpf, setCpf] = useState(`${user.cpf}`);
   const [email, setEmail] = useState(user.email);
   const [isAdmin, setIsAdmin] = useState(user.isAdmin);
   const [isManager, setIsManager] = useState(user.isManager);
   const [name, setName] = useState(user.name);
   const [isAuth, setIsAuth] = useState(true);
 
-  console.log(user);
+  // console.log(user);
 
   function closeModal() {
     setOpenEditProfile(false);
   }
 
+  const { logout } = useAuth();
   // let spinComponent = (document.querySelector("#spin")!.style.display =
   //   "block");
 
   let confirmPassword = () => {
     closeModal();
-    Swal.fire(
-      "Perfil Atualizado!",
-      `Seu perfil foi Atualizado com sucesso !!.`,
-      "success"
-    );
+    logout();
+    Swal.fire("Perfil Atualizado!", `Por favor logue novamente!.`, "success");
   };
 
   let errorPassword = (res: any) => {
@@ -62,6 +62,8 @@ const Moddal = () => {
 
     document.querySelector<HTMLElement>("#button")!.style.display = "none";
 
+    console.log(updatedUser);
+
     Api.patch("/user/my-account/update", updatedUser)
       .then((res) => confirmPassword())
       .catch((res) => errorPassword(res));
@@ -74,14 +76,6 @@ const Moddal = () => {
     isAdmin: isAdmin,
     isManager: isManager,
     isAuth: isAuth,
-  };
-
-  let handleTypeInput = () => {
-    let input = document.querySelector("#inputPassword") as HTMLInputElement;
-
-    if (input.type === "password") {
-      input.type = "string";
-    } else input.type = "password";
   };
 
   return (
@@ -107,7 +101,7 @@ const Moddal = () => {
                 <label>Cpf: </label>
                 <input
                   type="number"
-                  onChange={(e) => setCpf(e.target.valueAsNumber)}
+                  onChange={(e) => setCpf(e.target.value.toString())}
                 />
               </div>
             </S.InputContent>
