@@ -164,6 +164,13 @@ padding: 0.5rem;
     transform: scale(1.05);
 } 
 `;
+
+
+
+
+
+
+
 export const BtnIn = styled(AiFillLinkedin)`
 width: 2rem;
 height: 2rem;

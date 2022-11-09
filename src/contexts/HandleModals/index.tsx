@@ -18,7 +18,9 @@ interface HandleModalsProviderData{
     search: string;
     setSearch: (props:string)=> void;
     modalConfirm:boolean;
-    setModalConfirm:(props:boolean)=>void
+    setModalConfirm:(props:boolean)=>void;
+    loadModal:boolean;
+    setLoadModal:(props:boolean)=>void;
 }
 
 const HandleModalsContext = createContext<HandleModalsProviderData>({} as HandleModalsProviderData);
@@ -44,13 +46,17 @@ export const HandleModalsProvider = ({children}:HandleModalsProviderProps) => {
     //controle do modal para forçar confirmação se conta por email
     const [ modalConfirm, setModalConfirm ] = useState<boolean>(false)
 
+    //controle modal de loading
+    const [ loadModal, setLoadModal ] = useState<boolean>(false)
+
     return <HandleModalsContext.Provider value={{
         openProduct, setOpenProduct,
         openNewUser, setOpenNewUser, isAdmManager, setIsAdmManager,
         openUpdate, setOpenUpdate,
         openNewProduct, setOpenNewProduct,
         search, setSearch,
-        modalConfirm, setModalConfirm
+        modalConfirm, setModalConfirm,
+        loadModal, setLoadModal
     }}>{children}</HandleModalsContext.Provider>
 }
 

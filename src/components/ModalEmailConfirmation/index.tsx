@@ -39,8 +39,9 @@ export const EmailConfirmation = () =>{
     <>
     <S.ConfirmationModal>
       <div>
+        <S.Close onClick={()=>{setModalConfirm(false)}}/>
         <img src={Logo} alt="Capivara logo" />
-        <p>Favor, realizar ativação da conta através do email cadastrado.</p>
+        <p>Verifique sua caixa de entrada e valide o email registrado!</p>
         <button type="button" onClick={()=>handleButton()}>Continuar</button>
       </div>
     </S.ConfirmationModal>

@@ -36,7 +36,7 @@ const AuthPage =() =>{
                 }
             })
             .catch(()=>{
-                toast.success("Confirmação bem sucedida! Faça seu login.");
+                toast.error("Conta já validada ou inexistente");
                 navegate("/login");
             })
     }

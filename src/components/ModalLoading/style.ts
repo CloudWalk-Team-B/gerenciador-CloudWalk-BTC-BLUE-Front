@@ -3,7 +3,7 @@ import { AiOutlineHome } from "react-icons/ai";
 import { FcAbout } from "react-icons/fc";
 import { Link } from "react-router-dom";
 
-export const ConfirmationModal = styled.div`
+export const LoadingModal = styled.div`
   ${({ theme }) => css`
     position: fixed; 
     background-color: #00000099;
@@ -29,32 +29,19 @@ export const ConfirmationModal = styled.div`
 
     img{
       height: 50%;
+      animation: rotate 3s linear infinite;
     }
 
-      button {
-            background-color: ${theme.colors.primaryColor};
-            color: ${theme.colors.textColor};
-            font-family: "minimal";
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            text-align: center;
-            border: none;
-            padding: 0 1rem;
-            height: 3.8rem;
-            width: 30%;
-            font-size: 3vh;
-            margin: 0.5rem;
-            border-radius: 3.125rem;
-            transition: all 0.5s;
-            margin-top: 2vh;
-            :hover {
-              cursor: pointer;
-              transform: scale(1.05);
-            }
-          }
+    @keyframes rotate {
+				from {
+					transform: rotate(0deg);
+				}
+
+				to {
+					transform: rotate(359deg);
+				}
+			}
+
     }
   `}
 `;

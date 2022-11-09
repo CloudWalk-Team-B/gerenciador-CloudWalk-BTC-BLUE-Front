@@ -34,24 +34,25 @@ export const AuthProvider = ({ children }:AuthProviderProps) =>{
     const checkTokenExpiration = () =>{
         const user = JSON.parse(localStorage.getItem("user") || "")
         Api.get(`/user/${user.id}`)
-            .then((res:any)=>{
+            .then((res)=>{
                 if(res.data.isAuth){
                     setLogged(true);
                     const Admin:boolean = res.data.isAdmin
                     setIsAdm(Admin)
                     setIsAuth(true)
                     Admin? navegate("/produtos"):navegate("/")
-                }else{toast.error("Validação de conta por email necessária")}
+                }else{toast.error("Login necessário")}
+                // logout();
             }).catch(()=>{
                 logout();
                 toast.error("Login necessário")
             })
     }
 
-    // useEffect(()=>{
-    //     const token = localStorage.getItem("token");
-    //     if(token) checkTokenExpiration();
-    // },[])
+    useEffect(()=>{
+        const token = localStorage.getItem("token");
+        if(token) checkTokenExpiration();
+    },[])
 
     const login = ({token, user}:LoginParams)=>{
         localStorage.setItem("token", token)

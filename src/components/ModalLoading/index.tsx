@@ -8,44 +8,20 @@ import { useUser } from "../../contexts/User";
 import { useNavigate } from "react-router-dom";
 
 
-export const EmailConfirmation = () =>{
+const ModalLoading = ({prop}:any) =>{
   
-  const { setModalConfirm } =useHandleModals()
-  const { login } = useAuth()
-  const { user } = useUser()
-  const navegate = useNavigate()
-  
-  const handleButton = () =>{
-    if(user!==undefined){
-    Api.get(`/user/${user.id}`)
-      .then((res)=>{
-        if(res.data.isAuth){
-          setModalConfirm(false);
-          login({token:res.data.token, user:res.data});
-        }else{
-          toast.error("Ativação de conta pendente")
-        }
-      }).catch(()=>{
-        toast.error("Erro, tente novamente em alguns instantes")
-      })
-    }else{
-      setModalConfirm(false);
-      navegate("/login");
-      toast.error("Login necessário")
-    }
-    }
-
   return(
     <>
-    <S.ConfirmationModal>
+    <S.LoadingModal>
       <div>
         <img src={Logo} alt="Capivara logo" />
-        <p>Favor, realizar ativação da conta através do email cadastrado.</p>
-        <button type="button" onClick={()=>handleButton()}>Continuar</button>
+        <p>{prop}</p>
       </div>
-    </S.ConfirmationModal>
+    </S.LoadingModal>
     </>
   )
 }
+
+export default ModalLoading
 
 

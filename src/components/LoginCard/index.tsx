@@ -11,6 +11,9 @@ import { useNavigate } from "react-router-dom";
 import { useUser } from "../../contexts/User";
 import Swal from "sweetalert2";
 import { EditPassword } from "../../types/interface";
+import { User } from "../Navbar/styles";
+import { useHandleModals } from "../../contexts/HandleModals";
+import { EmailConfirmation } from "../ModalEmailConfirmation";
 
 interface LoginData {
   email: string;
@@ -27,7 +30,9 @@ const loginSchema = yup.object().shape({
   .min(1, "Senha obrigatória"),
 });
 
+
 const LoginCard = () => {
+  const { modalConfirm, setModalConfirm  } = useHandleModals();
   const [email, setEmail] = useState("");
   const { setUser } = useUser();
   const {
@@ -38,19 +43,34 @@ const LoginCard = () => {
   } = useForm<LoginData>({ resolver: yupResolver(loginSchema) });
   const { login } = useAuth();
 
+  useEffect(()=>setModalConfirm(false),[])
+
   const handleLogin = (data: LoginData) => {
     if (data.email !== "" && data.password !== "") {
       
       return Api.post("/auth", data)
         .then((res) => {
-          login({ token: res.data.token, user: res.data.user });
           setUser(res.data.user);
+          localStorage.setItem("token", res.data.token)
+          localStorage.setItem("user", JSON.stringify(res.data.user))
+          if(res.data.user.isAuth){
+            login({ token: res.data.token, user: res.data.user });
+          }else{
+            toast.error("Ativação de conta pendente");
+            setModalConfirm(true)
+          }
         })
         .catch(() => toast.error("Senha ou email inválidos"));
     } else {
       toast.error("Insira usuário e senha");
     }
   };
+
+  const confirmModal = (open: boolean) =>{
+    if (open) {
+      return <EmailConfirmation/>;
+    }
+  }
 
   const navegate = useNavigate();
 
@@ -94,6 +114,7 @@ const LoginCard = () => {
   };
 
   return (
+    <>
     <S.LoginCardContainer>
       <img
         src={Logo}
@@ -130,6 +151,8 @@ const LoginCard = () => {
         }
       </div>
     </S.LoginCardContainer>
+    {confirmModal(modalConfirm)}
+    </>
   );
 };
 

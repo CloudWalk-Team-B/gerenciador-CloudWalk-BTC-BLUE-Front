@@ -10,7 +10,7 @@ export const AuthContainer = styled.div`
     font-size: 1.6em;
 
     img{
-        height: 60%;
+        height: 30%;
     }
   
 `;

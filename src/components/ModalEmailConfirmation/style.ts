@@ -1,7 +1,5 @@
 import styled, { css } from "styled-components";
-import { AiOutlineHome } from "react-icons/ai";
-import { FcAbout } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { IoIosCloseCircleOutline } from "react-icons/io";
 
 export const ConfirmationModal = styled.div`
   ${({ theme }) => css`
@@ -57,4 +55,21 @@ export const ConfirmationModal = styled.div`
           }
     }
   `}
+`;
+
+export const Close = styled(IoIosCloseCircleOutline)`
+width: 100%;
+height: 2rem;
+color: #601a4a;
+display: flex;
+justify-content: flex-end;
+align-items: flex-end;
+padding-left: 92%;
+box-sizing: border-box;
+cursor: pointer;
+z-index: 999;
+
+& :hover{
+    transform: scale(1.05);
+} 
 `;
