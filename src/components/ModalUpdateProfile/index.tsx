@@ -13,6 +13,8 @@ import "animate.css";
 import "./styles.css";
 import Swal from "sweetalert2";
 import swal from "sweetalert";
+
+import { useAuth } from "../../contexts/auth";
 import { AiOutlineEye } from "react-icons/ai";
 import { AiOutlineEyeInvisible } from "react-icons/ai";
 
@@ -33,16 +35,14 @@ const Moddal = () => {
     setOpenEditProfile(false);
   }
 
+  const { logout } = useAuth();
   // let spinComponent = (document.querySelector("#spin")!.style.display =
   //   "block");
 
   let confirmPassword = () => {
     closeModal();
-    Swal.fire(
-      "Perfil Atualizado!",
-      `Seu perfil foi Atualizado com sucesso !!.`,
-      "success"
-    );
+    logout();
+    Swal.fire("Perfil Atualizado!", `Por favor logue novamente!.`, "success");
   };
 
   let errorPassword = (res: any) => {
