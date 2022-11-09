@@ -2,31 +2,58 @@ import React, { useState } from "react";
 import * as S from "./style";
 import Modal from "react-modal";
 import { useHandleModals } from "../../contexts/HandleModals";
+
+import { Workbook } from 'exceljs';
 import Api from "../../services/api";
-import { toast } from "react-hot-toast";
-import { saveAs } from "file-saver";
-// import updateMany from "../../assets/files/updateMany.xlsx"
 
 const ModalUpdate = () => {
-  // const downloadFile = () => {
-  //   saveAs(updateMany, 'exemplo.xlsx')
-  // }
+
 
   const [file, setFile] = useState<any>();
 
-  const uploadFile = async () => {
-    const formData = new FormData();
-    formData.append("file", file);
+  const uploadFile = () => {
 
-    const headers = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-    await Api.post("/upload-file", formData, headers)
-      .then(() => console.log("Recebeu"))
-      .catch(() => console.log("Não recebeu"));
-  };
+    const wb = new Workbook();
+
+  }
+
+  const handleImport = async() =>{
+
+    // const wb = new Workbook();
+    //   wb.xlsx.readFile(file)   
+    //   const buffer =  await wb.xlsx.writeBuffer()
+    //   console.log(buffer)
+
+      
+      // wb.xlsx.readFile(file)
+      //       .then(data => {
+        //           wb.xlsx.load(data.buffer)
+        //               .then()
+        //               .catch();
+        //       }).catch();
+        
+        
+          const wb = new Workbook();
+          const reader = new FileReader()
+        
+          reader.readAsArrayBuffer(file)
+          reader.onload = () => {
+            const buffer:any = reader.result;
+            wb.xlsx.load(buffer).then(workbook => {
+              console.log(workbook, 'workbook instance')
+              workbook.eachSheet((sheet, id) => {
+                sheet.eachRow((row, rowIndex) => {
+                  console.log(row.values, rowIndex)
+                })
+              })
+            })
+          }
+        
+
+        // Api.post("/product/updateMany")
+        // .then(()=>console.log("deu bom"))
+        // .catch(()=>console.log("deu ruim"))
+  }
 
   const { openUpdate, setOpenUpdate } = useHandleModals();
 
@@ -62,7 +89,7 @@ const ModalUpdate = () => {
             <input type="file" onChange={(e) => setFile(e.target.files![0])} />
           </div>
           <div className="bothButtons">
-            <button onClick={() => uploadFile()}>Atualizar</button>
+            <button onClick={() => handleImport()}>Atualizar</button>
             <button>Download</button>
           </div>
         </S.MainComponent>
