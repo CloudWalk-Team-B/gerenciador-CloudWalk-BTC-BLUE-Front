@@ -126,7 +126,10 @@ const CreateAccountCard = ()=>{
                       toast.error("Erro ao efetuar login")
                     })
             })
-            .catch(() => toast.error("Dados inválidos ou usuário já cadastrado"));
+            .catch(() => {
+              setLoadModal(false);
+              toast.error("Dados inválidos ou usuário já cadastrado")
+          });
         } else {
 
           toast.error("Todos os campos são obrigatórios");
