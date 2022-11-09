@@ -25,8 +25,10 @@ interface HandleModalsProviderData {
   setOpenRecoveryPassword: (props: boolean) => void;
   search: string;
   setSearch: (props: string) => void;
-  // recoveryPassword: boolean;
-  // setRecoveryPassword: (props:boolean)=>void
+  openEditPassword: boolean;
+  setOpenEditPassword: (props: boolean) => void;
+  openEditProfile: boolean;
+  setOpenEditProfile: (props: boolean) => void;
 }
 
 const HandleModalsContext = createContext<HandleModalsProviderData>(
@@ -56,6 +58,12 @@ export const HandleModalsProvider = ({
   const [openRecoveryPassword, setOpenRecoveryPassword] =
     useState<boolean>(false);
 
+  // modal para alterar perfil
+  const [openEditPassword, setOpenEditPassword] = useState<boolean>(false);
+
+  // modal para alterar perfil
+  const [openEditProfile, setOpenEditProfile] = useState<boolean>(false);
+
   return (
     <HandleModalsContext.Provider
       value={{
@@ -73,6 +81,10 @@ export const HandleModalsProvider = ({
         setSearch,
         openRecoveryPassword,
         setOpenRecoveryPassword,
+        openEditPassword,
+        setOpenEditPassword,
+        openEditProfile,
+        setOpenEditProfile,
       }}
     >
       {children}

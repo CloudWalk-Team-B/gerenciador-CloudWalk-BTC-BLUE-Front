@@ -22,19 +22,6 @@ const Moddal = () => {
     setOpenRecoveryPassword(false);
   }
 
-  const customStyles = {
-    content: {
-      top: "50%",
-      left: "50%",
-      right: "auto",
-      bottom: "auto",
-      marginRight: "-50%",
-      transform: "translate(-50%, -50%)",
-      border: "1px solid purple",
-      // transition: "all, 0.5s",
-    },
-  };
-
   // let spinComponent = (document.querySelector("#spin")!.style.display =
   //   "block");
 
@@ -60,7 +47,7 @@ const Moddal = () => {
   };
 
   let handlePasswordEdit = () => {
-    document.querySelector<HTMLElement>("#spin")!.style.display = "none";
+    document.querySelector<HTMLElement>("#spin")!.style.display = "block";
 
     document.querySelector<HTMLElement>("#button")!.style.display = "none";
 
