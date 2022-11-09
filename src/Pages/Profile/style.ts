@@ -8,6 +8,7 @@ export const Container = styled.div`
     flex-direction: column;
     align-items: center;
     color: ${theme.colors.primaryColor};
+    overflow: hidden;
 
     header {
       background-color: ${theme.colors.primaryColor};

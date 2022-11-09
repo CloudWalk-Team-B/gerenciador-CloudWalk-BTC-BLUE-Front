@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import { AiOutlineHome } from "react-icons/ai";
 import { FcAbout } from "react-icons/fc";
 import { Link } from "react-router-dom";
-import { CgProfile } from "react-icons/cg";
+import { HiUserCircle } from "react-icons/hi";
 import "animate.css";
 
 export const Content = styled.div`
@@ -14,6 +14,9 @@ export const Content = styled.div`
     justify-content: space-between;
     align-items: center;
     color: white;
+
+    @media (max-width: 576px) {
+    }
   `}
 `;
 
@@ -22,20 +25,20 @@ export const BoxSoon = styled.span`
   align-items: center;
   text-align: center;
   font-size: 3.5vh;
-  
-  div{
+  margin-left: 30px;
+  div {
     display: flex;
     flex-direction: row;
     margin-left: 2rem;
     font-size: 1.3rem;
-    .getOut{
-      cursor:pointer
+    .getOut {
+      cursor: pointer;
     }
   }
 `;
 export const Soon = styled.img`
   height: 12vh;
-  margin-top: .8rem;
+  margin-top: 0.8rem;
 `;
 export const Name = styled.span`
   ${({ theme }) => css`
@@ -45,12 +48,13 @@ export const Name = styled.span`
   `}
 `;
 export const Update = styled.span`
+  width: 10rem;
   display: flex;
   flex-direction: row;
   align-items: center;
   width: 55%;
-  div{
-    width: 10rem;  
+  div {
+    width: 10rem;
     display: flex;
     align-items: center;
     text-align: center;
@@ -62,8 +66,8 @@ export const Update = styled.span`
   }
 `;
 export const TextUpdate = styled.span`
-font-size: 1.2em;
-margin: 10px;
+  font-size: 1.2em;
+  margin: 10px;
 `;
 
 export const Search = styled.span`
@@ -86,36 +90,34 @@ export const TextSearch = styled.input`
   `}
 `;
 export const Home = styled(AiOutlineHome)`
- color: rgba(255, 255, 255, 0.8);
- width: 1.2rem;
- height: 1.2rem;
- margin: 0;
-
-`;
-export const Info= styled(FcAbout)`
   color: rgba(255, 255, 255, 0.8);
   width: 1.2rem;
   height: 1.2rem;
   margin: 0;
-
+`;
+export const Info = styled(FcAbout)`
+  color: rgba(255, 255, 255, 0.8);
+  width: 1.2rem;
+  height: 1.2rem;
+  margin: 0;
 `;
 export const Btn = styled(Link)`
-text-decoration: none;
-color: #601A4A;
-margin:0;
-:hover{
-  color: rgba(255, 255, 255, 0.8);
-}
+  text-decoration: none;
+  color: #601a4a;
+  margin: 0;
+  :hover {
+    color: rgba(255, 255, 255, 0.8);
+  }
 `;
 
 export const Nav = styled.nav`
-  width:17rem;;
+  width: 17rem;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-right: 1rem;
 
-  div{
+  div {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -123,9 +125,9 @@ export const Nav = styled.nav`
   }
 `;
 
-export const Profile = styled(CgProfile)`
-width: 3rem;
-height: 3rem;
-color: white;
-margin: 0.2rem;
-`
+export const Profile = styled(HiUserCircle)`
+  width: 3rem;
+  height: 3rem;
+  color: white;
+  margin: 0.2rem;
+`;

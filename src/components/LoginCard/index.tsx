@@ -11,9 +11,9 @@ import { useNavigate } from "react-router-dom";
 import { useUser } from "../../contexts/User";
 import Swal from "sweetalert2";
 import { EditPassword } from "../../types/interface";
-import { User } from "../Navbar/styles";
-import { useHandleModals } from "../../contexts/HandleModals";
 import { EmailConfirmation } from "../ModalEmailConfirmation";
+import Moddal from "../ModalRecoverPassword";
+import { useHandleModals } from "../../contexts/HandleModals";
 
 interface LoginData {
   email: string;
@@ -32,9 +32,11 @@ const loginSchema = yup.object().shape({
 
 
 const LoginCard = () => {
+
   const { modalConfirm, setModalConfirm  } = useHandleModals();
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState<string>("");
   const { setUser } = useUser();
+  const { openRecoveryPassword, setOpenRecoveryPassword } = useHandleModals();
   const {
     register,
     handleSubmit,
@@ -74,12 +76,9 @@ const LoginCard = () => {
 
   const navegate = useNavigate();
 
-  let convertEmail = (email: string) => {
-    setEmail(email);
-  };
-  const updatePassword: EditPassword = {
-    email: email,
-  };
+  // let convertEmail = (email: string) => {
+  //   setEmail(email);
+  // };
 
   let passwordRecovery = () => {
     Swal.fire({
@@ -111,47 +110,61 @@ const LoginCard = () => {
         });
       }
     });
+
+  const openPasswordModal = (open: boolean) => {
+    if (open === true) {
+      return <Moddal />;
+    }
+
   };
 
   return (
     <>
-    <S.LoginCardContainer>
-      <img
-        src={Logo}
-        className="animate__animated animate__flip animate__delay-0.5s"
-      />
-      <h2 className="animate__animated animate__fadeInLeft">
-        Bem vindo(a) ao Capivara Pets
-      </h2>
-      <div className="animate__animated animate__backInUp">
-        <p>Login </p>
-        <form onSubmit={handleSubmit(handleLogin)}>
-          <input
-            type="text"
-            placeholder="Email"
-            {...register("email")}
-            onBlur={() => clearErrors()}
-          />
-          <input
-            type="password"
-            placeholder="Senha"
-            {...register("password")}
-            onBlur={() => clearErrors()}
-          />
-          <div>
-            <p onClick={passwordRecovery}>Esqueceu a senha?</p>
-            <p onClick={() => navegate("/cadastro")}>Cadastre-se</p>
-          </div>
-          <button type="submit">Entrar</button>
-        </form>
-        {
-          <S.ErrorMessage>
-            {errors.email?.message || errors.password?.message}
-          </S.ErrorMessage>
-        }
-      </div>
-    </S.LoginCardContainer>
-    {confirmModal(modalConfirm)}
+
+      <S.LoginCardContainer>
+        <img
+          src={Logo}
+          className="animate__animated animate__flip animate__delay-0.5s"
+        />
+        <h2 className="animate__animated animate__fadeInLeft">
+          Bem vindo(a) ao Capivara Pets
+        </h2>
+        <div className="animate__animated animate__backInUp">
+          <p>Login </p>
+          <form onSubmit={handleSubmit(handleLogin)}>
+            <input
+              type="text"
+              placeholder="Email"
+              {...register("email")}
+              onBlur={() => clearErrors()}
+            />
+            <input
+              type="password"
+              placeholder="Senha"
+              {...register("password")}
+              onBlur={() => clearErrors()}
+            />
+            <div>
+              <p
+                onClick={() => {
+                  setOpenRecoveryPassword(true);
+                }}
+              >
+                Esqueceu a senha?
+              </p>
+              <p onClick={() => navegate("/cadastro")}>Cadastre-se</p>
+            </div>
+            <button type="submit">Entrar</button>
+          </form>
+          {
+            <S.ErrorMessage>
+              {errors.email?.message || errors.password?.message}
+            </S.ErrorMessage>
+          }
+        </div>
+      </S.LoginCardContainer>
+      {openPasswordModal(openRecoveryPassword)}
+      {confirmModal(modalConfirm)}
     </>
   );
 };

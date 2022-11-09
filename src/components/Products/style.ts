@@ -16,8 +16,7 @@ export const ProductsContainer = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
-  
-  `;
+`;
 
 export const CardProduct = styled.div`
   ${({ theme }) => css`
@@ -25,7 +24,7 @@ export const CardProduct = styled.div`
     background-color: ${theme.colors.primaryColor};
     border-radius: 12px;
     height: 19vh;
-    width: 45%;
+    width: 30%;
     padding: 10px;
     color: white;
     display: flex;
@@ -36,14 +35,12 @@ export const CardProduct = styled.div`
       cursor: pointer;
     }
 
-    section{
+    section {
       display: flex;
       flex-direction: row;
       border-top: 1px solid white;
       margin-top: 0.5rem;
       padding-top: 0.5rem;
-
-      
     }
   `}
 `;
