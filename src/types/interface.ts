@@ -74,3 +74,7 @@ export interface EditProduct {
   price: number;
   inventory: boolean;
 }
+
+export interface RecoveryPassword {
+  email: string;
+}
