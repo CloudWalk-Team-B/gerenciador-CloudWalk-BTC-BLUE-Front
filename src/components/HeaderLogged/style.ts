@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import { AiOutlineHome } from "react-icons/ai";
 import { FcAbout } from "react-icons/fc";
 import { Link } from "react-router-dom";
-import { CgProfile } from "react-icons/cg";
+import { HiUserCircle } from "react-icons/hi";
 import "animate.css";
 
 export const Content = styled.div`
@@ -125,7 +125,7 @@ export const Nav = styled.nav`
   }
 `;
 
-export const Profile = styled(CgProfile)`
+export const Profile = styled(HiUserCircle)`
   width: 3rem;
   height: 3rem;
   color: white;
