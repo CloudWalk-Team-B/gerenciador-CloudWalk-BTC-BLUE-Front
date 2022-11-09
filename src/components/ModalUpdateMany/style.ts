@@ -36,7 +36,7 @@ export const MainComponent = styled.div`
         input{
           font-size: 1.3rem;
           width: 70%;
-          height: 1.5rem;
+          height: 1.9rem;
           text-align: center;
           border: 1px solid black;
         }
@@ -51,7 +51,13 @@ export const MainComponent = styled.div`
         }
       }
 
-      button {
+      .bothButtons{
+        display: flex;
+        flex-direction: row;
+        width: 25%;
+        justify-content: space-between;
+
+        button {
             background-color: ${theme.colors.primaryColor};
             color: ${theme.colors.textColor};
             font-family: "minimal";
@@ -65,7 +71,7 @@ export const MainComponent = styled.div`
             padding: 0 1rem;
             box-sizing: border-box;
             height: 3.8rem;
-            width: 15%;
+            width: 45%;
             font-size: 3vh;
             border-radius: 3.125rem;
             transition: all 0.5s;
@@ -75,6 +81,10 @@ export const MainComponent = styled.div`
               transform: scale(1.05);
             }
           }
+
+      }
+
+      
   `}
 `;
 

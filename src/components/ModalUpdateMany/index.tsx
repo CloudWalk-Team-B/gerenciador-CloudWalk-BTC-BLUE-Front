@@ -61,8 +61,10 @@ const ModalUpdate = () => {
           <div>
             <input type="file" onChange={(e) => setFile(e.target.files![0])} />
           </div>
-          <button onClick={() => uploadFile()}>Atualizar</button>
-          <button>Download</button>
+          <div className="bothButtons">
+            <button onClick={() => uploadFile()}>Atualizar</button>
+            <button>Download</button>
+          </div>
         </S.MainComponent>
       </Modal>
     </>
