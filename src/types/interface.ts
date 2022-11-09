@@ -9,6 +9,19 @@ export interface User {
   cpf: number;
   isAdmin: boolean;
   isManager: boolean;
+  isAuth: boolean;
+  createdAt?: Date;
+  updatedAt?: Date;
+}
+
+export interface UpdateUser {
+  id?: string;
+  name: string;
+  email: string;
+  cpf: number;
+  isAdmin: boolean;
+  isManager: boolean;
+  isAuth: boolean;
   createdAt?: Date;
   updatedAt?: Date;
 }
