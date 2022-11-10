@@ -40,7 +40,6 @@ export const CardSlider = styled(SwiperSlide)`
 max-width:16.5vw;
 min-width:10.5vw;
 height: 23rem;
-background-color: tranparent;
 display: flex;
 flex-direction: column;
 justify-content: center ;

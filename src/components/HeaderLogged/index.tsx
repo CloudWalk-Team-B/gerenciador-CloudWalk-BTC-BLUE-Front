@@ -55,16 +55,20 @@ const HeaderLogged = (props: any) => {
             ></S.TextSearch>
           </S.Search>
           <S.Nav>
+            <div className="animate__animated animate__slideInRight animate__delay-1s" onClick={()=>navigate("/")}>
+              <S.Home></S.Home>
+              <p>Home</p>
+            </div>
             <S.Update
               className="animate__animated animate__slideInRight animate__delay-1s"
               onClick={() => setOpenUpdate(!openUpdate)}
             >
               <div>
+                <S.Updt/>
                 <S.TextUpdate>
-                  Atualização <br />
+                  Atualização
                   em massa
                 </S.TextUpdate>
-                <FiPlus color="white" fontSize="1.5em" />
               </div>
             </S.Update>
             <div
@@ -104,6 +108,7 @@ const HeaderLogged = (props: any) => {
           ></S.TextSearch>
         </S.Search>
         <S.Update className="animate__animated animate__slideInRight animate__delay-1s">
+          
           <S.TextUpdate>
             Atualização <br />
             em massa
