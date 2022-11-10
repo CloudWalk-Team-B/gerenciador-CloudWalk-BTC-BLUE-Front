@@ -75,8 +75,9 @@ export const LoginCardContainer = styled.div`
 
           p {
             color: ${theme.colors.primaryColor};
+            width: 60vw;
 
-            font-size: 3vh;
+            font-size: 200%;
             margin-top: -2rem;
             margin-left: -30%;
             transition: all 0.5s;
