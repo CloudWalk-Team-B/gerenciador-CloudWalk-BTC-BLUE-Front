@@ -29,7 +29,7 @@ height: 25rem;
 
 export const Img = styled.img`
 max-width: 95%;
-max-height: 60%;
+max-height: 50%;
 
 &:hover{
   transform: scale(1.05);
