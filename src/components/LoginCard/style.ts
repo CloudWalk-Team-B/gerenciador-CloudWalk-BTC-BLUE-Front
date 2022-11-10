@@ -26,10 +26,7 @@ export const LoginCardContainer = styled.div`
       font-size: 6vh;
       margin-top: 0;
       font-weight: 300;
-
-      @media (max-width: 335px) {
-        text-align: center;
-      }
+      text-align: center;
     }
     div {
       display: flex;
