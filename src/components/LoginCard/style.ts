@@ -76,13 +76,17 @@ export const LoginCardContainer = styled.div`
           p {
             color: ${theme.colors.primaryColor};
 
-            font-size: 5.5vh;
+            font-size: 3vh;
             margin-top: -2rem;
             margin-left: -30%;
             transition: all 0.5s;
             :hover {
               cursor: pointer;
               transform: scale(1.05);
+            }
+
+            @media (max-width: 950px) {
+              font-size: 120%;
             }
           }
         }
@@ -104,6 +108,10 @@ export const LoginCardContainer = styled.div`
           :hover {
             cursor: pointer;
             transform: scale(1.05);
+            background-color: white;
+            color: ${theme.colors.primaryColorOpacity};
+            border: 1px solid ${theme.colors.primaryColorOpacity};
+            box-shadow: 3px 3px 8px ${theme.colors.primaryColorOpacity};
           }
         }
       }
