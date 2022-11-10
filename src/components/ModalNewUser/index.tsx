@@ -52,7 +52,7 @@ const Moddal = () => {
         isOpen={openNewUser}
         // onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
-        className="customStyles"
+        className="customStyless"
         contentLabel="Example Modal"
       >
         <S.TitleComponent>Cadastro de Colaborador</S.TitleComponent>
