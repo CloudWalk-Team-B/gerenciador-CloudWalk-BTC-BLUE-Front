@@ -31,7 +31,6 @@ const loginSchema = yup.object().shape({
 
 const LoginCard = () => {
   const { modalConfirm, setModalConfirm  } = useHandleModals();
-  // const [email, setEmail] = useState("");
   const { setUser } = useUser();
   const { openRecoveryPassword, setOpenRecoveryPassword } = useHandleModals();
 
@@ -73,10 +72,6 @@ const LoginCard = () => {
   }
 
   const navegate = useNavigate();
-
-  // let convertEmail = (email: string) => {
-  //   setEmail(email);
-  // };
 
   const openPasswordModal = (open: boolean) => {
     if (open === true) {

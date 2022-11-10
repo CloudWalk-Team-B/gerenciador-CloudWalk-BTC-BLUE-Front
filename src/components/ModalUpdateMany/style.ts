@@ -10,7 +10,7 @@ export const TitleComponent = styled.h2`
     border-radius: 50px;
     height: 10%;
     font-weight: 300;
-    width: 40vw;
+    width: 38vw;
     margin: 18px 10vw;
     font-size: 3.5vh;
   `}
