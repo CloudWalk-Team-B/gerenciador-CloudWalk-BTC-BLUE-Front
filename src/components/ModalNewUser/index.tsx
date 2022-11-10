@@ -52,7 +52,7 @@ const Moddal = () => {
         isOpen={openNewUser}
         // onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
-        className="customStyless"
+        className=" animate__animated animate__backInDown customStyless"
         contentLabel="Example Modal"
       >
         <S.TitleComponent>Cadastro de Colaborador</S.TitleComponent>
