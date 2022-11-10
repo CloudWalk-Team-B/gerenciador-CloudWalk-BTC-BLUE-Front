@@ -72,6 +72,7 @@ export const CreateAccountContainer = styled.div`
         font-size: 5.5vh;
         margin-left: 10%;
         color: ${theme.colors.primaryColor};
+        text-align: center;
       }
       #title {
         @media (max-width: 425px) {
