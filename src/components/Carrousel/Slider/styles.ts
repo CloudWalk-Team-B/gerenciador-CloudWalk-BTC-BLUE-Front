@@ -4,6 +4,24 @@ import { Swiper,SwiperSlide } from "swiper/react"
 export const Slider = styled(Swiper)`
 width: 95%;
 height: 25rem;
+@media (max-width: 678px) {
+  margin:0;
+padding:4rem; 
+}
+
+.swiper-container {
+  width: 480px;
+}
+@media screen and (min-width: 640px) {
+  .swiper-container {
+    width: 640px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .swiper-container {
+    width: 768px;
+  }
+}
 
   .swiper-button-prev {
     color: #601A4A;
@@ -36,7 +54,7 @@ min-height: 11rem;
 `;
 
 export const CardSlider = styled(SwiperSlide)`
-max-width:16.5vw;
+max-width:16.5rem;
 height: 23rem;
 background-color: tranparent;
 display: flex;

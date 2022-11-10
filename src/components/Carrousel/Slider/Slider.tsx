@@ -16,10 +16,24 @@ export const Slider = ({children,title}:ICard) => {
     
     const settings= {
         spaceBetween: 50,
-        slidesPerView:5,
-        navigation: children.length >= 5,
+        navigation: children.length >= 4,
         draggable:  true,
         loop: true,
+        breakpoints: {
+            300: {
+              slidesPerView: 1,
+              navigation: false,
+              slidesPerGroup: 1,
+            },
+            600: {
+              slidesPerView: 3,
+              slidesPerGroup: 3,
+            },
+            1200: {
+              slidesPerView:  5,
+              slidesPerGroup: 5,
+            },
+          },
     }
 
     const navegate = useNavigate()
@@ -32,7 +46,7 @@ export const Slider = ({children,title}:ICard) => {
     return(
         <>
             <S.Title>{title}</S.Title>
-            <S.Slider modules={[Navigation, Pagination, Scrollbar, A11y]} {... settings}>
+            <S.Slider modules={[Navigation, Pagination]} {... settings}>
                 {children.map((item) => {
                     return(
                         <S.CardSlider key={item.id} onClick={()=>handleDetail(item)}> 

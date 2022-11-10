@@ -1,20 +1,23 @@
 import styled, { css } from "styled-components";
 import { BsBagPlusFill } from "react-icons/bs";
 import { FcAbout } from "react-icons/fc";
-import { FaUserPlus,FaUser,FaUserCircle } from "react-icons/fa";
+import {FaUser,FaUserCircle,  } from "react-icons/fa";
 import { BiSearch } from "react-icons/bi";
+import { MdClose } from "react-icons/md";
 import { Link } from "react-router-dom";
 import "animate.css";
 
 export const Content = styled.div`
   ${({ theme }) => css`
     background-color: ${theme.colors.primaryColor};
-    max-width: 100vw;
-    height: 13vh;
+    height:5rem ;
     display: flex;
     justify-content: space-between;
     align-items: center;
     color: white;
+    @media (max-width: 678px) {
+      width: 100%;
+    }
   `}
 `;
 
@@ -22,22 +25,34 @@ export const BoxSoon = styled.span`
   display: flex;
   align-items: center;
   text-align: center;
-  font-size: 3.5vh;
+  font-size: 2em;
   margin-left: 30px;
-
+  @media (max-width: 678px) {
+    font-size: 1.5em;
+    margin-left: 10px;
+    
+  }
   div{
     display: flex;
     flex-direction: row;
-    margin-left: 2rem;
-    font-size: 1.5rem;
+    margin-left: 1.5rem;
+    font-size: 1.2rem;
     .getOut{
       cursor:pointer
+    }
+    @media (max-width: 678px) {
+      font-size: 0.6em;
+      margin-left: 10px;
+      
     }
   }
 `;
 export const Soon = styled.img`
-  height: 12vh;
+  height: 4.5rem;
   cursor: pointer;
+  @media (max-width: 678px) {
+    height: 3.5rem;
+  }
 
 `;
 export const Name = styled.span`
@@ -46,6 +61,9 @@ export const Name = styled.span`
     color: ${theme.colors.textColor};
     margin-left: 20px;
     cursor: pointer;
+    @media (max-width: 678px) {
+      display:none;
+    }
   `}
 `;
 
@@ -71,14 +89,20 @@ export const TextSearch = styled.input`
   ${({ theme }) => css`
     font-family: ${theme.constants.bodyFontFamily};
     background-color: white;
-    height: 2.5vh;
-    width: 30vw;
+    height: 1rem;
+    width: 15rem;
     color: ${theme.colors.primaryColor};
     border: none;
     border-radius: 50px;
     outline: 0;
     padding: 10px 30px;
     font-size: 1em;
+    @media (max-width: 678px) {
+      height: 0.8rem;
+      width: 10rem;
+      display: none;
+    }
+    
   `}
 `;
 export const BtnUser = styled(FaUserCircle)`
@@ -91,12 +115,30 @@ color:white;
 export const User = styled(FaUser)`
  color: #601A4A;
  margin: 0.5rem;
+ @media (max-width: 678px) {
+  width: 1rem;
+  height: 1rem;
+  margin: 0.3rem;
+ }
 `;
-export const Register = styled(FaUserPlus)`
- color: #601A4A;
- width: 1.6rem;
- height: 1.6rem;
+export const BtnClose = styled.div`
+width: 1.8rem;
+height: 1.8rem;
+background-color: #601A4A;
+display: flex;
+justify-content: center;
+align-items: center;
+`;
+export const Close = styled(MdClose)`
+ color: #FFF;
+ width: 1.8rem;
+ height: 1.8rem;
  margin: 0.5rem;
+ @media (max-width: 678px) {
+  width: 1.8rem ;
+  height:1.8rem;
+  margin: 0.3rem;
+ }
 
 `;
 export const Info= styled(FcAbout)`
@@ -104,6 +146,11 @@ export const Info= styled(FcAbout)`
   width: 2.5rem;
   height: 2.5rem;
   margin: 0;
+  @media (max-width: 678px) {
+    width: 1.5rem;
+    height: 1.5rem;
+    
+   }
 
 `;
 export const Bag = styled(BsBagPlusFill)`
@@ -111,53 +158,61 @@ export const Bag = styled(BsBagPlusFill)`
   width: 2.5rem;
   height: 2.5rem;
   margin: 0;
+  @media (max-width: 678px) {
+    width: 1.5rem;
+    height: 1.5rem;
+    
+   }
 `;
 export const ButtonBag = styled.div`
-width: 4.5rem;
+width: 4.8rem;
 height: 100%;
 text-decoration: none;
 color: rgba(255, 255, 255, 0.8);
 margin: 1rem;
 display: flex;
+font-size:0.8em;
 flex-direction: column;
 justify-content: center;
 align-items: center;
 :hover{
   color: rgba(255, 255, 255, 0.8);
 }
+@media (max-width: 678px) {
+  width: 1.7rem;
+  height: 1.7rem;
+  margin: 0.3rem;
+  font-size:0;
+ }
 `;
 export const Btn = styled(Link)`
-width: 4.5rem;
+width: 4.8rem;
 height: 100%;
 text-decoration: none;
 color: rgba(255, 255, 255, 0.8);
 margin: 1rem;
 display: flex;
+font-size:0.7em;
 flex-direction: column;
 justify-content: center;
 align-items: center;
 :hover{
   color: rgba(255, 255, 255, 0.8);
 }
-`;
-export const BtnModal = styled(Link)`
-width: 100%;
-height: 1.8rem;
-text-decoration: none;
-color: rgba(255, 255, 255, 0.8);
-margin-bottom: 2rem;
-display: flex;
-justify-content: center;
-align-items: center;
-margin: 0 auto;
+@media (max-width: 678px) {
+  width: 1.7rem;
+  height: 1.7rem;
+  margin: 0.5rem;
+  font-size:0;
+ }
 `;
 
 export const Nav = styled.nav`
-  width:17rem;
+  width:12rem;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
-  margin-right: 1rem;
+  margin-right: 1rem; 
 `;
 export const Button = styled.button`
 cursor: pointer;
