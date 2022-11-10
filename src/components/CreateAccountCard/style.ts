@@ -170,6 +170,10 @@ export const CreateAccountContainer = styled.div`
               height: 3rem;
             }
           }
+          #spinNewUser {
+            display: none;
+            margin: 0px 23%;
+          }
         }
       }
     }

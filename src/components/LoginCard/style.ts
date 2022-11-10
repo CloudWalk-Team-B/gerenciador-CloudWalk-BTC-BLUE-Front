@@ -119,6 +119,11 @@ export const LoginCardContainer = styled.div`
             box-shadow: 3px 3px 8px ${theme.colors.primaryColorOpacity};
           }
         }
+
+        #spinLogIn {
+          display: none;
+          margin-top: 5%;
+        }
       }
     }
   `}

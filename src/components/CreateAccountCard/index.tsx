@@ -7,6 +7,8 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as S from "./style";
 import { useNavigate } from "react-router-dom";
+
+import CircularProgress from "@mui/material/CircularProgress";
 import Moddal from "../ModalNewUser";
 import { useHandleModals } from "../../contexts/HandleModals";
 import { useEffect } from "react";
@@ -126,6 +128,11 @@ const CreateAccountCard = () => {
         data.confirmPassword !== "" &&
         data.cpf !== undefined
       ) {
+        document.querySelector<HTMLElement>("#spinNewUser")!.style.display =
+          "block";
+        document.querySelector<HTMLElement>("#buttonNewUser")!.style.display =
+          "none";
+
         setLoadModal(true);
         return Api.post("/user", newData)
           .then((res) => {
@@ -135,15 +142,33 @@ const CreateAccountCard = () => {
             const loginUser = { email: data.email, password: data.password };
             Api.post("auth", loginUser)
               .then((res) => {
+                document.querySelector<HTMLElement>(
+                  "#spinNewUser"
+                )!.style.display = "none";
+                document.querySelector<HTMLElement>(
+                  "#buttonNewUser"
+                )!.style.display = "block";
                 setUser(res.data.user);
                 localStorage.setItem("token", res.data.token);
                 localStorage.setItem("user", JSON.stringify(res.data.user));
               })
               .catch(() => {
+                document.querySelector<HTMLElement>(
+                  "#spinNewUser"
+                )!.style.display = "none";
+                document.querySelector<HTMLElement>(
+                  "#buttonNewUser"
+                )!.style.display = "block";
+
                 toast.error("Erro ao efetuar login");
               });
           })
           .catch(() => {
+            document.querySelector<HTMLElement>("#spinNewUser")!.style.display =
+              "none";
+            document.querySelector<HTMLElement>(
+              "#buttonNewUser"
+            )!.style.display = "block";
             setLoadModal(false);
             toast.error("Dados inválidos ou usuário já cadastrado");
           });
@@ -220,7 +245,10 @@ const CreateAccountCard = () => {
               >
                 Voltar
               </a>
-              <button type="submit">Cadastrar</button>
+              <button type="submit" id="buttonNewUser">
+                Cadastrar
+              </button>
+              <CircularProgress id="spinNewUser" color="secondary" />
               {/* <a onClick={()=>{setOpenNewUser(true)}}>Cadastrar Colaborador</a> */}
             </div>
             {

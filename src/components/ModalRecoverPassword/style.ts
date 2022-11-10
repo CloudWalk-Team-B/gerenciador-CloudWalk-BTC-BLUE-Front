@@ -83,7 +83,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
 
-  #spin {
+  #spinRecoveryPassword {
     display: none;
 
     /* &active {
