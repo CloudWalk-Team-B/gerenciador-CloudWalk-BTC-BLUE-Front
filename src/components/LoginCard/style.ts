@@ -26,14 +26,22 @@ export const LoginCardContainer = styled.div`
       font-size: 6vh;
       margin-top: 0;
       font-weight: 300;
+
+      @media (max-width: 335px) {
+        text-align: center;
+      }
     }
     div {
       display: flex;
       flex-direction: column;
       border: 2px solid ${theme.colors.primaryColor};
-      width: 37vw;
+      width: 32vw;
       height: 62%;
       border-radius: 15px;
+
+      @media (max-width: 770px) {
+        width: 60vw;
+      }
 
       p {
         font-weight: 300;
