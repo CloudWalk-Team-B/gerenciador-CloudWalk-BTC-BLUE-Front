@@ -73,6 +73,11 @@ export const CreateAccountContainer = styled.div`
         margin-left: 10%;
         color: ${theme.colors.primaryColor};
       }
+      #title {
+        @media (max-width: 425px) {
+          display: none;
+        }
+      }
 
       form {
         display: flex;
@@ -80,6 +85,10 @@ export const CreateAccountContainer = styled.div`
         align-items: center;
         margin-top: 5%;
         width: 95%;
+
+        @media (max-width: 425px) {
+          margin-top: 30px;
+        }
 
         . {
           color: #ee442f;
