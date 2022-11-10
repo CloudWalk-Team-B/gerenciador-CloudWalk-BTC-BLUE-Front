@@ -43,8 +43,7 @@ export const textInfo = styled.p`
   word-wrap: break-word;
   word-break: break-word;
 `;
-// <<<<<<< HEAD
-// =======
+
 export const Home = styled(AiOutlineHome)`
   color: rgba(255, 255, 255, 0.8);
   width: 1.2rem;
@@ -79,4 +78,3 @@ export const Btn = styled(Link)`
 export const TextBtn = styled.span`
   font-size: 0.9em;
 `;
-// >>>>>>> 619345781fac52543932733551f957f9fe1f2b79

@@ -4,11 +4,8 @@ import Modal from "react-modal";
 import { useHandleModals } from "../../contexts/HandleModals";
 import Api from "../../services/api";
 import { toast } from "react-hot-toast";
-import * as FileSaver from "file-saver"
-import XLSX from "sheetjs-style"
 import { useProducts } from "../../contexts/product";
 import ModalLoading from "../ModalLoading";
-// import XLSX from "xlsx"
 
 const ModalUpdate = () => {
 

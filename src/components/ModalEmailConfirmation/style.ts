@@ -23,7 +23,6 @@ export const ConfirmationModal = styled.div`
       background-color: white;
       width: 60%;
       height: 50vh;
-      /* border: 2px solid ${theme.colors.primaryColor}; */
       box-shadow: 3px 3px 8px ${theme.colors.primaryColorOpacity};
       border-radius: 10px;
 
