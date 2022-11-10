@@ -68,7 +68,7 @@ const Moddal = () => {
         onRequestClose={closeModal}
         // style={customStyles}
         contentLabel="Example Modal"
-        className="animate__animated animate__jackInTheBox  customStyles"
+        className="animate__animated animate__backInDown  customStyles"
       >
         <S.Container>
           <S.TitleModal>Recuperação de senha</S.TitleModal>
