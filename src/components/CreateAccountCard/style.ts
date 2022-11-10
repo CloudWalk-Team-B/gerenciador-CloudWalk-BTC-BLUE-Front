@@ -15,7 +15,6 @@ export const CreateAccountContainer = styled.div`
     align-items: center;
     height: 100%;
     width: 100%;
-    
 
     img {
       height: 15%;
@@ -30,6 +29,7 @@ export const CreateAccountContainer = styled.div`
       margin-bottom: 0;
       padding: 0;
       margin-bottom: 5vh;
+      text-align: center;
     }
     p {
       font-size: 5rem;
@@ -47,7 +47,22 @@ export const CreateAccountContainer = styled.div`
       width: 30vw;
       height: 65%;
       border-radius: 15px;
-      
+
+      @media (max-width: 990px) {
+        width: 40vw;
+      }
+
+      @media (max-width: 692px) {
+        width: 50vw;
+      }
+
+      @media (max-width: 554px) {
+        width: 60vw;
+      }
+
+      @media (max-width: 424px) {
+        height: 58%;
+      }
 
       p {
         box-sizing: border-box;
@@ -57,9 +72,13 @@ export const CreateAccountContainer = styled.div`
         font-size: 5.5vh;
         margin-left: 10%;
         color: ${theme.colors.primaryColor};
+        text-align: center;
       }
-
-      
+      #title {
+        @media (max-width: 425px) {
+          display: none;
+        }
+      }
 
       form {
         display: flex;
@@ -68,26 +87,30 @@ export const CreateAccountContainer = styled.div`
         margin-top: 5%;
         width: 95%;
 
-        .{
-        color: #ee442f;
-        font-size: 1.3rem;
-        margin: 0;
-        text-align: center;
-        margin-top: -2rem;
-        font-weight: 600;
-      }
+        @media (max-width: 425px) {
+          margin-top: 50px;
+        }
 
-      .newAdmManager{
-        font-size: 1.3rem;
-        font-weight: 600;
-        cursor: pointer;
-        z-index: 1;
-      }
+        . {
+          color: #ee442f;
+          font-size: 1.3rem;
+          margin: 0;
+          text-align: center;
+          margin-top: -2rem;
+          font-weight: 600;
+        }
 
-      .isAdmManager{
-        color: #ee442f;
-        cursor: default;
-      }
+        .newAdmManager {
+          font-size: 1.3rem;
+          font-weight: 600;
+          cursor: pointer;
+          z-index: 1;
+        }
+
+        .isAdmManager {
+          color: #ee442f;
+          cursor: default;
+        }
 
         input {
           all: unset;
@@ -142,6 +165,14 @@ export const CreateAccountContainer = styled.div`
               cursor: pointer;
               transform: scale(1.05);
             }
+
+            @media (max-width: 424px) {
+              height: 3rem;
+            }
+          }
+          #spinNewUser {
+            display: none;
+            margin: 0px 23%;
           }
         }
       }
@@ -150,7 +181,7 @@ export const CreateAccountContainer = styled.div`
 `;
 export const ErrorMessage = styled.h3`
   ${({ theme }) => css`
-    position: fixed; 
+    position: fixed;
     color: red;
     text-align: center;
     font-size: 1.2rem;

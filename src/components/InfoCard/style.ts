@@ -17,6 +17,10 @@ export const InfoCardContainer = styled.div`
     :hover {
       cursor: pointer;
     }
+
+    @media (max-width: 770px) {
+      display: none;
+    }
   `}
 `;
 
@@ -39,3 +43,40 @@ export const textInfo = styled.p`
   word-wrap: break-word;
   word-break: break-word;
 `;
+// <<<<<<< HEAD
+// =======
+export const Home = styled(AiOutlineHome)`
+  color: rgba(255, 255, 255, 0.8);
+  width: 1.2rem;
+  height: 1.2rem;
+`;
+export const Info = styled(FcAbout)`
+  color: rgba(255, 255, 255, 0.8);
+  width: 1.3rem;
+  height: 1.3rem;
+`;
+
+export const Nav = styled.nav`
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Btn = styled(Link)`
+  text-decoration: none;
+  color: #601a4a;
+  margin: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  aling-items: center;
+  :hover {
+    color: rgba(255, 255, 255, 0.8);
+  }
+`;
+export const TextBtn = styled.span`
+  font-size: 0.9em;
+`;
+// >>>>>>> 619345781fac52543932733551f957f9fe1f2b79

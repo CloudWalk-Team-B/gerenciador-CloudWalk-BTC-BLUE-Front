@@ -26,14 +26,12 @@ export const BoxSoon = styled.span`
   text-align: center;
   font-size: 3.5vh;
   margin-left: 30px;
-
   section{
     display: flex;
     flex-direction: row;
     align-items:center;
     cursor: pointer;
   }
-
   div{
     display: flex;
     flex-direction: row;
@@ -47,7 +45,6 @@ export const BoxSoon = styled.span`
 export const Soon = styled.img`
   height: 12vh;
   cursor: pointer;
-
 `;
 export const Name = styled.span`
   ${({ theme }) => css`
@@ -62,7 +59,6 @@ export const TextUpdate = styled.span`
 width: 100%;
 margin-right: 5px;
 font-size: 0.9em;
-
 `;
 export const TextModal = styled.span`
 width: 100%;
@@ -120,14 +116,12 @@ export const Register = styled(FaUserPlus)`
  width: 1.6rem;
  height: 1.6rem;
  margin: 0.5rem;
-
 `;
 export const Info= styled(FcAbout)`
   color: rgba(255, 255, 255, 0.8);
   width: 2.5rem;
   height: 2.5rem;
   margin: 0;
-
 `;
 export const Bag = styled(BsBagPlusFill)`
   color: rgba(255, 255, 255, 0.8);
@@ -201,5 +195,3 @@ margin-left: -2.5rem;
 z-index: 1;
 cursor:pointer;
 `
-
-

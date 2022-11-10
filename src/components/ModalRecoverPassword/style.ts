@@ -14,6 +14,17 @@ export const TitleModal = styled.h2`
     width: 40vw;
     margin: 10px 10vw;
     font-size: 7vh;
+    text-align: center;
+
+    @media (max-width: 720px) {
+      width: 50vw;
+    }
+    @media (max-width: 590px) {
+      font-size: 5vh;
+    }
+    @media (max-width: 414px) {
+      font-size: 4vh;
+    }
   `}
 `;
 
@@ -32,6 +43,16 @@ export const InfoProductCard = styled.div`
       font-size: 20px;
       text-align: center;
       margin-bottom: 50px;
+    }
+
+    h1 {
+      text-align: center;
+      @media (max-width: 590px) {
+        font-size: 5vh;
+      }
+      @media (max-width: 414px) {
+        font-size: 4vh;
+      }
     }
 
     button {
@@ -62,7 +83,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
 
-  #spin {
+  #spinRecoveryPassword {
     display: none;
 
     /* &active {

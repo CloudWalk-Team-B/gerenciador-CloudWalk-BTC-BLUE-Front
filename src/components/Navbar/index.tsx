@@ -1,11 +1,9 @@
 import * as S from './styles';
 import Logo from "../../assets/images/logoBranca.png";
-import Modal from "react-modal";
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useHandleModals } from '../../contexts/HandleModals';
 import { useAuth } from '../../contexts/auth';
-import { User } from '../../types/interface';
 import { useUser } from '../../contexts/User';
 import { Badge, Drawer } from '@mui/material';
 import Cart from '../Cart';
@@ -68,7 +66,6 @@ export const Navbar = () => {
               <Drawer anchor='right' open={cartOpen} onClose={() => setCartOpen(false)}>
                 <Cart />
               </Drawer>
-              
                {logged&& <S.ButtonBag onClick={() => setCartOpen(true)} >
                <Badge badgeContent={itemCount} color="primary">
                 <S.Bag >{""}</S.Bag>
