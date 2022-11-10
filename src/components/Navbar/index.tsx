@@ -43,7 +43,10 @@ export const Navbar = () => {
             {
               logged && 
               <div>
-                <p>{user.name.split(' ').slice(0, 1)} |</p>
+                <section onClick={()=>navegate("/usuario")}>
+                  <S.GearAccount/>
+                  <p>{user.name.split(' ').slice(0, 1)} |</p>
+                </section>
                 <p className="getOut" onClick={() => {logout(); setSearch("")}}>| Sair</p>
               </div>
             }
@@ -73,6 +76,8 @@ export const Navbar = () => {
                Sacola
               </S.ButtonBag>}
            {!logged && <S.Button onClick={()=>{navegate("/Login");setSearch("")}}><S.BtnUser/>Entrar</S.Button>}
+           {isAdm && <S.Button onClick={()=>{navegate("/Products");setSearch("")}}><S.Gear/>Config</S.Button>}
+
           </S.Nav>
         </S.Content>
     </>

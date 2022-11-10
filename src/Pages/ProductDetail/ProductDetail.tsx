@@ -8,6 +8,7 @@ import { Product } from "../../types/interface"
 import { Slider } from "../../components/Carrousel/Slider/Slider";
 import * as S from "./style"
 import { useProducts } from "../../contexts/product"
+import { useEffect } from "react"
 
 const ProductDetail = () =>{
     const {addProduct} =useCart()
@@ -16,6 +17,9 @@ const ProductDetail = () =>{
     const { logged } = useAuth()
     const navegate = useNavigate()
     const { products, categories } = useProducts()
+
+    useEffect(()=>window.scrollTo(0, 0),[])
+    useEffect(()=>window.scrollTo(0, 0),[product])
 
     
     const FilteredByCategory = products.filter((value) => value.category===newCategory);
@@ -47,7 +51,7 @@ const ProductDetail = () =>{
                         <p>{product.description}</p>
                     </div>
                 </section>
-                <div className="slider" onClick={()=>window.scrollTo(0, 0)}>
+                <div className="slider">
                     {FilteredByCategory.length!==0? <Slider title="" children={FilteredByCategory}/>:<></>}
                 </div>
             </S.ProductDetailContainer>

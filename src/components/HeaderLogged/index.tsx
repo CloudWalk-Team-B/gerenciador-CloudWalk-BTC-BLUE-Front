@@ -28,8 +28,9 @@ const HeaderLogged = (props: any) => {
             <S.Soon
               className="animate__animated animate__slideInLeft animate__delay-1s"
               src={Logo}
+              onClick={()=>navigate("/")}
             />
-            <S.Name className="animate__animated animate__bounceIn animate__delay-1s	">
+            <S.Name className="animate__animated animate__bounceIn animate__delay-1s	" onClick={()=>navigate("/")}>
               Capivara <br />
               Shop
             </S.Name>

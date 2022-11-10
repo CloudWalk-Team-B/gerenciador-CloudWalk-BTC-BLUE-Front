@@ -41,12 +41,14 @@ export const BoxSoon = styled.span`
 export const Soon = styled.img`
   height: 12vh;
   margin-top: 0.8rem;
+  cursor: pointer;
 `;
 export const Name = styled.span`
   ${({ theme }) => css`
     overflow: hidden;
     color: ${theme.colors.textColor};
     margin-left: 20px;
+    cursor: pointer;
   `}
 `;
 export const Update = styled.span`
