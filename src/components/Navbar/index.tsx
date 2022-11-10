@@ -63,6 +63,7 @@ export const Navbar = () => {
                <S.Info/>Sobre nós 
               </S.Btn>
               <Drawer anchor='right' open={cartOpen} onClose={() => setCartOpen(false)}>
+                <S.BtnClose onClick={() => setCartOpen(false)}><S.Close/></S.BtnClose>
                 <Cart />
               </Drawer>
               
