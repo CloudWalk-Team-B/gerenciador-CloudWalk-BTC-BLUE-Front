@@ -1,6 +1,5 @@
 import * as S from "./style";
 import Logo from "../../assets/images/logoBranca.png";
-import { FiPlus } from "react-icons/fi";
 import { useAuth } from "../../contexts/auth";
 import { useHandleModals } from "../../contexts/HandleModals";
 import ModalUpdate from "../ModalUpdateMany";
@@ -35,17 +34,12 @@ const HeaderLogged = (props: any) => {
               Shop
             </S.Name>
             <div>
-              <p> {user.name.split(" ").slice(0, 1)} |</p>
-              <p
-                className="getOut"
-                onClick={() => {
-                  logout();
-                  setSearch("");
-                }}
-              >
-                | Sair
-              </p>
-            </div>
+                <section onClick={()=>navigate("/usuario")}>
+                  <S.GearAccount/>
+                  <p>{user.name.split(' ').slice(0, 1)} |</p>
+                </section>
+                <p className="getOut" onClick={() => {logout(); setSearch("")}}>| Sair</p>
+              </div>
           </S.BoxSoon>
           <S.Search>
             <S.TextSearch
@@ -56,10 +50,6 @@ const HeaderLogged = (props: any) => {
             ></S.TextSearch>
           </S.Search>
           <S.Nav>
-            <div className="animate__animated animate__slideInRight animate__delay-1s" onClick={()=>navigate("/")}>
-              <S.Home></S.Home>
-              <p>Home</p>
-            </div>
             <S.Update
               className="animate__animated animate__slideInRight animate__delay-1s"
               onClick={() => setOpenUpdate(!openUpdate)}
@@ -74,10 +64,10 @@ const HeaderLogged = (props: any) => {
             </S.Update>
             <div
               className="animate__animated animate__slideInRight animate__delay-1s"
-              onClick={() => navigate("/usuario")}
+              onClick={()=>navigate("/")}
             >
-              <S.Profile />
-              <span>Perfil</span>
+              <S.Home></S.Home>
+              <span>Home</span>
             </div>
           </S.Nav>
         </S.Content>
@@ -85,43 +75,6 @@ const HeaderLogged = (props: any) => {
       </>
     );
   }
-  return (
-    <>
-      <S.Content className="animate__animated animate__slideInDown">
-        <S.BoxSoon>
-          <S.Soon
-            className="animate__animated animate__slideInLeft animate__delay-1s"
-            src={Logo}
-            onClick={() => {
-              logout();
-            }}
-          />
-          <S.Name className="animate__animated animate__bounceIn animate__delay-1s	">
-            Capivara <br />
-            Shop
-          </S.Name>
-        </S.BoxSoon>
-        <S.Search>
-          <S.TextSearch
-            className="animate__animated animate__jackInTheBox animate__delay-1s"
-            type="text"
-            placeholder="Procurar..."
-          ></S.TextSearch>
-        </S.Search>
-        <S.Update className="animate__animated animate__slideInRight animate__delay-1s">
-          
-          <S.TextUpdate>
-            Atualização <br />
-            em massa
-          </S.TextUpdate>
-          <FiPlus color="white" fontSize="1.5em" />
-        </S.Update>
-        <S.Info />
-        <S.Home />
-      </S.Content>
-      {openModal(openUpdate)}
-    </>
-  );
 };
 
 export default HeaderLogged;

@@ -1,8 +1,7 @@
 import styled, { css } from "styled-components";
 import { AiOutlineHome } from "react-icons/ai";
 import { FcAbout } from "react-icons/fc";
-import { MdOutlineSystemUpdateAlt } from "react-icons/md";
-
+import { MdOutlineSystemUpdateAlt, MdOutlineManageAccounts } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { HiUserCircle } from "react-icons/hi";
 import "animate.css";
@@ -28,6 +27,14 @@ export const BoxSoon = styled.span`
   text-align: center;
   font-size: 3.5vh;
   margin-left: 30px;
+
+  section{
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    cursor: pointer;
+  }
+
   div {
     display: flex;
     flex-direction: row;
@@ -99,6 +106,12 @@ export const Home = styled(AiOutlineHome)`
 
 `;
 
+export const GearAccount = styled(MdOutlineManageAccounts)`
+  color: rgba(255, 255, 255, 0.8);
+  width: 2rem;
+  height: 2rem;
+`;
+
 export const Updt = styled(MdOutlineSystemUpdateAlt)`
   color: rgba(255, 255, 255, 0.8);
   color: white;
@@ -121,7 +134,7 @@ export const Btn = styled(Link)`
 `;
 
 export const Nav = styled.nav`
-  width: 18%;
+  width: 12%;
   font-size: 1.1em;
   color: white;
   display: flex;
@@ -132,6 +145,7 @@ export const Nav = styled.nav`
 
   p{
     margin: 0.2rem 1rem;
+    width: 4vw;
   }
 
   span{
