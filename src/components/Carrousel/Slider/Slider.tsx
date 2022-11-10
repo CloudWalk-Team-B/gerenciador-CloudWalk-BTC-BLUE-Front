@@ -1,6 +1,5 @@
 import * as S from "./styles";
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
-
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
@@ -16,10 +15,24 @@ export const Slider = ({children,title}:ICard) => {
     
     const settings= {
         spaceBetween: 50,
-        slidesPerView:5,
-        navigation: children.length >= 5,
+        navigation: children.length >= 4,
         draggable:  true,
         loop: true,
+        breakpoints: {
+            300: {
+              slidesPerView: 1,
+              navigation: false,
+              slidesPerGroup: 1,
+            },
+            600: {
+              slidesPerView: 3,
+              slidesPerGroup: 3,
+            },
+            1200: {
+              slidesPerView:  5,
+              slidesPerGroup: 5,
+            },
+          },
     }
 
     const navegate = useNavigate()

@@ -43,11 +43,11 @@ section{
         border: 2px solid #f9f4ec;
         border-radius: 5px;
         width: 30%;
-        height: 45vh;
+        height: 100%;
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
-        padding: 1rem;
+        padding: 0.5rem;
         box-sizing: border-box;
 
         h1{
