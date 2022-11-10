@@ -81,14 +81,21 @@ export const LoginCardContainer = styled.div`
           }
         }
 
-        button {
+        section{
+          align-items:center;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-around;
+          width: 70%;
+
+          button {
           background-color: ${theme.colors.primaryColor};
           color: ${theme.colors.textColor};
           font-family: "minimal";
           text-decoration: none;
           border: none;
-          height: 10vh;
-          width: 50%;
+          height: 6vh;
+          width: 40%;
           box-sizing: border-box;
           padding: 0 1rem;
           margin-top: 3%;
@@ -100,6 +107,9 @@ export const LoginCardContainer = styled.div`
             transform: scale(1.05);
           }
         }
+        }
+
+        
       }
     }
   `}

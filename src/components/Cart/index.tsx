@@ -5,14 +5,14 @@ import { Product } from "../../types/interface";
 import Logo from "../../assets/images/logoRoxa.png"
 
   const Cart: React.FC = () => {
-    const {cart,removeProduct,Total} = useCart()  
+    const {cart, removeProduct, itemCount, Total} = useCart()  
     function handleRemoveProduct(productId: string) {
       removeProduct(productId);
     }
     
     return (
       <S.Wrapper>
-        <S.BoxTotal><S.img src={Logo} /> <h2>Cart</h2></S.BoxTotal>
+        <S.BoxTotal><S.img src={Logo} /> <h2>Sacola</h2></S.BoxTotal>
         {
           cart.map((value) =>(
             <S.List>

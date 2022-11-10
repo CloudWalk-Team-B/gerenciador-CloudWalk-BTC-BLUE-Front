@@ -8,7 +8,7 @@ const Login = () => {
     <>
       <S.LoginContainer>
         <LoginCard />
-        <InfoCard />
+        <InfoCard/>
       </S.LoginContainer>
     </>
   );

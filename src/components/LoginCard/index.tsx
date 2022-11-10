@@ -31,7 +31,6 @@ const loginSchema = yup.object().shape({
 
 const LoginCard = () => {
   const { modalConfirm, setModalConfirm  } = useHandleModals();
-  // const [email, setEmail] = useState("");
   const { setUser } = useUser();
   const { openRecoveryPassword, setOpenRecoveryPassword } = useHandleModals();
 
@@ -74,10 +73,6 @@ const LoginCard = () => {
 
   const navegate = useNavigate();
 
-  // let convertEmail = (email: string) => {
-  //   setEmail(email);
-  // };
-
   const openPasswordModal = (open: boolean) => {
     if (open === true) {
       return <Moddal />;
@@ -119,7 +114,10 @@ const LoginCard = () => {
               </p>
               <p onClick={() => navegate("/cadastro")}>Cadastre-se</p>
             </div>
-            <button type="submit">Entrar</button>
+            <section>
+              <button type="submit">Entrar</button>
+              <button type="button" onClick={()=>(navegate("/"))}>Voltar</button>
+            </section>
           </form>
           {
             <S.ErrorMessage>

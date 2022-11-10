@@ -17,9 +17,12 @@ const Router = () => {
     <Routes>
       {logged === true && isAdm === true ? (
         <>
+          <Route path={RoutePath.HOMEPAGE} element={<Home />} />
           <Route path={RoutePath.MANAGEMENT} element={<Products />} />
           <Route path={RoutePath.ABOUTME} element={<About />} />
           <Route path={RoutePath.PROFILE} element={<Profilee />} />
+          <Route path={RoutePath.PRODUCTDETAIL} element={<ProductDetail />} />
+
         </>
       ) : logged === true && isAdm === false ? (
         <>

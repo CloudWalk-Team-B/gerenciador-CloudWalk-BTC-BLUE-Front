@@ -1,6 +1,5 @@
 import * as S from "./styles";
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
-
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
@@ -45,8 +44,8 @@ export const Slider = ({children,title}:ICard) => {
    
     return(
         <>
-            <S.Title>{title}</S.Title>
-            <S.Slider modules={[Navigation, Pagination]} {... settings}>
+            {title&&<S.Title>{title}</S.Title>}
+            <S.Slider modules={[Navigation, Pagination, Scrollbar, A11y]} {... settings}>
                 {children.map((item) => {
                     return(
                         <S.CardSlider key={item.id} onClick={()=>handleDetail(item)}> 

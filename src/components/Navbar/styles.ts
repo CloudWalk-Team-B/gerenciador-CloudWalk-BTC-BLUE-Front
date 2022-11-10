@@ -1,9 +1,10 @@
 import styled, { css } from "styled-components";
 import { BsBagPlusFill } from "react-icons/bs";
 import { FcAbout } from "react-icons/fc";
-import {FaUser,FaUserCircle,  } from "react-icons/fa";
+import { MdOutlineManageAccounts } from "react-icons/md";
+import { FaUserPlus,FaUser,FaUserCircle } from "react-icons/fa";
 import { BiSearch } from "react-icons/bi";
-import { MdClose } from "react-icons/md";
+import { BsGear } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import "animate.css";
 
@@ -25,25 +26,23 @@ export const BoxSoon = styled.span`
   display: flex;
   align-items: center;
   text-align: center;
-  font-size: 2em;
+  font-size: 3.5vh;
   margin-left: 30px;
-  @media (max-width: 678px) {
-    font-size: 1.5em;
-    margin-left: 10px;
-    
+
+  section{
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    cursor: pointer;
   }
+
   div{
     display: flex;
     flex-direction: row;
-    margin-left: 1.5rem;
-    font-size: 1.2rem;
+    margin-left: 2rem;
+    font-size: 1.5rem;
     .getOut{
       cursor:pointer
-    }
-    @media (max-width: 678px) {
-      font-size: 0.6em;
-      margin-left: 10px;
-      
     }
   }
 `;
@@ -105,6 +104,20 @@ export const TextSearch = styled.input`
     
   `}
 `;
+
+export const GearAccount = styled(MdOutlineManageAccounts)`
+  color: rgba(255, 255, 255, 0.8);
+  width: 2rem;
+  height: 2rem;
+`;
+
+export const Gear = styled(BsGear)`
+  color: rgba(255, 255, 255, 0.8);
+  width: 2.5rem;
+  height: 2.5rem;
+  margin: 0;
+`
+
 export const BtnUser = styled(FaUserCircle)`
 color: rgba(255, 255, 255, 0.8); 
 color:white;
