@@ -19,40 +19,19 @@ const ModalUpdate = () => {
 
   const handleImport = async() =>{
 
-    // const wb = new Workbook();
-    //   wb.xlsx.readFile(file)   
-    //   const buffer =  await wb.xlsx.writeBuffer()
-    //   console.log(buffer)
+    var data = new FormData();
 
-      
-      // wb.xlsx.readFile(file)
-      //       .then(data => {
-        //           wb.xlsx.load(data.buffer)
-        //               .then()
-        //               .catch();
-        //       }).catch();
-        
-        
-          const wb = new Workbook();
-          const reader = new FileReader()
-        
-          reader.readAsArrayBuffer(file)
-          reader.onload = () => {
-            const buffer:any = reader.result;
-            wb.xlsx.load(buffer).then(workbook => {
-              console.log(workbook, 'workbook instance')
-              workbook.eachSheet((sheet, id) => {
-                sheet.eachRow((row, rowIndex) => {
-                  console.log(row.values, rowIndex)
-                })
-              })
-            })
-          }
-        
+    let input = document.querySelector("#arquivo") as HTMLInputElement;
 
-        // Api.post("/product/updateMany")
-        // .then(()=>console.log("deu bom"))
-        // .catch(()=>console.log("deu ruim"))
+    data.append('file', input.files![0]);
+
+      Api.post('/product/updateMany', data)
+    .then(function (res) {
+        console.log(res); //Resposta HTTP
+    })
+    .catch(function (err) {
+        console.log(err); //Erro HTTP
+    });
   }
 
   const { openUpdate, setOpenUpdate } = useHandleModals();
@@ -86,7 +65,7 @@ const ModalUpdate = () => {
         <S.TitleComponent>Atualização em Massa</S.TitleComponent>
         <S.MainComponent>
           <div>
-            <input type="file" onChange={(e) => setFile(e.target.files![0])} />
+            <input type="file" id="arquivo" onChange={(e) => setFile(e.target.files![0])} />
           </div>
           <div className="bothButtons">
             <button onClick={() => handleImport()}>Atualizar</button>
