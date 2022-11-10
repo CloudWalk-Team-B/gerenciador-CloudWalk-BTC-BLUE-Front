@@ -114,7 +114,10 @@ const LoginCard = () => {
               </p>
               <p onClick={() => navegate("/cadastro")}>Cadastre-se</p>
             </div>
-            <button type="submit">Entrar</button>
+            <section>
+              <button type="submit">Entrar</button>
+              <button type="button" onClick={()=>(navegate("/"))}>Voltar</button>
+            </section>
           </form>
           {
             <S.ErrorMessage>
