@@ -61,7 +61,7 @@ export const CreateAccountContainer = styled.div`
       }
 
       @media (max-width: 424px) {
-        height: 55%;
+        height: 58%;
       }
 
       p {
@@ -87,7 +87,7 @@ export const CreateAccountContainer = styled.div`
         width: 95%;
 
         @media (max-width: 425px) {
-          margin-top: 30px;
+          margin-top: 50px;
         }
 
         . {
