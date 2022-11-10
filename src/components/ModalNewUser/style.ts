@@ -46,6 +46,9 @@ export const MainComponent = styled.div`
         text-align: center;
         border-radius: 50px;
         border: 1px solid ${theme.colors.primaryColor};
+        @media (max-width: 456px) {
+          width: 100%;
+        }
       }
 
       select {
@@ -56,6 +59,9 @@ export const MainComponent = styled.div`
         @media (max-width: 678px) {
           margin-top: 5px;
           width: 45%;
+        }
+        @media (max-width: 456px) {
+          width: 100%;
         }
 
         option {
@@ -87,6 +93,10 @@ export const MainComponent = styled.div`
         height: 3rem;
         width: 25%;
         font-size: 3.5vh;
+      }
+
+      @media (max-width: 456px) {
+        width: 50%;
       }
 
       :hover {
