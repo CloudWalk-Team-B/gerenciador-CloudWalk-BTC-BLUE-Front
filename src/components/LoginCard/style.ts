@@ -26,14 +26,23 @@ export const LoginCardContainer = styled.div`
       font-size: 6vh;
       margin-top: 0;
       font-weight: 300;
+      text-align: center;
     }
     div {
       display: flex;
       flex-direction: column;
       border: 2px solid ${theme.colors.primaryColor};
-      width: 37vw;
+      width: 32vw;
       height: 62%;
       border-radius: 15px;
+
+      @media (max-width: 770px) {
+        width: 60vw;
+      }
+
+      @media (max-width: 950px) {
+        height: 55%;
+      }
 
       p {
         font-weight: 300;
@@ -70,13 +79,19 @@ export const LoginCardContainer = styled.div`
 
           p {
             color: ${theme.colors.primaryColor};
-            font-size: 1.5rem;
+            width: 60vw;
+
+            font-size: 200%;
             margin-top: -2rem;
             margin-left: -30%;
             transition: all 0.5s;
             :hover {
               cursor: pointer;
               transform: scale(1.05);
+            }
+
+            @media (max-width: 950px) {
+              font-size: 120%;
             }
           }
         }
@@ -98,7 +113,16 @@ export const LoginCardContainer = styled.div`
           :hover {
             cursor: pointer;
             transform: scale(1.05);
+            background-color: white;
+            color: ${theme.colors.primaryColorOpacity};
+            border: 1px solid ${theme.colors.primaryColorOpacity};
+            box-shadow: 3px 3px 8px ${theme.colors.primaryColorOpacity};
           }
+        }
+
+        #spinLogIn {
+          display: none;
+          margin-top: 5%;
         }
       }
     }

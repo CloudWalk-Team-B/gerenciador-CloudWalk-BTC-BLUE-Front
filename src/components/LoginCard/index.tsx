@@ -6,6 +6,8 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useAuth } from "../../contexts/auth";
 import Api from "../../services/api";
+
+import CircularProgress from "@mui/material/CircularProgress";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../../contexts/User";
 import Moddal from "../ModalRecoverPassword";
@@ -23,19 +25,16 @@ const loginSchema = yup.object().shape({
     .string()
     .email("Formato de email inválido")
     .required("Email obrigatório"),
-  password: yup
-  .string()
-  .min(1, "Senha obrigatória"),
-
+  password: yup.string().min(1, "Senha obrigatória"),
 });
 
 const LoginCard = () => {
-  const { modalConfirm, setModalConfirm  } = useHandleModals();
+  const { modalConfirm, setModalConfirm } = useHandleModals();
   // const [email, setEmail] = useState("");
   const { setUser } = useUser();
   const { openRecoveryPassword, setOpenRecoveryPassword } = useHandleModals();
 
-  useEffect(()=>setModalConfirm(false),[])
+  useEffect(() => setModalConfirm(false), []);
 
   const {
     register,
@@ -47,30 +46,39 @@ const LoginCard = () => {
 
   const handleLogin = (data: LoginData) => {
     if (data.email !== "" && data.password !== "") {
-      
+      document.querySelector<HTMLElement>("#spinLogIn")!.style.display =
+        "block";
+      document.querySelector<HTMLElement>("#buttonLogIn")!.style.display =
+        "none";
       return Api.post("/auth", data)
         .then((res) => {
           setUser(res.data.user);
-          localStorage.setItem("token", res.data.token)
-          localStorage.setItem("user", JSON.stringify(res.data.user))
-          if(res.data.user.isAuth){
+          localStorage.setItem("token", res.data.token);
+          localStorage.setItem("user", JSON.stringify(res.data.user));
+          if (res.data.user.isAuth) {
             login({ token: res.data.token, user: res.data.user });
-          }else{
+          } else {
             toast.error("Ativação de conta pendente");
-            setModalConfirm(true)
+            setModalConfirm(true);
           }
         })
-        .catch(() => toast.error("Senha ou email inválidos"));
+        .catch(() => {
+          document.querySelector<HTMLElement>("#spinLogIn")!.style.display =
+            "none";
+          document.querySelector<HTMLElement>("#buttonLogIn")!.style.display =
+            "block";
+          toast.error("Senha ou email inválidos");
+        });
     } else {
       toast.error("Insira usuário e senha");
     }
   };
 
-  const confirmModal = (open: boolean) =>{
+  const confirmModal = (open: boolean) => {
     if (open) {
-      return <EmailConfirmation/>;
+      return <EmailConfirmation />;
     }
-  }
+  };
 
   const navegate = useNavigate();
 
@@ -83,6 +91,8 @@ const LoginCard = () => {
       return <Moddal />;
     }
   };
+
+  let onLoad = () => {};
 
   return (
     <>
@@ -119,7 +129,10 @@ const LoginCard = () => {
               </p>
               <p onClick={() => navegate("/cadastro")}>Cadastre-se</p>
             </div>
-            <button type="submit">Entrar</button>
+            <button type="submit" id="buttonLogIn">
+              Entrar
+            </button>
+            <CircularProgress id="spinLogIn" color="secondary" />
           </form>
           {
             <S.ErrorMessage>

@@ -35,8 +35,12 @@ const Moddal = () => {
   };
 
   let errorPassword = (res: any) => {
-    document.querySelector<HTMLElement>("#spin")!.style.display = "none";
-    document.querySelector<HTMLElement>("#button")!.style.display = "block";
+    document.querySelector<HTMLElement>(
+      "#spinRecoveryPassword"
+    )!.style.display = "none";
+    document.querySelector<HTMLElement>(
+      "#buttonRecoveryPassword"
+    )!.style.display = "block";
 
     swal({
       title: "Error",
@@ -47,9 +51,13 @@ const Moddal = () => {
   };
 
   let handlePasswordEdit = () => {
-    document.querySelector<HTMLElement>("#spin")!.style.display = "block";
+    document.querySelector<HTMLElement>(
+      "#spinRecoveryPassword"
+    )!.style.display = "block";
 
-    document.querySelector<HTMLElement>("#button")!.style.display = "none";
+    document.querySelector<HTMLElement>(
+      "#buttonRecoveryPassword"
+    )!.style.display = "none";
 
     Api.post("/user/password-recovery", updatePassword)
       .then((res) => setPassword())
@@ -68,17 +76,17 @@ const Moddal = () => {
         onRequestClose={closeModal}
         // style={customStyles}
         contentLabel="Example Modal"
-        className="animate__animated animate__jackInTheBox  customStyles"
+        className="animate__animated animate__backInDown  customStyles"
       >
         <S.Container>
           <S.TitleModal>Recuperação de senha</S.TitleModal>
           <S.InfoProductCard>
             <h1>Por favor, informe seu email:</h1>
             <input type="text" onChange={(e) => setEmail(e.target.value)} />
-            <button id="button" onClick={handlePasswordEdit}>
+            <button id="buttonRecoveryPassword" onClick={handlePasswordEdit}>
               Alterar
             </button>
-            <CircularProgress id="spin" color="secondary" />
+            <CircularProgress id="spinRecoveryPassword" color="secondary" />
           </S.InfoProductCard>
         </S.Container>
       </Modal>
