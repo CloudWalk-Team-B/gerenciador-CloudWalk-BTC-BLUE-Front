@@ -40,6 +40,10 @@ export const LoginCardContainer = styled.div`
         width: 60vw;
       }
 
+      @media (max-width: 950px) {
+        height: 55%;
+      }
+
       p {
         font-weight: 300;
         font-size: 5.5vh;
