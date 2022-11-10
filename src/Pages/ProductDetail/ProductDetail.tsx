@@ -5,13 +5,20 @@ import { Navbar } from "../../components/Navbar"
 import { useAuth } from "../../contexts/auth"
 import { useCart } from "../../contexts/Cart/useCart"
 import { Product } from "../../types/interface"
+import { Slider } from "../../components/Carrousel/Slider/Slider";
 import * as S from "./style"
+import { useProducts } from "../../contexts/product"
 
 const ProductDetail = () =>{
     const {addProduct} =useCart()
     const product:Product = (JSON.parse(localStorage.getItem("currentProduct") || ""));
+    const newCategory = product.category
     const { logged } = useAuth()
     const navegate = useNavigate()
+    const { products, categories } = useProducts()
+
+    
+    const FilteredByCategory = products.filter((value) => value.category===newCategory);
 
     const handleClick = (id:string) =>{
         logged? addProduct(id):toast.error("Login necessário")
@@ -40,7 +47,9 @@ const ProductDetail = () =>{
                         <p>{product.description}</p>
                     </div>
                 </section>
-                <p></p>
+                <div className="slider" onClick={()=>window.scrollTo(0, 0)}>
+                    {FilteredByCategory.length!==0? <Slider title="" children={FilteredByCategory}/>:<></>}
+                </div>
             </S.ProductDetailContainer>
         </>
     )

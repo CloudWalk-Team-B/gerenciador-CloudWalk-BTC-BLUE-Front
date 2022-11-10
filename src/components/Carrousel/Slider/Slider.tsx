@@ -31,7 +31,7 @@ export const Slider = ({children,title}:ICard) => {
    
     return(
         <>
-            <S.Title>{title}</S.Title>
+            {title&&<S.Title>{title}</S.Title>}
             <S.Slider modules={[Navigation, Pagination, Scrollbar, A11y]} {... settings}>
                 {children.map((item) => {
                     return(

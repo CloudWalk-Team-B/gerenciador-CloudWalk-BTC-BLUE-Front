@@ -28,8 +28,9 @@ height: 25rem;
 `;
 
 export const Img = styled.img`
-width: 11rem;
-min-height: 11rem;
+max-width: 95%;
+max-height: 60%;
+
 &:hover{
   transform: scale(1.05);
 }
@@ -37,6 +38,7 @@ min-height: 11rem;
 
 export const CardSlider = styled(SwiperSlide)`
 max-width:16.5vw;
+min-width:10.5vw;
 height: 23rem;
 background-color: tranparent;
 display: flex;
