@@ -4,10 +4,11 @@ import { useAuth } from "../../contexts/auth";
 import { useHandleModals } from "../../contexts/HandleModals";
 import ModalUpdate from "../ModalUpdateMany";
 import { useNavigate } from "react-router-dom";
+import { useUser } from "../../contexts/User";
 
 const HeaderLogged = () => {
   const { openUpdate, setOpenUpdate, search, setSearch } = useHandleModals();
-  const user = JSON.parse(localStorage.getItem("user") || "");
+  const { user } = useUser();
 
   const openModal = (open: boolean) => {
     if (open === true) {
@@ -16,7 +17,6 @@ const HeaderLogged = () => {
   };
 
   const navigate = useNavigate();
-
   const { logout } = useAuth();
 
     return (
