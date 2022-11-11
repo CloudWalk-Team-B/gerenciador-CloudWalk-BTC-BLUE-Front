@@ -102,7 +102,7 @@ const ModalUpdate = () => {
         toast.success("Produtos atualizados com sucesso!");
         setTimeout(() => {
           window.print();
-        }, 3000);
+        }, 1000);
         // closeModal();
         // handleGetProduct()
       })
@@ -149,7 +149,7 @@ const ModalUpdate = () => {
                 <input type="file" id="arquivo" />
               </div>
               <button onClick={() => handleImport()}>Atualizar</button>
-              <button>Download</button>
+              {/* <button>Download</button> */}
             </S.MainComponent>
           </div>
         </S.Container>
