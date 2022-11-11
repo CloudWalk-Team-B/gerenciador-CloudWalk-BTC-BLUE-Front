@@ -5,6 +5,8 @@ import { useHandleModals } from "../../contexts/HandleModals";
 import Api from "../../services/api";
 import { toast } from "react-hot-toast";
 import { saveAs } from "file-saver";
+import { Workbook } from "exceljs";
+import ExcelJS from "exceljs";
 // import updateMany from "../../assets/files/updateMany.xlsx"
 
 const ModalUpdate = () => {
@@ -14,18 +16,30 @@ const ModalUpdate = () => {
 
   const [file, setFile] = useState<any>();
 
-  const uploadFile = async () => {
-    const formData = new FormData();
-    formData.append("file", file);
+  const handleImport = async () => {
+    var data = new FormData();
+    let input = document.querySelector("#arquivo") as HTMLInputElement;
+    data.append("file", input.files![0]);
+    // setLoadModal(true)
+    Api.post("/product/updateMany", data)
+      .then(async function (res) {
+        // setLoadModal(false)
+        console.log(res.data);
 
-    const headers = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-    await Api.post("/upload-file", formData, headers)
-      .then(() => console.log("Recebeu"))
-      .catch(() => console.log("Não recebeu"));
+        // const workbook = new Workbook();
+        // let workbook = xlsx.read(file.buffer);
+        // const test = await workbook.xlsx.writeFile("filename");
+        const workbook = createAndFillWorkbook();
+
+        toast.success("Produtos atualizados com sucesso!");
+        closeModal();
+        // handleGetProduct()
+      })
+      .catch(function (err) {
+        // setLoadModal(false)
+        console.log(err);
+        toast.error("Falha ao atualizar valores por tabela");
+      });
   };
 
   const { openUpdate, setOpenUpdate } = useHandleModals();
@@ -59,9 +73,9 @@ const ModalUpdate = () => {
         <S.TitleComponent>Atualização em Massa</S.TitleComponent>
         <S.MainComponent>
           <div>
-            <input type="file" onChange={(e) => setFile(e.target.files![0])} />
+            <input type="file" id="arquivo" />
           </div>
-          <button onClick={() => uploadFile()}>Atualizar</button>
+          <button onClick={() => handleImport()}>Atualizar</button>
           <button>Download</button>
         </S.MainComponent>
       </Modal>
