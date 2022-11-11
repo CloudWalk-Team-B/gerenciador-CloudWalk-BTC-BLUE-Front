@@ -34,9 +34,9 @@ import { toast } from "react-hot-toast";
             <S.List>
               
             <S.box>
-              <S.img src={value.product.image}/>
+              {/* <S.img src={value.product.image}/>
               <S.Name>{value.product.name}</S.Name>
-              <S.Item>{value.product.price}</S.Item>
+              <S.Item>{value.product.price}</S.Item> */}
               <div onClick={()=>handleRemoveProduct(value.id)}><BiTrash/></div>
             </S.box>
             </S.List>
