@@ -132,7 +132,6 @@ const ModalUpdate = () => {
           </div>
         </S.MainComponent>
       </Modal>
-      {loadModal&& <ModalLoading prop={"Aguarde enquanto os valores são atualizados..."}/>}
     </>
   );
 };

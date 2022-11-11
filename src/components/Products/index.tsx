@@ -7,6 +7,7 @@ import { useHandleModals } from "../../contexts/HandleModals";
 import { Product, User } from "../../types/interface";
 import ModdalNewProduct from "../ModalNewProduct";
 import { useAuth } from "../../contexts/auth";
+import ModalLoading from "../ModalLoading";
 
 const ListProducts = () => {
   Modal.setAppElement("#root");
@@ -34,7 +35,7 @@ const ListProducts = () => {
   }
 
   const [idProduct, setIdProduct] = useState<string>("");
-  const { openProduct, setOpenProduct, openNewProduct, setOpenNewProduct, search, setSearch } = useHandleModals();
+  const { openProduct, setOpenProduct, openNewProduct, setOpenNewProduct, search, loadModal } = useHandleModals();
   const { isAdm } = useAuth()
 
   const openNewProductModal = (open: boolean) => {
@@ -104,6 +105,7 @@ const ListProducts = () => {
       </S.Container>
       {openProductModal(openProduct)}
       {openNewProductModal(openNewProduct)}
+      {loadModal&& <ModalLoading prop={"Aguarde enquanto os valores são atualizados..."}/>}
     </>
   );
 };
