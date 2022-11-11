@@ -23,7 +23,7 @@ export const CardProduct = styled.div`
     margin: 10px;
     background-color: ${theme.colors.primaryColor};
     border-radius: 12px;
-    height: 19vh;
+    height: 25vh;
     width: 30%;
     padding: 10px;
     color: white;
