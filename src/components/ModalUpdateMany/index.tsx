@@ -5,11 +5,6 @@ import { useHandleModals } from "../../contexts/HandleModals";
 import Api from "../../services/api";
 import { toast } from "react-hot-toast";
 import { useProducts } from "../../contexts/product";
-import ModalLoading from "../ModalLoading";
-import { saveAs } from "file-saver";
-import { Workbook } from "exceljs";
-import ExcelJS from "exceljs";
-import jsPDF from "jspdf";
 import Report from "./report";
 
 import CircularProgress from "@mui/material/CircularProgress";
@@ -22,34 +17,34 @@ const ModalUpdate = () => {
   const { handleGetProduct } = useProducts();
   const { loadModal, setLoadModal } = useHandleModals();
 
-  interface Respostatype {
-    id: string;
-    userId: string;
-    createdAt: string;
-    priceAtt: string[];
-    priceOld: string[];
-    productName: string[];
-  }
+  // interface Respostatype {
+  //   id: string;
+  //   userId: string;
+  //   createdAt: string;
+  //   priceAtt: string[];
+  //   priceOld: string[];
+  //   productName: string[];
+  // }
 
-  const resp: Respostatype = {
-    id: "28766107-f37f-4ebd-a9ed-d43fd77bdcae",
-    userId: "280b5dd6-fd73-4437-a9c5-085ad70c0a56",
-    createdAt: "Wed Nov 09 2022",
-    priceAtt: ["15.73", "14.51", "18.15"],
-    priceOld: ["14.3", "13.19", "16.5"],
-    productName: ["Galinha de Borracha", "Areia higiênica ", "Areia higiênica"],
-  };
+  // const resp: Respostatype = {
+  //   id: "28766107-f37f-4ebd-a9ed-d43fd77bdcae",
+  //   userId: "280b5dd6-fd73-4437-a9c5-085ad70c0a56",
+  //   createdAt: "Wed Nov 09 2022",
+  //   priceAtt: ["15.73", "14.51", "18.15"],
+  //   priceOld: ["14.3", "13.19", "16.5"],
+  //   productName: ["Galinha de Borracha", "Areia higiênica ", "Areia higiênica"],
+  // };
 
-  const newResp = [
-    { id: resp.id },
-    { userId: resp.userId },
-    { createdAt: resp.createdAt },
-    { priceAtt: resp.priceAtt },
-    { priceOld: resp.priceOld },
-    { productName: resp.productName },
-  ];
+  // const newResp = [
+  //   { id: resp.id },
+  //   { userId: resp.userId },
+  //   { createdAt: resp.createdAt },
+  //   { priceAtt: resp.priceAtt },
+  //   { priceOld: resp.priceOld },
+  //   { productName: resp.productName },
+  // ];
 
-  const [report, setReport] = useState(newResp);
+  // const [report, setReport] = useState(newResp);
 
   //   console.log(newResp)
   //   var wb = XLSX.utils.book_new()
