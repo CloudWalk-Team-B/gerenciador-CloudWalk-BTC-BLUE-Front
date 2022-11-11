@@ -7,7 +7,7 @@ import { useAuth } from '../../contexts/auth';
 import { useUser } from '../../contexts/User';
 import { Badge, Drawer } from '@mui/material';
 import Cart from '../Cart';
-import { useCart } from '../../contexts/Cart/useCart';
+import { useCart } from '../../contexts/Cart';
 
 
 export const Navbar = () => {
@@ -17,7 +17,7 @@ export const Navbar = () => {
   const [ currentSearch, setCurrentSearch ] = useState<string>("")
   const navegate = useNavigate()
   const { user } = useUser()
- const {itemCount } = useCart()
+ const { cart } = useCart()
 
  
   const handleSearch = () => {
@@ -67,7 +67,7 @@ export const Navbar = () => {
                 <Cart />
               </Drawer>
                {logged&& <S.ButtonBag onClick={() => setCartOpen(true)} >
-               <Badge badgeContent={itemCount} color="primary">
+               <Badge badgeContent={cart&&cart.length} color="primary">
                 <S.Bag >{""}</S.Bag>
                </Badge>
                Sacola
