@@ -2,12 +2,13 @@ import React from "react";
 import * as S from "./style";
 import HeaderLogged from "../../components/HeaderLogged";
 import ListProducts from "../../components/Products/index";
+import Header from "../../components/Header";
 
 const Products = () => {
   return (
     <>
       <S.Content>
-        <HeaderLogged header="add"/>
+        <Header />
         <ListProducts />
       </S.Content>
     </>

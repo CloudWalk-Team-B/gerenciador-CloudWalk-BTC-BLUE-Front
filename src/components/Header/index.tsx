@@ -1,13 +1,12 @@
 import * as S from "./style";
 import Logo from "../../assets/images/logoBranca.png";
 import { useAuth } from "../../contexts/auth";
-import { FiPlus } from "react-icons/fi";
 import { useHandleModals } from "../../contexts/HandleModals";
 import ModalUpdate from "../ModalUpdateMany";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../../contexts/User";
 
-const HeaderLogged = () => {
+const Header = () => {
   
   const { openUpdate, setOpenUpdate, search, setSearch } = useHandleModals();
   const { user } = useUser();
@@ -22,7 +21,6 @@ const HeaderLogged = () => {
   const { logout } = useAuth();
 
     return (
-    <>
         <S.Content className="animate__animated animate__slideInDown">
           <S.BoxSoon>
             <S.Soon
@@ -71,10 +69,9 @@ const HeaderLogged = () => {
               <span>Home</span>
             </div>
           </S.Nav>
+          {openModal(openUpdate)}
         </S.Content>
-        {openModal(openUpdate)}
-      </>
     );
 };
 
-export default HeaderLogged;
+export default Header;
