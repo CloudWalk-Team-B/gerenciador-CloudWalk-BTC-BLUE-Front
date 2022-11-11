@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 import { AiOutlineHome } from "react-icons/ai";
 import { FcAbout } from "react-icons/fc";
+import { MdOutlineSystemUpdateAlt, MdOutlineManageAccounts } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { HiUserCircle } from "react-icons/hi";
 import "animate.css";
@@ -26,6 +27,14 @@ export const BoxSoon = styled.span`
   text-align: center;
   font-size: 3.5vh;
   margin-left: 30px;
+
+  section{
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    cursor: pointer;
+  }
+
   div {
     display: flex;
     flex-direction: row;
@@ -36,17 +45,22 @@ export const BoxSoon = styled.span`
     }
   }
 `;
+
 export const Soon = styled.img`
   height: 12vh;
   margin-top: 0.8rem;
+  cursor: pointer;
 `;
+
 export const Name = styled.span`
   ${({ theme }) => css`
     overflow: hidden;
     color: ${theme.colors.textColor};
     margin-left: 20px;
+    cursor: pointer;
   `}
 `;
+
 export const Update = styled.span`
   width: 10rem;
   display: flex;
@@ -58,15 +72,13 @@ export const Update = styled.span`
     display: flex;
     align-items: center;
     text-align: center;
-    margin-right: 30px;
     cursor: pointer;
-    border-right: 1px solid white;
-    padding-right: 1rem;
+    border-right: 2px solid white;
     box-sizing: border-box;
+    margin-right: 2rem;
   }
 `;
-export const TextUpdate = styled.span`
-  font-size: 1.2em;
+export const TextUpdate = styled.p`
   margin: 10px;
 `;
 
@@ -94,7 +106,21 @@ export const Home = styled(AiOutlineHome)`
   width: 1.2rem;
   height: 1.2rem;
   margin: 0;
+
 `;
+
+export const GearAccount = styled(MdOutlineManageAccounts)`
+  color: rgba(255, 255, 255, 0.8);
+  width: 2rem;
+  height: 2rem;
+`;
+
+export const Updt = styled(MdOutlineSystemUpdateAlt)`
+  color: rgba(255, 255, 255, 0.8);
+  color: white;
+  margin: 0;
+`;
+
 export const Info = styled(FcAbout)`
   color: rgba(255, 255, 255, 0.8);
   width: 1.2rem;
@@ -111,14 +137,27 @@ export const Btn = styled(Link)`
 `;
 
 export const Nav = styled.nav`
-  width: 17rem;
+  width: 12%;
+  font-size: 1.1em;
+  color: white;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  margin-right: 1rem;
+  padding-right: 3rem;
+  box-sizing: border-box;
+
+  p{
+    margin: 0.2rem 1rem;
+    width: 4vw;
+  }
+
+  span{
+    padding-left: 0rem;
+  }
 
   div {
     display: flex;
+    justify-content:center;
     flex-direction: column;
     align-items: center;
     cursor: pointer;
@@ -126,8 +165,7 @@ export const Nav = styled.nav`
 `;
 
 export const Profile = styled(HiUserCircle)`
-  width: 3rem;
-  height: 3rem;
+  width: 2.5rem;
+  height: 2.5rem;
   color: white;
-  margin: 0.2rem;
 `;

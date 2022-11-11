@@ -46,17 +46,18 @@ padding:4rem;
 `;
 
 export const Img = styled.img`
-width: 11rem;
-min-height: 11rem;
+max-width: 95%;
+max-height: 50%;
+
 &:hover{
   transform: scale(1.05);
 }
 `;
 
 export const CardSlider = styled(SwiperSlide)`
-max-width:16.5rem;
+max-width:16.5vw;
+min-width:10.5vw;
 height: 23rem;
-background-color: tranparent;
 display: flex;
 flex-direction: column;
 justify-content: center ;

@@ -5,6 +5,7 @@ import theme from "../assets/styles/theme";
 import { AuthProvider } from "./auth";
 import { CartProvider } from "./Cart/useCart";
 import { HandleModalsProvider } from "./HandleModals";
+import { NewCartProvider } from "./NewCart";
 import { ProductsProvider } from "./product";
 import { UserProvider } from "./User";
 
@@ -19,12 +20,14 @@ const Providers = ({ children }: ProviderProps) => {
       <ThemeProvider theme={theme}>
         <HandleModalsProvider>
         <AuthProvider>
-          <CartProvider>
+        <CartProvider>
+        <NewCartProvider>
         <ProductsProvider>
         <UserProvider>
               {children}
         </UserProvider>
         </ProductsProvider>
+        </NewCartProvider>
         </CartProvider>
         </AuthProvider>
         </HandleModalsProvider>

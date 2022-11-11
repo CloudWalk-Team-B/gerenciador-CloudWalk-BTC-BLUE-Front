@@ -1,11 +1,9 @@
 import * as S from './styles';
 import Logo from "../../assets/images/logoBranca.png";
-import Modal from "react-modal";
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useHandleModals } from '../../contexts/HandleModals';
 import { useAuth } from '../../contexts/auth';
-import { User } from '../../types/interface';
 import { useUser } from '../../contexts/User';
 import { Badge, Drawer } from '@mui/material';
 import Cart from '../Cart';
@@ -43,7 +41,10 @@ export const Navbar = () => {
             {
               logged && 
               <div>
-                <p>{user.name.split(' ').slice(0, 1)} |</p>
+                <section onClick={()=>navegate("/usuario")}>
+                  <S.GearAccount/>
+                  <p>{user.name.split(' ').slice(0, 1)} |</p>
+                </section>
                 <p className="getOut" onClick={() => {logout(); setSearch("")}}>| Sair</p>
               </div>
             }
@@ -63,10 +64,8 @@ export const Navbar = () => {
                <S.Info/>Sobre nós 
               </S.Btn>
               <Drawer anchor='right' open={cartOpen} onClose={() => setCartOpen(false)}>
-                <S.BtnClose onClick={() => setCartOpen(false)}><S.Close/></S.BtnClose>
                 <Cart />
               </Drawer>
-              
                {logged&& <S.ButtonBag onClick={() => setCartOpen(true)} >
                <Badge badgeContent={itemCount} color="primary">
                 <S.Bag >{""}</S.Bag>
@@ -74,6 +73,8 @@ export const Navbar = () => {
                Sacola
               </S.ButtonBag>}
            {!logged && <S.Button onClick={()=>{navegate("/Login");setSearch("")}}><S.BtnUser/>Entrar</S.Button>}
+           {isAdm && <S.Button onClick={()=>{navegate("/Products");setSearch("")}}><S.Gear/>Config</S.Button>}
+
           </S.Nav>
         </S.Content>
     </>

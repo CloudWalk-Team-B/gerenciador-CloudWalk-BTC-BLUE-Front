@@ -5,16 +5,38 @@ import { Navbar } from "../../components/Navbar"
 import { useAuth } from "../../contexts/auth"
 import { useCart } from "../../contexts/Cart/useCart"
 import { Product } from "../../types/interface"
+import { Slider } from "../../components/Carrousel/Slider/Slider";
 import * as S from "./style"
+import { useProducts } from "../../contexts/product"
+import { useEffect } from "react"
+import Api from "../../services/api"
 
 const ProductDetail = () =>{
     const {addProduct} =useCart()
     const product:Product = (JSON.parse(localStorage.getItem("currentProduct") || ""));
+    const newCategory = product.category
     const { logged } = useAuth()
     const navegate = useNavigate()
+    const { products, categories } = useProducts()
+
+    useEffect(()=>window.scrollTo(0, 0),[])
+    useEffect(()=>window.scrollTo(0, 0),[product])
+
+    
+    const FilteredByCategory = products.filter((value) => value.category===newCategory);
 
     const handleClick = (id:string) =>{
-        logged? addProduct(id):toast.error("Login necessário")
+        if(logged){
+            const data = {
+                productId: id
+              }
+            addProduct(id);
+            Api.post("Cart/addItem",data)
+            .then(()=>console.log("ok"))
+            .catch(()=>console.log("not ok"))
+        }else{
+            toast.error("Login necessário")
+        }
     }
 
     return(
@@ -40,7 +62,9 @@ const ProductDetail = () =>{
                         <p>{product.description}</p>
                     </div>
                 </section>
-                <p></p>
+                <div className="slider">
+                    {FilteredByCategory.length!==0? <Slider title="" children={FilteredByCategory}/>:<></>}
+                </div>
             </S.ProductDetailContainer>
         </>
     )

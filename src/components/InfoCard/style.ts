@@ -11,11 +11,11 @@ export const InfoCardContainer = styled.div`
     width: 30%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     transition: all 0.5s;
     :hover {
       cursor: pointer;
-      border-radius: 50px;
     }
 
     @media (max-width: 770px) {
@@ -31,6 +31,7 @@ export const Title = styled.h1`
   color: #fff;
   font-weight: lighter;
   font-size: 7vh;
+  text-align:center;
   border-bottom: 1px solid white;
 `;
 export const textInfo = styled.p`
@@ -42,6 +43,7 @@ export const textInfo = styled.p`
   word-wrap: break-word;
   word-break: break-word;
 `;
+
 export const Home = styled(AiOutlineHome)`
   color: rgba(255, 255, 255, 0.8);
   width: 1.2rem;

@@ -15,6 +15,7 @@ export const LoadingModal = styled.div`
     align-items: center;
     color: ${theme.colors.primaryColor};
     font-size: 1.5em;
+    right:0;
 
     div{
       display: flex;

@@ -6,7 +6,6 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useAuth } from "../../contexts/auth";
 import Api from "../../services/api";
-
 import CircularProgress from "@mui/material/CircularProgress";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../../contexts/User";
@@ -29,8 +28,8 @@ const loginSchema = yup.object().shape({
 });
 
 const LoginCard = () => {
-  const { modalConfirm, setModalConfirm } = useHandleModals();
-  // const [email, setEmail] = useState("");
+
+  const { modalConfirm, setModalConfirm  } = useHandleModals();
   const { setUser } = useUser();
   const { openRecoveryPassword, setOpenRecoveryPassword } = useHandleModals();
 
@@ -82,10 +81,6 @@ const LoginCard = () => {
 
   const navegate = useNavigate();
 
-  // let convertEmail = (email: string) => {
-  //   setEmail(email);
-  // };
-
   const openPasswordModal = (open: boolean) => {
     if (open === true) {
       return <Moddal />;
@@ -129,9 +124,13 @@ const LoginCard = () => {
               </p>
               <p onClick={() => navegate("/cadastro")}>Cadastre-se</p>
             </div>
-            <button type="submit" id="buttonLogIn">
-              Entrar
-            </button>
+            <section>
+            <div className="buttonHiden">
+              <button id="buttonLogIn"></button>
+            </div>
+            <button type="submit" >Entrar</button>
+            <button type="button" onClick={()=>(navegate("/"))}>Voltar</button>
+            </section>
             <CircularProgress id="spinLogIn" color="secondary" />
           </form>
           {
@@ -145,6 +144,7 @@ const LoginCard = () => {
       {confirmModal(modalConfirm)}
     </>
   );
+
 };
 
 export default LoginCard;

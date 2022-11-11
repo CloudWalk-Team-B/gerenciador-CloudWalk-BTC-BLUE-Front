@@ -4,7 +4,7 @@ import { FaShippingFast,FaRegCreditCard } from "react-icons/fa";
 import { RiCoupon3Line } from "react-icons/ri";
 
 export const Bars = styled.section`
- width: 100vw;
+ width: 100%;
  height: 5rem;
  border-bottom: solid 1.3px  #601c4A; 
  display: flex;

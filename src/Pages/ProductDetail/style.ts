@@ -1,16 +1,18 @@
 import styled from "styled-components";
 
+
 export const ProductDetailContainer = styled.div`
   padding: 0;
   margin: 0;
   max-width: 100vw;
   height: 100%;
   display: flex;
+  flex-direction: column;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-
+  
 section{
     min-height: 65vh;
     display: flex;
@@ -41,11 +43,11 @@ section{
         border: 2px solid #f9f4ec;
         border-radius: 5px;
         width: 30%;
-        height: 45vh;
+        height: 100%;
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
-        padding: 1rem;
+        padding: 0.5rem;
         box-sizing: border-box;
 
         h1{
@@ -93,6 +95,11 @@ section{
       padding: 0 0.5rem;
 
     }
+}
+
+.slider{
+  width: 58%;
+  margin-top: 1rem;
 }
 
 `;
