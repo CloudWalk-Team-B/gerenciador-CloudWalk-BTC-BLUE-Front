@@ -2,7 +2,7 @@ import * as S from "./style";
 import { BiTrash } from "react-icons/bi";
 import { Product } from "../../types/interface";
 import Logo from "../../assets/images/logoRoxa.png"
-import { useNewCart } from "../../contexts/NewCart";
+import { useCart } from "../../contexts/Cart";
 import Api from "../../services/api";
 import { toast } from "react-hot-toast";
 
@@ -13,7 +13,7 @@ import { toast } from "react-hot-toast";
 // }
 
   const Cart: React.FC = () => {
-    const { cart, handleGetCart, value, handleValue } = useNewCart()
+    const { cart, handleGetCart, value, handleValue } = useCart()
 
     const handleRemoveProduct = (productId: string) =>{
       const data = {

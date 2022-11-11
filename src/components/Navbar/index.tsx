@@ -7,7 +7,7 @@ import { useAuth } from '../../contexts/auth';
 import { useUser } from '../../contexts/User';
 import { Badge, Drawer } from '@mui/material';
 import Cart from '../Cart';
-import { useNewCart } from '../../contexts/NewCart';
+import { useCart } from '../../contexts/Cart';
 
 
 export const Navbar = () => {
@@ -17,7 +17,7 @@ export const Navbar = () => {
   const [ currentSearch, setCurrentSearch ] = useState<string>("")
   const navegate = useNavigate()
   const { user } = useUser()
- const { cart } = useNewCart()
+ const { cart } = useCart()
 
  
   const handleSearch = () => {

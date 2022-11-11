@@ -10,7 +10,7 @@ import * as S from "./style"
 import { useProducts } from "../../contexts/product"
 import { useEffect } from "react"
 import Api from "../../services/api"
-import { useNewCart } from "../../contexts/NewCart"
+import { useCart } from "../../contexts/Cart"
 
 const ProductDetail = () =>{
     const product:Product = (JSON.parse(localStorage.getItem("currentProduct") || ""));
@@ -18,7 +18,7 @@ const ProductDetail = () =>{
     const { logged } = useAuth()
     const navegate = useNavigate()
     const { products, categories } = useProducts()
-    const { cart, handleGetCart } = useNewCart()
+    const { cart, handleGetCart } = useCart()
 
     useEffect(()=>window.scrollTo(0, 0),[])
     useEffect(()=>window.scrollTo(0, 0),[product])

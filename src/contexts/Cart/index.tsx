@@ -21,7 +21,7 @@ interface CartProviderData{
 
 const CartContext = createContext<CartProviderData>({} as CartProviderData);
 
-export const NewCartProvider = ({children}:CartProviderProps) => {
+export const CartProvider = ({children}:CartProviderProps) => {
     
     const [ value, setValue ] = useState<number>(0)
     const [cart, setCart]= useState<Cart>();
@@ -65,4 +65,4 @@ export const NewCartProvider = ({children}:CartProviderProps) => {
     return <CartContext.Provider value={{ cart, handleGetCart, value, handleValue }}>{children}</CartContext.Provider>
 }
 
-export const useNewCart = () => useContext(CartContext)
+export const useCart = () => useContext(CartContext)
