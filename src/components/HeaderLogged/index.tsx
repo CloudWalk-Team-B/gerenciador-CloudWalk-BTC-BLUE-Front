@@ -5,7 +5,7 @@ import { useHandleModals } from "../../contexts/HandleModals";
 import ModalUpdate from "../ModalUpdateMany";
 import { useNavigate } from "react-router-dom";
 
-const HeaderLogged = (props: any) => {
+const HeaderLogged = () => {
   const { openUpdate, setOpenUpdate, search, setSearch } = useHandleModals();
   const user = JSON.parse(localStorage.getItem("user") || "");
 
@@ -19,7 +19,6 @@ const HeaderLogged = (props: any) => {
 
   const { logout } = useAuth();
 
-  if (props.header === "add") {
     return (
       <>
         <S.Content className="animate__animated animate__slideInDown">
@@ -74,7 +73,6 @@ const HeaderLogged = (props: any) => {
         {openModal(openUpdate)}
       </>
     );
-  }
 };
 
 export default HeaderLogged;

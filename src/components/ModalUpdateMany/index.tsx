@@ -6,6 +6,7 @@ import Api from "../../services/api";
 import { toast } from "react-hot-toast";
 import { useProducts } from "../../contexts/product";
 import ModalLoading from "../ModalLoading";
+import xlsx, { Workbook } from "exceljs"
 
 const ModalUpdate = () => {
 
@@ -41,13 +42,13 @@ const ModalUpdate = () => {
 
   const [ report, setReport ] = useState(newResp)
 
-
-  // const handleReport = () =>{
   //   console.log(newResp)
   //   var wb = XLSX.utils.book_new()
   //   var ws = XLSX.utils.json_to_sheet(newResp);
   //   XLSX.utils.book_append_sheet(wb, ws, "Relatório_Capivara");
   //   XLSX.writeFile(wb, "Relatorio_Capivara.xlsx");
+
+  // const handleReport = () =>{
 
   //   const fileType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8'
   //   const fileExtension = '.xlsx'
@@ -57,6 +58,16 @@ const ModalUpdate = () => {
   //   const excelBuffer = XLSX.write(wb, { bookType: 'xlsx', type: 'array'});
   //   const data = new Blob([excelBuffer], { type:fileType});
   //   FileSaver.saveAs(data, "Relatorio_Capivara.xlsx")
+  // }
+
+  // const handleReport = async(resp:any) => {
+  //   const workbook = new Workbook();
+  //   await workbook.xlsx.load(resp.data);
+
+    // await workbook.xlsx.writeFile("C:\\somepath\\some.xlsx")
+    // const newWorkbook = createAndFillWorkbook(workbook);
+    // await newWorkbook.xlsx.writeFile("Relatorio_Capivara.xlsx")
+
   // }
 
   
