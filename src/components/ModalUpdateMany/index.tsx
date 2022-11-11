@@ -12,6 +12,8 @@ import ExcelJS from "exceljs";
 import jsPDF from "jspdf";
 import Report from "./report";
 
+import CircularProgress from "@mui/material/CircularProgress";
+
 // const XLSX = require("xlsx");
 
 // import updateMany from "../../assets/fil
@@ -82,6 +84,10 @@ const ModalUpdate = () => {
     var data = new FormData();
     let input = document.querySelector("#arquivo") as HTMLInputElement;
 
+    document.querySelector<HTMLElement>("#spinMany")!.style.display = "block";
+
+    document.querySelector<HTMLElement>("#buttonMany")!.style.display = "none";
+
     data.append("file", input.files![0]);
     // setLoadModal(true)
     Api.post("/product/updateMany", data)
@@ -102,11 +108,16 @@ const ModalUpdate = () => {
         toast.success("Produtos atualizados com sucesso!");
         setTimeout(() => {
           window.print();
-        }, 1000);
-        // closeModal();
-        // handleGetProduct()
+          closeModal();
+        }, 2000);
+        handleGetProduct();
       })
       .catch(function (err) {
+        document.querySelector<HTMLElement>("#spinMany")!.style.display =
+          "none";
+
+        document.querySelector<HTMLElement>("#buttonMany")!.style.display =
+          "block";
         // setLoadModal(false)
         console.log(err);
         toast.error("Falha ao atualizar valores por tabela");
@@ -148,7 +159,10 @@ const ModalUpdate = () => {
               <div>
                 <input type="file" id="arquivo" />
               </div>
-              <button onClick={() => handleImport()}>Atualizar</button>
+              <button id="buttonMany" onClick={() => handleImport()}>
+                Atualizar
+              </button>
+              <CircularProgress id="spinMany" color="secondary" />
               {/* <button>Download</button> */}
             </S.MainComponent>
           </div>

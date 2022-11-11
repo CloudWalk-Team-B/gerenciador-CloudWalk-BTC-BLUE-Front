@@ -8,16 +8,17 @@ export const TitleComponent = styled.h2`
     justify-content: center;
     align-items: center;
     border-radius: 50px;
-    height: 10%;
+    height: 2rem;
     font-weight: 300;
     width: 38vw;
-    margin: 18px 10vw;
+    margin: 18px 30vw;
     font-size: 3.5vh;
   `}
 `;
 
 export const MainComponent = styled.div`
   ${({ theme }) => css`
+  overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -25,6 +26,11 @@ export const MainComponent = styled.div`
     height: 80%;
     padding: 5% 0;
     box-sizing: border-box;
+
+    #spinMany{
+      display: none;
+      margin-top: 20px;
+    }
 
       div{
         margin-top: 4vh;
@@ -52,6 +58,7 @@ export const MainComponent = styled.div`
     }
 
     button {
+      margin-top: 2%;
       background-color: ${theme.colors.primaryColor};
       color: ${theme.colors.textColor};
       font-family: "minimal";
@@ -69,6 +76,12 @@ export const MainComponent = styled.div`
       font-size: 3vh;
       border-radius: 3.125rem;
       transition: all 0.5s;
+      :hover{
+        cursor: pointer;
+        background-color: white;
+        color: ${theme.colors.primaryColor};
+        border: 1px solid ${theme.colors.primaryColor};
+      }
 
       .bothButtons{
         display: flex;
