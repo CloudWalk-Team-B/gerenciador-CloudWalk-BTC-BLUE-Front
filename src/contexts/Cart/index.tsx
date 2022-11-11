@@ -15,33 +15,40 @@ interface Cart{
 interface CartProviderData{
     cart: any,
     handleGetCart: ()=> void,
-    value: number,
-    handleValue: ()=> void,
+    price: number,
+    setPrice: (prop:number)=>void,
 }
 
 const CartContext = createContext<CartProviderData>({} as CartProviderData);
 
 export const CartProvider = ({children}:CartProviderProps) => {
     
-    const [ value, setValue ] = useState<number>(0)
+    const [ price, setPrice ] = useState<number>(0)
+    const [ oldPrice, setOldPrice ] = useState<number>(0)
     const [cart, setCart]= useState<Cart>();
     const { logged } = useAuth()
 
-    const handleValue = () => {
-        const data:any = cart
-        return(
-            (cart && cart.id!=="")&& data.map((element:any)=>{
-            const currentValue:number = value
-            {setValue(element.product.price)}
-    })
-    )
+    
+    const handleGetPrice = () =>{
+      Api.get("/Cart")
+      .then((res)=>{
+        const data = res.data
+        {data.id!=="" && data.map((element:any) =>{
+            return(
+                setPrice(price + element.product.price)
+            ) 
+         })}
+
+      })
     }
+
+    useEffect(()=>handleGetPrice(),[])
 
     const handleGetCart = ()=>{
         Api.get("/Cart")
         .then(res=> {
             setCart(res.data);
-            handleValue()
+            
         })
         .catch(()=>{
             setCart({
@@ -62,7 +69,7 @@ export const CartProvider = ({children}:CartProviderProps) => {
     useEffect(()=>handleGetCart(),[logged])
     useEffect(()=>handleGetCart(),[])
 
-    return <CartContext.Provider value={{ cart, handleGetCart, value, handleValue }}>{children}</CartContext.Provider>
+    return <CartContext.Provider value={{ cart, handleGetCart, price, setPrice }}>{children}</CartContext.Provider>
 }
 
 export const useCart = () => useContext(CartContext)

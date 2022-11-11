@@ -18,7 +18,7 @@ const ProductDetail = () =>{
     const { logged } = useAuth()
     const navegate = useNavigate()
     const { products, categories } = useProducts()
-    const { cart, handleGetCart } = useCart()
+    const { price, setPrice, handleGetCart } = useCart()
 
     useEffect(()=>window.scrollTo(0, 0),[])
     useEffect(()=>window.scrollTo(0, 0),[product])
@@ -26,13 +26,17 @@ const ProductDetail = () =>{
     
     const FilteredByCategory = products.filter((value) => value.category===newCategory);
 
-    const handleClick = (id:string) =>{
+    const handleClick = (id:string, prop:number) =>{
         if(logged){
             const data = {
                 productId: id
               }
             Api.post("Cart/addItem",data)
-            .then(()=>handleGetCart())
+            .then(()=>{
+                const currentPrice = prop
+                setPrice(price + currentPrice)
+                handleGetCart()
+            })
             .catch(()=>console.log("not ok"))
         }else{
             toast.error("Login necessário")
@@ -52,9 +56,8 @@ const ProductDetail = () =>{
                             <p className="price">R$ {product.price.toFixed(2)}</p>
                             <p className="offer">12x R$ {(product.price/12).toFixed(2)}</p>
                             <p className="offer">{product.price>20&& "Frete grátis"}</p>
-                            <p className="inventory">{product.inventory? "Estoque disponível":"Produto em falta"}</p>
-                            <p className="buy" onClick={()=>toast.success("Recurso em desenvolvimento")}>Comprar Agora</p>
-                            <p className="buy" onClick={()=>handleClick(product.id)}>Adicionar ao carrinho</p>
+                            <p className="inventory">{product.inventory? "Prduto disponível":"Produto em falta"}</p>
+                            <p className="buy" onClick={()=>handleClick(product.id, product.price)}>Adicionar ao carrinho</p>
                         </div>
                     </div>
                     <div className="description">

@@ -39,11 +39,10 @@ section{
       }
 
       div{
-        top: 2%;
         border: 2px solid #f9f4ec;
         border-radius: 5px;
         width: 30%;
-        height: 100%;
+        height: 42vh;
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
@@ -68,14 +67,14 @@ section{
         }
 
         .inventory{
-          background-color: #63acbe50;
+          background-color: #601a4a50;
           font-size: .9rem;
           text-align: center;
-          margin-top: 1rem;
+          margin-top: 20%;
         }
 
         .buy{
-          background-color: #63acbe;
+          background-color: #601a4a;
           height: 1.5rem;
           display: flex;
           justify-content: center;
@@ -84,6 +83,8 @@ section{
           border-radius: 3px;
           color: white;
           cursor: pointer;
+          margin-top:0;
+          margin-bottom:0;
         }
       }
     }
@@ -93,7 +94,6 @@ section{
       width: 100%;
       background-color: #f9f4ec93;
       padding: 0 0.5rem;
-
     }
 }
 
