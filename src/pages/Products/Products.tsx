@@ -8,7 +8,7 @@ const Products = () => {
   return (
     <>
       <S.Content>
-        <Header />
+        <Header/>
         <ListProducts />
       </S.Content>
     </>
