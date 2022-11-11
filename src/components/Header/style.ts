@@ -45,11 +45,13 @@ export const BoxSoon = styled.span`
     }
   }
 `;
+
 export const Soon = styled.img`
   height: 12vh;
   margin-top: 0.8rem;
   cursor: pointer;
 `;
+
 export const Name = styled.span`
   ${({ theme }) => css`
     overflow: hidden;
@@ -58,6 +60,7 @@ export const Name = styled.span`
     cursor: pointer;
   `}
 `;
+
 export const Update = styled.span`
   width: 10rem;
   display: flex;
