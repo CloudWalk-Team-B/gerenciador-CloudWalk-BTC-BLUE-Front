@@ -101,6 +101,7 @@ export const LoginCardContainer = styled.div`
           display: flex;
           flex-direction: row;
           justify-content: space-around;
+          margin-top: -0.5rem;
           width: 70%;
 
           button {
@@ -130,7 +131,7 @@ export const LoginCardContainer = styled.div`
 
         #spinLogIn {
           display: none;
-          margin-top: 5%;
+          margin-top: 2%;
         }
 
         #buttonLogIn{

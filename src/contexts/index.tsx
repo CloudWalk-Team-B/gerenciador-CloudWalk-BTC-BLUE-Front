@@ -20,7 +20,6 @@ const Providers = ({ children }: ProviderProps) => {
       <ThemeProvider theme={theme}>
         <HandleModalsProvider>
         <AuthProvider>
-        <CartProvider>
         <NewCartProvider>
         <ProductsProvider>
         <UserProvider>
@@ -28,7 +27,6 @@ const Providers = ({ children }: ProviderProps) => {
         </UserProvider>
         </ProductsProvider>
         </NewCartProvider>
-        </CartProvider>
         </AuthProvider>
         </HandleModalsProvider>
       </ThemeProvider>

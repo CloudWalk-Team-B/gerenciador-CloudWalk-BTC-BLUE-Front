@@ -7,30 +7,62 @@ interface CartProviderProps {
     children: ReactNode
 }
 
+interface Cart{
+    id:string,
+    product: Product
+}
+
 interface CartProviderData{
-    cart: Product[]
-    handleGetCart: ()=> void
+    cart: any,
+    handleGetCart: ()=> void,
+    value: number,
+    handleValue: ()=> void,
 }
 
 const CartContext = createContext<CartProviderData>({} as CartProviderData);
 
 export const NewCartProvider = ({children}:CartProviderProps) => {
     
-    const [cart, setCart]= useState([]);
+    const [ value, setValue ] = useState<number>(0)
+    const [cart, setCart]= useState<Cart>();
     const { logged } = useAuth()
 
+    const handleValue = () => {
+        const data:any = cart
+        return(
+            (cart && cart.id!=="")&& data.map((element:any)=>{
+            const currentValue:number = value
+            {setValue(element.product.price)}
+    })
+    )
+    }
+
     const handleGetCart = ()=>{
-        Api.get("/Cart").then(res=> {setCart(res.data)})
-        .then(()=>{
-            console.log(cart)
+        Api.get("/Cart")
+        .then(res=> {
+            setCart(res.data);
+            handleValue()
         })
-        .catch(()=>{})
+        .catch(()=>{
+            setCart({
+            id:"", 
+            product:{id: "",
+                    code: 0,
+                    name: "",
+                    image: "",
+                    description: "",
+                    category: "",
+                    price: 0,
+                    inventory: true}
+        })
+        })
         
     }
 
     useEffect(()=>handleGetCart(),[logged])
+    useEffect(()=>handleGetCart(),[])
 
-    return <CartContext.Provider value={{ cart, handleGetCart }}>{children}</CartContext.Provider>
+    return <CartContext.Provider value={{ cart, handleGetCart, value, handleValue }}>{children}</CartContext.Provider>
 }
 
 export const useNewCart = () => useContext(CartContext)
