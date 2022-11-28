@@ -12,11 +12,15 @@ export const Content = styled.div`
   ${({ theme }) => css`
     background-color: ${theme.colors.primaryColor};
     max-width: 100vw;
-    height: 13vh;
+    height: 6rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     color: white;
+    @media (max-width: 678px) {
+      height: auto;
+      width: 100%;
+    }
   `}
 `;
 
@@ -24,8 +28,11 @@ export const BoxSoon = styled.span`
   display: flex;
   align-items: center;
   text-align: center;
-  font-size: 3.5vh;
+  font-size: 1.7em;
   margin-left: 30px;
+  @media (max-width: 678px) {
+    font-size:0;
+  }
   section{
     display: flex;
     flex-direction: row;
@@ -40,11 +47,19 @@ export const BoxSoon = styled.span`
     .getOut{
       cursor:pointer
     }
+    @media (max-width: 678px) {
+      font-size: 0.9rem;
+      margin: 0.3rem;
+    }
   }
 `;
 export const Soon = styled.img`
-  height: 12vh;
+  height: 4.5rem;
   cursor: pointer;
+  @media (max-width: 678px) {
+    height: 2.7rem;
+  }
+  
 `;
 export const Name = styled.span`
   ${({ theme }) => css`
@@ -71,19 +86,30 @@ export const Search = styled.span`
   border-radius: 50px;
   display: flex;
   align-items: center;
+  @media (max-width: 678px) {
+
+  }
 `;
 export const TextSearch = styled.input`
   ${({ theme }) => css`
     font-family: ${theme.constants.bodyFontFamily};
     background-color: white;
-    height: 2.5vh;
-    width: 30vw;
+    height: 1.4rem;
+    width: 30rem;
     color: ${theme.colors.primaryColor};
     border: none;
     border-radius: 50px;
     outline: 0;
     padding: 10px 30px;
     font-size: 1em;
+    @media (max-width: 678px) {
+      display:none;
+      width: 6rem ;
+      height: 0.9rem;
+      font-size: 0.8em;
+      margin: 0 ;
+      padding:0;
+    }
   `}
 `;
 
@@ -91,6 +117,10 @@ export const GearAccount = styled(MdOutlineManageAccounts)`
   color: rgba(255, 255, 255, 0.8);
   width: 2rem;
   height: 2rem;
+  @media (max-width: 678px) {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
 `;
 
 export const Gear = styled(BsGear)`
@@ -98,6 +128,10 @@ export const Gear = styled(BsGear)`
   width: 2.5rem;
   height: 2.5rem;
   margin: 0;
+  @media (max-width: 678px) {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
 `
 
 export const BtnUser = styled(FaUserCircle)`
@@ -116,18 +150,30 @@ export const Register = styled(FaUserPlus)`
  width: 1.6rem;
  height: 1.6rem;
  margin: 0.5rem;
+ @media (max-width: 678px) {
+  width: 1.6rem;
+  height: 1.6rem;
+}
 `;
 export const Info= styled(FcAbout)`
   color: rgba(255, 255, 255, 0.8);
   width: 2.5rem;
   height: 2.5rem;
   margin: 0;
+  @media (max-width: 678px) {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
 `;
 export const Bag = styled(BsBagPlusFill)`
   color: rgba(255, 255, 255, 0.8);
   width: 2.5rem;
   height: 2.5rem;
   margin: 0;
+  @media (max-width: 678px) {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
 `;
 export const ButtonBag = styled.div`
 width: 4.5rem;
@@ -142,19 +188,26 @@ align-items: center;
 :hover{
   color: rgba(255, 255, 255, 0.8);
 }
+@media (max-width: 678px) {
+  width: 2.5rem;
+}
 `;
 export const Btn = styled(Link)`
-width: 4.5rem;
-height: 100%;
 text-decoration: none;
-color: rgba(255, 255, 255, 0.8);
-margin: 1rem;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
+cursor: pointer;
+width: 1.6rem;
+margin: 0 1rem;
+margin-right: 2rem;
+height: 100%;
+background-color: #601A4A;
+font-size: 0.7em;
+border: none;
+color: white;
 :hover{
   color: rgba(255, 255, 255, 0.8);
+}
+@media (max-width: 678px) {
+  width: 2.5rem;
 }
 `;
 export const BtnModal = styled(Link)`
@@ -175,6 +228,9 @@ export const Nav = styled.nav`
   justify-content: center;
   align-items: center;
   margin-right: 1rem;
+  @media (max-width: 678px) {
+    width: 8rem;
+  }
 `;
 export const Button = styled.button`
 cursor: pointer;
@@ -194,4 +250,8 @@ color: #601c4A;
 margin-left: -2.5rem;
 z-index: 1;
 cursor:pointer;
+@media (max-width: 678px) {
+  width: 1.6rem;
+  height: 1.6rem;
+}
 `

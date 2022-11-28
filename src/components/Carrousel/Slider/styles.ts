@@ -60,8 +60,8 @@ export const Img = styled.img`
 `;
 
 export const CardSlider = styled(SwiperSlide)`
-  max-width: 16.5vw;
-  min-width: 10.5vw;
+  max-width: 16.5rem;
+  min-width: 10.rem;
   height: 23rem;
   display: flex;
   flex-direction: column;
