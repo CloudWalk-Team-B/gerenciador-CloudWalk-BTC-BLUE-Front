@@ -12,19 +12,25 @@ export const ProductDetailContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (max-width: 678px) {
+ 
+  }
   
 section{
-    min-height: 65vh;
+    min-height: 65rem;
     display: flex;
     flex-direction: column;
     padding: 2rem;
     box-sizing: border-box;
-    min-width: 55vw;
-    max-width: 55vw;
+    min-width: 50rem;
+    max-width: 50rem;
     align-items: center;
     border: 2px solid #f9f4ec;
     border-radius: 5px;
     margin-top: 3rem;
+    @media (max-width: 678px) {
+    
+    }
 
     .details{
       width: 100%;
@@ -32,23 +38,34 @@ section{
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
+      @media (max-width: 678px) {
+       display:flex;
+       flex-direction: column;
+      }
 
       img{
-        height: 40vh;
-        margin-left: 6.5vw;
+        height: 20rem;
+        margin-left: 2rem;
+        @media (max-width: 678px) {
+        width: 30%;
+        height:40%;
+        padding: 2rem;
+        }
       }
 
       div{
         border: 2px solid #f9f4ec;
         border-radius: 5px;
         width: 30%;
-        height: 42vh;
+        height: 20rem;
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
         padding: 0.5rem;
         box-sizing: border-box;
-
+        @media (max-width: 678px) {
+          
+        }
         h1{
           margin: 0;
           margin-bottom: 1rem;
@@ -89,11 +106,14 @@ section{
       }
     }
     .description{
-      margin-top: .5rem;
+      margin-top: 0.5rem;
       border-top: 2px solid #f9f4ec;
       width: 100%;
       background-color: #f9f4ec93;
       padding: 0 0.5rem;
+      @media (max-width: 678px) {
+      width: 40%;
+      }
     }
 }
 
