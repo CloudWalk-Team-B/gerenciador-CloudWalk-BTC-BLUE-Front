@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import { AiFillLinkedin, AiOutlineGithub } from "react-icons/ai";
 import { FaReact, FaNodeJs } from "react-icons/fa";
-import { SiNestjs, SiTypescript, SiStyledcomponents, SiPostgresql, SiVercel } from "react-icons/si";
+import { SiNestjs, SiTypescript, SiStyledcomponents, SiPostgresql, SiVercel, SiAmazonaws, SiPrisma } from "react-icons/si";
 
 
 
 export const Content = styled.section`
 width: 75%;
-height: 15vh;
+height: 11rem;
 display: flex;
 padding: 0;
 box-sizing: border-box;
@@ -59,7 +59,7 @@ padding: 0 .5rem;
 margin:0;
 margin-top: -1rem;
 text-align: center;
-font-size: .8em;
+font-size: 0.8em;
 position: relative;
 color: #FFF;
 cursor: pointer;
@@ -76,11 +76,10 @@ color: #601A4A;
 margin: 0;
 `;
 export const CardContainer = styled.section`
-width: 75%;
-height: 45vh;
+width: 100%;
+height: 33rem;
 display: flex;
 flex-wrap: wrap;
-flex-direction: column;
 justify-content: space-evenly;
 align-items: center;
 border-radius: 0.5rem;
@@ -88,12 +87,14 @@ box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0
 @media(max-width: 768px) {
     width: 100%;
     box-shadow:none;
+    flex-direction: column;
+
 }
 `;
 export const SecondCardContainer = styled.section`
-width: 75%;
-height: 15vh;
-margin-top: 1rem;
+width: 80%;
+height: 14rem;
+margin: 2rem;
 display: flex;
 flex-wrap: wrap;
 flex-direction: column;
@@ -104,11 +105,15 @@ box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0
 @media(max-width: 768px) {
     width: 100%;
     box-shadow:none;
+    flex-wrap: wrap;
+    height: 16rem;
+    justify-content: center;
+   
 }
 `;
 export const Card = styled.section`
 width:45%;
-height: 19.5vh;
+height: 12rem;
 display: flex;
 align-items: center;
 background-color: #601A4A;
@@ -120,7 +125,7 @@ transition: all .5s;
 }
 @media(max-width: 768px) {
     max-width:11rem;
-    max-height:10.5rem;
+    height:11rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -130,13 +135,14 @@ transition: all .5s;
   }
 `;
 export const CardImg = styled.img`
-height:17vh;
+height:9rem;
 margin-left: 4%;
 @media(max-width: 768px) {
     width: 100%;
-    height:6rem; 
+    height:5rem; 
     padding: 0;
     border-radius: 0.2rem;
+    margin: 0;
 }
 border-radius: 3px;
 `;
@@ -187,14 +193,20 @@ display: flex;
 export const Btn = styled.a`
 `;
 export const CardSkill = styled.section`
-width: 5rem;
-height: 5rem;
+width: 4rem;
+height: 4rem;
 border: solid 1px  #601A4A;
 border-radius: 0.8rem;
 display: flex;
 justify-content: center;
 align-items: center;
-margin: 2rem;
+margin: 1rem;
+@media(max-width: 768px) {
+ width: 3rem;
+ height: 3rem;
+ margin:0.5rem;
+ background-color: #601A4A;
+}
 
 
 `; 
@@ -204,41 +216,91 @@ width: 2.5rem;
 height:2.5rem;
 color: #5ed3f3;
 margin: 1rem;
+@media(max-width: 768px) {
+    width: 1.2rem;
+    height: 1.2rem;
+   }
 `;
 export const Fnode = styled(FaNodeJs)`
 width: 2.5rem;
 height:2.5rem;
 color: #4d973b;
 margin: 1rem;
+@media(max-width: 768px) {
+    width: 1.2rem;
+    height: 1.2rem;
+   }
 
 `;
 export const Stypescript = styled(SiTypescript)`
 width: 2.5rem;
 height:2.5rem;
-color: gold;
+color: blue;
 margin: 1rem; 
+@media(max-width: 768px) {
+    width: 1.2rem;
+    height: 1.2rem;
+   }
 `;
+
 export const Snest = styled(SiNestjs)`
 width: 2.5rem;
 height:2.5rem;
 color: red;
 margin: 1rem;
+@media(max-width: 768px) {
+    width: 1.2rem;
+    height: 1.2rem;
+   }
 `;
 export const Sstyled = styled(SiStyledcomponents)`
 width: 2.5rem;
 height:2.5rem;
 color: #c162b0;
 margin: 1rem; 
+@media(max-width: 768px) {
+    width: 1.2rem;
+    height: 1.2rem;
+   } 
 `;
 export const Spostgres = styled(SiPostgresql)`
 width: 2.5rem;
 height:2.5rem;
 color: #31648c;
 margin: 1rem; 
+@media(max-width: 768px) {
+    width: 1.2rem;
+    height: 1.2rem;
+   }
 `;
 export const Svercel = styled(SiVercel)`
 width: 2.5rem;
 height:2.5rem;
 color: #292e3c;
 margin: 1rem; 
+@media(max-width: 768px) {
+    width: 1.2rem;
+    height: 1.2rem;
+   }
+`;
+export const Sprismma = styled(SiPrisma)`
+width: 2.5rem;
+height:2.5rem;
+color: #292e3c;
+margin: 1rem; 
+@media(max-width: 768px) {
+    width: 1.2rem;
+    height: 1.2rem;
+   }
+`;
+
+export const Saws = styled(SiAmazonaws)`
+width: 2.5rem;
+height:2.5rem;
+color: gold;
+margin: 1rem; 
+@media(max-width: 768px) {
+    width: 1.2rem;
+    height: 1.2rem;
+   }
 `;

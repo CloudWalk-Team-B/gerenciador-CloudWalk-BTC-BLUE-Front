@@ -23,6 +23,12 @@ export const Skills = () => {
             <S.CardSkill>
                <S.Svercel/>
             </S.CardSkill>
+            <S.CardSkill>
+               <S.Saws/>
+            </S.CardSkill>
+            <S.CardSkill>
+               <S.Sprismma/>
+            </S.CardSkill>
         </S.SecondCardContainer>
     )
 };
